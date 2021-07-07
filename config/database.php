@@ -57,7 +57,7 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
             'strict' => true,
-            'engine' => 'InnoDB', //CAMBIO DE CAMPO POR ERROR InnoDB - null
+            'engine' => 'InnoDB', //CAMBIO DE CAMPO POR ERROR InnoDB - null - 'InnoDB'
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
