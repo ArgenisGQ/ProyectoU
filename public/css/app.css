@@ -1211,6 +1211,12 @@ select {
 .-mt-px {
 	margin-top: -1px;
 }
+.mb-8 {
+	margin-bottom: 2rem;
+}
+.mb-2 {
+	margin-bottom: 0.5rem;
+}
 .block {
 	display: block;
 }
@@ -1256,15 +1262,15 @@ select {
 .h-20 {
 	height: 5rem;
 }
+.h-72 {
+	height: 18rem;
+}
 .h-80 {
 	height: 20rem;
 }
-<<<<<<< HEAD
-=======
 .h-full {
 	height: 100%;
 }
->>>>>>> 2419562335b0d620b070d31e085096ad1d75ea2d
 .min-h-screen {
 	min-height: 100vh;
 }
@@ -1327,6 +1333,9 @@ select {
 }
 .max-w-6xl {
 	max-width: 72rem;
+}
+.max-w-5xl {
+	max-width: 64rem;
 }
 .flex-1 {
 	flex: 1 1 0%;
@@ -1683,6 +1692,9 @@ select {
 .pt-8 {
 	padding-top: 2rem;
 }
+.pb-2 {
+	padding-bottom: 0.5rem;
+}
 .pr-2 {
 	padding-right: 0.5rem;
 }
@@ -1725,6 +1737,10 @@ select {
 .text-4xl {
 	font-size: 2.25rem;
 	line-height: 2.5rem;
+}
+.text-3xl {
+	font-size: 1.875rem;
+	line-height: 2.25rem;
 }
 .font-medium {
 	font-weight: 500;
