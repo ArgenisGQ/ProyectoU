@@ -7,7 +7,18 @@
 @stop
 
 @section('content')
-    <p>Welcome to admin panel.</p>
+    <div class="card">
+        <div class="card-body">
+        {!! Form::open(['route' => 'admin.categories.stores']) !!}
+            
+            <div class="form-group">
+                {!! Form::label('name', 'Nombre') !!}
+                {!! Form::text('name', null; ['class'=>'form-control','placeholder'=>'Ingrese el nombre de la categoria']) !!}
+            </div>
+
+        {!! Form::close() !!}
+        </div>
+    </div>
 @stop
 
 @section('css')
