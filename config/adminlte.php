@@ -257,7 +257,7 @@ return [
         [
             'text' => 'Categorias',
             'route'  => 'admin.categories.index',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fab fa-fw fa-buffer',
         ],
         [
             'text' => 'change_password',
