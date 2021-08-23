@@ -269,15 +269,15 @@ return [
         ['header' => 'OPCIONES DE BLOG'],
         [
             'text' => 'Lista de post',
-            'route'  => 'admin.categories.index',
-            'icon' => 'fab fa-fw fa-buffer',
-            'active' => ['admin/categories*']
+            'route'  => 'admin.posts.index',
+            'icon' => 'fas fa-fw fa-clipboard'
+
         ],
         [
             'text' => 'Crear nuevo post',
-            'route'  => 'admin.tags.index',
-            'icon' => 'far fa-fw fa-bookmark',
-            'active' => ['admin/tags*']
+            'route'  => 'admin.posts.create',
+            'icon' => 'fas fa-fw fa-file'
+
         ],
         /* [
             'text'    => 'multilevel',
@@ -453,5 +453,5 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Other-Configuration
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];
