@@ -258,13 +258,28 @@ return [
             'text' => 'Categorias',
             'route'  => 'admin.categories.index',
             'icon' => 'fab fa-fw fa-buffer',
+            'active' => ['admin/categories*']
         ],
         [
             'text' => 'Etiquetas',
             'route'  => 'admin.tags.index',
             'icon' => 'far fa-fw fa-bookmark',
+            'active' => ['admin/tags*']
+        ],
+        ['header' => 'OPCIONES DE BLOG'],
+        [
+            'text' => 'Lista de post',
+            'route'  => 'admin.categories.index',
+            'icon' => 'fab fa-fw fa-buffer',
+            'active' => ['admin/categories*']
         ],
         [
+            'text' => 'Crear nuevo post',
+            'route'  => 'admin.tags.index',
+            'icon' => 'far fa-fw fa-bookmark',
+            'active' => ['admin/tags*']
+        ],
+        /* [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
@@ -317,7 +332,7 @@ return [
             'text'       => 'information',
             'icon_color' => 'cyan',
             'url'        => '#',
-        ],
+        ], */
     ],
 
     /*

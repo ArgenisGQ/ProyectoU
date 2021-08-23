@@ -11,6 +11,12 @@ class Tag extends Model
 
     protected $fillable = ['name', 'slug', 'color'];
 
+     //metodo para mostrar slug y no el id
+     public function getRouteKeyName()
+     {
+         return "slug";
+     }
+
     //Relacion muchos a muchos
 
     public function posts(){
