@@ -99,6 +99,22 @@
                 @enderror
             </div>
 
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="image-wrapper">
+                        <img src="https://cdn.pixabay.com/photo/2015/09/02/12/28/pencil-918449_960_720.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {!! Form::label('file', 'Imagen que se mostrara en el post') !!}
+                        {!! Form::file('file', ['class' => 'form-control-file']) !!}
+                    </div>
+
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus enim qui veniam nostrum fugit animi, odit aut numquam alias eaque adipisci, non necessitatibus optio esse obcaecati et iusto tempore tenetur.</p>
+                </div>
+            </div>
+
             {!! Form::submit('Crear post', ['class' => 'btn btn-primary']) !!}
         {!! Form::close() !!}
         </div>
@@ -106,7 +122,21 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+    <style>
+        .image-wrapper{
+            position: relative;
+            padding-bottom: 56.25%
+        }
+
+        .image-wrapper img{
+            position:absolute;
+            objet-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
 @stop
 
 @section('js')
@@ -132,5 +162,20 @@
         .catch( error => {
             console.error( error );
         } );
+    </script>
+    {{-- Scrip para cargar archivo de imagen en url --}}
+    <script>
+        document.getElementById("file").addEventListener('change', cambiarImagen);
+
+        function cambiarImagen(event){
+            var file = event.target.files(0);
+
+            var reader = new FileReader();
+            reader.onload = (event) -> {
+                document.getElementById("picture").setAtribute('src', event.target.result);
+            };
+
+            reader.readAsDataURL(file);
+        }
     </script>
 @stop
