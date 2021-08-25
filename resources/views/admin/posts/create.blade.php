@@ -9,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-        {!! Form::open(['route' => 'admin.posts.store', 'autocomplete' => 'off']) !!}
+        {!! Form::open(['route' => 'admin.posts.store', 'autocomplete' => 'off', 'files' => 'true' ]) !!}
 
             {!! Form::hidden('user_id', auth()->user()->id) !!}
 
@@ -81,6 +81,23 @@
                 @enderror
             </div>
 
+            {{-- IMAGEN A SUBIR EL POST --}}
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="image-wrapper">
+                        <img id="picture" src="https://cdn.pixabay.com/photo/2015/09/02/12/28/pencil-918449_960_720.jpg" >
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {!! Form::label('file', 'Imagen que se mostrara en el post') !!}
+                        {!! Form::file('file', ['class' => 'form-control-file']) !!}
+                    </div>
+
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus enim qui veniam nostrum fugit animi, odit aut numquam alias eaque adipisci, non necessitatibus optio esse obcaecati et iusto tempore tenetur.</p>
+                </div>
+            </div>
+
             <div class="form-group">
                 {!! Form::label('extract', 'Extracto:') !!}
                 {!! Form::textarea('extract', null, ['class' => 'form-control']) !!}
@@ -99,21 +116,7 @@
                 @enderror
             </div>
 
-            <div class="row mb-3">
-                <div class="col">
-                    <div class="image-wrapper">
-                        <img src="https://cdn.pixabay.com/photo/2015/09/02/12/28/pencil-918449_960_720.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        {!! Form::label('file', 'Imagen que se mostrara en el post') !!}
-                        {!! Form::file('file', ['class' => 'form-control-file']) !!}
-                    </div>
 
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus enim qui veniam nostrum fugit animi, odit aut numquam alias eaque adipisci, non necessitatibus optio esse obcaecati et iusto tempore tenetur.</p>
-                </div>
-            </div>
 
             {!! Form::submit('Crear post', ['class' => 'btn btn-primary']) !!}
         {!! Form::close() !!}
@@ -162,20 +165,20 @@
         .catch( error => {
             console.error( error );
         } );
-    </script>
-    {{-- Scrip para cargar archivo de imagen en url --}}
-    <script>
+
+        //Scrip para cargar archivo de imagen en url
         document.getElementById("file").addEventListener('change', cambiarImagen);
 
-        function cambiarImagen(event){
-            var file = event.target.files(0);
+            function cambiarImagen(event){
+                var file = event.target.files[0];
 
-            var reader = new FileReader();
-            reader.onload = (event) -> {
-                document.getElementById("picture").setAtribute('src', event.target.result);
-            };
+                var reader = new FileReader();
+                reader.onload = (event) => {
+                    document.getElementById("picture").setAttribute('src', event.target.result);
+                };
 
-            reader.readAsDataURL(file);
+        reader.readAsDataURL(file);
         }
+
     </script>
 @stop
