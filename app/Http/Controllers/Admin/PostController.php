@@ -118,7 +118,7 @@ class PostController extends Controller
 
             }
 
-        return redirect()->route('admin.post.edit', $post)->with('info', 'El post se actualizo con exito');
+        return redirect()->route('admin.posts.edit', $post)->with('info', 'El post se actualizo con exito');
     }
 
 

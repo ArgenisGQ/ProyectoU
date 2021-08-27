@@ -16,7 +16,7 @@
 
         <div class="card">
             <div class="card-body">
-            {!! Form::model($post,['route' => 'admin.posts.update', 'autocomplete' => 'off', 'files' => 'true', 'method' => 'PUT' ]) !!}
+            {!! Form::model($post,['route' => ['admin.posts.update', $post], 'autocomplete' => 'off', 'files' => 'true', 'method' => 'PUT' ]) !!}
 
                 {{-- {!! Form::hidden('user_id', auth()->user()->id) !!} --}}
 
