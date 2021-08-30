@@ -116,7 +116,14 @@ class PostController extends Controller
                 ]);
             }
 
-            }
+
+
+        }
+
+        if ($request->tags) {
+                $post->tags()->sync($request->tags);
+        }
+
 
         return redirect()->route('admin.posts.edit', $post)->with('info', 'El post se actualizo con exito');
     }
