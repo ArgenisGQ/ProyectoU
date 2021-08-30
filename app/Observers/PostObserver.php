@@ -13,9 +13,12 @@ class PostObserver
      * @param  \App\Models\Post  $post
      * @return void
      */
-    public function created(Post $post)
+    public function creating(Post $post)
     {
-        //
+        if (!\App::runningInConsole()) {
+            $post->user_id = auth()->id;
+        }
+
     }
 
     /**
