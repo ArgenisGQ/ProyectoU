@@ -102,6 +102,15 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('extract01', 'Extracto01:') !!}
+    {!! Form::textarea('extract01', null, ['class' => 'form-control']) !!}
+
+    @error('extract01')
+        <span class="text-danger">{{$message}}</span>
+    @enderror
+</div>
+
+<div class="form-group">
     {!! Form::label('body', 'Cuerpo del post:') !!}
     {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
 
