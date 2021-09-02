@@ -66,6 +66,12 @@
         } );
 
         ClassicEditor
+        .create( document.querySelector( '#extract01' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
+        ClassicEditor
         .create( document.querySelector( '#body' ) )
         .catch( error => {
             console.error( error );
