@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\Tag;
 use Psy\Command\WhereamiCommand;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -21,6 +22,10 @@ class PostController extends Controller
     public function show(Post $post){
 
         $this->authorize('published', $post);
+
+        /* $users = User::orderBy('id','ASC'); */
+
+
 
         $similares = Post::where('category_id', $post->category_id)
                             ->where('status', 2)
