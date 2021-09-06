@@ -21,7 +21,7 @@
                     <tbody class="text-center">
                         <tr>
                             <td class="w-1/4 h-12 bg-gray-300">Asignatura</td>
-                            <td class="w-3/4 h-12 bg-gray-100">tag</td>
+                            <td class="w-3/4 h-12 bg-gray-100">{{$similar->name}}</td>
                         </tr>
                     </tbody>
                     <hr>
