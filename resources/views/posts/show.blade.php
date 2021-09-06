@@ -1,62 +1,99 @@
 <x-app-layout>
     <div class="container py-8">
 
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
+                <table class="w-full my-4 border border-separate border-gray-800 table-auto">
+                    {{-- <thead>
+                        <tr>
+                            <th class="p-3">nombre</th>
+                            <th class="p-3">email</th>
+                            <th class="p-3">otro</th>
+                        </tr>
+                    </thead> --}}
+                    <tbody class="text-center">
+                        <tr>
+                            <td class="w-1/4 h-12 bg-gray-300">Docente</td>
+                            <td class="w-3/4 h-12 bg-gray-100">{!! auth()->user()->name !!}</td>
+                        </tr>
+                    </tbody>
+                    <br>
+                    <tbody class="text-center">
+                        <tr>
+                            <td class="w-1/4 h-12 bg-gray-300">Asignatura</td>
+                            <td class="w-3/4 h-12 bg-gray-100">tag</td>
+                        </tr>
+                    </tbody>
+                    <hr>
+                    <tbody class="text-center">
+                        <tr>
+                            <td class="w-1/4 h-12 bg-gray-300">Facultad</td>
+                            <td class="w-3/4 h-12 bg-gray-100">cat</td>
+                        </tr>
+                    </tbody class="text-center">
+                    <hr>
+                    <tbody class="text-center">
+                        <tr>
+                            <td class="w-1/4 h-12 bg-gray-300">Actividad</td>
+                            <td class="w-3/4 h-12 bg-gray-100">{{$post->name}}</td>
+                        </tr>
+                    </tbody>
+                    <hr>
+                    <tbody class="text-center">
+                        <tr>
+                            <td class="w-1/4 h-12 bg-gray-300">Tipo de Actividad</td>
+                            <td class="w-3/4 h-12 bg-gray-100">seleccion</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-        <h1 class="text-4xl text-gray-600 fond-bold">
-            {{$post->name}}
-        </h1>
+                <table class="w-full my-4 border border-separate border-gray-800 table-auto">
+                    <thead>
+                        <tr>
+                            <th class="p-1">Descripcion de la actividad</th>
+                        </tr>
+                    </thead>
 
-        <h1 class="text-4xl text-gray-600 fond-bold">
-            {!! auth()->user()->name !!}
-        </h1>
+                    <tbody>
+                        <tr>
+                            <td class="w-3/4 h-12 bg-gray-100">{!!$post->body!!}</td>
+                        </tr>
+                    </tbody>
 
-        <div class="card-body">
-            <h4>Bienvenido . {!! auth()->user()->name !!} </h4>
-         </div>
+                </table>
+                <table class="w-full my-4 border border-separate border-gray-800 table-auto">
+                    <thead>
+                        <tr>
+                            <th class="p-1">Proposito de la actividad</th>
+                        </tr>
+                    </thead>
 
-        <hr size=20 >
-        <div class="text-lg text-gray-500-mb-2">
-            {!!$post->extract!!}
-        </div>
+                    <tbody>
+                        <tr>
+                            <td class="w-3/4 h-12 bg-gray-100">{!!$post->extract!!}</td>
+                        </tr>
+                    </tbody>
 
-        <hr>
+                </table>
+                <table class="w-full my-4 border border-separate border-gray-800 table-auto">
+                    <thead>
+                        <tr>
+                            <th class="p-1">Aprendido en la actividad</th>
+                        </tr>
+                    </thead>
 
-        <div class="text-lg text-gray-500-mb-2">
-            {!!$post->extract01!!}
-        </div>
+                    <tbody>
+                        <tr>
+                            <td class="w-3/4 h-12 bg-gray-100">{!!$post->extract01!!}</td>
+                        </tr>
+                    </tbody>
 
-        <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
-            {{-- contenido principal --}}
-            <div class="lg:col-span-2">
-                {{-- <figure>
-                    @if ($post->image)
-                        <img class="object-cover object-center w-full h-72" src="{{Storage::url($post->image->url)}}" alt="" >
-                    @else
-                        <img class="object-cover object-center w-full h-72" src="https://cdn.pixabay.com/photo/2016/11/30/12/16/question-mark-1872665_960_720.jpg" alt="" >
-                    @endif
-                </figure> --}}
-
-                <div class="mt-4 text-base text-gray-500">
-                    {!!$post->body!!}
-                </div>
+                </table>
             </div>
-            {{-- contenido relacionado --}}
-            <aside>
-                <h1 class="mb-4 text-2xl font-bold text-gray-600">Más en {{$post->category->name}}</h1>
-
-                <ul>
-                    @foreach ($similares as $similar)
-                    <li class="mb-4">
-                        <a class="flex" href="{{route('posts.show', $similar)}}" >
-                            {{-- <img class="object-cover h-20 w-36 objet-center" src="{{Storage::url($similar->image->url)}}" alt="" > --}}
-                            <span class="ml-2 text-gray-600">{{$similar->name}}</span>
-                        </a>
-                    </li>
-                    @endforeach
-                </ul>
-
-            </aside>
         </div>
+
+{{-- ------------------------------------------------------------------------------ --}}
+
     </div>
 </x-app-layout>
 
