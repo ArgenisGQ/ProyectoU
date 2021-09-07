@@ -34,7 +34,15 @@ class PostController extends Controller
                             ->take(4)
                             ->get();
 
-        return view('posts.show', compact('post', 'similares'));
+        $categoria = Category::where('id', $post->category_id)
+                            
+                            ->get();
+        
+        return view('posts.show', compact('post', 'similares', 'categoria'));
+
+        /* return $category_post; */
+
+
     }
 
     public function category(Category $category){
