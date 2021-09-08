@@ -23,11 +23,11 @@
                             <td class="w-1/4 h-12 bg-gray-300">Asignatura</td>
                             <td class="w-3/4 h-12 bg-gray-100">
                                 @foreach ($post->tags as $tag)
-                                    
+
                                         <a href="{{route('posts.tag', $tag)}}">
                                             <span class="ml-2 text-gray-600">{{$tag->name}}</span>
                                         </a>
-                                    
+
                                 @endforeach
                             </td>
                         </tr>
@@ -38,11 +38,11 @@
                             <td class="w-1/4 h-12 bg-gray-300">Facultad</td>
                             <td class="w-3/4 h-12 bg-gray-100">
                                 @foreach ($categoria as $categoriaa)
-                                    
+
                                         <a href="{{route('posts.category', $categoriaa)}}">
                                             <span class="ml-2 text-gray-600">{{$categoriaa->name}}</span>
                                         </a>
-                                    
+
                                 @endforeach
                             </td>
                         </tr>
@@ -72,7 +72,7 @@
 
                     <tbody>
                         <tr>
-                            <td class="w-3/4 h-12 bg-gray-100">{!!$post->body!!}</td>
+                            <td class="w-3/4 h-12 bg-gray-100">{!! $post->body !!}</td>
                         </tr>
                     </tbody>
 

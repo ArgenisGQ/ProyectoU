@@ -67,7 +67,7 @@
 </div>
 
 {{-- IMAGEN A SUBIR EL POST --}}
-<div class="row mb-3">
+<div class="mb-3 row">
     <div class="col">
         <div class="image-wrapper">
             @isset($post->image)

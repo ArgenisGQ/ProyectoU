@@ -1,6 +1,6 @@
 .container
 {
-    @apply max-w-7xl mx-auto px-2;
+    @apply px-2 mx-auto max-w-7xl;
 }
 
 @media(min-width:640px)
@@ -13,4 +13,8 @@
 {   .container{
         @apply px-8;
     }
+}
+
+.ck-editor__editable_inline {
+    min-height: 25px;
 }
