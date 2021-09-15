@@ -1,6 +1,14 @@
-<x-app-layout>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PDF</title>
+</head>
+<body>
+
     <div class="container py-8">
-        <a href="{{route('posts.pdf.showPdf',$post)}}" class="float-right btn btn-secondary btn-sm">PDF</a>
 
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
@@ -14,7 +22,7 @@
                     </thead> --}}
                     <tbody class="text-center">
                         <tr>
-                            <td class="w-1/4 h-12 bg-gray-300">Docente</td>
+                            <td class="w-1/4 h-12 bg-gray-300">Docente - PDF</td>
                             <td class="w-3/4 h-12 bg-gray-100">{!! auth()->user()->name !!}</td>
                         </tr>
                     </tbody>
@@ -111,5 +119,7 @@
 
 {{-- ------------------------------------------------------------------------------ --}}
 
-</x-app-layout>
+    </div>
 
+</body>
+</html>

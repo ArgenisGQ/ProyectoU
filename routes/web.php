@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PdfController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::get('posts/pdf/{post}',[PdfController::class, 'showPdf'])->name('posts.pdf.showPdf');
 
+/* Route::get('posts/pdf/{post}',[PdfController::class, 'downPdf'])->name('posts.pdf.showPdf'); */
