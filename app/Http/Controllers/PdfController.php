@@ -52,15 +52,27 @@ class PdfController extends Controller
 
                             ->get();
 
+        /* ------  Para bajar el archivo pdf ------------ */
+
         $pdf = app('dompdf.wrapper');
 
-        $pdf = \PDF::loadView('posts.pdf.downPdf', compact('post', 'similares', 'categoria'));
+       
+        /* $pdf = \PDF::loadView('posts.pdf.downPdf', compact('post', 'similares', 'categoria'));
 
-        return $pdf -> download('reporte.pdf');
+        return $pdf -> download('reporte.pdf'); */
+
+
+
 
         /* return view('posts.showPdf', compact('post', 'similares', 'categoria')); */
 
         /* return $post;*/
+
+        /* -------- Para mostrar el archivo en otra ventana de PDF  -------- */
+
+        return \PDF::loadView('posts.pdf.downPdf', compact('post', 'similares', 'categoria'))
+                    ->stream('archivo.pdf');
+
 
     }
 }

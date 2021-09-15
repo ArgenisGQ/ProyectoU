@@ -4,22 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
     <title>PDF</title>
 </head>
 <body>
 
-    <div class="container py-8">
+    <div class="container">
 
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="row justify-content-md-center">
             <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
                 <table class="w-full my-4 border border-separate border-gray-800 table-auto">
-                    {{-- <thead>
-                        <tr>
-                            <th class="p-3">nombre</th>
-                            <th class="p-3">email</th>
-                            <th class="p-3">otro</th>
-                        </tr>
-                    </thead> --}}
                     <tbody class="text-center">
                         <tr>
                             <td class="w-1/4 h-12 bg-gray-300">Docente - PDF</td>
