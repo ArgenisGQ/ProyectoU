@@ -8,22 +8,22 @@
 
     <style type="text/css">
         {{$css_data}}
-    </style>
-
-    <style>
-        @page {
-            margin-left: 0.5cm;
-            margin-right: 0;
-        }
-    </style>
+     </style>
 </head>
-<body style="margin: 50px 40px">
+<body>
 
-    <div class="container">
-        <h2 class="text-center table-dark">Redaccion de Actividades de Aprendizaje</h2>
-        <div class="">
+    <div class="container py-8">
+
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
-                <table class="table w-full my-4 border border-separate border-gray-800 table-auto table-hover">
+                <table class="w-full my-4 border border-separate border-gray-800 table-auto">
+                    {{-- <thead>
+                        <tr>
+                            <th class="p-3">nombre</th>
+                            <th class="p-3">email</th>
+                            <th class="p-3">otro</th>
+                        </tr>
+                    </thead> --}}
                     <tbody class="text-center">
                         <tr>
                             <td class="w-1/4 h-12 bg-gray-300">Docente - PDF - down</td>
@@ -45,7 +45,7 @@
                             </td>
                         </tr>
                     </tbody>
-
+                    <hr>
                     <tbody class="text-center">
                         <tr>
                             <td class="w-1/4 h-12 bg-gray-300">Facultad</td>
@@ -60,26 +60,26 @@
                             </td>
                         </tr>
                     </tbody class="text-center">
-
+                    <hr>
                     <tbody class="text-center">
                         <tr>
                             <td class="w-1/4 h-12 bg-gray-300">Actividad</td>
                             <td class="w-3/4 h-12 bg-gray-100">{{$post->name}}</td>
                         </tr>
                     </tbody>
-
+                    <hr>
                     <tbody class="text-center">
                         <tr>
                             <td class="w-1/4 h-12 bg-gray-300">Tipo de Actividad</td>
-                            <td class="w-3/4 h-12 bg-gray-100">- - - seleccion - - -</td>
+                            <td class="w-3/4 h-12 bg-gray-100">seleccion</td>
                         </tr>
                     </tbody>
                 </table>
 
                 <table class="w-full my-4 border border-separate border-gray-800 table-auto">
-                    <thead class="thead-light">
+                    <thead>
                         <tr>
-                            <th class="p-1 text-center table-dark">Descripcion de la actividad</th>
+                            <th class="p-1">Descripcion de la actividad</th>
                         </tr>
                     </thead>
 
@@ -93,7 +93,7 @@
                 <table class="w-full my-4 border border-separate border-gray-800 table-auto">
                     <thead>
                         <tr>
-                            <th class="p-1 text-center">Proposito de la actividad</th>
+                            <th class="p-1">Proposito de la actividad</th>
                         </tr>
                     </thead>
 
@@ -107,7 +107,7 @@
                 <table class="w-full my-4 border border-separate border-gray-800 table-auto">
                     <thead>
                         <tr>
-                            <th class="p-1 text-center">Aprendido en la actividad</th>
+                            <th class="p-1">Aprendido en la actividad</th>
                         </tr>
                     </thead>
 

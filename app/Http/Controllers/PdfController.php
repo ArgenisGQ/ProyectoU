@@ -27,9 +27,18 @@ class PdfController extends Controller
 
                             ->get();
 
-        return view('posts.pdf.showPdf', compact('post', 'similares', 'categoria'));
+        /* $css_data = '<style>
+        '.file_get_contents("./css/bootstrap.min.css").'
+        </style>'; */
 
-        /* return $post;*/
+        $css_data = file_get_contents("./css/bootstrap.min.css");
+
+
+
+
+        return view('posts.pdf.showPdf', compact('post', 'similares', 'categoria', 'css_data'));
+
+        /* return $css_data; */
 
     }
 
@@ -52,11 +61,23 @@ class PdfController extends Controller
 
                             ->get();
 
+        /* ------  Para crear el CSS en el pdf ------------ */
+
+        /* $css = 'health/css/bootstrap.min.css';
+        $data_type = pathinfo($css, PATHINFO_EXTENSION);
+        $css_data = file_get_contents($css); */
+
+        /* $css_data = '<style>
+                    '.file_get_contents("./css/bootstrap.min.css").'
+                      </style>'; */
+
+        $css_data = file_get_contents("./css/bootstrap.min.css");
+
         /* ------  Para bajar el archivo pdf ------------ */
 
         $pdf = app('dompdf.wrapper');
 
-       
+
         /* $pdf = \PDF::loadView('posts.pdf.downPdf', compact('post', 'similares', 'categoria'));
 
         return $pdf -> download('reporte.pdf'); */
@@ -70,9 +91,9 @@ class PdfController extends Controller
 
         /* -------- Para mostrar el archivo en otra ventana de PDF  -------- */
 
-        return \PDF::loadView('posts.pdf.downPdf', compact('post', 'similares', 'categoria'))
+        return \PDF::loadView('posts.pdf.downPdf', compact('post', 'similares', 'categoria','css_data'))
                     ->stream('archivo.pdf');
 
-
+        /* return $css_data; */
     }
 }
