@@ -24,28 +24,31 @@
 </head>
 <body style="margin: 50px 40px">
 
-    
+    {{-- <header>
+        <h1>UNY.EDU.VE</h1>
+    </header> --}}
+
 
     <div class="container">
         <h2 class="text-center table-dark">Redaccion de Actividades de Aprendizaje</h2>
-        <div class="">
-            <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
-                <table class="table w-full my-4 border border-separate border-gray-800 table-auto table-hover">
+        <div class="row">
+            <div class="">
+                <table class="table table-hover">
                     <tbody class="text-center">
                         <tr>
-                            <td class="w-1/4 h-12 bg-gray-300">Docente - PDF - down</td>
-                            <td class="w-3/4 h-12 bg-gray-100">{!! auth()->user()->name !!}</td>
+                            <th scope="row">Docente - PDF - down</th>
+                            <td >{!! auth()->user()->name !!}</td>
                         </tr>
                     </tbody>
                     <br>
                     <tbody class="text-center">
                         <tr>
-                            <td class="w-1/4 h-12 bg-gray-300">Asignatura</td>
-                            <td class="w-3/4 h-12 bg-gray-100">
+                            <th scope="row">Asignatura</th>
+                            <td class="">
                                 @foreach ($post->tags as $tag)
 
                                         <a href="{{route('posts.tag', $tag)}}">
-                                            <span class="ml-2 text-gray-600">{{$tag->name}}</span>
+                                            <span class="">{{$tag->name}}</span>
                                         </a>
 
                                 @endforeach
@@ -55,8 +58,8 @@
 
                     <tbody class="text-center">
                         <tr>
-                            <td class="w-1/4 h-12 bg-gray-300">Facultad</td>
-                            <td class="w-3/4 h-12 bg-gray-100">
+                            <th scope="row">Facultad</th>
+                            <td class="">
                                 @foreach ($categoria as $categoriaa)
 
                                         <a href="{{route('posts.category', $categoriaa)}}">
@@ -70,20 +73,20 @@
 
                     <tbody class="text-center">
                         <tr>
-                            <td class="w-1/4 h-12 bg-gray-300">Actividad</td>
-                            <td class="w-3/4 h-12 bg-gray-100">{{$post->name}}</td>
+                            <th scope="row">Actividad</th>
+                            <td class="">{{$post->name}}</td>
                         </tr>
                     </tbody>
 
                     <tbody class="text-center">
                         <tr>
-                            <td class="w-1/4 h-12 bg-gray-300">Tipo de Actividad</td>
-                            <td class="w-3/4 h-12 bg-gray-100">- - - seleccion - - -</td>
+                            <th scope="row">Tipo de Actividad</th>
+                            <td class="">- - - seleccion - - -</td>
                         </tr>
                     </tbody>
                 </table>
 
-                <table class="w-full my-4 border border-separate border-gray-800 table-auto">
+                <table class="">
                     <thead class="thead-light">
                         <tr>
                             <th class="p-1 text-center table-dark">Descripcion de la actividad</th>
@@ -97,7 +100,8 @@
                     </tbody>
 
                 </table>
-                <table class="w-full my-4 border border-separate border-gray-800 table-auto">
+                <div class="page-break"></div>
+                <table class="">
                     <thead>
                         <tr>
                             <th class="p-1 text-center">Proposito de la actividad</th>
@@ -106,12 +110,12 @@
 
                     <tbody>
                         <tr>
-                            <td class="w-3/4 h-12 bg-gray-100">{!!$post->extract!!}</td>
+                            <td class="">{!!$post->extract!!}</td>
                         </tr>
                     </tbody>
 
                 </table>
-                <table class="w-full my-4 border border-separate border-gray-800 table-auto">
+                <table class="">
                     <thead>
                         <tr>
                             <th class="p-1 text-center">Aprendido en la actividad</th>
@@ -120,7 +124,7 @@
 
                     <tbody>
                         <tr>
-                            <td class="w-3/4 h-12 bg-gray-100">{!!$post->extract01!!}</td>
+                            <td class="">{!!$post->extract01!!}</td>
                         </tr>
                     </tbody>
 
@@ -132,14 +136,20 @@
 
     </div>
 
+
+
+   {{--  <footer>
+        <h1>UNY.EDU.VE</h1>
+    </footer> --}}
+    <script type="text/php">
+        if ( isset($pdf) ) {
+            $pdf->page_script('
+                $font = $fontMetrics->get_font("Arial, Helvetica, sans-serif", "normal");
+                $pdf->text(270, 820, "Pagina $PAGE_NUM de $PAGE_COUNT", $font, 10);
+            ');
+        }
+    </script>
 </body>
 
-<script type="text/php">
-    if ( isset($pdf) ) {
-        $pdf->page_script('
-            $font = $fontMetrics->get_font("Arial, Helvetica, sans-serif", "normal");
-            $pdf->text(270, 730, "Pagina $PAGE_NUM de $PAGE_COUNT", $font, 10);
-        ');
-    }
-</script>
+
 </html>
