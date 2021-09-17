@@ -72,6 +72,7 @@ class PdfController extends Controller
                       </style>'; */
 
         $css_data = file_get_contents("./css/bootstrap.min.css");
+        $logo = "data:image/png;base64," . base64_encode(file_get_contents("./img/uny_vector.png"));
 
         /* ------  Para bajar el archivo pdf ------------ */
 
@@ -91,7 +92,7 @@ class PdfController extends Controller
 
         /* -------- Para mostrar el archivo en otra ventana de PDF  -------- */
 
-        return \PDF::loadView('posts.pdf.downPdf', compact('post', 'similares', 'categoria','css_data'))
+        return \PDF::loadView('posts.pdf.downPdf', compact('post', 'similares', 'categoria','css_data', 'logo'))
                     ->stream('archivo.pdf');
 
         /* return $css_data; */
