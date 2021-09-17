@@ -88,27 +88,24 @@
         <div class="container">
 
             <div class="row">
-
-
-
-
-            <table>
-                <tbody class="">
-                    <tr>
-                        <td width="100"  rowspan="4">
-                            <img src="{{$logo}}" width="77" height="104" class="mx-auto">
-                        </td>
-                        <td width="100"  rowspan="4">
-                            <h6 class="text-center ">UNIVERSIDAD YACAMBU</h6>
-                            <h6 class="text-center ">VICERRECTORADO ACADEMICO</h6>
-                            <h6 class="text-center ">DIRECCION DE ESTUDIOS A DISTANCIA</h6>
-                        </td>
-                        <td width="100"  rowspan="4">
-                            <p class="text-right small"> FOO-VRA140-202321-104 </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                <table>
+                    <tbody class="">
+                        <tr>
+                            <td width="100"  rowspan="4">
+                                <img src="{{$logo}}" width="77" height="104" class="mx-auto">
+                            </td>
+                            <td width="100"  rowspan="4">
+                                <h6 class="text-center ">UNIVERSIDAD YACAMBU</h6>
+                                <h6 class="text-center ">VICERRECTORADO ACADEMICO</h6>
+                                <h6 class="text-center ">DIRECCION DE ESTUDIOS A DISTANCIA</h6>
+                            </td>
+                            <td width="100"  rowspan="4">
+                                <p class="text-right small"> FOO-VRA140-202321-104 </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
 

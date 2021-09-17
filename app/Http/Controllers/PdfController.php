@@ -72,7 +72,7 @@ class PdfController extends Controller
                       </style>'; */
 
         $css_data = file_get_contents("./css/bootstrap.min.css");
-        $logo = "data:image/png;base64," . base64_encode(file_get_contents("./img/uny_vector.png"));
+        $logo = "data:image/png;base64," . base64_encode(file_get_contents("./img/uny_vector_sm.png"));
 
         /* ------  Para bajar el archivo pdf ------------ */
 
