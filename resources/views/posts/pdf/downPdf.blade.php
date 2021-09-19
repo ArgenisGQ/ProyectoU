@@ -27,12 +27,12 @@
             top: 0cm;
             left: 0cm;
             right: 0cm;
-            height: 1.5cm;
+            height: 2cm;
 
             /* background-color: #ffffffdc; */
             color: gray;
             /* text-align: left; */
-            line-height: 1.5;
+            line-height: 0.5cm;
         }
         footer {
             position: fixed;
@@ -85,21 +85,26 @@
         <h6 class="text-center ">DIRECCION DE ESTUDIOS A DISTANCIA</h6> --}}
 
 
-        <div class="container">
+       {{--  <div class="container">
 
-            <div class="row">
+            <div class="row ">
                 <table>
                     <tbody class="">
                         <tr>
-                            <td width="100"  rowspan="4">
+                            <td width="100"  rowspan="">
                                 <img src="{{$logo}}" width="77" height="104" class="mx-auto">
                             </td>
-                            <td width="100"  rowspan="4">
-                                <h6 class="text-center ">UNIVERSIDAD YACAMBU</h6>
-                                <h6 class="text-center ">VICERRECTORADO ACADEMICO</h6>
-                                <h6 class="text-center ">DIRECCION DE ESTUDIOS A DISTANCIA</h6>
+
+                            <td width="100"  rowspan="">
+                                <h6 class="text-left ">UNIVERSIDAD YACAMBU</h6>
+                                <h6 class="text-left ">VICERRECTORADO ACADEMICO</h6>
+                                <h6 class="text-left ">DIRECCION DE ESTUDIOS A DISTANCIA</h6>
+
                             </td>
-                            <td width="100"  rowspan="4">
+                            <td width="100">
+                                <p class="text-right small"> </p>
+                            </td>
+                            <td width="100">
                                 <p class="text-right small"> FOO-VRA140-202321-104 </p>
                             </td>
                         </tr>
@@ -107,11 +112,25 @@
                 </table>
             </div>
         </div>
+ --}}
+
+        <div>
+            <img src="{{$logo}}" width="77" height="104" class="mx-auto">
+        </div>
+        <div>
+            <p class="text-right small"> FOO-VRA140-202321-104 </p>
+        </div>
+        <div>
+            <h6 class="text-center ">UNIVERSIDAD YACAMBU</h6>
+            <h6 class="text-center ">VICERRECTORADO ACADEMICO</h6>
+            <h6 class="text-center ">DIRECCION DE ESTUDIOS A DISTANCIA</h6>
+        </div>
+
 
 
     </header>
 
-    <main>
+    <main class="p-2">
 
        {{--  <div id="watermark">
             <img src="{{$logo}}" width="274" height="375" >
@@ -119,7 +138,8 @@
 
 
         <div class="container">
-            <h2 class="text-center table-dark">Redaccion de Actividades de Aprendizaje</h2>
+            <p class="text-center"></p>
+            <h3 class="text-center">Redaccion de Actividades de Aprendizaje</h3>
             <div class="row">
                 <div class="">
                     <table class="table table-hover">
@@ -184,7 +204,7 @@
 
                         <tbody>
                             <tr>
-                                <td class="w-3/4 h-12 bg-gray-100">{!! $post->body !!}</td>
+                                <td class="" align = "justify">{!! $post->body !!}</td>
                             </tr>
                         </tbody>
 
@@ -193,13 +213,13 @@
                     <table class="">
                         <thead>
                             <tr>
-                                <th class="p-1 text-center">Proposito de la actividad</th>
+                                <th class="p-1 text-center" >Proposito de la actividad</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <tr>
-                                <td class="">{!!$post->extract!!}</td>
+                                <td class="" align = "justify">{!!$post->extract!!}</td>
                             </tr>
                         </tbody>
 
@@ -213,7 +233,7 @@
 
                         <tbody>
                             <tr>
-                                <td class="">{!!$post->extract01!!}</td>
+                                <td class="" align = "justify">{!!$post->extract01!!}</td>
                             </tr>
                         </tbody>
 

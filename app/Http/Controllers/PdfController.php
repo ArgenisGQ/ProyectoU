@@ -76,7 +76,7 @@ class PdfController extends Controller
 
         /* ------  Para bajar el archivo pdf ------------ */
 
-        $pdf = app('dompdf.wrapper');
+        /* $pdf = app('dompdf.wrapper'); */
 
 
         /* $pdf = \PDF::loadView('posts.pdf.downPdf', compact('post', 'similares', 'categoria'));
