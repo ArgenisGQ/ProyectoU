@@ -86,7 +86,7 @@ class PdfController extends Controller
 
 
 
-        /* return view('posts.showPdf', compact('post', 'similares', 'categoria')); */
+        /* return view('posts.showPdf', compact('post', 'similares', 'categoria','css_data', 'logo')); */
 
         /* return $post;*/
 

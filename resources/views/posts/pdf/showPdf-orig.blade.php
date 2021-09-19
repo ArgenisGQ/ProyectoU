@@ -1,21 +1,28 @@
-<x-app-layout>
-    <div class="container py-8">
-        <a href="{{route('posts.pdf.showPdf',$post)}}" class="float-right btn btn-secondary btn-sm">PDF</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    {{-- <link href="{{$css_data}}" rel="stylesheet"> --}}
 
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <style type="text/css">
+        {{$css_data}}
+     </style>
+
+    <title>PDF</title>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="row justify-content-md-center">
             <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
                 <table class="w-full my-4 border border-separate border-gray-800 table-auto">
-                    {{-- <thead>
-                        <tr>
-                            <th class="p-3">nombre</th>
-                            <th class="p-3">email</th>
-                            <th class="p-3">otro</th>
-                        </tr>
-                    </thead> --}}
                     <tbody class="text-center">
                         <tr>
-                            <td class="w-1/4 h-12 bg-gray-300">Docente</td>
+                            <td class="w-1/4 h-12 bg-gray-300">Docente - PDF</td>
                             <td class="w-3/4 h-12 bg-gray-100">{!! auth()->user()->name !!}</td>
                         </tr>
                     </tbody>
@@ -74,8 +81,7 @@
 
                     <tbody>
                         <tr>
-                            {{-- <td class="w-3/4 h-12 bg-gray-100">{!! $post->body !!}</td> --}}
-                            <td class="w-3/4 h-12 bg-gray-100"" align = "justify">{!! $post->body !!}</td>
+                            <td class="w-3/4 h-12 bg-gray-100">{!! $post->body !!}</td>
                         </tr>
                     </tbody>
 
@@ -113,5 +119,7 @@
 
 {{-- ------------------------------------------------------------------------------ --}}
 
-</x-app-layout>
+    </div>
 
+</body>
+</html>

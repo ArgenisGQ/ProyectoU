@@ -8,36 +8,7 @@
 
     <style type="text/css">
         {{$css_data}}
-        <style>
-        @font-face {
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 300;
-        src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5vAw.ttf) format('truetype');
-        }
-        @font-face {
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 400;
-        src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Me5Q.ttf) format('truetype');
-        }
-        @font-face {
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 700;
-        src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlvAw.ttf) format('truetype');
-        }
-
-        /* Añado la declaración de font-family, para usar la fuente de Google Fonts en este PDF */
-
-        body {
-            font-family: 'Roboto', serif;
-            color: 303030;
-        }
     </style>
-
-
-
 
     <style>
         @page {
@@ -46,10 +17,10 @@
             margin: 0cm 0cm;
         }
         body {
-            margin-top: 4cm;
-            margin-left: 1.5cm;
-            margin-right: 1.5cm;
-            margin-bottom: 1cm;
+            margin-top: 3cm;
+            margin-left: 2cm;
+            margin-right: 2cm;
+            margin-bottom: 2cm;
         }
         header {
             position: fixed;
@@ -59,16 +30,16 @@
             height: 2cm;
 
             /* background-color: #ffffffdc; */
-            /* color: gray; */
+            color: gray;
             /* text-align: left; */
-            /* line-height: 0.5cm; */
+            line-height: 0.5cm;
         }
         footer {
             position: fixed;
             bottom: 0cm;
             left: 0cm;
             right: 0cm;
-            height: 1.5cm;
+            height: 2cm;
 
             /* background-color: #ffffffdc; */
             color: gray;
@@ -77,12 +48,6 @@
         }
         .page-break {
             page-break-after: always;
-            /* page-break-before: auto; */
-        }
-
-        .page-break-no {
-            /* page-break-after: always; */
-            page-break-before: always;
         }
 
         #watermark  {
@@ -111,30 +76,68 @@
 
 
 
-    <header>
+    <header class="p-2">
 
-        <span class="p-2">
-            <img src="{{$logo}}" width="90" class="mx-auto">
-        </span>
-        <span>
+        {{-- <img src="{{$logo}}" width="77" height="104" class="mx-auto">
+        <p class="text-right small"> FOO-VRA140-202321-104 </p>
+        <h6 class="text-center ">UNIVERSIDAD YACAMBU</h6>
+        <h6 class="text-center ">VICERRECTORADO ACADEMICO</h6>
+        <h6 class="text-center ">DIRECCION DE ESTUDIOS A DISTANCIA</h6> --}}
+
+
+       {{--  <div class="container">
+
+            <div class="row ">
+                <table>
+                    <tbody class="">
+                        <tr>
+                            <td width="100"  rowspan="">
+                                <img src="{{$logo}}" width="77" height="104" class="mx-auto">
+                            </td>
+
+                            <td width="100"  rowspan="">
+                                <h6 class="text-left ">UNIVERSIDAD YACAMBU</h6>
+                                <h6 class="text-left ">VICERRECTORADO ACADEMICO</h6>
+                                <h6 class="text-left ">DIRECCION DE ESTUDIOS A DISTANCIA</h6>
+
+                            </td>
+                            <td width="100">
+                                <p class="text-right small"> </p>
+                            </td>
+                            <td width="100">
+                                <p class="text-right small"> FOO-VRA140-202321-104 </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+ --}}
+
+        <div>
+            <img src="{{$logo}}" width="77" height="104" class="mx-auto">
+        </div>
+        <div>
             <p class="text-right small"> FOO-VRA140-202321-104 </p>
-        </span>
-        <span>
+        </div>
+        <div>
             <h6 class="text-center ">UNIVERSIDAD YACAMBU</h6>
             <h6 class="text-center ">VICERRECTORADO ACADEMICO</h6>
             <h6 class="text-center ">DIRECCION DE ESTUDIOS A DISTANCIA</h6>
-        </span>
+        </div>
+
+
 
     </header>
 
-    <main class="p-1">
+    <main class="p-2">
 
        {{--  <div id="watermark">
             <img src="{{$logo}}" width="274" height="375" >
         </div> --}}
 
 
-        <div class="">
+        <div class="container">
             <p class="text-center"></p>
             <h3 class="text-center">Redaccion de Actividades de Aprendizaje</h3>
             <div class="row">
@@ -192,7 +195,7 @@
                         </tbody>
                     </table>
 
-                    <table class="age-break-no">
+                    <table class="">
                         <thead class="thead-light">
                             <tr>
                                 <th class="p-1 text-center table-dark">Descripcion de la actividad</th>
@@ -206,8 +209,8 @@
                         </tbody>
 
                     </table>
-                    {{-- <div class="page-break"></div> --}}
-                    <table class="page-break-no">
+                    <div class="page-break"></div>
+                    <table class="">
                         <thead>
                             <tr>
                                 <th class="p-1 text-center" >Proposito de la actividad</th>
@@ -243,7 +246,7 @@
     </main>
 
     <footer>
-        http://uny.edu.ve
+        UNY.EDU.VE
     </footer>
 
 {{-- --------Scrip de salto de pagina------------- --}}
