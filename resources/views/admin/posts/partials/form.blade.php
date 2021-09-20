@@ -110,11 +110,49 @@
     @enderror
 </div>
 
-<div class="form-group">
+{{-- <div class="form-group">
     {!! Form::label('body', 'Cuerpo del post:') !!}
     {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
 
     @error('body')
         <span class="text-danger">{{$message}}</span>
     @enderror
+</div> --}}
+
+{{-- <div class="form-group">
+    <div>
+        {!! Form::label('body', 'Cuerpo del post 01:') !!}
+        {!! Form::textarea('body', null, ['class' => 'text-editor']) !!}
+    </div>
+
+    <div id="counter">0 characters</div>
+
+    @error('body')
+        <span class="text-danger">{{$message}}</span>
+    @enderror
+</div> --}}
+
+<div class="form-group">
+    <div class="text-editor">
+        <p>Input box 1</p>
+        <input name="body" type="hidden">
+    <div id="body"></div>
+        <div id="counter">0 characters</div>
+
+    @error('body')
+        <span class="text-danger">{{$message}}</span>
+    @enderror
+
+
 </div>
+
+{{-- <form>
+    <div class="text-editor">
+        <p>Input box 1</p>
+        <input name="box" type="hidden">
+    <div id="editor-container"></div>
+        <div id="counter">0 characters</div>
+    <div class="btn01">
+                <button class="btn-primary01" type="submit">Save</button>
+    </div>
+</form> --}}
