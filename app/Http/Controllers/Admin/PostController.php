@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Tag;
 use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Storage;
+
 class PostController extends Controller
 {
     /**

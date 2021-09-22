@@ -110,14 +110,14 @@
     @enderror
 </div>
 
-{{-- <div class="form-group">
+<div class="form-group">
     {!! Form::label('body', 'Cuerpo del post:') !!}
     {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
 
     @error('body')
         <span class="text-danger">{{$message}}</span>
     @enderror
-</div> --}}
+</div>
 
 {{-- <div class="form-group">
     <div>
@@ -132,7 +132,7 @@
     @enderror
 </div> --}}
 
-<div class="form-group">
+{{-- <div class="form-group">
     <div class="text-editor">
         <p>Input box 1</p>
         <input name="body" type="hidden">
@@ -144,7 +144,7 @@
     @enderror
 
 
-</div>
+</div> --}}
 
 {{-- <form>
     <div class="text-editor">
