@@ -87,7 +87,7 @@
 
 @section('js')
     <script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script>
+    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script> --}}
     <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
@@ -100,7 +100,7 @@
             });
         });
 
-        ClassicEditor
+        /* ClassicEditor
         .create( document.querySelector( '#extract' ) )
         .catch( error => {
             console.error( error );
@@ -113,12 +113,12 @@
         } );
 
         ClassicEditor
-        .create( document.querySelector( '#body' ) )
+        .create( document.querySelector( '#body01' ) )
         .catch( error => {
             console.error( error );
-        } );
+        } ); */
 
-        CKEDITOR.replace( 'body01' );
+        CKEDITOR.replace( 'body' );
 
         //Scrip para cargar archivo de imagen en url
         document.getElementById("file").addEventListener('change', cambiarImagen);
