@@ -93,7 +93,7 @@ class PdfController extends Controller
         /* -------- Para mostrar el archivo en otra ventana de PDF  -------- */
 
         return \PDF::loadView('posts.pdf.downPdf', compact('post', 'similares', 'categoria','css_data', 'logo'))
-                    ->stream('archivo.pdf');
+                    ->stream('archivo.pdf', ["Attachment" => false]);
 
         /* return $css_data; */
     }
