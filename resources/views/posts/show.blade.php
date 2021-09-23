@@ -1,8 +1,9 @@
 <x-app-layout>
     <div class="container py-8">
-        <a href="{{route('posts.pdf.showPdf',$post)}}" class="float-right btn btn-secondary btn-sm">PDF</a>
-
-
+        <a href="{{route('posts.pdf.down',$post)}}" class="float-right btn btn-secondary btn-sm">PDF-down</a>
+        <br>
+        <a href="{{route('posts.pdf.show',$post)}}" class="float-right btn btn-secondary btn-sm">PDF-show</a>
+        <hr>
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
                 <table class="w-full my-4 border border-separate border-gray-800 table-auto">

@@ -8,26 +8,101 @@
 
     <style type="text/css">
         {{$css_data}}
+        <style>
+        @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5vAw.ttf) format('truetype');
+        }
+        @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Me5Q.ttf) format('truetype');
+        }
+        @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlvAw.ttf) format('truetype');
+        }
+
+        /* Añado la declaración de font-family, para usar la fuente de Google Fonts en este PDF */
+
+        body {
+            font-family: 'Roboto', serif;
+            color: 303030;
+        }
     </style>
 
+
+
+
     <style>
-        @page {
+        /* @page {
             /* margin-left: 0cm;
-            margin-right: 0cm; */
+            margin-right: 0cm;
             margin: 0cm 0cm;
+            border: 0cm;
+            padding: 0cm;
+            bottom: 0cm;
+        } */
+
+        /* @page {
+            size: 8.5in 11in;
+            margin: 10%;
+
+
+        } */
+
+        @page {
+            @top-left-corner {  }
+            @top-right-corner {  }
+            @bottom-right-corner { }
+            @bottom-left-corner {  }
         }
+
         body {
-            margin-top: 4cm;
+            /* margin-top: 4cm;
             margin-left: 1.5cm;
             margin-right: 1.5cm;
-            margin-bottom: 1cm;
+            margin-bottom: 1cm; */
+
+            /* height: 842px;
+            width: 595px; */ 
+            height: 28cm;
+            width: 18cm; /* to centre page on screen*/
+            margin-top: 2cm;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 2cm;
+
+
+
         }
+
+        /* main {
+            float:none;
+        } */
         header {
-            position: fixed;
+            /* position: fixed; */
+            width: 22cm;
+            margin-left: auto;
+            margin-right: auto;
             top: 0cm;
-            left: 0cm;
-            right: 0cm;
-            height: 2cm;
+            /* left: 0cm */;
+            /* right: 0cm; */
+            height: 0cm;
+
+            /* height: 20mm;
+            width: 220mm;
+            margin-top: 2cm;
+            margin-left: auto;
+            margin-right: auto; */
+            
+
+
 
             /* background-color: #ffffffdc; */
             /* color: gray; */
@@ -35,7 +110,7 @@
             /* line-height: 0.5cm; */
         }
         footer {
-            position: fixed;
+            /* position: fixed; */
             bottom: 0cm;
             left: 0cm;
             right: 0cm;
@@ -45,15 +120,28 @@
             color: gray;
             text-align: center;
             line-height: 1.5;
+
         }
+        
+        /* forza un salto de pagina de un elemento */
         .page-break {
-            page-break-after: always;
+            page-break-after: auto;
             /* page-break-before: auto; */
         }
 
+        /* evita un elemento salte de pagina antes de tiempo */
         .page-break-no {
-            /* page-break-after: always; */
-            page-break-before: always;
+            page-break-before:auto;
+        }
+
+        /* evita un elemento se divida en un salto de pagina  */   
+        .page-break-inside {
+            page-break-inside: avoid;
+        }
+
+        .lines-widows {
+            widows:3;
+            orphans:3
         }
 
         #watermark  {
@@ -82,7 +170,7 @@
 
 
 
-    <header>
+    {{-- <header>
 
         <span class="p-2">
             <img src="{{$logo}}" width="90" class="mx-auto">
@@ -96,7 +184,8 @@
             <h6 class="text-center ">DIRECCION DE ESTUDIOS A DISTANCIA</h6>
         </span>
 
-    </header>
+
+    </header> --}}
 
     <main class="p-1">
 
@@ -108,12 +197,12 @@
         <div class="">
             <p class="text-center"></p>
             <h3 class="text-center">Redaccion de Actividades de Aprendizaje</h3>
-            <div class="row">
+            <div class="row ">
                 <div class="">
-                    <table class="table table-hover">
+                    <table class="table table-hover page-break">
                         <tbody class="text-center">
                             <tr>
-                                <th scope="row">Docente - PDF - down</th>
+                                <th scope="row">Docente - PDF - ONLY SHOW</th>
                                 <td >{!! auth()->user()->name !!}</td>
                             </tr>
                         </tbody>
@@ -163,7 +252,7 @@
                         </tbody>
                     </table>
 
-                    <table class="age-break-no">
+                    <table class="page-break">
                         <thead class="thead-light">
                             <tr>
                                 <th class="p-1 text-center table-dark">Descripcion de la actividad</th>
@@ -172,13 +261,13 @@
 
                         <tbody>
                             <tr>
-                                <td class="" align = "justify">{!! $post->body !!}</td>
+                                <td class="">{!! $post->body !!}</td>
                             </tr>
                         </tbody>
 
                     </table>
                     {{-- <div class="page-break"></div> --}}
-                    <table class="page-break-no">
+                    <table class="page-break-inside">
                         <thead>
                             <tr>
                                 <th class="p-1 text-center" >Proposito de la actividad</th>
@@ -187,12 +276,12 @@
 
                         <tbody>
                             <tr>
-                                <td class="" align = "justify">{!!$post->extract!!}</td>
+                                <td class="">{!!$post->extract!!}</td>
                             </tr>
                         </tbody>
 
                     </table>
-                    <table class="">
+                    <table class="page-break-inside">
                         <thead>
                             <tr>
                                 <th class="p-1 text-center">Aprendido en la actividad</th>
@@ -201,7 +290,7 @@
 
                         <tbody>
                             <tr>
-                                <td class="" align = "justify">{!!$post->extract01!!}</td>
+                                <td class="" >{!!$post->extract01!!}</td>
                             </tr>
                         </tbody>
 

@@ -73,23 +73,21 @@
             width: 595px; */ 
             height: 28cm;
             width: 18cm; /* to centre page on screen*/
-            margin-top: 0cm;
+            margin-top: 2cm;
             margin-left: auto;
             margin-right: auto;
-            margin-bottom: 0cm;
-
-
-
-        }
-
-        main {
-            /* float:none; */
-            margin-top: 4cm;
             margin-bottom: 2cm;
+
+
+
         }
+
+        /* main {
+            float:none;
+        } */
         header {
-            position: fixed;
-            width: 18cm;
+            /* position: fixed; */
+            width: 22cm;
             margin-left: auto;
             margin-right: auto;
             top: 0cm;
@@ -112,7 +110,7 @@
             /* line-height: 0.5cm; */
         }
         footer {
-            position: fixed;
+            /* position: fixed; */
             bottom: 0cm;
             left: 0cm;
             right: 0cm;
@@ -127,13 +125,13 @@
         
         /* forza un salto de pagina de un elemento */
         .page-break {
-            page-break-after: auto;
+            page-break-after: always;
             /* page-break-before: auto; */
         }
 
         /* evita un elemento salte de pagina antes de tiempo */
         .page-break-no {
-            page-break-before:auto;
+            page-break-before:always;
         }
 
         /* evita un elemento se divida en un salto de pagina  */   
@@ -172,7 +170,7 @@
 
 
 
-    <header>
+    {{-- <header>
 
         <span class="p-2">
             <img src="{{$logo}}" width="90" class="mx-auto">
@@ -187,7 +185,7 @@
         </span>
 
 
-    </header>
+    </header> --}}
 
     <main class="p-1">
 
@@ -199,9 +197,9 @@
         <div class="">
             <p class="text-center"></p>
             <h3 class="text-center">Redaccion de Actividades de Aprendizaje</h3>
-            <div class="row ">
+            <div class="row">
                 <div class="">
-                    <table class="table table-hover page-break">
+                    <table class="table table-hover">
                         <tbody class="text-center">
                             <tr>
                                 <th scope="row">Docente - PDF - down</th>
@@ -254,7 +252,7 @@
                         </tbody>
                     </table>
 
-                    <table class="page-break">
+                    <table class="lines-widows page-break-no">
                         <thead class="thead-light">
                             <tr>
                                 <th class="p-1 text-center table-dark">Descripcion de la actividad</th>
