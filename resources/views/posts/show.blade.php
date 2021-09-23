@@ -2,7 +2,7 @@
     <div class="container py-8">
         <a href="{{route('posts.pdf.showPdf',$post)}}" class="float-right btn btn-secondary btn-sm">PDF</a>
 
-        
+
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
                 <table class="w-full my-4 border border-separate border-gray-800 table-auto">
@@ -74,7 +74,8 @@
 
                     <tbody>
                         <tr>
-                            <td class="w-3/4 h-12 bg-gray-100">{!! $post->body !!}</td>
+                            {{-- <td class="w-3/4 h-12 bg-gray-100">{!! $post->body !!}</td> --}}
+                            <td class="w-3/4 h-12 bg-gray-100"" align = "justify">{!! $post->body !!}</td>
                         </tr>
                     </tbody>
 

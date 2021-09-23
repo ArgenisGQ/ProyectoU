@@ -18,7 +18,7 @@
         <div class="card-body">
         {!! Form::open(['route' => 'admin.posts.store', 'autocomplete' => 'off', 'files' => 'true' ]) !!}
 
-            {{-- {!! Form::hidden('user_id', auth()->user()->id) !!} --}}
+            {!! Form::hidden('user_id', auth()->user()->id) !!}
 
             @include('admin.posts.partials.form')
 
@@ -87,8 +87,9 @@
 
 @section('js')
     <script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script>
+    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script> --}}
     <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
     <script>
         $(document).ready( function() {
@@ -99,7 +100,7 @@
             });
         });
 
-        ClassicEditor
+        /* ClassicEditor
         .create( document.querySelector( '#extract' ) )
         .catch( error => {
             console.error( error );
@@ -111,11 +112,13 @@
             console.error( error );
         } );
 
-        /* ClassicEditor
+        ClassicEditor
         .create( document.querySelector( '#body01' ) )
         .catch( error => {
             console.error( error );
         } ); */
+
+        CKEDITOR.replace( 'body' );
 
         //Scrip para cargar archivo de imagen en url
         document.getElementById("file").addEventListener('change', cambiarImagen);
@@ -144,7 +147,7 @@
                 } );
         myEditor.getData(); */
 
-        var toolbarOptions = [
+        /* var toolbarOptions = [
             ['bold', 'italic', 'underline'],        // toggled buttons
             ['blockquote'],
             [{ 'list': 'ordered'}, { 'list': 'bullet' }],
@@ -189,7 +192,7 @@
         alert('Open the console to see the submit data!')
         return false;
         };
-
+ */
 
 
     </script>
