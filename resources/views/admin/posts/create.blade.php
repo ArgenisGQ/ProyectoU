@@ -88,7 +88,7 @@
 @section('js')
     <script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}"></script>
     {{-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script> --}}
-    <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    {{-- <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script> --}}
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
     <script>
@@ -117,6 +117,10 @@
         .catch( error => {
             console.error( error );
         } ); */
+
+        CKEDITOR.replace( 'extract' );
+
+        CKEDITOR.replace( 'extract01' );
 
         CKEDITOR.replace( 'body' );
 

@@ -76,7 +76,7 @@
                     <tbody>
                         <tr>
                             {{-- <td class="w-3/4 h-12 bg-gray-100">{!! $post->body !!}</td> --}}
-                            <td class="w-3/4 h-12 bg-gray-100"" align = "justify">{!! $post->body !!}</td>
+                            <td class="w-3/4 h-12 bg-gray-100" >{!! $post->body !!}</td>
                         </tr>
                     </tbody>
 

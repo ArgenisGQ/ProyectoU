@@ -117,12 +117,12 @@
             bottom: 0cm;
             left: 0cm;
             right: 0cm;
-            height: 1.5cm;
+            height: 1cm;
 
             /* background-color: #ffffffdc; */
             color: gray;
             text-align: center;
-            line-height: 1.5;
+            line-height: 1cm;
 
         }
 
@@ -160,6 +160,10 @@
 
             /* marca de agua debe estar detras del texto */
             z-index: -1000;
+
+            /* opacidad */
+            filter:alpha(opacity=15);
+            opacity:.15;
         }
     </style>
 
@@ -192,7 +196,7 @@
 
     <main class="p-1">
 
-       {{--  <div id="watermark">
+        {{-- <div id="watermark">
             <img src="{{$logo}}" width="274" height="375" >
         </div> --}}
 
@@ -368,8 +372,8 @@
         </div>
     </main>
 
-    <footer>
-        http://uny.edu.ve
+    <footer class="">
+        <p>http://uny.edu.ve</p>
     </footer>
 
 {{-- --------Scrip de salto de pagina------------- --}}
