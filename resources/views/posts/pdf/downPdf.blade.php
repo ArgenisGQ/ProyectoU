@@ -70,10 +70,10 @@
             margin-bottom: 1cm; */
 
             /* height: 842px;
-            width: 595px; */ 
+            width: 595px; */
             height: 28cm;
             width: 18cm; /* to centre page on screen*/
-            margin-top: 0cm;
+            margin-top: 4cm;
             margin-left: auto;
             margin-right: auto;
             margin-bottom: 0cm;
@@ -83,9 +83,10 @@
         }
 
         main {
-            /* float:none; */
-            margin-top: 4cm;
-            margin-bottom: 2cm;
+            float:none;
+            /* top: 0cm; */
+            margin-top: 0cm;
+            margin-bottom: 0cm;
         }
         header {
             position: fixed;
@@ -93,23 +94,23 @@
             margin-left: auto;
             margin-right: auto;
             top: 0cm;
-            /* left: 0cm */;
+            /* left: 0cm ; */
             /* right: 0cm; */
-            height: 0cm;
+            /* height: 4cm; */
 
             /* height: 20mm;
             width: 220mm;
             margin-top: 2cm;
             margin-left: auto;
             margin-right: auto; */
-            
+
 
 
 
             /* background-color: #ffffffdc; */
             /* color: gray; */
             /* text-align: left; */
-            /* line-height: 0.5cm; */
+            /* line-height: 4cm; */
         }
         footer {
             position: fixed;
@@ -124,19 +125,19 @@
             line-height: 1.5;
 
         }
-        
+
         /* forza un salto de pagina de un elemento */
         .page-break {
-            page-break-after: auto;
+            page-break-after: always;
             /* page-break-before: auto; */
         }
 
         /* evita un elemento salte de pagina antes de tiempo */
         .page-break-no {
-            page-break-before:auto;
+            page-break-before:always;
         }
 
-        /* evita un elemento se divida en un salto de pagina  */   
+        /* evita un elemento se divida en un salto de pagina  */
         .page-break-inside {
             page-break-inside: avoid;
         }
@@ -199,104 +200,167 @@
         <div class="">
             <p class="text-center"></p>
             <h3 class="text-center">Redaccion de Actividades de Aprendizaje</h3>
-            <div class="row ">
+            <div class="">
                 <div class="">
-                    <table class="table table-hover page-break">
-                        <tbody class="text-center">
-                            <tr>
-                                <th scope="row">Docente - PDF - down</th>
-                                <td >{!! auth()->user()->name !!}</td>
-                            </tr>
-                        </tbody>
-                        <br>
-                        <tbody class="text-center">
-                            <tr>
-                                <th scope="row">Asignatura</th>
-                                <td class="">
-                                    @foreach ($post->tags as $tag)
+                    <div class="">
 
-                                            <a href="{{route('posts.tag', $tag)}}">
-                                                <span class="">{{$tag->name}}</span>
-                                            </a>
+                        <table class="table table-sm">
+                            <tbody class="text-center">
+                                <tr>
+                                    <th scope="row">Docente - PDF - down</th>
+                                    <td >{!! auth()->user()->name !!}</td>
 
-                                    @endforeach
-                                </td>
-                            </tr>
-                        </tbody>
+                                </tr>
+                            </tbody>
 
-                        <tbody class="text-center">
-                            <tr>
-                                <th scope="row">Facultad</th>
-                                <td class="">
-                                    @foreach ($categoria as $categoriaa)
+                            <tbody class="text-center">
+                                <tr>
+                                    <th scope="row">Asignatura</th>
+                                    <td class="">
+                                        @foreach ($post->tags as $tag)
 
-                                            <a href="{{route('posts.category', $categoriaa)}}">
-                                                <span class="ml-2 text-gray-600">{{$categoriaa->name}}</span>
-                                            </a>
+                                                <a href="{{route('posts.tag', $tag)}}">
+                                                    <span class="">{{$tag->name}}</span>
+                                                </a>
 
-                                    @endforeach
-                                </td>
-                            </tr>
-                        </tbody class="text-center">
+                                        @endforeach
+                                    </td>
+                                </tr>
+                            </tbody>
 
-                        <tbody class="text-center">
-                            <tr>
-                                <th scope="row">Actividad</th>
-                                <td class="">{{$post->name}}</td>
-                            </tr>
-                        </tbody>
+                            <tbody class="text-center">
+                                <tr>
+                                    <th scope="row">Facultad</th>
+                                    <td class="">
+                                        @foreach ($categoria as $categoriaa)
 
-                        <tbody class="text-center">
-                            <tr>
-                                <th scope="row">Tipo de Actividad</th>
-                                <td class="">- - - seleccion - - -</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                                <a href="{{route('posts.category', $categoriaa)}}">
+                                                    <span class="ml-2 text-gray-600">{{$categoriaa->name}}</span>
+                                                </a>
 
-                    <table class="page-break">
-                        <thead class="thead-light">
-                            <tr>
-                                <th class="p-1 text-center table-dark">Descripcion de la actividad</th>
-                            </tr>
-                        </thead>
+                                        @endforeach
+                                    </td>
+                                </tr>
+                            </tbody class="text-center">
 
-                        <tbody>
-                            <tr>
-                                <td class="">{!! $post->body !!}</td>
-                            </tr>
-                        </tbody>
+                            <tbody class="text-center">
+                                <tr>
+                                    <th scope="row">Actividad</th>
+                                    <td class="">{{$post->name}}</td>
+                                </tr>
+                            </tbody>
 
-                    </table>
+                            <tbody class="text-center">
+                                <tr>
+                                    <th scope="row">Tipo de Actividad</th>
+                                    <td class="">- - - seleccion - - -</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <div class="">
+                        {{--
+                        <table>
+                            <thead class="thead-light">
+                                <tr>
+                                    <th class="p-1 text-center table-dark">Descripcion de la actividad</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td class="">{!! $post->body !!}</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                         --}}
+
+
+                            <div class="thead-light">
+                                <div>
+                                    <div class="p-1 text-center table-dark">Descripcion de la actividad</div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div>
+                                    <div class="">{!! $post->body !!}</div>
+                                </div>
+                            </div>
+
+
+
+
+                    </div>
                     {{-- <div class="page-break"></div> --}}
-                    <table class="page-break-inside">
-                        <thead>
-                            <tr>
-                                <th class="p-1 text-center" >Proposito de la actividad</th>
-                            </tr>
-                        </thead>
 
-                        <tbody>
-                            <tr>
-                                <td class="">{!!$post->extract!!}</td>
-                            </tr>
-                        </tbody>
+                    <div class="page-break-inside">
+                        {{--
+                        <table >
+                            <thead>
+                                <tr>
+                                    <th class="p-1 text-center" >Proposito de la actividad</th>
+                                </tr>
+                            </thead>
 
-                    </table>
-                    <table class="page-break-inside">
-                        <thead>
-                            <tr>
-                                <th class="p-1 text-center">Aprendido en la actividad</th>
-                            </tr>
-                        </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="">{!!$post->extract!!}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        --}}
 
-                        <tbody>
-                            <tr>
-                                <td class="" >{!!$post->extract01!!}</td>
-                            </tr>
-                        </tbody>
+                            <div>
+                                <div>
+                                    <h5 class="p-1 text-center" >Proposito de la actividad</h5>
+                                </div>
+                            </div>
 
-                    </table>
+                            <div>
+                                <div>
+                                    <div class="">{!!$post->extract!!}</div>
+                                </div>
+                            </div>
+
+
+                    </div>
+
+                    <div class="page-break-inside">
+                        {{--
+                        <table >
+                            <thead>
+                                <tr>
+                                    <th class="p-1 text-center">Aprendido en la actividad</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td class="" >{!!$post->extract01!!}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        --}}
+
+
+                            <div>
+                                <div>
+                                    <h5 class="p-1 text-center">Aprendido en la actividad</h5>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div>
+                                    <div class="" >{!!$post->extract01!!}</div>
+                                </div>
+                            </div>
+
+
+                    </div>
                 </div>
             </div>
 
