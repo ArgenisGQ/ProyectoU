@@ -1,5 +1,6 @@
-<nav class="bg-gray-800" x-data="{open:false}">
-    <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
+{{-- <nav class="relative bg-gray-800" x-data="{open:false}"> --}}
+<nav class="flex flex-wrap items-center justify-between p-6 bg-teal-500" x-data="{open:false}">
+    <div class="mx-2 auto px- max-w-7xl sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 <!-- Mobile menu button-->
@@ -35,11 +36,11 @@
             </div>
             <div class="flex items-center justify-center flex-1 sm:items-stretch sm:justify-start">
                 <a href="/" class="flex items-center flex-shrink-0">
-                    <img class="block w-auto h-8 lg:hidden"
-                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
-                    <img class="hidden w-auto h-8 lg:block"
-                        src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-                        alt="Workflow">
+                    <img class="block w-auto h-15 lg:hidden"
+                        src="./img/uny_vector_sm.png" alt="Universidad Yacambu">
+                    <img class="hidden w-auto h-15 lg:block"
+                        src="./img/uny_vector_sm.png"
+                        alt="Universidad Yacambu">
                 </a>
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex space-x-4">
@@ -51,6 +52,7 @@
                                 class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">{{ $category->name }}</a>
                         @endforeach --}}
 
+                        {{-- CATEGORIAS --}}
 
                         <div @click.away="open = false" class="relative" x-data="{ open: false }">
                             <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-700 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
