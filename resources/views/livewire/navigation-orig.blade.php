@@ -1,55 +1,52 @@
 {{-- <nav class="relative bg-gray-800" x-data="{open:false}"> --}}
 <nav class="bg-gray-800 py-6 relative" >
-    <div class="mx-auto px-2 max-w-7xl sm:px-6 lg:px-16">
+    <div class="mx-2 auto px- max-w-7xl sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
-            <div class=" absolute inset-y-0 left-0 flex items-center sm:hidden">
+            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 <!-- Mobile menu button-->
                 <button x-on:click="open=true" type="button"
                     class="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                     aria-controls="mobile-menu" aria-expanded="false">
                     {{-- <span class="sr-only">Open main menu</span> --}}
                     <!--
-                    Icon when menu is closed.
+            Icon when menu is closed.
 
-                    Heroicon name: outline/menu
+            Heroicon name: outline/menu
 
-                    Menu open: "hidden", Menu closed: "block"
-                    -->
+            Menu open: "hidden", Menu closed: "block"
+          -->
                     <svg class="block w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                     <!--
-                            Icon when menu is open.
+            Icon when menu is open.
 
-                            Heroicon name: outline/x
+            Heroicon name: outline/x
 
-                            Menu open: "block", Menu closed: "hidden"
-                        -->
+            Menu open: "block", Menu closed: "hidden"
+          -->
                     <svg class="hidden w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M6 18L18 6M6 6l12 12" />
                     </svg>
+
+
+
                 </button>
-
             </div>
-            <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start ">
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="/" class="flex items-center flex-shrink-0">
-                        <img class="block w-auto h-15 lg:hidden"
-                            src="./img/uny_vector_sm.png"
-                            alt="Universidad Yacambu">
-                        <img class="hidden w-auto h-15 lg:block"
-                            src="./img/uny_vector_sm.png"
-                            alt="Universidad Yacambu">
-                    </a>
-                </div>
-
-                <div class="hidden sm:block sm:ml-6">
-                    {{-- <div class="flex space-x-6 space-y-7"> --}}
-                    <div class="flex space-x-4">
+            <div class="flex  bg-blue-100 items-center justify-center flex-1 sm:items-stretch sm:justify-start ">
+                <a href="/" class="flex items-center flex-shrink-0">
+                    <img class="block w-auto h-15 lg:hidden"
+                        src="./img/uny_vector_sm.png" alt="Universidad Yacambu">
+                    <img class="hidden w-auto h-15 lg:block"
+                        src="./img/uny_vector_sm.png"
+                        alt="Universidad Yacambu">
+                </a>
+                <div class="hidden bg-blue-500 sm:block sm:ml-6">
+                    <div class="flex flex-grow space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                         {{-- <a href="#" class="px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-md" aria-current="page">Dashboard</a> --}}
 
@@ -60,7 +57,7 @@
 
                         {{-- CATEGORIAS --}}
 
-                        <div @click.away="open = false" class="relative hidden" x-data="{ open: false }">
+                        <div @click.away="open = false" class="relative" x-data="{ open: false }">
                             <button @click="open = !open" class="flex flex-row items-center w-full px-3 py-2 mt-2 text-sm font-semibold text-left  bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-700 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
                                 <span>Facultades</span>
                                 {{-- <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg> --}}
@@ -102,16 +99,16 @@
                     <div class="relative ml-3" x-data="{open: false}">
 
 
-                                    <!--
-                            Dropdown menu, show/hide based on menu state.
+                        <!--
+                Dropdown menu, show/hide based on menu state.
 
-                            Entering: "transition ease-out duration-100"
-                            From: "transform opacity-0 scale-95"
-                            To: "transform opacity-100 scale-100"
-                            Leaving: "transition ease-in duration-75"
-                            From: "transform opacity-100 scale-100"
-                            To: "transform opacity-0 scale-95"
-                        -->
+                Entering: "transition ease-out duration-100"
+                  From: "transform opacity-0 scale-95"
+                  To: "transform opacity-100 scale-100"
+                Leaving: "transition ease-in duration-75"
+                  From: "transform opacity-100 scale-100"
+                  To: "transform opacity-0 scale-95"
+              -->
 
 
 
@@ -148,7 +145,7 @@
                 </div>
 
             @else
-                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <div>
                     <a href="{{ route('login') }}"
                         class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">
                         Login</a>
@@ -166,15 +163,15 @@
         <div class="px-2 pt-2 pb-3 space-y-1">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             {{-- <a href="#" class="block px-3 py-2 text-base font-medium text-white bg-gray-900 rounded-md" aria-current="page">Dashboard</a> --}}
-            {{-- @foreach ($categories as $category)
+            @foreach ($categories as $category)
                 <a href="{{route('posts.category',$category)}}"
                     class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">{{ $category->name }}</a>
-            @endforeach --}}
+            @endforeach
 
 
-            <a href="#" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Projects</a>
+            {{-- <a href="#" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Projects</a> --}}
 
-            <a href="#" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Calendar</a>
+            {{-- <a href="#" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Calendar</a> --}}
         </div>
     </div>
 </nav>
