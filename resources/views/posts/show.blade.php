@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container py-8">
+    <div class="container w-12 mx-auto">
         <a href="{{route('posts.pdf.down',$post)}}" class="float-right btn btn-secondary btn-sm">PDF-down</a>
         <br>
         <a href="{{route('posts.pdf.show',$post)}}" class="float-right btn btn-secondary btn-sm">PDF-show</a>
@@ -7,13 +7,6 @@
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
                 <table class="w-full my-4 border border-separate border-gray-800 table-auto">
-                    {{-- <thead>
-                        <tr>
-                            <th class="p-3">nombre</th>
-                            <th class="p-3">email</th>
-                            <th class="p-3">otro</th>
-                        </tr>
-                    </thead> --}}
                     <tbody class="text-center">
                         <tr>
                             <td class="w-1/4 h-12 bg-gray-300">Docente</td>

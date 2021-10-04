@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>PDF</title>
+    <title>PDF show</title>
 
     <style type="text/css">
         {{$css_data}}
@@ -70,7 +70,7 @@
             margin-bottom: 1cm; */
 
             /* height: 842px;
-            width: 595px; */ 
+            width: 595px; */
             height: 28cm;
             width: 18cm; /* to centre page on screen*/
             margin-top: 2cm;
@@ -100,7 +100,7 @@
             margin-top: 2cm;
             margin-left: auto;
             margin-right: auto; */
-            
+
 
 
 
@@ -122,7 +122,7 @@
             line-height: 1.5;
 
         }
-        
+
         /* forza un salto de pagina de un elemento */
         .page-break {
             page-break-after: auto;
@@ -134,7 +134,7 @@
             page-break-before:auto;
         }
 
-        /* evita un elemento se divida en un salto de pagina  */   
+        /* evita un elemento se divida en un salto de pagina  */
         .page-break-inside {
             page-break-inside: avoid;
         }

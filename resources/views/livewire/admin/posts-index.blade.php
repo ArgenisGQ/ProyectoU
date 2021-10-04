@@ -9,7 +9,7 @@
             <table class="table table-striped">
                 <thead>
                     <th>ID</th>
-                    <th>Name</th>
+                    <th>Nombre de la Guia</th>
                     <th colspan="2"></th>
                 </thead>
 
@@ -42,7 +42,7 @@
         </div>
     @else
         <div class="card-body">
-            <strong>No hay ningun regristro...</strong>
+            <strong>No hay ningun registro...</strong>
         </div>
     @endif
 

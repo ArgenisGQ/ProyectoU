@@ -24,7 +24,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
+                        <th>Nombre de la Categoria</th>
                         <th colspan="2"></th>
                     </tr>
                 </thead>
