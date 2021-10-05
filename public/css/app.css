@@ -1366,8 +1366,8 @@ select {
 .max-w-xl {
 	max-width: 36rem;
 }
-.max-w-2xl {
-	max-width: 42rem;
+.max-w-4xl {
+	max-width: 56rem;
 }
 .max-w-6xl {
 	max-width: 72rem;
@@ -1375,8 +1375,8 @@ select {
 .max-w-5xl {
 	max-width: 64rem;
 }
-.max-w-4xl {
-	max-width: 56rem;
+.max-w-3xl {
+	max-width: 48rem;
 }
 .flex-1 {
 	flex: 1 1 0%;
