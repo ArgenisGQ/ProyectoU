@@ -35,12 +35,13 @@ class PostController extends Controller
                             ->get();
 
         $categoria = Category::where('id', $post->category_id)
-                            
+
                             ->get();
-        
+
         return view('posts.show', compact('post', 'similares', 'categoria'));
 
         /* return $category_post; */
+        /* return $post; */
 
 
     }

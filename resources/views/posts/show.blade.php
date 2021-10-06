@@ -73,7 +73,7 @@
                         <tbody>
                             <tr>
                                 {{-- <td class="w-3/4 h-12 bg-gray-100">{!! $post->body !!}</td> --}}
-                                <td class="" >{!! $post->body !!}</td>
+                                <td class="">{!! $post->body !!}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -89,7 +89,7 @@
 
                         <tbody>
                             <tr>
-                                <td class="">{!!$post->extract!!}</td>
+                                <td class="">{!! $post->extract!!}</td>
                             </tr>
                         </tbody>
                     </table>
