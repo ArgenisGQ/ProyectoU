@@ -8,7 +8,7 @@
                             @foreach ($post->tags as $tag)
                                 {{-- <a href="{{route('posts.tag', $tag)}}" class="inline-block px-3 h-6 bg-{{$tag->color}}-600 text-white rounded-full"> --}}
                                 {{-- <a href="{{route('posts.tag', $tag)}}" class="inline-block px-3 h-6 bg-{{$tag->color}}-600 text-white rounded-full"> --}}
-                                <a href="{{route('posts.tag', $tag)}}" class="inline-block h-6 px-3 text-white bg-{{$tag->color}}-500 rounded-full">
+                                <a href="{{route('posts.tag', $tag)}}" class="inline-block h-6 px-3 text-white bg-{{$tag->color}}-600 rounded-full">
                                     {{$tag->name}}
                                 </a>
                             @endforeach
@@ -31,4 +31,16 @@
             {{$posts->links()}}
         </div>
     </div>
+
+    <div class="hidden">
+        <div class="hidden bg-red-500">RED</div>
+        <div class="hidden bg-yellow-500">YELLOW</div>
+        <div class="hidden bg-green-500">GREEN</div>
+        <div class="hidden bg-blue-500">BLUE</div>
+        <div class="hidden bg-indigo-500">INDIGO</div>
+        <div class="hidden bg-purple-500">PURPLE</div>
+        <div class="hidden bg-pink-500">PINK</div>
+    </div>
+
+
 </x-app-layout>

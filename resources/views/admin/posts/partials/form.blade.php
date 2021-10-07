@@ -93,7 +93,16 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('extract', 'Extracto:') !!}
+    {!! Form::label('body', 'Cuerpo del post:') !!}
+    {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
+
+    @error('body')
+        <span class="text-danger">{{$message}}</span>
+    @enderror
+</div>
+
+<div class="form-group">
+    {!! Form::label('extract', 'Proposito de la actividad:') !!}
     {!! Form::textarea('extract', null, ['class' => 'form-control']) !!}
 
     @error('extract')
@@ -102,7 +111,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('extract01', 'Extracto01:') !!}
+    {!! Form::label('extract01', 'Sirve lo aprendido? :') !!}
     {!! Form::textarea('extract01', null, ['class' => 'form-control']) !!}
 
     @error('extract01')
@@ -110,14 +119,7 @@
     @enderror
 </div>
 
-<div class="form-group">
-    {!! Form::label('body', 'Cuerpo del post:') !!}
-    {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
 
-    @error('body')
-        <span class="text-danger">{{$message}}</span>
-    @enderror
-</div>
 
 {{-- <div class="form-group">
     <div>

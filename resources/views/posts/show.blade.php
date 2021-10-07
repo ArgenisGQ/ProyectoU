@@ -74,6 +74,8 @@
                             <tr>
                                 {{-- <td class="w-3/4 h-12 bg-gray-100">{!! $post->body !!}</td> --}}
                                 <td class="">{!! $post->body !!}</td>
+                                {{-- <td class="">{{ html_entity_decode($post->body) }}</td> --}}
+                                {{-- <td class="">{!! html_entity_decode($post->body) !!}</td> --}}
                             </tr>
                         </tbody>
                     </table>
