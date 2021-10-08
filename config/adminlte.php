@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Guia</b> U',
+    'logo' => '<b>Actividad</b> U',
     /*'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png', */
     'logo_img' => '/img/uny_vector_sm.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
@@ -230,7 +230,7 @@ return [
         [
             'type'         => 'navbar-search',
             'text'         => 'search',
-            'topnav_right' => true,
+            'topnav_right' => false,
         ],
         [
             'type'         => 'fullscreen-widget',
@@ -267,15 +267,15 @@ return [
             'icon' => 'far fa-fw fa-bookmark',
             'active' => ['admin/tags*']
         ],
-        ['header' => 'OPCIONES DE LA GUIA'],
+        ['header' => 'OPCIONES DE LA ACTIVIDAD'],
         [
-            'text' => 'Lista de Guias',
+            'text' => 'Lista de Actividades',
             'route'  => 'admin.posts.index',
             'icon' => 'fas fa-fw fa-clipboard'
 
         ],
         [
-            'text' => 'Crear nueva Guia',
+            'text' => 'Crear nueva Actividad',
             'route'  => 'admin.posts.create',
             'icon' => 'fas fa-fw fa-file'
 
