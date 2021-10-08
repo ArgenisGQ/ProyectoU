@@ -3,7 +3,7 @@
 @section('title', 'Proyecto U')
 
 @section('content_header')
-    <h1>Lista de Categorias</h1>
+    <h1>Lista de Facultades</h1>
 @stop
 
 @section('content')
@@ -16,7 +16,7 @@
 
     <div class="card">
         <div class="card-header">
-            <a href="{{route('admin.categories.create')}}" class="btn btn-secondary">Agregar categoria</a>
+            <a href="{{route('admin.categories.create')}}" class="btn btn-secondary">Agregar Facultades</a>
         </div>
 
         <div class="card-body">
@@ -24,7 +24,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nombre de la Categoria</th>
+                        <th>Nombre de la Facultades</th>
                         <th colspan="2"></th>
                     </tr>
                 </thead>

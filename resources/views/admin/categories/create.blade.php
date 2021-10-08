@@ -3,7 +3,7 @@
 @section('title', 'Proyecto U')
 
 @section('content_header')
-    <h1>Crear nueva Categoria</h1>
+    <h1>Crear nueva Facultad</h1>
 @stop
 
 @section('content')
@@ -12,8 +12,8 @@
         {!! Form::open(['route' => 'admin.categories.store']) !!}
 
             <div class="form-group">
-                {!! Form::label('name', 'Nombre') !!}
-                {!! Form::text('name', null, ['class'=>'form-control','placeholder'=>'Ingrese el nombre de la categoria']) !!}
+                {!! Form::label('name', 'Nombre de facultad') !!}
+                {!! Form::text('name', null, ['class'=>'form-control','placeholder'=>'Ingrese el nombre de la Facultad']) !!}
 
                 @error('name')
                     <span class="text-danger">{{$message}}</span>
@@ -22,14 +22,14 @@
 
             <div class="form-group">
                 {!! Form::label('slug', 'Slug') !!}
-                {!! Form::text('slug', null, ['class'=>'form-control','placeholder'=>'Ingrese el slug de la categoria','readonly']) !!}
+                {!! Form::text('slug', null, ['class'=>'form-control','placeholder'=>'Slug de la facultad','readonly']) !!}
 
                 @error('slug')
                 <span class="text-danger">{{$message}}</span>
                 @enderror
             </div>
 
-            {!! Form::submit('Crear categoria', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Crear facultad', ['class' => 'btn btn-primary']) !!}
         {!! Form::close() !!}
         </div>
     </div>
