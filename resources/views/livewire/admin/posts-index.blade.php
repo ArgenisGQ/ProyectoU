@@ -1,7 +1,7 @@
 <div class="card">
 
     <div class="card-header">
-        <input wire:model="search" class="form-control" placeholder="Ingrese el nombre del post">
+        <input wire:model="search" class="form-control" placeholder="Ingrese el nombre de la actividad">
     </div>
 
     @if ($posts->count())
@@ -9,7 +9,7 @@
             <table class="table table-striped">
                 <thead>
                     <th>ID</th>
-                    <th>Nombre de la Guia</th>
+                    <th>Nombre de la Actividad</th>
                     <th colspan="2"></th>
                 </thead>
 

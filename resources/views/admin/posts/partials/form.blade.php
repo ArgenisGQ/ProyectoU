@@ -1,6 +1,6 @@
 <div class="form-group">
-    {!! Form::label('name', 'Nombre') !!}
-    {!! Form::text('name', null, ['class'=>'form-control','placeholder'=>'Ingrese el nombre del post']) !!}
+    {!! Form::label('name', 'Nombre de Actividad') !!}
+    {!! Form::text('name', null, ['class'=>'form-control','placeholder'=>'Ingrese el nombre de la actividad']) !!}
 
     @error('name')
         <span class="text-danger">{{$message}}</span>
@@ -9,7 +9,7 @@
 
 <div class="form-group">
     {!! Form::label('slug', 'Slug') !!}
-    {!! Form::text('slug', null, ['class'=>'form-control','placeholder'=>'Ingrese el slug del post','readonly']) !!}
+    {!! Form::text('slug', null, ['class'=>'form-control','placeholder'=>'Slug de la Actividad','readonly']) !!}
 
     @error('slug')
     <span class="text-danger">{{$message}}</span>
@@ -17,7 +17,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('category_id', 'Categoria') !!}
+    {!! Form::label('category_id', 'Facultad') !!}
     {!! Form::select('category_id', $categories,null,['class' => 'form-control']) !!}
 
     @error('category_id')
@@ -26,7 +26,7 @@
 </div>
 
 <div class="form-group">
-    <p class="font-weight-bold">Etiquetas</p>
+    <p class="font-weight-bold">Materias</p>
 
     @foreach ($tags as $tag)
 
@@ -93,7 +93,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('body', 'Cuerpo del post:') !!}
+    {!! Form::label('body', 'Descripción de la actividad:') !!}
     {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
 
     @error('body')
@@ -111,7 +111,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('extract01', 'Sirve lo aprendido? :') !!}
+    {!! Form::label('extract01', 'Criterios de evalulación:') !!}
     {!! Form::textarea('extract01', null, ['class' => 'form-control']) !!}
 
     @error('extract01')

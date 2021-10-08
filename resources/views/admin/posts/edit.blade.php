@@ -3,7 +3,7 @@
 @section('title', 'Proyecto U')
 
 @section('content_header')
-    <h1>Editar Guia</h1>
+    <h1>Editar Actividad</h1>
 @stop
 
 @section('content')
@@ -23,7 +23,7 @@
                 @include('admin.posts.partials.form')
 
 
-                {!! Form::submit('Actualizar post', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Actualizar actividad', ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}
             </div>
         </div>

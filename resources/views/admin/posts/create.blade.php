@@ -3,7 +3,7 @@
 @section('title', 'Proyecto U')
 
 @section('content_header')
-    <h1>Crear nueva guia</h1>
+    <h1>Crear nueva Actividad</h1>
 @stop
 
 @section('content')
@@ -23,7 +23,7 @@
             @include('admin.posts.partials.form')
 
 
-            {!! Form::submit('Crear post', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Crear Actividad', ['class' => 'btn btn-primary']) !!}
         {!! Form::close() !!}
         </div>
     </div>
