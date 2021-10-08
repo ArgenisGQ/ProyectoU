@@ -51,7 +51,7 @@ return [
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => 'UNY',
 
     /*
     |--------------------------------------------------------------------------
@@ -256,26 +256,26 @@ return [
         ],
         ['header' => 'ADMINISTADOR'],
         [
-            'text' => 'Categorias',
+            'text' => 'Facultades (Categorias)',
             'route'  => 'admin.categories.index',
             'icon' => 'fab fa-fw fa-buffer',
             'active' => ['admin/categories*']
         ],
         [
-            'text' => 'Etiquetas',
+            'text' => 'Materias (Etiquetas)',
             'route'  => 'admin.tags.index',
             'icon' => 'far fa-fw fa-bookmark',
             'active' => ['admin/tags*']
         ],
-        ['header' => 'OPCIONES DE BLOG'],
+        ['header' => 'OPCIONES DE LA GUIA'],
         [
-            'text' => 'Lista de post',
+            'text' => 'Lista de Guias',
             'route'  => 'admin.posts.index',
             'icon' => 'fas fa-fw fa-clipboard'
 
         ],
         [
-            'text' => 'Crear nuevo post',
+            'text' => 'Crear nueva Guia',
             'route'  => 'admin.posts.create',
             'icon' => 'fas fa-fw fa-file'
 
