@@ -3,7 +3,7 @@
 @section('title', 'Proyecto U')
 
 @section('content_header')
-    <h1>Editar etiqueta</h1>
+    <h1>Editar materia</h1>
 @stop
 
 @section('content')
@@ -19,7 +19,7 @@
 
                 @include('admin.tags.partials.form')
 
-                {!! Form::submit('Actualizar etiqueta', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Actualizar materia', ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}
             </div>
         </div>

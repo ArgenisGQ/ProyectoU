@@ -4,9 +4,9 @@
 
 @section('content_header')
 
-    <a href="{{route('admin.tags.create')}}" class="float-right btn btn-secondary">Nueva etiqueta</a>
+    <a href="{{route('admin.tags.create')}}" class="float-right btn btn-secondary">Nueva Materia</a>
 
-    <h1>Listado de etiqueta</h1>
+    <h1>Listado de materias</h1>
 @stop
 
 @section('content')
@@ -23,7 +23,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nombre de la Etiqueta</th>
+                        <th>Nombre de la Materia</th>
                         <th colspan="2"></th>
                     </tr>
                 </thead>
