@@ -250,7 +250,14 @@ return [
         [
             'text'        => 'Dashboard',
             'route'         => 'admin.home',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fas fa-tachometer-alt fa-fw ',
+            /* 'label'       => 4,
+            'label_color' => 'success', */
+        ],
+        [
+            'text'        => 'Usuarios',
+            'route'         => 'admin.users.index',
+            'icon'        => 'fas fa-users fa-fw',
             /* 'label'       => 4,
             'label_color' => 'success', */
         ],
