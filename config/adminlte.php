@@ -258,8 +258,16 @@ return [
         [
             'text'        => 'Usuarios',
             'route'         => 'admin.users.index',
+            'icon'        => 'fas fa-users-cog fa-fw',
+            'can'         => 'admin.users.index',
+            /* 'label'       => 4,
+            'label_color' => 'success', */
+        ],
+        [
+            'text'        => 'Lista de roles',
+            'route'         => 'admin.roles.index',
             'icon'        => 'fas fa-users fa-fw',
-            'can'         => 'admin.user.index',
+            'can'         => 'admin.users.index',
             /* 'label'       => 4,
             'label_color' => 'success', */
         ],
