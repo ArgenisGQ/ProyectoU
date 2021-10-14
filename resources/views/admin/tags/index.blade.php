@@ -2,9 +2,11 @@
 
 @section('title', 'Proyecto U')
 
-@section('content_header')
+@section('admin.tags.create')
+    @can('update')
+        <a href="{{route('admin.tags.create')}}" class="float-right btn btn-secondary">Nueva Materia</a>
+    @endcan
 
-    <a href="{{route('admin.tags.create')}}" class="float-right btn btn-secondary">Nueva Materia</a>
 
     <h1>Listado de materias</h1>
 @stop
@@ -34,15 +36,20 @@
                             <td>{{$tag->id}}</td>
                             <td>{{$tag->name}}</td>
                             <td width="10px">
-                                <a href="{{route('admin.tags.edit', $tag)}}" class="btn btn-primary btn-sm">Editar</a>
+                                @can('admin.tags.edit')
+                                    <a href="{{route('admin.tags.edit', $tag)}}" class="btn btn-primary btn-sm">Editar</a>
+                                @endcan
                             </td>
                             <td width="10px">
-                                <form action="{{route('admin.tags.destroy', $tag)}}" method="POST">
-                                    @csrf
-                                    @method('delete')
+                                @can('admin.tags.destroy')
+                                    <form action="{{route('admin.tags.destroy', $tag)}}" method="POST">
+                                        @csrf
+                                        @method('delete')
 
                                     <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
                                 </form>
+                                @endcan
+
                             </td>
                         </tr>
                     @endforeach
