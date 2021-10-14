@@ -251,6 +251,7 @@ return [
             'text'        => 'Dashboard',
             'route'         => 'admin.home',
             'icon'        => 'fas fa-tachometer-alt fa-fw ',
+            'can'         => 'admin.home',
             /* 'label'       => 4,
             'label_color' => 'success', */
         ],
@@ -258,6 +259,7 @@ return [
             'text'        => 'Usuarios',
             'route'         => 'admin.users.index',
             'icon'        => 'fas fa-users fa-fw',
+            'can'         => 'admin.user.index',
             /* 'label'       => 4,
             'label_color' => 'success', */
         ],
@@ -266,25 +268,29 @@ return [
             'text' => 'Facultades (Categorias)',
             'route'  => 'admin.categories.index',
             'icon' => 'fab fa-fw fa-buffer',
-            'active' => ['admin/categories*']
+            'active' => ['admin/categories*'],
+            'can'         => 'admin.categories.index',
         ],
         [
             'text' => 'Materias (Etiquetas)',
             'route'  => 'admin.tags.index',
             'icon' => 'far fa-fw fa-bookmark',
-            'active' => ['admin/tags*']
+            'active' => ['admin/tags*'],
+            'can'    => 'admin.tags.index',
         ],
         ['header' => 'OPCIONES DE LA ACTIVIDAD'],
         [
             'text' => 'Lista de Actividades',
             'route'  => 'admin.posts.index',
-            'icon' => 'fas fa-fw fa-clipboard'
+            'icon' => 'fas fa-fw fa-clipboard',
+            'can'    => 'admin.posts.index',
 
         ],
         [
             'text' => 'Crear nueva Actividad',
             'route'  => 'admin.posts.create',
-            'icon' => 'fas fa-fw fa-file'
+            'icon' => 'fas fa-fw fa-file',
+            'can'    => 'admin.posts.create',
 
         ],
         /* [
