@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 class UserController extends Controller
 {
@@ -31,7 +33,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $role = Role::pluck('name', 'name')->all();
+
+        return view('admin.users.create', compact('role'));
     }
 
     /**
@@ -42,7 +46,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|same:confirm-password',
+            'role' => 'required'
+        ]);
+
+        $input = $request->all();
+        if(!empty($input('password'))){
+            $input('password') = Hash::make($input('password'));
+        }else{
+            $input = Arr::except($input, array('password'));
+        }
+
+        $user = User::find($id);
+        $user->update($input);
+        DB::table('model_has_roles')->where('model_id', $id)->delete();
+
     }
 
     /**
