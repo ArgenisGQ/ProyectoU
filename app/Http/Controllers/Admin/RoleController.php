@@ -42,7 +42,15 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $role = Role::create($request->all());
+
+        $role->permissions()->sync($request->permissions);
+
+        return redirect()->route('admin.roles.edit', $role)->with('info', 'El rol se creo con exito');
     }
 
     /**
@@ -62,9 +70,11 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role $roles)
+    public function edit(Role $role)
     {
-        return view('admin.roles.edit', compact('roles'));
+        $permissions = Permission::all();
+
+        return view('admin.roles.edit', compact('role','permissions'));
     }
 
     /**
@@ -74,9 +84,17 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $roles)
+    public function update(Request $request, Role $role)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $role->update($request->all());
+
+        $role->permissions()->sync($request->permissions);
+
+        return redirect()->route('admin.roles.edit', $role)->with('info', 'El rol se actualizo con exito');
     }
 
     /**
@@ -85,8 +103,10 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $roles)
+    public function destroy(Role $role)
     {
-        //
+        $role->delete();
+
+        return redirect()->route('admin.roles.index')->with('info', 'El rol se elimino con exito');
     }
 }

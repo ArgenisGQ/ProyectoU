@@ -10,6 +10,13 @@
 @stop
 
 @section('content')
+
+        @if (session('info'))
+            <div class="alert alert-success">
+                {{session('info')}}
+            </div>
+        @endif
+
         <div class="card">
 
             <div class="card-body">
@@ -34,13 +41,13 @@
 
                                 </td>
                                 <td width="10px">
-                                    @can('admin.roles.destroy')
-                                        <form action="{{route('admin.roles.destroy', $category)}}" method="POST">
+                                    {{-- @can('admin.roles.destroy') --}}
+                                        <form action="{{route('admin.roles.destroy', $role)}}" method="POST">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                         </form>
-                                    @endcan
+                                    {{-- @endcan --}}
                                 </td>
                             </tr>
                         @endforeach

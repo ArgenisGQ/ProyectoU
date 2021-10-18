@@ -11,31 +11,11 @@
         <div class="card-body">
         {!! Form::open(['route' => 'admin.roles.store']) !!}
 
-            <div class="form-group">
-                {!! Form::label('name', 'Nombre del Rol') !!}
-                {!! Form::text('name', null, ['class'=>'form-control','placeholder'=>'Ingrese el nombre del Rol']) !!}
-
-                @error('name')
-                    <span class="text-danger">{{$message}}</span>
-                @enderror
-            </div>
-
+            @include('admin.roles.partials.form')
 
             {!! Form::submit('Crear Rol', ['class' => 'btn btn-primary']) !!}
         {!! Form::close() !!}
         </div>
-
-        <h2 class="h3">Lista de permisos</h2>
-            @foreach ($permissions as $permission)
-                <div>
-                    <label>
-                        {!! Form::checkbox('permissions', $permission->od, null, ['class' => 'mr-1']) !!}
-                        {{$permission->name}}
-                    </label>
-                </div>
-            @endforeach
-
-
     </div>
 @stop
 
