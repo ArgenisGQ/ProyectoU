@@ -136,6 +136,10 @@ class UserController extends Controller
     {
         User::find($user)->delete();
 
-        return redirect()->route('admin.users.index');
+        /* return redirect()->route('admin.users.index'); */
+
+        /* $user->delete(); */
+
+        return redirect()->route('admin.users.index')->with('info', 'El usuario se elimino con exito');
     }
 }

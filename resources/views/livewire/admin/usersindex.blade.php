@@ -12,7 +12,7 @@
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Email</th>
-                            <th></th>
+                            <th>Rol</th>
                         </tr>
                     </thead>
 
@@ -22,8 +22,22 @@
                                 <td>{{$user->id}}</td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
+                                <td>
+                                    @if(!empty($user->getRoleNames()))
+                                        @foreach ($user->getRoleNames() as $rolName )
+                                        <h5><span class="badge badge-dark">{{$rolName}}</span></h5>
+                                        @endforeach
+                                    @endif
+                                </td>
                                 <td width="10px">
                                     <a href="{{route('admin.users.edit', $user)}}" class="btn btn-primary">Editar</a>
+                                </td>
+                                <td class="10px">
+                                    <form action="{{route('admin.users.destroy', $user)}}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
