@@ -3,7 +3,10 @@
 @section('title', 'Proyecto U')
 
 @section('content_header')
+
+<a href="{{route('admin.users.create')}}" class="float-right btn btn-secondary btn-sm">Agregar nuevo usuario</a>
     <h1>LISTA DE USUARIOS</h1>
+
 @stop
 
 @section('content')
@@ -12,6 +15,7 @@
         {{session('info')}}
     </div>
     @endif
+
     @livewire('admin.usersindex')
 @stop
 

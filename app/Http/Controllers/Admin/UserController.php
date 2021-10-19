@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     public function __construct()
@@ -33,7 +34,12 @@ class UserController extends Controller
      */
     public function create()
     {
-        $role = Role::pluck('name', 'name')->all();
+        /* $role = Role::pluck('name', 'name')->all(); */
+
+        $role = Role::all();
+
+
+        /* return $role; */
 
         return view('admin.users.create', compact('role'));
     }
@@ -59,8 +65,9 @@ class UserController extends Controller
         $user = User::create($input);
         $user->assignRole($request->input('role'));
 
-        return redirect()->route('admin.user.index');
+        /* return redirect()->route('admin.users.index')->with('info', 'El usuario se agrego con exito'); */
 
+        return $user;
 
 
     }
@@ -116,7 +123,7 @@ class UserController extends Controller
         if(!empty($input('password'))){
             $input['password'] = Hash::make($input('password'));
         }else{
-            $input = Arr::except($input, array('password'));
+            $input = Arr::except($input, ['password']);
         }
 
         $user = User::find($user);
