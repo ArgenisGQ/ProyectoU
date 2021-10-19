@@ -54,15 +54,14 @@ class UserController extends Controller
         ]);
 
         $input = $request->all();
-        if(!empty($input('password'))){
-            $input['password'] = Hash::make($input('password'));
-        }else{
-            $input = Arr::except($input, array('password'));
-        }
+        $input['password'] = Hash::make($input('password'));
 
-        $user = User::find($id);
-        $user->update($input);
-        DB::table('model_has_roles')->where('model_id', $id)->delete();
+        $user = User::create($input);
+        $user->assignRole($request->input('role'));
+
+        return redirect()->route('admin.user.index');
+
+
 
     }
 
@@ -87,6 +86,8 @@ class UserController extends Controller
     {
         $roles = Role::all();
 
+        $users = User::find($user);
+
         return view('admin.users.edit', compact('user', 'roles'));
 
         /* return $user; */
@@ -101,9 +102,28 @@ class UserController extends Controller
      */
     public function update(Request $request,User $user)
     {
-        $user->roles()->sync($request->roles);
+        $user->roles()->sync($request->roles); //
 
-        return redirect()->route('admin.users.edit', $user)->with('info', 'Se asigno los roles correspondientes');
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email'.$user,
+            'password' => 'same:confirm-password',
+            'role' => 'required'
+        ]);
+
+        $input = $request->all();
+
+        if(!empty($input('password'))){
+            $input['password'] = Hash::make($input('password'));
+        }else{
+            $input = Arr::except($input, array('password'));
+        }
+
+        $user = User::find($user);
+        $user->update($input);
+        DB::table('model_has_roles')->where('model_id', $user)->delete();
+
+        return redirect()->route('admin.users.edit', $user)->with('info', 'Se asigno los roles correspondientes'); //
     }
 
     /**
@@ -112,8 +132,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($user)
     {
-        //
+        User::find($user)->delete();
+
+        return redirect()->route('admin.users.index');
     }
 }
