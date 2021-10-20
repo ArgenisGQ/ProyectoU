@@ -18,7 +18,7 @@
 
 <div class="form-group">
     {!! Form::label('email', 'Email') !!}
-    {!! Form::text('email', null, ['class'=>'form-control','placeholder'=>'Ingrese el email del Usuario']) !!}
+    {!! Form::email('email', null, ['class'=>'form-control','placeholder'=>'Ingrese el email del Usuario']) !!}
 
     @error('email')
         <small class="text-danger">{{$message}}</small>
@@ -28,7 +28,7 @@
 
 <div class="form-group">
     {!! Form::label('password', 'Password') !!}
-    {!! Form::text('password', null, ['class'=>'form-control','placeholder'=>'Ingrese el password']) !!}
+    {!! Form::password('password', null, ['class'=>'form-control','placeholder'=>'Ingrese el password']) !!}
 
     @error('password')
         <small class="text-danger">{{$message}}</small>
@@ -38,8 +38,8 @@
 
 
 <div class="form-group">
-    {!! Form::label('confirm-passwordd', 'Password') !!}
-    {!! Form::text('confirm-password', null, ['class'=>'form-control','placeholder'=>'Ingrese password para confirmar']) !!}
+    {!! Form::label('confirm-passwordd', 'Confirmar Password') !!}
+    {!! Form::password('confirm-password', null, ['class'=>'form-control','placeholder'=>'Ingrese password para confirmar']) !!}
 
     @error('confirm-password')
         <small class="text-danger">{{$message}}</small>

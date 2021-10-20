@@ -41,7 +41,7 @@ class UserController extends Controller
 
         /* return $role; */
 
-        return view('admin.users.create', compact('role'));
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
