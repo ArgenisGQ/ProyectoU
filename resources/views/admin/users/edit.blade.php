@@ -3,7 +3,7 @@
 @section('title', 'Proyecto U')
 
 @section('content_header')
-    <h1>Asignar roles</h1>
+    <h1>Editar usuarios</h1>
 @stop
 
 @section('content')
@@ -15,22 +15,13 @@
 
     <div class="card">
         <div class="card-body">
-            <p class="h5">Nombre</p>
-            <p class="form-control">{{$user->name}}</p>
+            {{-- {!! Form::open(['route' => 'admin.users.store']) !!} --}}
+            {!! Form::model($user, ['route' => ['admin.users.store', $user], 'method' => 'put']) !!}
 
-            <h2 class="h5">Listado de Roles</h2>
-            {!! Form::model($user, ['route' => ['admin.users.update', $user], 'method' => 'put']) !!}
-                @foreach ($roles as $role)
-                    <div>
-                        <label>
-                            {!! Form::checkbox('roles[]', $role->id, null, ['class' => 'mr-1']) !!}
-                            {{$role->name}}
-                        </label>
-                    </div>
-                @endforeach
+                @include('admin.users.partials.form')
 
-                {!! Form::submit('Asignar rol', ['class' => 'btn btn-primary mt-2']) !!}
 
+                {!! Form::submit('Actualizar usuario', ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}
         </div>
     </div>

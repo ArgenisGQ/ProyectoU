@@ -36,7 +36,7 @@ class UserController extends Controller
     {
         /* $role = Role::pluck('name', 'name')->all(); */
 
-        $role = Role::all();
+        $roles = Role::all();
 
 
         /* return $role; */
@@ -52,22 +52,47 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        /* $user = request()->all; */
+
+
+
         $this->validate($request, [
             'name' => 'required',
+            'ced' => 'numeric|required|unique:users|digits_between:6,8',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
-            'role' => 'required'
+
         ]);
 
-        $input = $request->all();
-        $input['password'] = Hash::make($input('password'));
 
-        $user = User::create($input);
-        $user->assignRole($request->input('role'));
+        $data = request()->all();
 
-        /* return redirect()->route('admin.users.index')->with('info', 'El usuario se agrego con exito'); */
+        $user = User::create([
+            'name' => $data['name'],
+            'ced' => $data['ced'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password'])
+        ]);
 
-        return $user;
+        $user->roles()->sync($request->roles);
+
+        /* $user->roles()->sync($request->role); */
+
+        /* $user->assignRole($request->input['roles']); */
+
+        /* $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
+
+        $user = User::create ([$input]);
+        $user->assignRole($request->input('role')); */
+
+        /* $user = $request; */
+
+        return redirect()->route('admin.users.index')->with('info', 'El usuario se agrego con exito');
+
+        /* $user = $data;
+
+        return $user; */
 
 
     }
@@ -115,7 +140,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email'.$user,
             'password' => 'same:confirm-password',
-            'role' => 'required'
+            /* 'role' => 'required' */
         ]);
 
         $input = $request->all();
