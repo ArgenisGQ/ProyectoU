@@ -264,6 +264,14 @@ return [
             'label_color' => 'success', */
         ],
         [
+            'text'        => 'Carga masiva de usuarios',
+            'route'         => 'admin.users.import',
+            'icon'        => 'fas fa-users-cog fa-fw',
+            'can'         => 'admin.users.index',
+            /* 'label'       => 4,
+            'label_color' => 'success', */
+        ],
+        [
             'text'        => 'Lista de roles',
             'route'         => 'admin.roles.index',
             'icon'        => 'fas fa-users fa-fw',
