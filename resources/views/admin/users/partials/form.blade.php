@@ -38,7 +38,7 @@
 
 
 <div class="form-group">
-    {!! Form::label('confirm-passwordd', 'Confirmar Password') !!}
+    {!! Form::label('confirm-password', 'Confirmar Password') !!}
     {!! Form::password('confirm-password', null, ['class'=>'form-control','placeholder'=>'Ingrese password para confirmar']) !!}
 
     @error('confirm-password')
