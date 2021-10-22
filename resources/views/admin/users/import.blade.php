@@ -21,12 +21,12 @@
             <div class="container mt-5">
                 <h3>Importar profesores</h3>
 
-                @if ( $errors->any() )
+                {{-- @if ( $errors->any() )
 
                     <div class="alert alert-danger">
                         @foreach( $errors->all() as $error )<li>{{ $error }}</li>@endforeach
                     </div>
-                @endif
+                @endif --}}
 
                 @if(isset($numRows))
                     <div class="alert alert-sucess">
@@ -34,20 +34,37 @@
                     </div>
                 @endif
 
-                <form action="{{route('admin.users.import')}}" method="post" enctype="multipart/form-data">
-                    {{csrf_field()}}
-                    <div class="row">
-                        <div class="col-3">
-                            <div class="custom-file">
-                                <input type="file" name="alumnos" class="custom-file-input" id="alumnos">
-                                <label class="custom-file-label" for="alumnos">Seleccionar archivo</label>
-                            </div>
-                            <div class="mt-3">
-                                <button type="submit" class="btn btn-primary">Importar</button>
+
+                    <form action="{{route('admin.users.import')}}" method="post" enctype="multipart/form-data">
+                        {{-- {{csrf_field()}} --}}
+                        @csrf
+                        <div class="form-group">
+                            <input type="file" name="file" id="file" accept=".xlsx">
+                            <br>
+                            @error('file')
+                                <small class="text-danger">{{$message}}</small>
+                            @enderror
+
+                        </div>
+                            <button type="submit" class="btn btn-primary" >Importar</button>
+
+
+                    {{--
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="custom-file">
+                                    <input type="file" name="usuarios" class="custom-file-input" id="usuarios">
+                                    <label class="custom-file-label" for="usuarios">Seleccionar archivo</label>
+                                </div>
+                                <div class="mt-3">
+                                    <button type="submit" class="btn btn-primary">Importar</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                         --}}
+                    </form>
+
+
             </div>
 
 
