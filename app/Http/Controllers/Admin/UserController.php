@@ -58,7 +58,7 @@ class UserController extends Controller
 
         $this->validate($request, [
             'name' => 'required',
-            'ced' => 'numeric|required|unique:users|digits_between:6,8',
+            'ced' => 'numeric|required|unique:users|digits_between:6,10',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
 

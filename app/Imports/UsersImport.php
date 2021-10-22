@@ -5,7 +5,10 @@ namespace App\Imports;
 use App\Models\User;
 use Maatwebsite\Excel\Concerns\ToModel;
 
-class UsersImport implements ToModel
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithValidation;
+
+class UsersImport implements ToModel, WithValidation, WithHeadingRow
 {
     private $numRows = 0;
     /**
@@ -15,21 +18,23 @@ class UsersImport implements ToModel
     */
     public function model(array $row)
     {
+        ++$this->numRows;
+
         return new User([
-            'name'     => $row[0],
-            'ced'      => $row[1],
-            'email'    => $row[2],
-            'password' => $row[3],
+            'name'     => $row['nombre'],
+            'ced'      => $row['cedula'],
+            'email'    => $row['email'],
+            'password' => $row['clave'],
         ]);
     }
 
     public function rules(): array
     {
         return [
-            'name' => 'required',
-            'ced' => 'numeric|required|unique:users|digits_between:6,8',
+            'nombre' => 'required',
+            'cedula' => 'numeric|required|unique:users,ced|digits_between:6,10',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
+            'clave' => 'required'
         ];
     }
 

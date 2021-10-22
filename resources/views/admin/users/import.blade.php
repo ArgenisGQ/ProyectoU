@@ -22,11 +22,16 @@
                 <h3>Importar profesores</h3>
 
                 {{-- @if ( $errors->any() )
-
                     <div class="alert alert-danger">
                         @foreach( $errors->all() as $error )<li>{{ $error }}</li>@endforeach
                     </div>
                 @endif --}}
+
+                @if ( isset($fallas))
+                    <div class="alert alert-danger">
+                        @foreach( $fallas as $falla )<li>{{ $falla }}</li>@endforeach
+                    </div>
+                @endif
 
                 @if(isset($numRows))
                     <div class="alert alert-sucess">
