@@ -25,11 +25,23 @@ class ExcelController extends Controller
         /* $file = $request->file('file');
             Excel::import(new UsersImport, $file); */
 
+
+
         try {
 
 
             $import = new UsersImport();
             Excel::import($import, request()->file('file'));
+
+            $file = $request->file('file');
+
+            $nameFile = 'usuarios_'.date("Y-m-d_H-i-s").'.'.$file->guessExtension();
+
+            $file->storeAs('',$nameFile);
+
+            $import = new UsersImport();
+
+            return view('admin.users.import', ['numRows'=>$import->getRowCount()]);
 
 
         } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
@@ -42,35 +54,44 @@ class ExcelController extends Controller
                  $falla->values(); // Valores de la fila en la que ocurrió el error.
              }
 
+             return view('admin.users.import', ['numRows'=>$import->getRowCount(), 'fallas'=>$falla->errors()]);
+
 
 
         }
 
-        $falla = $falla;
+        /* $fallas = $falla; */  /* ++++ */
+
         /* $request->file('file')->store(''); */
 
-        $file = $request->file('file');
+        /* $file = $request->file('file'); */  /* ++++ */
 
         /* seccion de guardado de archivo de respaldo */
-        $nameFile = 'usuarios_'.now().'.'.$file->guessExtension();
+        /* $nameFile = 'usuarios_'.date("Y-m-d_H-i-s").'.'.$file->guessExtension(); */ /* ++++ */
+
+
         /* $request->file('file')->store('lista'); */
         /* $ruta = public_path("lista/".$nameFile); */
-       /*  Storage::put('avatars/1', $file); */
+        /*  Storage::put('avatars/1', $file); */
 
         /* $request->file('file')->storeAs('', $nameFile); */
-        $file->storeAs('','uno.xlsx');
+
+        /* $file->storeAs('',$nameFile); */  /* ++++ */
+
 
         /* $ruta = public_path($nameFile);
         copy($file, $ruta); */
 
         /* seccion de importancion del xls a la base de dato */
-        $import = new UsersImport();
+        /* $import = new UsersImport(); */  /* ++++ */
 
         /* Excel::import($import, request()->file('file'));
         return view('admin.users.import', ['numRows'=>$import->getRowCount()]); */
 
-        return view('admin.users.import', ['numRows'=>$import->getRowCount(), 'fallas'=>$falla->errors()]);
 
+        /* ++++ */
+        /* return view('admin.users.import', ['numRows'=>$import->getRowCount(), 'fallas'=>$fallas->errors()]); */
+        /* ++++ */
 
 
 
