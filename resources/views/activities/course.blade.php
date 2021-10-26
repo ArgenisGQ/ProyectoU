@@ -4,7 +4,7 @@
         <h1 class="text-3xl text-center uppercase font-hold">Etiqueta: "{{$course->name}}"</h1>
 
         @foreach ($activities as $activity)
-            <x-card-post :activity="$activity"/>
+            <x-card-activity :activity="$activity"/>
         @endforeach
         <div class="mt-4">
             {{$activities->links()}}
