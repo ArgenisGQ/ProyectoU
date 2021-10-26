@@ -19,12 +19,12 @@ class Activity extends Model
     }
 
     public function category(){
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Faculty::class);
     }
 
     //Relacion de muchos a muchos
     public function tags(){
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Course::class);
     }
 
     //Relacion uno a uno poliformica

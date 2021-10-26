@@ -20,6 +20,6 @@ class Faculty extends Model
 
     //Relacion uno a muchos
     public function posts(){
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Activity::class);
     }
 }
