@@ -19,7 +19,7 @@ class Course extends Model
 
     //Relacion muchos a muchos
 
-    public function posts(){
+    public function activities(){
         return $this->belongsToMany(Activity::class);
     }
 }

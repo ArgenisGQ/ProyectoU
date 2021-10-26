@@ -18,12 +18,12 @@ class Activity extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function category(){
+    public function faculty(){
         return $this->belongsTo(Faculty::class);
     }
 
     //Relacion de muchos a muchos
-    public function tags(){
+    public function courses(){
         return $this->belongsToMany(Course::class);
     }
 

@@ -19,7 +19,7 @@ class Faculty extends Model
     }
 
     //Relacion uno a muchos
-    public function posts(){
+    public function activities(){
         return $this->hasMany(Activity::class);
     }
 }

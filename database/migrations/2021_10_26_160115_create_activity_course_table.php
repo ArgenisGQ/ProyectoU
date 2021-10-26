@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateActiCourTable extends Migration
+class CreateActivityCourseTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateActiCourTable extends Migration
      */
     public function up()
     {
-        Schema::create('acti_cour', function (Blueprint $table) {
+        Schema::create('activity_course', function (Blueprint $table) {
             $table->id();
 
             $table->unsignedBigInteger('activity_id');
@@ -32,6 +32,6 @@ class CreateActiCourTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('acti_cour');
+        Schema::dropIfExists('activity_course');
     }
 }

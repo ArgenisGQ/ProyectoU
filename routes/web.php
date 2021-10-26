@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PdfController;
 
+use App\Http\Controllers\Activities\ActivityController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,3 +33,19 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('posts/pdf/down/{post}',[PdfController::class, 'downPdf'])->name('posts.pdf.down');
 
 Route::get('posts/pdf/show/{post}',[PdfController::class, 'showPdf'])->name('posts.pdf.show');
+
+
+/* actividades */
+
+
+Route::get('activities', [ActivityController::class, 'index'])->name('activities.index');
+
+Route::get('activities/{activity}',[ActivityController::class, 'show'])->name('activities.show');
+
+Route::get('faculty/{faculty}', [ActivityController::class, 'faculty'])->name('.activities.faculty');
+
+Route::get('course/{course}', [ActivityController::class, 'course'])->name('activities.course');
+
+Route::get('activities/pdf/down/{activity}',[PdfController::class, 'downPdf'])->name('activities.pdf.down');
+
+Route::get('activities/pdf/show/{activity}',[PdfController::class, 'showPdf'])->name('activities.pdf.show');

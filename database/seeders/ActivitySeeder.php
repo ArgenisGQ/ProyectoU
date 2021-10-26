@@ -6,6 +6,7 @@ use App\Models\Activity;
 use App\Models\Image;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Notifications\Action;
 
 class ActivitySeeder extends Seeder
 {
@@ -22,9 +23,9 @@ class ActivitySeeder extends Seeder
         foreach ($activities as $activity) {
             Image::factory(1)->create([
                 'imageable_id' => $activity->id,
-                'imageable_type' => Post::class
+                'imageable_type' => Activity::class
             ]);
-            $activity->tags()->attach([
+            $activity->course()->attach([
                 rand(1,4),
                 rand(5,8)
             ]);
