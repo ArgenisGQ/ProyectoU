@@ -5,6 +5,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\PdfController;
 
 use App\Http\Controllers\Activities\ActivityController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,12 @@ use App\Http\Controllers\Activities\ActivityController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Auth::routes(["register" => false]);
+
+Route::any('/register', function() {
+    return  view('auth.login');
+});
 
 Route::get('/', [PostController::class, 'index'])->name('posts.index');
 
