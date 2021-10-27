@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Auth::routes(["register" => false]);
+/* Auth::routes(["register" => false]); */
 
 Route::any('/register', function() {
     return  view('auth.login');
