@@ -41,8 +41,12 @@
             </nav> --}}
 
             <div class="w-full text-xl leading-normal text-gray-800 bg-gray-200 rounded-t md:text-2xl">
-
+                @foreach ($posts as $post)
                 <!--Lead Card-->
+
+                    @if ($loop->first)
+
+
                     <div class="flex h-full overflow-hidden bg-white rounded shadow-lg">
                         <a href="post.html" class="flex flex-wrap no-underline hover:no-underline">
                             <div class="w-full rounded-t md:w-2/3">
@@ -52,7 +56,7 @@
                             <div class="flex flex-col flex-grow flex-shrink w-full md:w-1/3">
                                 <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg">
                                     <p class="w-full px-6 pt-6 text-xs text-gray-600 md:text-sm">GETTING STARTED</p>
-                                    <div class="w-full px-6 text-xl font-bold text-gray-900">👋 Welcome fellow Tailwind CSS and Ghost fan</div>
+                                    <div class="w-full px-6 text-xl font-bold text-gray-900">👋 {{$post->name}}</div>
                                     <p class="px-6 mb-5 font-serif text-base text-gray-800">
                                         This starter template is an attempt to replicate the default Ghost theme "Casper" using Tailwind CSS and vanilla Javascript.
                                     </p>
@@ -70,158 +74,166 @@
                     </div>
                 <!--/Lead Card-->
 
+                    @else
 
                 <!--Posts Container-->
-                <div class="flex flex-wrap justify-between pt-12 -mx-6">
-
-                    <!--1/3 col -->
-                    <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3">
-                        <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg">
-                            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                                <img src="https://source.unsplash.com/collection/225/800x600" class="w-full h-64 pb-6 rounded-t">
-                                <p class="w-full px-6 text-xs text-gray-600 md:text-sm">GETTING STARTED</p>
-                                <div class="w-full px-6 text-xl font-bold text-gray-900">Lorem ipsum dolor sit amet.</div>
-                                <p class="px-6 mb-5 font-serif text-base text-gray-800">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
-                                </p>
-                            </a>
-                        </div>
-                        <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow-lg">
-                            <div class="flex items-center justify-between">
-                                <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
-                                <p class="text-xs text-gray-600 md:text-sm">1 MIN READ</p>
+                    {{-- <div class="flex flex-wrap justify-between pt-12 -mx-6"> --}}
+                    <div class="flex flex-wrap justify-between pt-12 -mx-6">
+                        <!--1/3 col -->
+                        <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3">
+                            <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg">
+                                <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+                                    <img src="https://source.unsplash.com/collection/225/800x600" class="w-full h-64 pb-6 rounded-t">
+                                    <p class="w-full px-6 text-xs text-gray-600 md:text-sm">GETTING STARTED</p>
+                                    <div class="w-full px-6 text-xl font-bold text-gray-900">{{$post->name}}</div>
+                                    <p class="px-6 mb-5 font-serif text-base text-gray-800">
+                                        A Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow-lg">
+                                <div class="flex items-center justify-between">
+                                    <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
+                                    <p class="text-xs text-gray-600 md:text-sm">1 MIN READ</p>
+                                </div>
                             </div>
                         </div>
+
+                        <!--1/3 col -->
+                        {{-- <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3">
+                            <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg">
+                                <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+                                    <img src="https://source.unsplash.com/collection/3106804/800x600" class="w-full h-64 pb-6 rounded-t">
+                                    <p class="w-full px-6 text-xs text-gray-600 md:text-sm">GETTING STARTED</p>
+                                    <div class="w-full px-6 text-xl font-bold text-gray-900">{{$post->name}}</div>
+                                    <p class="px-6 mb-5 font-serif text-base text-gray-800">
+                                        B Lorem ipsum dolor sit amet, consectetur adipiscing elit. ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ip Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
+                                    </p>
+                                </a>
+                                </div>
+                            <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow-lg">
+                                <div class="flex items-center justify-between">
+                                    <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
+                                    <p class="text-xs text-gray-600 md:text-sm">1 MIN READ</p>
+                                </div>
+                            </div>
+                        </div> --}}
+
+                        <!--1/3 col -->
+                        {{-- <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3">
+                            <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg">
+                                <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+                                    <img src="https://source.unsplash.com/collection/539527/800x600" class="w-full h-64 pb-6 rounded-t">
+                                    <p class="w-full px-6 text-xs text-gray-600 md:text-sm">GETTING STARTED</p>
+                                    <div class="w-full px-6 text-xl font-bold text-gray-900">{{$post->name}}</div>
+                                    <p class="px-6 mb-5 font-serif text-base text-gray-800">
+                                        C Lorem ipsum eu nunc commodo posuere et sit amet ligula.
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow-lg">
+                                <div class="flex items-center justify-between">
+                                    <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
+                                    <p class="text-xs text-gray-600 md:text-sm">1 MIN READ</p>
+                                </div>
+                            </div>
+                        </div> --}}
+
+
+
+                        <!--1/2 col -->
+                        {{-- <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/2">
+                            <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg">
+                                <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+                                    <img src="https://source.unsplash.com/collection/3657445/800x600" class="w-full h-full pb-6 rounded-t">
+                                    <p class="w-full px-6 text-xs text-gray-600 md:text-sm">GETTING STARTED</p>
+                                    <div class="w-full px-6 text-xl font-bold text-gray-900">Lorem ipsum dolor sit amet.</div>
+                                    <p class="px-6 mb-5 font-serif text-base text-gray-800">
+                                        Lorem ipsum eu nunc commodo posuere et sit amet ligula.
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow-lg">
+                                <div class="flex items-center justify-between">
+                                    <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
+                                    <p class="text-xs text-gray-600 md:text-sm">1 MIN READ</p>
+                                </div>
+                            </div>
+                        </div> --}}
+
+                        <!--1/2 col -->
+                        {{-- <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/2">
+                            <div class="flex-row flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg">
+                                <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+                                    <img src="https://source.unsplash.com/collection/764827/800x600" class="w-full h-full pb-6 rounded-t">
+                                    <p class="w-full px-6 text-xs text-gray-600 md:text-sm">GETTING STARTED</p>
+                                    <div class="w-full px-6 text-xl font-bold text-gray-900">Lorem ipsum dolor sit amet.</div>
+                                    <p class="px-6 mb-5 font-serif text-base text-gray-800">
+                                        Lorem ipsum eu nunc commodo posuere et sit amet ligula.
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow-lg">
+                                <div class="flex items-center justify-between">
+                                    <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
+                                    <p class="text-xs text-gray-600 md:text-sm">1 MIN READ</p>
+                                </div>
+                            </div>
+                        </div> --}}
+
+
+
+                        <!--2/3 col -->
+                        {{-- <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-2/3">
+                            <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg">
+                                <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+                                    <img src="https://source.unsplash.com/collection/325867/800x600" class="w-full h-full pb-6 rounded-t">
+                                    <p class="w-full px-6 text-xs text-gray-600 md:text-sm">GETTING STARTED</p>
+                                    <div class="w-full px-6 text-xl font-bold text-gray-900">Lorem ipsum dolor sit amet.</div>
+                                    <p class="px-6 mb-5 font-serif text-base text-gray-800">
+                                        Lorem ipsum eu nunc commodo posuere et sit amet ligula.
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow-lg">
+                                <div class="flex items-center justify-between">
+                                    <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
+                                    <p class="text-xs text-gray-600 md:text-sm">1 MIN READ</p>
+                                </div>
+                            </div>
+                        </div> --}}
+
+                        <!--1/3 col -->
+                        {{-- <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3">
+                            <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg">
+                                <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+                                    <img src="https://source.unsplash.com/collection/1118905/800x600" class="w-full h-full pb-6 rounded-t">
+                                    <p class="w-full px-6 text-xs text-gray-600 md:text-sm">GETTING STARTED</p>
+                                    <div class="w-full px-6 text-xl font-bold text-gray-900">Lorem ipsum dolor sit amet.</div>
+                                    <p class="px-6 mb-5 font-serif text-base text-gray-800">
+                                        Lorem ipsum eu nunc commodo posuere et sit amet ligula.
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow-lg">
+                                <div class="flex items-center justify-between">
+                                    <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
+                                    <p class="text-xs text-gray-600 md:text-sm">1 MIN READ</p>
+                                </div>
+                            </div>
+                        </div> --}}
                     </div>
-
-                    <!--1/3 col -->
-                    <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3">
-                        <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg">
-                            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                                <img src="https://source.unsplash.com/collection/3106804/800x600" class="w-full h-64 pb-6 rounded-t">
-                                <p class="w-full px-6 text-xs text-gray-600 md:text-sm">GETTING STARTED</p>
-                                <div class="w-full px-6 text-xl font-bold text-gray-900">Lorem ipsum dolor sit amet.</div>
-                                <p class="px-6 mb-5 font-serif text-base text-gray-800">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ip Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
-                                </p>
-                            </a>
-                            </div>
-                        <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow-lg">
-                            <div class="flex items-center justify-between">
-                                <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
-                                <p class="text-xs text-gray-600 md:text-sm">1 MIN READ</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--1/3 col -->
-                    <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3">
-                        <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg">
-                            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                                <img src="https://source.unsplash.com/collection/539527/800x600" class="w-full h-64 pb-6 rounded-t">
-                                <p class="w-full px-6 text-xs text-gray-600 md:text-sm">GETTING STARTED</p>
-                                <div class="w-full px-6 text-xl font-bold text-gray-900">Lorem ipsum dolor sit amet.</div>
-                                <p class="px-6 mb-5 font-serif text-base text-gray-800">
-                                    Lorem ipsum eu nunc commodo posuere et sit amet ligula.
-                                </p>
-                            </a>
-                        </div>
-                        <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow-lg">
-                            <div class="flex items-center justify-between">
-                                <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
-                                <p class="text-xs text-gray-600 md:text-sm">1 MIN READ</p>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <!--1/2 col -->
-                    {{-- <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/2">
-                        <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg">
-                            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                                <img src="https://source.unsplash.com/collection/3657445/800x600" class="w-full h-full pb-6 rounded-t">
-                                <p class="w-full px-6 text-xs text-gray-600 md:text-sm">GETTING STARTED</p>
-                                <div class="w-full px-6 text-xl font-bold text-gray-900">Lorem ipsum dolor sit amet.</div>
-                                <p class="px-6 mb-5 font-serif text-base text-gray-800">
-                                    Lorem ipsum eu nunc commodo posuere et sit amet ligula.
-                                </p>
-                            </a>
-                        </div>
-                        <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow-lg">
-                            <div class="flex items-center justify-between">
-                                <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
-                                <p class="text-xs text-gray-600 md:text-sm">1 MIN READ</p>
-                            </div>
-                        </div>
-                    </div> --}}
-
-                    <!--1/2 col -->
-                    {{-- <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/2">
-                        <div class="flex-row flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg">
-                            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                                <img src="https://source.unsplash.com/collection/764827/800x600" class="w-full h-full pb-6 rounded-t">
-                                <p class="w-full px-6 text-xs text-gray-600 md:text-sm">GETTING STARTED</p>
-                                <div class="w-full px-6 text-xl font-bold text-gray-900">Lorem ipsum dolor sit amet.</div>
-                                <p class="px-6 mb-5 font-serif text-base text-gray-800">
-                                    Lorem ipsum eu nunc commodo posuere et sit amet ligula.
-                                </p>
-                            </a>
-                        </div>
-                        <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow-lg">
-                            <div class="flex items-center justify-between">
-                                <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
-                                <p class="text-xs text-gray-600 md:text-sm">1 MIN READ</p>
-                            </div>
-                        </div>
-                    </div> --}}
-
-
-
-                    <!--2/3 col -->
-                    {{-- <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-2/3">
-                        <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg">
-                            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                                <img src="https://source.unsplash.com/collection/325867/800x600" class="w-full h-full pb-6 rounded-t">
-                                <p class="w-full px-6 text-xs text-gray-600 md:text-sm">GETTING STARTED</p>
-                                <div class="w-full px-6 text-xl font-bold text-gray-900">Lorem ipsum dolor sit amet.</div>
-                                <p class="px-6 mb-5 font-serif text-base text-gray-800">
-                                    Lorem ipsum eu nunc commodo posuere et sit amet ligula.
-                                </p>
-                            </a>
-                        </div>
-                        <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow-lg">
-                            <div class="flex items-center justify-between">
-                                <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
-                                <p class="text-xs text-gray-600 md:text-sm">1 MIN READ</p>
-                            </div>
-                        </div>
-                    </div> --}}
-
-                    <!--1/3 col -->
-                    {{-- <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3">
-                        <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg">
-                            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                                <img src="https://source.unsplash.com/collection/1118905/800x600" class="w-full h-full pb-6 rounded-t">
-                                <p class="w-full px-6 text-xs text-gray-600 md:text-sm">GETTING STARTED</p>
-                                <div class="w-full px-6 text-xl font-bold text-gray-900">Lorem ipsum dolor sit amet.</div>
-                                <p class="px-6 mb-5 font-serif text-base text-gray-800">
-                                    Lorem ipsum eu nunc commodo posuere et sit amet ligula.
-                                </p>
-                            </a>
-                        </div>
-                        <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow-lg">
-                            <div class="flex items-center justify-between">
-                                <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
-                                <p class="text-xs text-gray-600 md:text-sm">1 MIN READ</p>
-                            </div>
-                        </div>
-                    </div> --}}
-
-                </div>
+                    {{-- </div> --}}
+                    @endif
                 <!--/ Post Content-->
 
+
+                @endforeach
             </div>
+
+                <div class="mt-4">
+                    {{$posts->links()}}
+                </div>
 
 
             <!--Subscribe-->
@@ -244,12 +256,12 @@
             <div class="flex items-center w-full p-8 font-sans md:p-24">
                 <img class="w-10 h-10 mr-4 rounded-full" src="http://i.pravatar.cc/300" alt="Avatar of Author">
                 <div class="flex-1">
-                    <p class="text-base font-bold leading-none md:text-xl">Universidad Yacambu</p>
-                    <p class="text-xs text-gray-600 md:text-base">Tailwind CSS version of Ghost's Casper theme by <a class="text-gray-800 no-underline border-b-2 border-green-500 hover:text-green-500" href="http://www.uny.edu.ve/">uny.edu.ve/</a></p>
+                    <p class="text-base font-bold leading-none md:text-xl">Sistema Interactivo Multimodal de Aprendizaje (SIMA)</p>
+                    <p class="text-xs text-gray-600 md:text-base">Creado por el Equipo de Tecnologia de DEMTec <a class="text-gray-800 no-underline border-b-2 border-green-500 hover:text-green-500" href="http://ead.uny.edu.ve/">ead.edu.ve/</a></p>
                 </div>
-                <div class="justify-end">
+                {{-- <div class="justify-end">
                     <button class="px-4 py-2 text-xs font-bold text-gray-500 bg-transparent border border-gray-500 rounded-full hover:border-green-500 hover:text-green-500">Read More</button>
-                </div>
+                </div> --}}
             </div>
             <!--/Author-->
 
