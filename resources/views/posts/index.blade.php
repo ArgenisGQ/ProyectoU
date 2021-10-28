@@ -17,9 +17,9 @@
 
 
                         <div class="flex h-full col-span-3 overflow-hidden bg-white rounded shadow-lg">
-                                <a href="post.html" class="flex flex-wrap no-underline hover:no-underline">
+                                <a href="{{route('posts.show', $post)}}" class="flex flex-wrap no-underline hover:no-underline">
                                     <div class="w-full rounded-t md:w-2/3">
-                                        <img src="https://source.unsplash.com/collection/494263/800x600" class="w-full h-full shadow">
+                                        <img src="@if($post->image) {{Storage::url($post->image->url)}} @else https://source.unsplash.com/collection/225/800x600 @endif" class="w-full h-full shadow">
                                     </div>
 
                                     <div class="flex flex-col flex-grow flex-shrink w-full md:w-1/3">
@@ -51,8 +51,8 @@
                             <div class="flex flex-wrap justify-between pt-12 -mx-6">
                                 <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3">
                                     <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg">
-                                        <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                                            <img src="https://source.unsplash.com/collection/225/800x600" class="w-full h-64 pb-6 rounded-t">
+                                        <a href="{{route('posts.show', $post)}}" class="flex flex-wrap no-underline hover:no-underline">
+                                            <img src="@if($post->image) {{Storage::url($post->image->url)}} @else https://source.unsplash.com/collection/225/800x600 @endif" class="w-full h-64 pb-6 rounded-t">
                                             <p class="w-full px-6 text-xs text-gray-600 md:text-sm">GETTING STARTED</p>
                                             <div class="w-full px-6 text-xl font-bold text-gray-900">{{$post->name}}</div>
                                             <p class="px-6 mb-5 font-serif text-base text-gray-800">
