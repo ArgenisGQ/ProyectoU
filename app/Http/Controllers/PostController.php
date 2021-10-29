@@ -22,11 +22,7 @@ class PostController extends Controller
                 /* ->get() */
                 ;
 
-        /* $posts = Post::whereHas('status', function ($query) {
-                $query->where('status', '=', '2');})
-                ->orderByRaw("RAND()")
-                ->limit(4);
- */
+ 
         /* dd($posts); */
         /* return $posts; */
 
