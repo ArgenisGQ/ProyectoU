@@ -14,7 +14,25 @@ class PostController extends Controller
 {
     public function index(){
 
-        $posts = Post::where('status',2)->latest()->paginate(4);
+        /* Aleatorio */
+        $posts = Post::where('status',2)
+                ->inRandomOrder()
+                ->limit(4)
+                ->paginate(4)
+                /* ->get() */
+                ;
+
+        /* $posts = Post::whereHas('status', function ($query) {
+                $query->where('status', '=', '2');})
+                ->orderByRaw("RAND()")
+                ->limit(4);
+ */
+        /* dd($posts); */
+        /* return $posts; */
+
+        /* En orden decendente */
+        /* $posts = Post::where('status',2)->latest()->paginate(4); */
+
         return view('posts.index', compact('posts'));
 
     }
@@ -39,6 +57,11 @@ class PostController extends Controller
                             ->get();
 
         return view('posts.show', compact('post', 'similares', 'categoria'));
+
+
+
+
+
 
         /* return $category_post; */
         /* return $post; */
