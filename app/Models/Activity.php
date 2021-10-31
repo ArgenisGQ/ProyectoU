@@ -23,7 +23,7 @@ class Activity extends Model
     }
 
     //Relacion de muchos a muchos
-    public function courses(){
+    public function course(){
         return $this->belongsToMany(Course::class);
     }
 
