@@ -22,7 +22,7 @@ class PostController extends Controller
                 /* ->get() */
                 ;
 
- 
+
         /* dd($posts); */
         /* return $posts; */
 
