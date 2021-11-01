@@ -4,10 +4,10 @@
         {{-- <div class="flex flex-col items-center justify-center h-screen overflow-hidden" style="background: #edf2f7;"> --}}
         <div class="flex flex-col items-center justify-center " style="background: #edf2f7;">
             @foreach ($activities as $activity)
-            <div class="flex flex-col h-auto max-w-3xl gap-5 p-2 m-2 shadow-lg select-none bg-2white mt- w-80 sm:w-full sm:p-4 sm:h-64 rounded-2xl sm:flex-row">
+            <div class="flex flex-col h-12 max-w-3xl gap-5 p-2 m-2 mt-2 bg-white shadow-lg select-none w-120 sm:w-full sm:p-4 sm:h-64 rounded-2xl sm:flex-row">
                 <div
                     style="background-image: url(@if($activity->image) {{Storage::url($activity->image->url)}} @else https://cdn.pixabay.com/photo/2016/11/30/12/16/question-mark-1872665_960_720.jpg @endif)"
-                    class="h-12 bg-gray-100 bg-center bg-cover sm:h-full sm:w-72 rounded-xl">
+                    class="bg-gray-100 bg-center bg-cover h- sm:h-full sm:w-72 rounded-xl">
                 </div>
                 <div class="flex flex-col gap-2 p-1 sm:flex-1">
                     <h1 class="text-lg font-semibold text-gray-600 sm:text-xl">
