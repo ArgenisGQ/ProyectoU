@@ -11,7 +11,7 @@
                 </div>
                 <div class="flex flex-col gap-2 p-1 sm:flex-1">
                     <h1 class="text-lg font-semibold text-gray-600 sm:text-xl">
-                        <a href="{{route('posts.show', $activity)}}">
+                        <a href="{{route('activities.show', $activity)}}">
                             {{$activity->name}}
                         </a>
 
@@ -22,6 +22,10 @@
                     <p class="text-sm text-gray-500 sm:text-base line-clamp-3">
                         This is the desctiption for your card. This is really really long. This is used to describe the content of the card. I hope you like the design...
                     </p>
+
+                    <P class="content-end text-sm text-gray-800 sm:text-base line-clamp-3">
+                        {{$activity->user->name}}
+                    </P>
                     <div class="flex gap-4 mt-auto">
                     {{-- <button
                         class='flex items-center gap-1 px-3 py-1 transition-colors border border-gray-300 rounded-full sm:text-lg hover:bg-gray-50 focus:bg-gray-100 focus:outline-none focus-visible:border-gray-500'>

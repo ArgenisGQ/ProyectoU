@@ -279,35 +279,88 @@ return [
             /* 'label'       => 4,
             'label_color' => 'success', */
         ],
-        ['header' => 'ADMINISTADOR'],
-        [
-            'text' => 'Facultades (Categorias)',
-            'route'  => 'admin.categories.index',
-            'icon' => 'fab fa-fw fa-buffer',
-            'active' => ['admin/categories*'],
-            'can'         => 'admin.categories.index',
-        ],
-        [
-            'text' => 'Materias (Etiquetas)',
-            'route'  => 'admin.tags.index',
-            'icon' => 'far fa-fw fa-bookmark',
-            'active' => ['admin/tags*'],
-            'can'    => 'admin.tags.index',
-        ],
-        ['header' => 'OPCIONES DE LA ACTIVIDAD'],
-        [
-            'text' => 'Lista de Actividades',
-            'route'  => 'admin.posts.index',
-            'icon' => 'fas fa-fw fa-clipboard',
-            'can'    => 'admin.posts.index',
 
+
+
+        [
+            'text'    => 'ACTIVIDADES',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text'    => 'ADMINISTRAR',
+                    'url'  => '#',
+                    'submenu' => [
+                        [
+                        'text' => 'Facultades',
+                        'route'  => 'admin.faculties.index',
+                        'icon' => 'fab fa-fw fa-buffer',
+                        'active' => ['admin/faculties*'],
+                        'can'         => 'admin.faculties.index',
+                        ],
+                        [
+                        'text' => 'Materias',
+                        'route'  => 'admin.courses.index',
+                        'icon' => 'far fa-fw fa-bookmark',
+                        'active' => ['admin/courses*'],
+                        'can'    => 'admin.courses.index',
+                        ],
+                    ],
+                ],
+                [
+                    'text' => 'Lista de Actividades',
+                    'route'  => 'admin.activities.index',
+                    'icon' => 'fas fa-fw fa-clipboard',
+                    /* 'can'    => 'admin.activities.index', */
+
+                ],
+                [
+                    'text' => 'Crear nuevo Actividad]',
+                    'route'  => 'admin.activities.create',
+                    'icon' => 'fas fa-fw fa-file',
+                    /* 'can'    => 'admin.activities.create', */
+
+                ],
+            ],
         ],
         [
-            'text' => 'Crear nueva Actividad',
-            'route'  => 'admin.posts.create',
-            'icon' => 'fas fa-fw fa-file',
-            'can'    => 'admin.posts.create',
+            'text'    => 'CATALOGO',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text'    => 'ADMINISTRAR',
+                    'url'  => '#',
+                    'submenu' => [
+                        [
+                        'text' => 'Categorias',
+                        'route'  => 'admin.categories.index',
+                        'icon' => 'fab fa-fw fa-buffer',
+                        'active' => ['admin/categories*'],
+                        'can'         => 'admin.categories.index',
+                        ],
+                        [
+                        'text' => 'Etiquetas',
+                        'route'  => 'admin.tags.index',
+                        'icon' => 'far fa-fw fa-bookmark',
+                        'active' => ['admin/tags*'],
+                        'can'    => 'admin.tags.index',
+                        ],
+                    ],
+                ],
+                [
+                    'text' => 'Lista de Catalogo',
+                    'route'  => 'admin.posts.index',
+                    'icon' => 'fas fa-fw fa-clipboard',
+                    'can'    => 'admin.posts.index',
 
+                ],
+                [
+                    'text' => 'Crear nuevo Catalogo',
+                    'route'  => 'admin.posts.create',
+                    'icon' => 'fas fa-fw fa-file',
+                    'can'    => 'admin.posts.create',
+
+                ],
+            ],
         ],
         /* [
             'text'    => 'multilevel',
@@ -346,8 +399,8 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
-        ['header' => 'labels'],
+        ], */
+        /* ['header' => 'labels'],
         [
             'text'       => 'important',
             'icon_color' => 'red',
