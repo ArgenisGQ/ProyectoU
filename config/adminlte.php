@@ -315,7 +315,7 @@ return [
                 ],
                 [
                     'text' => 'Crear nuevo Actividad]',
-                    'route'  => 'admin.activities.create',
+                    /* 'route'  => 'admin.activities.create', */
                     'icon' => 'fas fa-fw fa-file',
                     /* 'can'    => 'admin.activities.create', */
 
