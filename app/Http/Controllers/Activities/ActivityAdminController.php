@@ -10,14 +10,14 @@ use App\Models\Course;
 
 class ActivityAdminController extends Controller
 {
-    public function __construct()
+    /* public function __construct()
     {
-        $this->middleware('can:admin.posts.index')->only('index');
-        $this->middleware('can:admin.posts.create')->only('create', 'store');
-        $this->middleware('can:admin.posts.edit')->only('edit', 'update');
-        $this->middleware('can:admin.posts.destroy')->only('destroy');
-        $this->middleware('can:admin.posts.show')->only('show');
-    }
+        $this->middleware('can:admin.activities.index')->only('index');
+        $this->middleware('can:admin.activities.create')->only('create', 'store');
+        $this->middleware('can:admin.activities.edit')->only('edit', 'update');
+        $this->middleware('can:admin.activities.destroy')->only('destroy');
+        $this->middleware('can:admin.activities.show')->only('show');
+    } */
 
     /**
      * Display a listing of the resource.
