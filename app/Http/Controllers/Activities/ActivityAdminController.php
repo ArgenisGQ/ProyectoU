@@ -7,17 +7,19 @@ use Illuminate\Http\Request;
 use App\Models\Activity;
 use App\Models\Faculty;
 use App\Models\Course;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\ActivityRequest;
 
 class ActivityAdminController extends Controller
 {
-    /* public function __construct()
+    public function __construct()
     {
-        $this->middleware('can:admin.activities.index')->only('index');
+        /* $this->middleware('can:admin.activities.index')->only('index');
         $this->middleware('can:admin.activities.create')->only('create', 'store');
         $this->middleware('can:admin.activities.edit')->only('edit', 'update');
         $this->middleware('can:admin.activities.destroy')->only('destroy');
-        $this->middleware('can:admin.activities.show')->only('show');
-    } */
+        $this->middleware('can:admin.activities.show')->only('show'); */
+    }
 
     /**
      * Display a listing of the resource.
@@ -36,11 +38,11 @@ class ActivityAdminController extends Controller
      */
     public function create()
     {
-        $categories = Faculty::pluck('name', 'id');
+        $faculties = Faculty::pluck('name', 'id');
 
-        $tags = Course::all();
+        $courses = Course::all();
 
-        return view('admin.activities.create', compact('categories', 'tags'));
+        return view('admin.activities.create', compact('faculties', 'courses'));
     }
 
     /**
@@ -49,26 +51,26 @@ class ActivityAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostRequest $request)
+    public function store(ActivityRequest $request)
     {
         /* return Storage::put('posts', $request->file('file')); */
         /* return $request->all(); */
 
-        $post = Post::create($request->all());
+        $activity = Activity::create($request->all());
 
         if ($request->file('file')) {
             $url = Storage::put('public/posts', $request->file('file'));
 
-            $post->image()->create([
+            $activity->image()->create([
                 'url' => $url
             ]);
         }
 
-        if($request->tags){
-            $post->tags()->attach($request->tags);
+        if($request->courses){
+            $activity->courses()->attach($request->courses);
         }
 
-        return redirect()->route('admin.activities.edit', $post);
+        return redirect()->route('admin.activities.edit', $activity);
     }
 
     /**
@@ -79,7 +81,7 @@ class ActivityAdminController extends Controller
      */
     public function show(Activity $post)
     {
-        return view('admin.activities.show', compact('post'));
+        return view('admin.activities.show', compact('activity'));
     }
 
     /**
@@ -88,16 +90,16 @@ class ActivityAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Activity $activity)
     {
-        $this->authorize('author', $post);
+        $this->authorize('author', $activity);
 
-        $categories = Category::pluck('name', 'id');
+        $faculties = Faculty::pluck('name', 'id');
 
-        $tags = Tag::all();
+        $courses = Course::all();
 
 
-        return view('admin.activities.edit', compact('post', 'categories', 'tags'));
+        return view('admin.activities.edit', compact('activity', 'faculties', 'courses'));
     }
 
     /**
@@ -107,23 +109,23 @@ class ActivityAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PostRequest $request, Post $post)
+    public function update(ActivityRequest $request, Activity $activity)
     {
-        $this->authorize('author', $post);
+        $this->authorize('author', $activity);
 
-        $post->update($request->all());
+        $activity->update($request->all());
 
         if ($request->file('file')) {
             $url = Storage::put('public/posts', $request->file('file'));
 
-            if ($post->image) {
-                Storage::delete($post->image->url);
+            if ($activity->image) {
+                Storage::delete($activity->image->url);
 
-                $post->image->update([
+                $activity->image->update([
                     'url' => $url
                 ]);
             }else{
-                $post->image()->create([
+                $activity->image()->create([
                     'url' => $url
                 ]);
             }
@@ -132,12 +134,12 @@ class ActivityAdminController extends Controller
 
         }
 
-        if ($request->tags) {
-                $post->tags()->sync($request->tags);
+        if ($request->courses) {
+                $activity->courses()->sync($request->courses);
         }
 
 
-        return redirect()->route('admin.activities.edit', $post)->with('info', 'El post se actualizo con exito');
+        return redirect()->route('admin.activities.edit', $activity)->with('info', 'La actividad se actualizo con exito');
     }
 
 
@@ -147,13 +149,13 @@ class ActivityAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Activity $post)
+    public function destroy(Activity $activity)
     {
-        $this->authorize('author', $post);
+        $this->authorize('author', $activity);
 
-        $post->delete();
+        $activity->delete();
 
-        return redirect()->route('admin.activities.index', $post)->with('info', 'El post se elimino con exito');
+        return redirect()->route('admin.activities.index', $activity)->with('info', 'La actividad se elimino con exito');
     }
 
 }
