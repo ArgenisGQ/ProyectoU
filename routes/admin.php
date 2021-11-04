@@ -33,10 +33,10 @@ Route::post('users/import', [ExcelController::class, 'import'])->name('admin.use
 
 /* actividades */
 
-Route::get('activities', [IndexController::class, 'index'])->middleware('can:admin.home')->name('admin.activities');
+/* Route::get('activities', [IndexController::class, 'index'])->middleware('can:admin.home')->name('admin.activities'); */
 
-Route::resource('faculties', FacultyAdminController::class)->except('show')->names('admin.faculties');
+/* Route::resource('faculties', FacultyAdminController::class)->except('show')->names('admin.faculties'); */
 
-Route::resource('courses', CourseAdminController::class)->except('show')->names('admin.courses');
+/* Route::resource('courses', CourseAdminController::class)->except('show')->names('admin.courses'); */
 
-Route::resource('activities', ActivityAdminController::class)->names('admin.activitiess');
+/* Route::resource('activities', ActivityAdminController::class)->names('admin.activitiess'); */
