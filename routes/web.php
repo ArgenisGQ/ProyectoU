@@ -45,14 +45,14 @@ Route::get('posts/pdf/show/{post}',[PdfController::class, 'showPdf'])->name('pos
 /* actividades */
 
 
-Route::get('activities', [ActivityController::class, 'index'])->name('admin.activities.index');
+Route::get('activities', [ActivityController::class, 'index'])->name('activities.index');
 
-Route::get('activities/{activity}',[ActivityController::class, 'show'])->name('admin.activities.show');
+Route::get('activities/{activity}',[ActivityController::class, 'show'])->name('activities.show');
 
-Route::get('faculty/{faculty}', [ActivityController::class, 'faculty'])->name('admin.activities.faculty');
+Route::get('faculty/{faculty}', [ActivityController::class, 'faculty'])->name('activities.faculty');
 
-Route::get('course/{course}', [ActivityController::class, 'course'])->name('admin.activities.course');
+Route::get('course/{course}', [ActivityController::class, 'course'])->name('activities.course');
 
-Route::get('activities/pdf/down/{activity}',[PdfController::class, 'downPdf'])->name('admin.activities.pdf.down');
+Route::get('activities/pdf/down/{activity}',[PdfController::class, 'downPdf'])->name('activities.pdf.down');
 
-Route::get('activities/pdf/show/{activity}',[PdfController::class, 'showPdf'])->name('admin.activities.pdf.show');
+Route::get('activities/pdf/show/{activity}',[PdfController::class, 'showPdf'])->name('activities.pdf.show');

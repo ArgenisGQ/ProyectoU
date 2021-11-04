@@ -9,10 +9,10 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\ExcelController;
 
-use App\Http\Controllers\Admin\ACtivities\IndexController;
-use App\Http\Controllers\Admin\ACtivities\ActivityAdminController;
-use App\Http\Controllers\Admin\ACtivities\CourseAdminController;
-use App\Http\Controllers\Admin\ACtivities\FacultyAdminController;
+use App\Http\Controllers\Activities\IndexController;
+use App\Http\Controllers\Activities\ActivityAdminController;
+use App\Http\Controllers\Activities\CourseAdminController;
+use App\Http\Controllers\Activities\FacultyAdminController;
 
 
 Route::get('', [HomeController::class, 'index'])->middleware('can:admin.home')->name('admin.home');
@@ -33,10 +33,10 @@ Route::post('users/import', [ExcelController::class, 'import'])->name('admin.use
 
 /* actividades */
 
-Route::get('activities', [IndexController::class, 'index'])->middleware('can:admin.home')->name('admin.activities');
+Route::get('activities', [IndexController::class, 'index'])->middleware('can:admin.home')->name('admin.activities.index');
 
-Route::resource('faculties', FacultyAdminController::class)->except('show')->names('admin.faculties');
+Route::resource('admin/faculties', FacultyAdminController::class)->except('show')->names('admin.faculties');
 
-Route::resource('courses', CourseAdminController::class)->except('show')->names('admin.courses');
+Route::resource('admin/courses', CourseAdminController::class)->except('show')->names('admin.courses');
 
-Route::resource('activities', ActivityAdminController::class)->names('admin.activitiess');
+Route::resource('admin/activities', ActivityAdminController::class)->names('admin.activities');
