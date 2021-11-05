@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\PdfActiController;
 
 use App\Http\Controllers\Activities\ActivityController;
 use Illuminate\Support\Facades\Auth;
@@ -53,6 +54,6 @@ Route::get('faculty/{faculty}', [ActivityController::class, 'faculty'])->name('a
 
 Route::get('course/{course}', [ActivityController::class, 'course'])->name('activities.course');
 
-Route::get('activities/pdf/down/{activity}',[PdfController::class, 'downPdf'])->name('activities.pdf.down');
+Route::get('activities/pdf/down/{activity}',[PdfActiController::class, 'downPdf'])->name('activities.pdf.down');
 
-Route::get('activities/pdf/show/{activity}',[PdfController::class, 'showPdf'])->name('activities.pdf.show');
+Route::get('activities/pdf/show/{activity}',[PdfActiController::class, 'showPdf'])->name('activities.pdf.show');

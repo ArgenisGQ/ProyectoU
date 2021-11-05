@@ -211,10 +211,10 @@
                             <tr>
                                 <th scope="row">Asignatura</th>
                                 <td class="">
-                                    @foreach ($post->tags as $tag)
+                                    @foreach ($activity->courses as $course)
 
-                                            <a href="{{route('posts.tag', $tag)}}">
-                                                <span class="">{{$tag->name}}</span>
+                                            <a href="{{route('activities.course', $course)}}">
+                                                <span class="">{{$course->name}}</span>
                                             </a>
 
                                     @endforeach
@@ -226,10 +226,10 @@
                             <tr>
                                 <th scope="row">Facultad</th>
                                 <td class="">
-                                    @foreach ($categoria as $categoriaa)
+                                    @foreach ($facultad as $facultadd)
 
-                                            <a href="{{route('posts.category', $categoriaa)}}">
-                                                <span class="ml-2 text-gray-600">{{$categoriaa->name}}</span>
+                                            <a href="{{route('activities.faculty', $facultadd)}}">
+                                                <span class="ml-2 text-gray-600">{{$facultadd->name}}</span>
                                             </a>
 
                                     @endforeach
@@ -240,7 +240,7 @@
                         <tbody class="text-center">
                             <tr>
                                 <th scope="row">Actividad</th>
-                                <td class="">{{$post->name}}</td>
+                                <td class="">{{$activity->name}}</td>
                             </tr>
                         </tbody>
 
@@ -276,7 +276,7 @@
 
                         <tbody>
                             <tr>
-                                <td class="">{!!$post->extract!!}</td>
+                                <td class="">{!!$activity->extract!!}</td>
                             </tr>
                         </tbody>
 
@@ -290,7 +290,7 @@
 
                         <tbody>
                             <tr>
-                                <td class="" >{!!$post->extract01!!}</td>
+                                <td class="" >{!!$activity->extract01!!}</td>
                             </tr>
                         </tbody>
 
