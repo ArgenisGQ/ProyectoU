@@ -27,19 +27,19 @@ class ActivityRequest extends FormRequest
 
         $rules = [
             'name' => 'required',
-            'slug' => 'required|unique:posts',
+            'slug' => 'required|unique:activities',
             'status' => 'required|in:1,2',
             'file' => 'image'
         ];
 
         if($activity){
-            $rules['slug'] = 'required|unique:posts,slug,' . $activity->id;
+            $rules['slug'] = 'required|unique:activities,slug,' . $activity->id;
         }
 
         if($this->status == 2){
             $rules = array_merge($rules,[
-            'category_id' => 'required',
-            'tags' => 'required',
+            'faculty_id' => 'required',
+            'courses' => 'required',
             'extract' => 'required',
             'body' => 'required'
             ]);

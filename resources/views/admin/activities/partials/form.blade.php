@@ -17,10 +17,10 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('category_id', 'Facultad') !!}
-    {!! Form::select('category_id', $faculties,null,['class' => 'form-control']) !!}
+    {!! Form::label('faculty_id', 'Facultad') !!}
+    {!! Form::select('faculty_id', $faculties,null,['class' => 'form-control']) !!}
 
-    @error('category_id')
+    @error('faculty_id')
     <span class="text-danger">{{$message}}</span>
     @enderror
 </div>
@@ -31,7 +31,7 @@
     @foreach ($courses as $course)
 
         <label class="mr-2">
-            {!! Form::checkbox('tags[]', $course->id, null) !!}
+            {!! Form::checkbox('courses[]', $course->id, null) !!}
             {{$course->name}}
         </label>
 

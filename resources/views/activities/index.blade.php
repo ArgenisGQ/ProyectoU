@@ -42,7 +42,7 @@
                         <span>Read more</span>
                     </button> --}}
 
-                    @foreach ($activity->course as $coursex)
+                    @foreach ($activity->courses as $coursex)
 
                                 <a href="{{route('activities.course', $coursex)}}" class="inline-block h-6 px-3 text-white bg-{{$coursex->color}}-500 rounded-full">
                                     {{$coursex->name}}
