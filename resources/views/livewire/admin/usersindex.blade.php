@@ -1,47 +1,58 @@
 <div>
-    <div class="card-header">
-        <input wire:model="search" class="form-control" placeholder="Ingrese el nombre del usuario">
-    </div>
+    <div class="card">
+        <div class="card-header">
+            <input wire:model="search" class="form-control" placeholder="Ingrese el nombre o el email del usuario">
+        </div>
 
-    @if ($posts->count())
-        <div class="card-body">
-            <table class="table table-striped">
-                <thead>
-                    <th>ID</th>
-                    <th>Nombre de la Actividad</th>
-                    <th colspan="2"></th>
-                </thead>
-
-                <Tbody>
-                    @foreach ($posts as $post)
+        @if ($users->count())
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
                         <tr>
-                            <td>{{$post->id}}</td>
-                            {{-- <td>{{$post->name}}</td> --}}
-                            <td><a href="{{route('posts.show', $post)}}">
-                                {{$post->name}}
-                            </a></td>
-                            <td with="10px">
-                                <a href="{{route('admin.posts.edit', $post)}}" class="btn btn-primary btn-sm">Editar</a>
-                            </td>
-                            <td with="10px">
-                                <form action="{{route('admin.posts.destroy', $post)}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
-                                </form>
-                            </td>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Rol</th>
                         </tr>
-                    @endforeach
-                </Tbody>
-            </table>
-        </div>
-        <div class="card-footer">
-            {{$posts->links()}}
-        </div>
-    @else
-        <div class="card-body">
-            <strong>No hay ningun registro...</strong>
-        </div>
-    @endif
+                    </thead>
+
+                    <tbody>
+                        @foreach ($users as $user)
+                            <tr>
+                                <td>{{$user->id}}</td>
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->email}}</td>
+                                <td>
+                                    @if(!empty($user->getRoleNames()))
+                                        @foreach ($user->getRoleNames() as $rolName )
+                                        <h5><span class="badge badge-dark">{{$rolName}}</span></h5>
+                                        @endforeach
+                                    @endif
+                                </td>
+                                <td width="10px">
+                                    <a href="{{route('admin.users.edit', $user)}}" class="btn btn-primary">Editar</a>
+                                </td>
+                                <td class="10px">
+                                    <form action="{{route('admin.users.destroy', $user)}}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card-footer">
+                {{$users->links()}}
+            </div>
+        @else
+            <div class="card-body">
+                <strong>No hay registros</strong>
+            </div>
+        @endif
+
+    </div>
 </div>
