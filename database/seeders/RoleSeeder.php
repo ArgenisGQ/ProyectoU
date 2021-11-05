@@ -66,6 +66,11 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin.activities.destroy',
                             'description' => 'Eliminar actividad'])->syncRoles($role1, $role2);
 
+        Permission::create(['name' => 'activities.pdf.down',
+                            'description' => 'Bajar PDF de actividades'])->syncRoles($role1);
+        Permission::create(['name' => 'activities.pdf.show',
+                            'description' => 'Mostrar/Bajar PDF de actividades'])->syncRoles($role1);
+
         Permission::create(['name' => 'admin.faculties.index',
                             'description' => 'Ver listado de facultades'])->syncRoles($role1, $role2);
         Permission::create(['name' => 'admin.faculties.create',

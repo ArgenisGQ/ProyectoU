@@ -25,7 +25,7 @@ class ActivitySeeder extends Seeder
                 'imageable_id' => $activity->id,
                 'imageable_type' => Activity::class
             ]);
-            $activity->course()->attach([
+            $activity->courses()->attach([
                 rand(1,4),
                 rand(5,8)
             ]);

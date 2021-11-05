@@ -1,8 +1,8 @@
 <x-app-layout>
     <div class="container mx-auto">
-        <a href="{{route('posts.pdf.down',$activity)}}" class="float-right btn btn-secondary btn-sm">PDF-down</a>
+        <a href="{{route('activities.pdf.down',$activity)}}" class="float-right btn btn-secondary btn-sm">PDF-down</a>
         <br>
-        <a href="{{route('posts.pdf.show',$activity)}}" class="float-right btn btn-secondary btn-sm">PDF-show</a>
+        <a href="{{route('activities.pdf.show',$activity)}}" class="float-right btn btn-secondary btn-sm">PDF-show</a>
         <hr>
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
             {{-- <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg"> --}}
@@ -35,7 +35,7 @@
                             <tr>
                                 <td class="w-1/4 h-8 bg-gray-300">Facultad</td>
                                 <td class="w-3/4 h-8 bg-gray-100">
-                                    @foreach ($faculties as $faculty)
+                                    @foreach ($facultad as $faculty)
 
                                             <a href="{{route('posts.category', $faculty)}}">
                                                 <span class="ml-2 text-gray-600">{{$faculty->name}}</span>

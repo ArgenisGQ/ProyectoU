@@ -36,7 +36,9 @@ class ActivityController extends Controller
 
                             ->get();
 
-        return view('activity.show', compact('activity', 'similares', 'facultad'));
+        return view('activities.show', compact('activity', 'similares', 'facultad'));
+
+        /* return $activity; */
 
         /* return $category_post; */
         /* return $post; */
