@@ -295,14 +295,14 @@ return [
                         'route'  => 'admin.faculties.index',
                         'icon' => 'fab fa-fw fa-buffer',
                         'active' => ['admin/faculties*'],
-                        'can'         => 'admin.faculties.index',
+                        /* 'can'         => 'admin.faculties.index', */
                         ],
                         [
                         'text' => 'Materias',
                         'route'  => 'admin.courses.index',
                         'icon' => 'far fa-fw fa-bookmark',
                         'active' => ['admin/courses*'],
-                        'can'    => 'admin.courses.index',
+                        /* 'can'    => 'admin.courses.index', */
                         ],
                     ],
                 ],
@@ -314,8 +314,8 @@ return [
 
                 ],
                 [
-                    'text' => 'Crear nuevo Actividad]',
-                    /* 'route'  => 'admin.activities.create', */
+                    'text' => 'Crear nuevo Actividad',
+                    'route'  => 'admin.activities.create',
                     'icon' => 'fas fa-fw fa-file',
                     /* 'can'    => 'admin.activities.create', */
 

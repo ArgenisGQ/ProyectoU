@@ -34,7 +34,9 @@ Route::post('users/import', [ExcelController::class, 'import'])->name('admin.use
 /* actividades */
 
 /* <<<<<<< HEAD */
-Route::get('test/activities', [IndexController::class, 'index'])->middleware('can:admin.index')->name('admin.activities.index');
+/* Route::get('test/activities', [IndexController::class, 'index'])->middleware('can:admin.index')->name('admin.activities.index'); */
+
+Route::get('test/activities', [IndexController::class, 'index'])->name('admin.activities.index');
 
 Route::resource('faculties', FacultyAdminController::class)->except('show')->names('admin.faculties');
 

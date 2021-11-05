@@ -18,7 +18,7 @@
 
 <div class="form-group">
     {!! Form::label('category_id', 'Facultad') !!}
-    {!! Form::select('category_id', $categories,null,['class' => 'form-control']) !!}
+    {!! Form::select('category_id', $faculties,null,['class' => 'form-control']) !!}
 
     @error('category_id')
     <span class="text-danger">{{$message}}</span>
@@ -28,18 +28,18 @@
 <div class="form-group">
     <p class="font-weight-bold">Materias</p>
 
-    @foreach ($tags as $tag)
+    @foreach ($courses as $course)
 
         <label class="mr-2">
-            {!! Form::checkbox('tags[]', $tag->id, null) !!}
-            {{$tag->name}}
+            {!! Form::checkbox('tags[]', $course->id, null) !!}
+            {{$course->name}}
         </label>
 
     @endforeach
 
 
 
-    @error('tags')
+    @error('courses')
         <br>
         <span class="text-danger">{{$message}}</span>
     @enderror
@@ -70,8 +70,8 @@
 <div class="mb-3 row">
     <div class="col">
         <div class="image-wrapper">
-            @isset($post->image)
-                <img id="picture" src="{{Storage::url($post->image->url)}}" >
+            @isset($activity->image)
+                <img id="picture" src="{{Storage::url($activity->image->url)}}" >
             @else
                 <img id="picture" src="https://cdn.pixabay.com/photo/2015/09/02/12/28/pencil-918449_960_720.jpg" >
             @endisset

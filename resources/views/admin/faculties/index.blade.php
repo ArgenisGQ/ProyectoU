@@ -3,8 +3,8 @@
 @section('title', 'Proyecto U')
 
 @section('content_header')
-    @can('admin.categories.create')
-        <a href="{{route('admin.categories.create')}}" class="float-right btn btn-secondary btn-sm">Agregar Facultades</a>
+    @can('admin.faculties.create')
+        <a href="{{route('admin.faculties.create')}}" class="float-right btn btn-secondary btn-sm">Agregar Facultades</a>
     @endcan
 
     <h1>Lista de Facultades</h1>
@@ -31,19 +31,19 @@
                 </thead>
 
                 <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($faculties as $faculty)
                         <tr>
-                            <td>{{$category->id}}</td>
-                            <td>{{$category->name}}</td>
+                            <td>{{$faculty->id}}</td>
+                            <td>{{$faculty->name}}</td>
                             <td width="10px">
-                                @can('admin.categories.edit')
-                                    <a href="{{route('admin.categories.edit', $category)}}" class="btn btn-primary btn-sm">Editar</a>
+                                @can('admin.faculties.edit')
+                                    <a href="{{route('admin.faculties.edit', $faculty)}}" class="btn btn-primary btn-sm">Editar</a>
                                 @endcan
 
                             </td>
                             <td width="10px">
-                                @can('admin.categories.destroy')
-                                    <form action="{{route('admin.categories.destroy', $category)}}" method="POST">
+                                @can('admin.faculties.destroy')
+                                    <form action="{{route('admin.faculties.destroy', $faculty)}}" method="POST">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>

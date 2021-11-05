@@ -16,11 +16,11 @@
 
         <div class="card">
             <div class="card-body">
-            {!! Form::model($post,['route' => ['admin.posts.update', $post], 'autocomplete' => 'off', 'files' => 'true', 'method' => 'PUT' ]) !!}
+            {!! Form::model($activity,['route' => ['admin.activities.update', $activity], 'autocomplete' => 'off', 'files' => 'true', 'method' => 'PUT' ]) !!}
 
                 {{-- {!! Form::hidden('user_id', auth()->user()->id) !!} --}}
 
-                @include('admin.posts.partials.form')
+                @include('admin.activities.partials.form')
 
 
                 {!! Form::submit('Actualizar actividad', ['class' => 'btn btn-primary']) !!}
