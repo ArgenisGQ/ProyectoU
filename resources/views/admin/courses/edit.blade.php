@@ -15,9 +15,9 @@
 
         <div class="card">
             <div class="card-body">
-            {!! Form::model($tag, ['route' => ['admin.tags.update', $tag], 'method' => 'put']) !!}
+            {!! Form::model($course, ['route' => ['admin.courses.update', $course], 'method' => 'put']) !!}
 
-                @include('admin.tags.partials.form')
+                @include('admin.courses.partials.form')
 
                 {!! Form::submit('Actualizar materia', ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}

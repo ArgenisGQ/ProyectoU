@@ -16,9 +16,9 @@
 
     <div class="card">
         <div class="card-body">
-            {!! Form::open(['route' => 'admin.tags.store']) !!}
+            {!! Form::open(['route' => 'admin.courses.store']) !!}
 
-                @include('admin.tags.partials.form')
+                @include('admin.courses.partials.form')
 
             {!! Form::submit('Crear materia', ['class' => 'btn btn-primary']) !!}
         {!! Form::close() !!}

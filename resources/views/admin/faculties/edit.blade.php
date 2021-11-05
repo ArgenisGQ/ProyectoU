@@ -16,7 +16,7 @@
 
     <div class="card">
         <div class="card-body">
-        {!! Form::model($category, ['route' => ['admin.categories.update', $category], 'method' => 'put']) !!}
+        {!! Form::model($faculty, ['route' => ['admin.faculties.update', $faculty], 'method' => 'put']) !!}
 
             <div class="form-group">
                 {!! Form::label('name', 'Nombre de facultad') !!}

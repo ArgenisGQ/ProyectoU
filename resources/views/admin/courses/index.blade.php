@@ -2,9 +2,9 @@
 
 @section('title', 'Proyecto U')
 
-@section('admin.tags.create')
+@section('admin.courses.create')
     @can('update')
-        <a href="{{route('admin.tags.create')}}" class="float-right btn btn-secondary">Nueva Materia</a>
+        <a href="{{route('admin.courses.create')}}" class="float-right btn btn-secondary">Nueva Materia</a>
     @endcan
 
 
@@ -31,18 +31,18 @@
                 </thead>
 
                 <tbody>
-                    @foreach ($tags as $tag)
+                    @foreach ($courses as $course)
                         <tr>
-                            <td>{{$tag->id}}</td>
-                            <td>{{$tag->name}}</td>
+                            <td>{{$course->id}}</td>
+                            <td>{{$course->name}}</td>
                             <td width="10px">
-                                @can('admin.tags.edit')
-                                    <a href="{{route('admin.tags.edit', $tag)}}" class="btn btn-primary btn-sm">Editar</a>
+                                @can('admin.courses.edit')
+                                    <a href="{{route('admin.courses.edit', $course)}}" class="btn btn-primary btn-sm">Editar</a>
                                 @endcan
                             </td>
                             <td width="10px">
-                                @can('admin.tags.destroy')
-                                    <form action="{{route('admin.tags.destroy', $tag)}}" method="POST">
+                                @can('admin.courses.destroy')
+                                    <form action="{{route('admin.courses.destroy', $course)}}" method="POST">
                                         @csrf
                                         @method('delete')
 
