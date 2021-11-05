@@ -16,7 +16,7 @@
     <div class="card">
         <div class="card-body">
             {{-- {!! Form::open(['route' => 'admin.users.store']) !!} --}}
-            {!! Form::model($user, ['route' => ['admin.users.store', $user], 'method' => 'put']) !!}
+            {!! Form::model($user, ['route' => ['admin.users.update', $user], 'method' => 'PUT']) !!}
 
                 @include('admin.users.partials.form')
 

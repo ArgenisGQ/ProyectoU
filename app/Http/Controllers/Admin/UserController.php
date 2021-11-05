@@ -136,23 +136,36 @@ class UserController extends Controller
     {
         $user->roles()->sync($request->roles); //
 
+        /* return $user; */
+
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email'.$user,
-            'password' => 'same:confirm-password',
-            /* 'role' => 'required' */
+            /* 'email' => "required|email|unique:users,email,$user->email", */
+            'password' => "same:confirm-password"
+            /* ,'role' => 'required' */
         ]);
 
         $input = $request->all();
 
-        if(!empty($input('password'))){
-            $input['password'] = Hash::make($input('password'));
+        /* return $input;  */
+
+
+        if(!empty($input['password'])){
+            $input['password'] = Hash::make($input['password']);
         }else{
             $input = Arr::except($input, ['password']);
         }
 
-        $user = User::find($user);
-        $user->update($input);
+        /* return $input; */
+
+        $user = User::find($user->id);
+
+        /* return $user; */
+
+        $user->update([$input]);
+
+        /* return $user; */
+
         DB::table('model_has_roles')->where('model_id', $user)->delete();
 
         return redirect()->route('admin.users.edit', $user)->with('info', 'Se asigno los roles correspondientes'); //
