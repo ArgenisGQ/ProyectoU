@@ -2,8 +2,8 @@
 
 @section('title', 'Proyecto U')
 
-@section('admin.tags.create')
-    @can('update')
+@section('content_header')
+    @can('admin.tags.create')
         <a href="{{route('admin.tags.create')}}" class="float-right btn btn-secondary">Nueva Materia</a>
     @endcan
 
