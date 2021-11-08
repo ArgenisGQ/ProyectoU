@@ -4,11 +4,11 @@
 
 @section('content_header')
     @can('admin.tags.create')
-        <a href="{{route('admin.tags.create')}}" class="float-right btn btn-secondary">Nueva Materia</a>
+        <a href="{{route('admin.tags.create')}}" class="float-right btn btn-secondary">Nueva Etiqueta</a>
     @endcan
 
 
-    <h1>Listado de materias</h1>
+    <h1>Listado de etiquetas</h1>
 @stop
 
 @section('content')
