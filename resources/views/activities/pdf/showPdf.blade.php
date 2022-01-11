@@ -261,7 +261,7 @@
 
                         <tbody>
                             <tr>
-                                <td class="">{!! $post->body !!}</td>
+                                <td class="">{!! $activity->body !!}</td>
                             </tr>
                         </tbody>
 
