@@ -125,6 +125,7 @@
             margin-bottom: auto;
             margin-left: auto;
             margin-right: auto;
+            font-size: 15px;
         }
 
         /* header {

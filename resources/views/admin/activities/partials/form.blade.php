@@ -93,7 +93,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('body', 'Descripción de la actividad:') !!}
+    {!! Form::label('body', 'Proposito de la actividad:') !!}
     {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
 
     @error('body')
@@ -102,10 +102,41 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('extract', 'Proposito de la actividad:') !!}
+    {!! Form::label('lapse', 'Lapso de entrega:') !!}
+    {!! Form::textarea('lapse', null, ['class' => 'form-control']) !!}
+
+    @error('lapse')
+        <span class="text-danger">{{$message}}</span>
+    @enderror
+</div>
+
+<div class="form-group">
+    {!! Form::label('extract', 'Logros de la actividad:') !!}
     {!! Form::textarea('extract', null, ['class' => 'form-control']) !!}
 
     @error('extract')
+        <span class="text-danger">{{$message}}</span>
+    @enderror
+</div>
+
+
+<div class="form-group">
+    <p class="font-weight-bold">Tipo de evaluacion:</p>
+
+    <label>
+        {!! Form::radio('type', 1, true) !!}
+        Individual
+    </label>
+
+    <label>
+        {!! Form::radio('type', 2) !!}
+        Grupal
+    </label>
+
+
+
+    @error('type')
+        <br>
         <span class="text-danger">{{$message}}</span>
     @enderror
 </div>
