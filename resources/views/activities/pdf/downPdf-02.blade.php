@@ -8,7 +8,7 @@
 
     <style type="text/css">
         {{$css_data}}
-        <style>/* 
+        <style>
         @font-face {
         font-family: 'Roboto';
         font-style: normal;
@@ -26,34 +26,14 @@
         font-style: normal;
         font-weight: 700;
         src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlvAw.ttf) format('truetype');
-        } */
-
-        @font-face {
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 400;
-        src: local('Roboto'), local('Roboto-Regular'), url('fonts/Roboto-Regular.ttf') format('truetype');
         }
+
         /* Añado la declaración de font-family, para usar la fuente de Google Fonts en este PDF */
 
         body {
             font-family: 'Roboto', serif;
             color: 303030;
         }
-
-        /* h6 {
-            font-family: 'Roboto', serif;
-            color: 303030;
-        } */
-
-        h1,h2,h3,h4,h5,h6 {
-            font-family: "Roboto", sans-serif;
-            font-weight: normal;
-            /* color: red; */
-            margin-bottom:5px;
-            margin-top:0px;
-        }
-
     </style>
 
 
@@ -102,32 +82,13 @@
 
         }
 
-        /* main {
+        main {
             float:none;
             /* top: 0cm; */
             margin-top: 0cm;
             margin-bottom: 0cm;
-        } */
-
+        }
         header {
-            position: fixed;
-            width: 18cm;
-            margin-left: auto;
-            margin-right: auto;
-            top: 0cm;
-        }
-
-        main {
-            float:none;
-            width: 18cm;
-            /* top: 0cm; */
-            margin-top: auto;
-            margin-bottom: auto;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* header {
             position: fixed;
             width: 18cm;
             margin-left: auto;
@@ -150,8 +111,7 @@
             /* color: gray; */
             /* text-align: left; */
             /* line-height: 4cm; */
-        } */
-
+        }
         footer {
             position: fixed;
             bottom: 0cm;
@@ -205,51 +165,6 @@
             filter:alpha(opacity=15);
             opacity:.15;
         }
-
-        /* --estilos para tablas-- */
-
-        table.colapsado {
-            border-collapse: collapse;
-        }
-
-        .ancho-1de4 {
-            /* background-color: blue; */ 
-            width: 25%;
-        }
-
-        .ancho-3de4 {
-            /* background-color: blue;  */
-            width: 75%;
-        }
-
-        .bg-gris {
-            /* background-color: blue;  */
-            background-color:#CEC8C6;
-        }
-
-        /* ---Margenes para texto lado del logo--- */
-
-        .mg-text  {
-            margin-top: 0px;
-            margin-right: 0px;
-            margin-bottom: 0px;
-            margin-left: 80px;
-        }
-
-        .mg-logo  {
-            margin-top: 20px;
-            margin-right: 0px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-        }
-
-        .mg-text-codigo  {
-            margin-top: 25px;
-            margin-right: 0px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-        }
-
     </style>
 
 
@@ -265,22 +180,17 @@
     <header>
 
         <span class="p-2">
-            <img src="{{$logo}}" width="70" class="mx-auto mg-logo">
+            <img src="{{$logo}}" width="90" class="mx-auto">
         </span>
         <span>
-            <p class="text-right small mg-text-codigo "> FOO-VRA140-202321-104 </p>
+            <p class="text-right small"> FOO-VRA140-202321-104 </p>
         </span>
-        {{-- <span>
-            <h6 class="mg-text ">UNIVERSIDAD YACAMBU</h6>
-            <h6 class="mg-text ">VICERRECTORADO ACADEMICO</h6>
-            <h6 class="mg-text ">DIRECCION DE ESTUDIOS A DISTANCIA</h6>
-        </span> --}}
-
         <span>
             <h6 class="text-center ">UNIVERSIDAD YACAMBU</h6>
             <h6 class="text-center ">VICERRECTORADO ACADEMICO</h6>
             <h6 class="text-center ">DIRECCION DE ESTUDIOS A DISTANCIA</h6>
         </span>
+
 
     </header>
 
@@ -298,18 +208,18 @@
                 <div class="">
                     <div class="">
 
-                        <table class="table table-sm colapsado" border="2">
+                        <table class="table table-sm">
                             <tbody class="text-center">
                                 <tr>
-                                    <th scope="row" class="ancho-1de4 bg-gris">Docente - PDF - down</th>
-                                    <td class="ancho-3de4">{!! auth()->user()->name !!}</td>
+                                    <th scope="row">Docente - PDF - down</th>
+                                    <td >{!! auth()->user()->name !!}</td>
 
                                 </tr>
                             </tbody>
 
                             <tbody class="text-center">
                                 <tr>
-                                    <th class="bg-gris" scope="row">Asignatura</th>
+                                    <th scope="row">Asignatura</th>
                                     <td class="">
                                         @foreach ($activity->courses as $course)
 
@@ -324,7 +234,7 @@
 
                             <tbody class="text-center">
                                 <tr>
-                                    <th class="bg-gris" scope="row">Facultad</th>
+                                    <th scope="row">Facultad</th>
                                     <td class="">
                                         @foreach ($facultad as $facultadd)
 
@@ -339,14 +249,14 @@
 
                             <tbody class="text-center">
                                 <tr>
-                                    <th class="bg-gris" scope="row">Actividad</th>
+                                    <th scope="row">Actividad</th>
                                     <td class="">{{$activity->name}}</td>
                                 </tr>
                             </tbody>
 
                             <tbody class="text-center">
                                 <tr>
-                                    <th class="bg-gris" scope="row">Tipo de Actividad</th>
+                                    <th scope="row">Tipo de Actividad</th>
                                     <td class="">- - - seleccion - - -</td>
                                 </tr>
                             </tbody>
@@ -355,25 +265,25 @@
                     </div>
 
                     <div class="">
-                        
-                        <table class="colapsado" border="1">
+                        {{--
+                        <table>
                             <thead class="thead-light">
                                 <tr>
-                                    <th class="p-1 text-center bg-gris">Descripcion de la actividad</th>
+                                    <th class="p-1 text-center table-dark">Descripcion de la actividad</th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 <tr>
-                                    <td class="">{!! $activity->body !!}</td>
+                                    <td class="">{!! $post->body !!}</td>
                                 </tr>
                             </tbody>
 
                         </table>
-                         
+                         --}}
 
 
-                            {{-- <div class="thead-light">
+                            <div class="thead-light">
                                 <div>
                                     <div class="p-1 text-center table-dark">Descripcion de la actividad</div>
                                 </div>
@@ -383,7 +293,7 @@
                                 <div>
                                     <div class="">{!! $activity->body !!}</div>
                                 </div>
-                            </div> --}}
+                            </div>
 
 
 
@@ -392,23 +302,22 @@
                     {{-- <div class="page-break"></div> --}}
 
                     <div class="page-break-inside">
-                        
-                        <table class="colapsado" border="1" >
+                        {{--
+                        <table >
                             <thead>
                                 <tr>
-                                    <th class="p-1 text-center bg-gris" >Proposito de la actividad</th>
+                                    <th class="p-1 text-center" >Proposito de la actividad</th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 <tr>
-                                    <td class="">{!!$activity->extract!!}</td>
+                                    <td class="">{!!$post->extract!!}</td>
                                 </tr>
                             </tbody>
                         </table>
-                        
+                        --}}
 
-                            {{-- 
                             <div>
                                 <div>
                                     <h5 class="p-1 text-center" >Proposito de la actividad</h5>
@@ -420,29 +329,29 @@
                                     <div class="">{!!$activity->extract!!}</div>
                                 </div>
                             </div>
-                            --}}
+
 
                     </div>
 
                     <div class="page-break-inside">
-                        
-                        <table class="colapsado" border="1" >
+                        {{--
+                        <table >
                             <thead>
                                 <tr>
-                                    <th class="p-1 text-center bg-gris">Aprendido en la actividad</th>
+                                    <th class="p-1 text-center">Aprendido en la actividad</th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 <tr>
-                                    <td class="" >{!!$activity->extract01!!}</td>
+                                    <td class="" >{!!$post->extract01!!}</td>
                                 </tr>
                             </tbody>
                         </table>
-                        
+                        --}}
 
 
-                            {{-- <div>
+                            <div>
                                 <div>
                                     <h5 class="p-1 text-center">Aprendido en la actividad</h5>
                                 </div>
@@ -453,7 +362,7 @@
                                     <div class="" >{!!$activity->extract01!!}</div>
                                 </div>
                             </div>
-                            --}}
+
 
                     </div>
                 </div>

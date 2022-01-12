@@ -161,26 +161,11 @@
 
         /* --estilos para tablas-- */
 
-        table.colapsado {
-            border-collapse: collapse;
-        }
-
-        .ancho-1de4 {
-            /* background-color: blue; */
-            width: 25%;
-        }
-
-        .ancho-3de4 {
-            /* background-color: blue;  */
-            width: 75%;
-        }
-
-        .bg-gris {
-            /* background-color: blue;  */
-            background-color:#CEC8C6;
-        }
+        table.separado {border-collapse: separate;}
 
 
+        table.colapsado {border-collapse: collapse;}
+        
     </style>
 
 
@@ -222,19 +207,18 @@
             <h3 class="text-center">Redaccion de Actividades de Aprendizaje</h3>
             <div class="row ">
                 <div class="">
-                    {{-- <table class="table table-hover page-break"> --}}
                     <table class="table table-hover page-break">
                         <tbody class="text-center">
                             <tr>
-                                <th class="bg-gris" scope="row">Docente - PDF - ONLY SHOW</th>
-                                <td>{!! auth()->user()->name !!}</td>
+                                <th scope="row">Docente - PDF - ONLY SHOW</th>
+                                <td >{!! auth()->user()->name !!}</td>
                             </tr>
                         </tbody>
                         <br>
                         <tbody class="text-center">
                             <tr>
-                                <th scope="row" class="ancho-1de4 bg-gris">Asignatura</th>
-                                <td class="ancho-3de4">
+                                <th scope="row">Asignatura</th>
+                                <td class="">
                                     @foreach ($activity->courses as $course)
 
                                             <a href="{{route('activities.course', $course)}}">
@@ -248,7 +232,7 @@
 
                         <tbody class="text-center">
                             <tr>
-                                <th class="bg-gris" scope="row">Facultad</th>
+                                <th scope="row">Facultad</th>
                                 <td class="">
                                     @foreach ($facultad as $facultadd)
 
@@ -263,23 +247,23 @@
 
                         <tbody class="text-center">
                             <tr>
-                                <th class="bg-gris" scope="row">Actividad</th>
+                                <th scope="row">Actividad</th>
                                 <td class="">{{$activity->name}}</td>
                             </tr>
                         </tbody>
 
                         <tbody class="text-center">
                             <tr>
-                                <th class="bg-gris colapsado" border="1" scope="row">Tipo de Actividad</th>
+                                <th scope="row">Tipo de Actividad</th>
                                 <td class="">- - - seleccion - - -</td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <table class="page-break colapsado" border="1"">
+                    <table class="page-break">
                         <thead class="thead-light">
                             <tr>
-                                <th class="p-1 text-center bg-gris">Descripcion de la actividad</th>
+                                <th class="p-1 text-center table-dark">Descripcion de la actividad</th>
                             </tr>
                         </thead>
 
@@ -291,10 +275,10 @@
 
                     </table>
                     {{-- <div class="page-break"></div> --}}
-                    <table class="page-break-inside colapsado" border="1">
+                    <table class="page-break-inside">
                         <thead>
                             <tr>
-                                <th class="p-1 text-center bg-gris" >Proposito de la actividad</th>
+                                <th class="p-1 text-center" >Proposito de la actividad</th>
                             </tr>
                         </thead>
 
@@ -305,10 +289,10 @@
                         </tbody>
 
                     </table>
-                    <table class="page-break-inside colapsado" border="1">
+                    <table class="page-break-inside">
                         <thead>
                             <tr>
-                                <th class="p-1 text-center bg-gris">Aprendido en la actividad</th>
+                                <th class="p-1 text-center">Aprendido en la actividad</th>
                             </tr>
                         </thead>
 
