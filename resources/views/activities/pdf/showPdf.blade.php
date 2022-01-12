@@ -9,7 +9,7 @@
     <style type="text/css">
         {{$css_data}}
         <style>
-        @font-face {
+        /* @font-face {
         font-family: 'Roboto';
         font-style: normal;
         font-weight: 300;
@@ -26,6 +26,13 @@
         font-style: normal;
         font-weight: 700;
         src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlvAw.ttf) format('truetype');
+        } */
+
+        @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 250;
+        src: local('Roboto'), local('Roboto-Regular'), url('fonts/Roboto-Regular.ttf') format('truetype');
         }
 
         /* Añado la declaración de font-family, para usar la fuente de Google Fonts en este PDF */

@@ -31,7 +31,7 @@
         @font-face {
         font-family: 'Roboto';
         font-style: normal;
-        font-weight: 400;
+        font-weight: 250;
         src: local('Roboto'), local('Roboto-Regular'), url('fonts/Roboto-Regular.ttf') format('truetype');
         }
         /* Añado la declaración de font-family, para usar la fuente de Google Fonts en este PDF */
