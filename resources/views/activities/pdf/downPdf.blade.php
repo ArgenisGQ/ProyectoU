@@ -8,7 +8,7 @@
 
     <style type="text/css">
         {{$css_data}}
-        <style>/* 
+        <style>/*
         @font-face {
         font-family: 'Roboto';
         font-style: normal;
@@ -213,7 +213,7 @@
         }
 
         .ancho-1de4 {
-            /* background-color: blue; */ 
+            /* background-color: blue; */
             width: 25%;
         }
 
@@ -250,6 +250,13 @@
             margin-left: 0px;
         }
 
+        .mg-text-emcabezado  {
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+            margin-left: 30px;
+        }
+
     </style>
 
 
@@ -277,9 +284,9 @@
         </span> --}}
 
         <span>
-            <h6 class="text-center ">UNIVERSIDAD YACAMBU</h6>
-            <h6 class="text-center ">VICERRECTORADO ACADEMICO</h6>
-            <h6 class="text-center ">DIRECCION DE ESTUDIOS A DISTANCIA</h6>
+            <h6 class="mg-text-emcabezado text-center ">UNIVERSIDAD YACAMBU</h6>
+            <h6 class="mg-text-emcabezado text-center ">VICERRECTORADO ACADEMICO</h6>
+            <h6 class="mg-text-emcabezado text-center ">DIRECCION DE ESTUDIOS A DISTANCIA</h6>
         </span>
 
     </header>
@@ -355,7 +362,7 @@
                     </div>
 
                     <div class="">
-                        
+
                         <table class="colapsado" border="1">
                             <thead class="thead-light">
                                 <tr>
@@ -370,7 +377,7 @@
                             </tbody>
 
                         </table>
-                         
+
 
 
                             {{-- <div class="thead-light">
@@ -392,7 +399,7 @@
                     {{-- <div class="page-break"></div> --}}
 
                     <div class="page-break-inside">
-                        
+
                         <table class="colapsado" border="1" >
                             <thead>
                                 <tr>
@@ -406,9 +413,9 @@
                                 </tr>
                             </tbody>
                         </table>
-                        
 
-                            {{-- 
+
+                            {{--
                             <div>
                                 <div>
                                     <h5 class="p-1 text-center" >Proposito de la actividad</h5>
@@ -425,7 +432,7 @@
                     </div>
 
                     <div class="page-break-inside">
-                        
+
                         <table class="colapsado" border="1" >
                             <thead>
                                 <tr>
@@ -439,7 +446,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        
+
 
 
                             {{-- <div>
