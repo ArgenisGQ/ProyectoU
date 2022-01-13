@@ -9,6 +9,7 @@ use App\Models\Faculty;
 use App\Models\Course;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ActivityRequest;
+use Carbon\Carbon;
 
 class ActivityAdminController extends Controller
 {
@@ -54,7 +55,7 @@ class ActivityAdminController extends Controller
     public function store(ActivityRequest $request)
     {
         /* return Storage::put('posts', $request->file('file')); */
-        return $request->all();
+        /* return $request->all(); */
 
         $activity = Activity::create($request->all());
 
@@ -81,6 +82,13 @@ class ActivityAdminController extends Controller
      */
     public function show(Activity $activity)
     {
+        /* return $activity->all(); */
+
+
+
+
+
+
         return view('admin.activities.show', compact('activity'));
     }
 

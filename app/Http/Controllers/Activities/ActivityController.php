@@ -36,7 +36,9 @@ class ActivityController extends Controller
 
                             ->get();
 
-        return view('activities.show', compact('activity', 'similares', 'facultad'));
+        $hoy = now();
+
+        return view('activities.show', compact('activity', 'similares', 'facultad', 'hoy'));
 
         /* return $activity; */
 

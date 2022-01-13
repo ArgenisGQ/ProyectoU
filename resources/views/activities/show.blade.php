@@ -66,7 +66,7 @@
                     <table class="w-full my-4 border border-separate border-gray-800 table-auto">
                         <thead>
                             <tr>
-                                <th class="p-1 ">Descripcion de la actividad</th>
+                                <th class="p-1 ">Proposito de la actividad</th>
                             </tr>
                         </thead>
 
@@ -81,11 +81,35 @@
                     </table>
                 {{-- </div> --}}
 
+                    <table class="w-full my-4 border border-separate border-gray-800 table-auto ">
+                        <thead>
+                            <tr>
+                                <th class="p-1">Lapso de entrega</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                {{-- <td class="">{!! $activity->extract!!}</td> --}}
+
+                               {{--  <td class="">{!! $activity->lapse_in!!}</td>
+                                <td class="">{!! $activity->lapse_out!!}</td> --}}
+
+                                {{-- <td class="">{{$lapse}}</td> --}}
+                                {{-- <td class="">{!! $lapse_outt!!}</td --}}>
+
+                                <td class="">{!!$activity->lapse_in!!}</td>
+                                <td class="">{!!$activity->lapse_out!!}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
                 {{-- <div class=""> --}}
                     <table class="w-full my-4 border border-separate border-gray-800 table-auto ">
                         <thead>
                             <tr>
-                                <th class="p-1">Proposito de la actividad</th>
+                                <th class="p-1">Logros de la actividad</th>
                             </tr>
                         </thead>
 
@@ -97,11 +121,27 @@
                     </table>
                 {{-- </div> --}}
 
+                <table class="w-full my-4 border border-separate border-gray-800 table-auto ">
+                    <thead>
+                        <tr>
+                            <th class="p-1">Tipo de evaluacion</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            {{-- <td class="">{!! $activity->extract!!}</td> --}}
+
+                            <td class="">{!! $activity->type!!}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
                 {{-- <div class=""> --}}
                     <table class="w-full my-4 border border-separate border-gray-800 table-auto ">
                         <thead>
                             <tr>
-                                <th class="p-1">Aprendido en la actividad</th>
+                                <th class="p-1">Puntuacion en la actividad</th>
                             </tr>
                         </thead>
 
@@ -111,10 +151,13 @@
                             </tr>
                         </tbody>
                     </table>
+
+
                 {{-- </div> --}}
 
             {{-- </div> --}}
         </div>
+        Copyright © {{ date('Y') }}
     </div>
 
 {{-- ------------------------------------------------------------------------------ --}}
