@@ -32,6 +32,8 @@
 @section('css')
     {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
     <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
     <style>
         .image-wrapper{
             position: relative;
@@ -90,6 +92,15 @@
     {{-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script> --}}
     {{-- <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script> --}}
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
+    {{-- --DATEPICKER-- --}}
+    {{-- <script src="//code.jquery.com/jquery-1.10.2.js"></script> --}}
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    {{-- <script>
+        $(function() {
+        $( "#datepicker" ).datepicker();
+        });
+    </script> --}}
 
     <script>
         $(document).ready( function() {
@@ -197,7 +208,9 @@
         return false;
         };
  */
-
+        /* $(function() {
+        $( "#datepicker" ).datepicker();
+        }); */
 
     </script>
 @stop

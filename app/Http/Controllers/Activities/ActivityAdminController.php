@@ -54,7 +54,7 @@ class ActivityAdminController extends Controller
     public function store(ActivityRequest $request)
     {
         /* return Storage::put('posts', $request->file('file')); */
-        /* return $request->all(); */
+        return $request->all();
 
         $activity = Activity::create($request->all());
 

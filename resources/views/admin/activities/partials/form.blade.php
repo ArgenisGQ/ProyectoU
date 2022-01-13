@@ -103,12 +103,34 @@
 
 <div class="form-group">
     {!! Form::label('lapse', 'Lapso de entrega:') !!}
-    {!! Form::textarea('lapse', null, ['class' => 'form-control']) !!}
+</div>
 
-    @error('lapse')
+<div class="form-group">
+    
+
+    {!! Form::label('lapse', 'Fecha de apertura:') !!}
+
+    {{-- {!! Form::textarea('lapse', null, ['class' => 'form-control']) !!} --}}
+    
+    {{Form::date ('lapse_in', \Carbon\Carbon :: now ())}}
+
+    @error('lapse_in')
         <span class="text-danger">{{$message}}</span>
     @enderror
+
+
+    {{-- ---- --}}
+    {!! Form::label('lapse', 'Fecha de cierre:') !!}
+
+    {{Form::date ('lapse_out', \Carbon\Carbon :: now ())}}
+
+    @error('lapse_out')
+        <span class="text-danger">{{$message}}</span>
+    @enderror
+    {{-- ---- --}}
 </div>
+
+
 
 <div class="form-group">
     {!! Form::label('extract', 'Logros de la actividad:') !!}

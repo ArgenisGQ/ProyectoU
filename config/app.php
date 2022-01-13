@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'ProyectoUNY'),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,8 +67,8 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
-
+    'timezone' => 'America/Caracas',
+    
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration
