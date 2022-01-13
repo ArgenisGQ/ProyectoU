@@ -21,7 +21,8 @@ class CreateActivitiesTable extends Migration
             $table->text('extract')->nullable();
             $table->text('extract01')->nullable();
             $table->longText('body')->nullable();
-            $table->dateTime('lapse')->nullable();
+            $table->dateTime('lapse_in')->nullable();
+            $table->dateTime('lapse_out')->nullable();
             $table->enum('type',[1,2])->default(1);
             $table->enum('status',[1,2])->default(1);
             $table->unsignedBigInteger('user_id');
