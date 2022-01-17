@@ -8,6 +8,7 @@ use App\Models\Course;
 use App\Models\Faculty;
 use Illuminate\Http\Request;
 
+
 class ActivityController extends Controller
 {
     public function index(){
@@ -36,9 +37,19 @@ class ActivityController extends Controller
 
                             ->get();
 
-        $hoy = now();
+        /* control de fechas */
 
-        return view('activities.show', compact('activity', 'similares', 'facultad', 'hoy'));
+        $today = now();
+
+        $lapse_in = $activity->lapse_in->format('d/m/Y');
+
+        $lapse_out = $activity->lapse_out->format('d/m/Y');
+
+
+
+        return view('activities.show', compact('activity',
+                                    'similares', 'facultad',
+                                    'today', 'lapse_in', 'lapse_out'));
 
         /* return $activity; */
 

@@ -12,6 +12,12 @@ class Activity extends Model
     //Relacion Asignacion masiva
     protected $guarded = ['id', 'created_at', 'update_at'];
 
+    //Variable para manejo de fechas de inicio y final de actividad
+    protected $dates = [
+                    'lapse_in',
+                    'lapse_out',
+                    ];
+
     //Relacion de uno a muchos inversa
 
     public function user(){
@@ -31,4 +37,5 @@ class Activity extends Model
     public function image(){
         return $this->MorphOne(Image::class, 'imageable');
     }
+
 }

@@ -71,6 +71,11 @@ class ActivityAdminController extends Controller
             $activity->courses()->attach($request->courses);
         }
 
+        /* control de fechas */
+        
+        $activity->lapse_in = $request->lapse_in;
+        $activity->lapse_out = $request->lapse_in;
+
         return redirect()->route('admin.activities.edit', $activity);
     }
 
