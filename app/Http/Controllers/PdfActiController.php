@@ -35,9 +35,17 @@ class PdfActiController extends Controller
         $css_data = file_get_contents("./css/bootstrap.min.css");
         $logo = "data:image/png;base64," . base64_encode(file_get_contents("./img/uny_vector_sm.png"));
 
+        /* control de fechas */
 
+        $today = now();
 
-        return view('activities.pdf.showPdf', compact('activity', 'similares', 'facultad', 'css_data', 'logo'));
+        $lapse_in = $activity->lapse_in->format('d/m/Y');
+
+        $lapse_out = $activity->lapse_out->format('d/m/Y');
+
+        return view('activities.pdf.showPdf', compact('activity', 'similares',
+                                                      'facultad', 'css_data', 'logo',
+                                                      'today', 'lapse_in', 'lapse_out'));
 
         /* return $activity; */
 
@@ -75,6 +83,14 @@ class PdfActiController extends Controller
         $css_data = file_get_contents("./css/bootstrap.min.css");
         $logo = "data:image/png;base64," . base64_encode(file_get_contents("./img/uny_vector_sm.png"));
 
+        /* control de fechas */
+
+        $today = now();
+
+        $lapse_in = $activity->lapse_in->format('d/m/Y');
+
+        $lapse_out = $activity->lapse_out->format('d/m/Y');
+
         /* ------  Para bajar el archivo pdf ------------ */
 
         /* $pdf = app('dompdf.wrapper'); */
@@ -91,9 +107,13 @@ class PdfActiController extends Controller
 
         /* return $post;*/
 
+
+
         /* -------- Para mostrar el archivo en otra ventana de PDF  -------- */
 
-        return \PDF::loadView('activities.pdf.downPdf', compact('activity', 'similares', 'facultad','css_data', 'logo'))
+        return \PDF::loadView('activities.pdf.downPdf', compact('activity', 'similares',
+                    'facultad','css_data', 'logo',
+                    'today', 'lapse_in', 'lapse_out'))
                     ->stream('archivo.pdf', ["Attachment" => false]);
 
         /* return $css_data; */

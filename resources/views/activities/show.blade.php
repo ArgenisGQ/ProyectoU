@@ -90,19 +90,10 @@
 
                         <tbody>
                             <tr>
-                                {{-- <td class="">{!! $activity->extract!!}</td> --}}
 
-                               {{--  <td class="">{!! $activity->lapse_in!!}</td>
-                                <td class="">{!! $activity->lapse_out!!}</td> --}}
 
-                                {{-- <td class="">{{$lapse}}</td> --}}
-                                {{-- <td class="">{!! $lapse_outt!!}</td --}}>
-
-                                {{-- <td class="">{!!$activity->lapse_in!!}</td> --}}
-                                {{-- <td class="">{!!$activity->lapse_out!!}</td> --}}
-
-                                <td class="">{!!$lapse_in!!}</td>
-                                <td class="">{!!$lapse_out!!}</td>
+                                <td class="text-center">{!!$lapse_in!!} al {!!$lapse_out!!}</td>
+                                {{-- <td class="">{!!$lapse_out!!}</td> --}}
 
                             </tr>
                         </tbody>

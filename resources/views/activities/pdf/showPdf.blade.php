@@ -286,7 +286,7 @@
                     <table class="page-break colapsado" border="1"">
                         <thead class="thead-light">
                             <tr>
-                                <th class="p-1 text-center bg-gris">Descripcion de la actividad</th>
+                                <th class="p-1 text-center bg-gris">Proposito de la actividad</th>
                             </tr>
                         </thead>
 
@@ -297,11 +297,26 @@
                         </tbody>
 
                     </table>
+                    <table class="page-break colapsado" border="1"">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="p-1 text-center bg-gris">Lapso de entrega</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                {{-- <td class="">{!! $activity->body !!}</td> --}}
+                                <td class="text-center">{!!$lapse_in!!} al {!!$lapse_out!!}</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
                     {{-- <div class="page-break"></div> --}}
                     <table class="page-break-inside colapsado" border="1">
                         <thead>
                             <tr>
-                                <th class="p-1 text-center bg-gris" >Proposito de la actividad</th>
+                                <th class="p-1 text-center bg-gris" >Logros de la actividad</th>
                             </tr>
                         </thead>
 
@@ -315,7 +330,21 @@
                     <table class="page-break-inside colapsado" border="1">
                         <thead>
                             <tr>
-                                <th class="p-1 text-center bg-gris">Aprendido en la actividad</th>
+                                <th class="p-1 text-center bg-gris" >Tipo de evaluacion</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="">{!! $activity->type!!}</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                    <table class="page-break-inside colapsado" border="1">
+                        <thead>
+                            <tr>
+                                <th class="p-1 text-center bg-gris">Puntuacion en la actividad</th>
                             </tr>
                         </thead>
 
