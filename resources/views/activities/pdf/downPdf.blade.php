@@ -401,21 +401,18 @@
 
                     <div class="page-break-inside">
 
-                        <table class="colapsado" border="1" >
-                            <thead>
-                                <tr>
-                                    <th class="p-1 text-center bg-gris" >Lapso de entrega</th>
-                                </tr>
-                            </thead>
+                        <table class="colapsado" border="1" width="100%">
+                          
 
                             <tbody>
                                 <tr>
-                                   {{--  <td class="">{!!$activity->extract!!}</td> --}}
-                                    <td class="text-center">{!!$lapse_in!!} al {!!$lapse_out!!}</td>
+                                    <th scope="row" class="ancho-1de4 p-1 text-center bg-gris">Lapso de entrega</th>
+                                    <td class="ancho-3de4 text-center">{!!$lapse_in!!} al {!!$lapse_out!!}</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+
 
                     <div class="page-break-inside">
 
@@ -452,23 +449,22 @@
 
 
 
-                    <div class="page-break-inside">
+                    <div class="page-break-inside" >
 
-                        <table class="colapsado" border="1" >
-                            <thead>
-                                <tr>
-                                    <th class="p-1 text-center bg-gris" >Tipo de evaluacion</th>
-                                </tr>
-                            </thead>
+                        <table class="colapsado" border="1" width="100%">
 
                             <tbody>
                                 <tr>
-                                    <td class="">{!!$activity->type!!}</td>
+
+                                    <th class="p-1 text-center bg-gris" >Tipo de evaluacion</th>
+                                    <td class="ancho-3de4 text-center">{!!$activity->type!!}</td>
 
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+
+
 
                     <div class="page-break-inside">
 
