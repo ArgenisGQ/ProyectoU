@@ -187,6 +187,35 @@
             background-color:#CEC8C6;
         }
 
+        /* ---Margenes para texto lado del logo--- */
+
+        .mg-text  {
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+            margin-left: 80px;
+        }
+
+        .mg-logo  {
+            margin-top: 20px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+        }
+
+        .mg-text-codigo  {
+            margin-top: 25px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+        }
+
+        .mg-text-emcabezado  {
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+            margin-left: 30px;
+        }
 
     </style>
 
@@ -230,11 +259,12 @@
             <div class="row ">
                 <div class="">
                     {{-- <table class="table table-hover page-break"> --}}
-                    <table class="table table-hover page-break">
+                    {{-- <table class="table table-hover page-break"> --}}
+                    <table class="table table-sm colapsado" border="2">
                         <tbody class="text-center">
                             <tr>
-                                <th class="bg-gris" scope="row">Docente - PDF - ONLY SHOW</th>
-                                <td>{!! auth()->user()->name !!}</td>
+                                <th class="ancho-1de4 bg-gris" scope="row">Docente - PDF - ONLY SHOW</th>
+                                <td class="ancho-3de4">{!! auth()->user()->name !!}</td>
                             </tr>
                         </tbody>
                         <br>
@@ -296,18 +326,29 @@
                             </tr>
                         </tbody>
 
+                        {{-- <tbody>
+                            <tr>
+                                <th scope="row" class="ancho-1de4 p-1 text-center bg-gris">Lapso de entrega</th>
+                                <td class=" text-center">{!!$lapse_in!!} al {!!$lapse_out!!}</td>
+                            </tr>
+                        </tbody> --}}
+
+
                     </table>
-                    <table class="page-break colapsado" border="1"">
-                        <thead class="thead-light">
+                    <table class="page-break colapsado" border="1" width="100%" ">
+                        {{-- <thead class="thead-light">
                             <tr>
                                 <th class="p-1 text-center bg-gris">Lapso de entrega</th>
                             </tr>
-                        </thead>
+                        </thead> --}}
 
                         <tbody>
                             <tr>
-                                {{-- <td class="">{!! $activity->body !!}</td> --}}
-                                <td class="text-center">{!!$lapse_in!!} al {!!$lapse_out!!}</td>
+                                <th scope="row" class="ancho-1de4 p-1 text-center bg-gris">Lapso de entrega</th>
+                                {{-- <td class=" p-1 text-center bg-gris">Lapso de entrega</td> --}}
+
+
+                                <td class="ancho-3de4 text-center">{!!$lapse_in!!} al {!!$lapse_out!!}</td>
                             </tr>
                         </tbody>
 
@@ -327,16 +368,11 @@
                         </tbody>
 
                     </table>
-                    <table class="page-break-inside colapsado" border="1">
-                        <thead>
-                            <tr>
-                                <th class="p-1 text-center bg-gris" >Tipo de evaluacion</th>
-                            </tr>
-                        </thead>
-
+                    <table class="page-break-inside colapsado" border="1" width="100%">
                         <tbody>
                             <tr>
-                                <td class="">{!! $activity->type!!}</td>
+                                <th class="p-1 text-center bg-gris ancho-1de4" >Tipo de evaluacion</th>
+                                <td class="ancho-3de4 text-center">{!! $activity->type!!}</td>
                             </tr>
                         </tbody>
 
