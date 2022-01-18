@@ -348,7 +348,7 @@
                                 {{-- <td class=" p-1 text-center bg-gris">Lapso de entrega</td> --}}
 
 
-                                <td class="ancho-3de4 text-center">{!!$lapse_in!!} al {!!$lapse_out!!}</td>
+                                <td class="ancho-3de4 text-letf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{!!$lapse_in!!} al {!!$lapse_out!!}</td>
                             </tr>
                         </tbody>
 
@@ -372,7 +372,7 @@
                         <tbody>
                             <tr>
                                 <th class="p-1 text-center bg-gris ancho-1de4" >Tipo de evaluacion</th>
-                                <td class="ancho-3de4 text-center">{!! $activity->type!!}</td>
+                                <td class="ancho-3de4 text-left"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {!!$activity->type!!} </td>
                             </tr>
                         </tbody>
 

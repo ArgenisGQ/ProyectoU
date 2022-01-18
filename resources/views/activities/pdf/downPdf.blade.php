@@ -402,12 +402,12 @@
                     <div class="page-break-inside">
 
                         <table class="colapsado" border="1" width="100%">
-                          
+
 
                             <tbody>
                                 <tr>
                                     <th scope="row" class="ancho-1de4 p-1 text-center bg-gris">Lapso de entrega</th>
-                                    <td class="ancho-3de4 text-center">{!!$lapse_in!!} al {!!$lapse_out!!}</td>
+                                    <td class="ancho-3de4 text-left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{!!$lapse_in!!} al {!!$lapse_out!!}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -457,7 +457,7 @@
                                 <tr>
 
                                     <th class="p-1 text-center bg-gris" >Tipo de evaluacion</th>
-                                    <td class="ancho-3de4 text-center">{!!$activity->type!!}</td>
+                                    <td class="ancho-3de4 text-left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{!!$activity->type!!}</td>
 
                                 </tr>
                             </tbody>
