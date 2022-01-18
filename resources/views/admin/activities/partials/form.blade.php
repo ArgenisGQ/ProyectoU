@@ -115,8 +115,77 @@
     {!! Form::label('lapse', 'Lapso de entrega:') !!}
 </div>
 
+{{-- <div class="form-group">
+
+    {!! Form::label('lapse', 'Fecha de inicio trimestre:') !!}
+
+    {{Form::date ('academic_start', \Carbon\Carbon :: now ())}}
+
+    @error('lapse_in')
+        <span class="text-danger">{{$message}}</span>
+    @enderror
+
+
+    {!! Form::label('lapse', 'Fecha de final trimestre:') !!}
+
+    {{Form::date ('academic_finish', \Carbon\Carbon :: now ())}}
+
+    @error('lapse_in')
+        <span class="text-danger">{{$message}}</span>
+    @enderror
+
+</div> --}}
+
 <div class="form-group">
 
+
+{{--     {!! Form::label('lapse', 'Fecha de inicio trimestre:') !!}
+
+    {{Form::date ('academic_start', \Carbon\Carbon :: now ())}}
+
+
+
+
+    {!! Form::label('lapse', 'Fecha de final trimestre:') !!}
+
+    {{Form::date ('academic_finish', \Carbon\Carbon :: now ())}} --}}
+
+
+    <table class="w-full my-4 border border-separate border-gray-800 table-auto">
+        <thead>
+            <tr>
+                <th class="p-1 ">INICIO DE TRIMISTRE</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                {{-- <td class="">{!! $activity->academic_start !!}</td> --}}
+                <td class="">---</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="w-full my-4 border border-separate border-gray-800 table-auto">
+        <thead>
+            <tr>
+                <th class="p-1 ">FIN DE TRIMISTRE</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                {{-- <td class="">{!! $activity->academic_finish !!}</td> --}}
+                <td class="">---</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+    {{-- --------------------------------------------------------- --}}
+
+<div class="form-group">
 
     {!! Form::label('lapse', 'Fecha de apertura:') !!}
 
