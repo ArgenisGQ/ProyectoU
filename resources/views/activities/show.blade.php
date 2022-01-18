@@ -56,7 +56,7 @@
                         <tbody class="text-center">
                             <tr>
                                 <td class="w-1/4 h-8 bg-gray-300">Tipo de Actividad</td>
-                                <td class="w-3/4 h-8 bg-gray-100">seleccion</td>
+                                <td class="w-3/4 h-8 bg-gray-100">{{$activity->activity_type}}</td>
                             </tr>
                         </tbody>
                     </table>

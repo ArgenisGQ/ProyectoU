@@ -355,7 +355,7 @@
                             <tbody class="text-center">
                                 <tr>
                                     <th class="bg-gris" scope="row">Tipo de Actividad</th>
-                                    <td class="">- - - seleccion - - -</td>
+                                    <td class="">{{$activity->activity_type}}</td>
                                 </tr>
                             </tbody>
                         </table>

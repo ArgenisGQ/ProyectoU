@@ -93,6 +93,16 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('activity_type', 'Tipo de Actividad:') !!}
+    {{-- {!! Form::textarea('activity_type', null, ['class' => 'form-control']) !!} --}}
+    {!! Form::text('activity_type', null, ['class'=>'form-control','placeholder'=>'Indique de manera especifica como realizar la actividad']) !!}
+
+    @error('activity_type')
+        <span class="text-danger">{{$message}}</span>
+    @enderror
+</div>
+
+<div class="form-group">
     {!! Form::label('body', 'Proposito de la actividad:') !!}
     {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
 
@@ -106,13 +116,15 @@
 </div>
 
 <div class="form-group">
-    
+
 
     {!! Form::label('lapse', 'Fecha de apertura:') !!}
 
     {{-- {!! Form::textarea('lapse', null, ['class' => 'form-control']) !!} --}}
-    
+
     {{Form::date ('lapse_in', \Carbon\Carbon :: now ())}}
+
+    {{-- {{Form::date ('lapse_in', null, ["class" => "form-control"])}} --}}
 
     @error('lapse_in')
         <span class="text-danger">{{$message}}</span>
@@ -124,6 +136,8 @@
 
     {{Form::date ('lapse_out', \Carbon\Carbon :: now ())}}
 
+    {{-- {{Form::date ('lapse_out', null,  ["class" => "form-control"])}} --}}
+
     @error('lapse_out')
         <span class="text-danger">{{$message}}</span>
     @enderror
@@ -134,6 +148,7 @@
 
 <div class="form-group">
     {!! Form::label('extract', 'Logros de la actividad:') !!}
+
     {!! Form::textarea('extract', null, ['class' => 'form-control']) !!}
 
     @error('extract')

@@ -40,6 +40,10 @@ class ActivityRequest extends FormRequest
             $rules = array_merge($rules,[
             'faculty_id' => 'required',
             'courses' => 'required',
+            'activity_type' => 'required',
+            'lapse_in' => 'required|after_or_equal',
+            'lapse_out' => 'required|after_or_equal',
+            'extract01' => 'required',
             'extract' => 'required',
             'body' => 'required'
             ]);
