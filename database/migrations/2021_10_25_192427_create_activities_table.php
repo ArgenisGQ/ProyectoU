@@ -18,6 +18,7 @@ class CreateActivitiesTable extends Migration
 
             $table->string('name');
             $table->string('slug');
+            $table->text('activity_type')->nullable();
             $table->text('extract')->nullable();
             $table->text('extract01')->nullable();
             $table->longText('body')->nullable();
