@@ -31,7 +31,7 @@ class ActivitySeeder extends Seeder
                 rand(1,4),
                 rand(5,8)
             ]);
-            $activity->academic_start = Carbon::create('2022', '5', '5', '0',' 0','s0');
+            $activity->academic_start = Carbon::create('2022', '5', '5', '0',' 0','0');
 
             $activity->academic_finish = Carbon::create(2022, 9, 9, 0, 0, 0);
         }
