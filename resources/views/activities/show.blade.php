@@ -81,6 +81,37 @@
                     </table>
                 {{-- </div> --}}
 
+                    <table class="w-full my-4 border border-separate border-gray-800 table-auto">
+                        <thead>
+                            <tr>
+                                <th class="p-1 ">INICIO DE TRIMESTRE</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                {{-- <td class="">{!! $academic_start !!}</td> --}}
+                                <td class="">{!! $today !!}</td>
+                                {{-- <td class="">---</td> --}}
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="w-full my-4 border border-separate border-gray-800 table-auto">
+                        <thead>
+                            <tr>
+                                <th class="p-1 ">FIN DE TRIMESTRE</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="">{!! $academic_finish !!}</td>
+                                {{-- <td class="">---</td> --}}
+                            </tr>
+                        </tbody>
+                    </table>
+
                     <table class="w-full my-4 border border-separate border-gray-800 table-auto ">
                         <thead>
                             <tr>

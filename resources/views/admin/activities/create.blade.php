@@ -26,6 +26,23 @@
             {!! Form::submit('Crear Actividad', ['class' => 'btn btn-primary']) !!}
         {!! Form::close() !!}
         </div>
+
+    <table class="w-full my-4 border border-separate border-gray-800 table-auto">
+        <thead>
+            <tr>
+                <th class="p-1 ">INICIO DE TRIMESTRE</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                {{-- <td class="">{!! $academic_start !!}</td> --}}
+                {{-- <td class="">{!! $activity->academic_finish !!}</td> --}}
+                {{-- <td class="">---</td> --}}
+            </tr>
+        </tbody>
+    </table>
+
     </div>
 @stop
 

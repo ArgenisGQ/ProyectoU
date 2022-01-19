@@ -43,8 +43,8 @@ class ActivityRequest extends FormRequest
             'activity_type' => 'required',
             /* 'academic_start' => 'required', */
             /* 'academic_finish' => 'required', */
-            'lapse_in' => 'required|after_or_equal:academic_start',
-            'lapse_out' => 'required|before_or_equal:academic_finish',
+            /* 'lapse_in' => 'required|before:academic_start', */
+            /* 'lapse_out' => 'required|after:academic_finish', */
             'extract01' => 'required',
             'extract' => 'required',
             'body' => 'required'

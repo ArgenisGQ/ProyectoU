@@ -154,14 +154,14 @@
     <table class="w-full my-4 border border-separate border-gray-800 table-auto">
         <thead>
             <tr>
-                <th class="p-1 ">INICIO DE TRIMISTRE</th>
+                <th class="p-1 ">INICIO DE TRIMESTRE</th>
             </tr>
         </thead>
 
         <tbody>
             <tr>
-                {{-- <td class="">{!! $activity->academic_start !!}</td> --}}
-                <td class="">---</td>
+                {{-- <td class="">{!! $academic_start !!}</td> --}}
+                {{-- <td class="">---</td> --}}
             </tr>
         </tbody>
     </table>
@@ -169,14 +169,14 @@
     <table class="w-full my-4 border border-separate border-gray-800 table-auto">
         <thead>
             <tr>
-                <th class="p-1 ">FIN DE TRIMISTRE</th>
+                <th class="p-1 ">FIN DE TRIMESTRE</th>
             </tr>
         </thead>
 
         <tbody>
             <tr>
                 {{-- <td class="">{!! $activity->academic_finish !!}</td> --}}
-                <td class="">---</td>
+                {{-- <td class="">---</td> --}}
             </tr>
         </tbody>
     </table>

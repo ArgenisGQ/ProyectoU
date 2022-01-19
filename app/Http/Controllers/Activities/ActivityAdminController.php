@@ -10,6 +10,7 @@ use App\Models\Course;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ActivityRequest;
 use Carbon\Carbon;
+/* use Illuminate\Support\Collection; */
 
 class ActivityAdminController extends Controller
 {
@@ -43,7 +44,24 @@ class ActivityAdminController extends Controller
 
         $courses = Course::all();
 
-        return view('admin.activities.create', compact('faculties', 'courses'));
+        $activity = Activity::all();
+
+        /* return $activity->all(); */
+
+
+        /* $academic_start = $activity->academic_start;
+        $academic_finish = $activity->academic_finish; */
+
+        /* $academic_start = collect($activity->academic_start()->all());  */
+
+        /* $academic_start = collect($activity->academic_start); */
+
+        /* $academic_start = $activity->academic_start(); */
+
+        /* $academic_start = now()->format('d/m/Y'); */
+
+        return view('admin.activities.create', compact('faculties', 'courses', 'activity',
+                                                         ));
     }
 
     /**
@@ -72,7 +90,10 @@ class ActivityAdminController extends Controller
         }
 
         /* control de fechas */
-        
+
+        /* $activity->cademic_start = $request->academic_start;
+        $activity->academic_finish = $request->academic_finish; */
+
         $activity->lapse_in = $request->lapse_in;
         $activity->lapse_out = $request->lapse_in;
 

@@ -16,6 +16,7 @@ class Activity extends Model
     protected $dates = [
                     'lapse_in',
                     'lapse_out',
+                    'academic_start'
                     ];
 
     //Relacion de uno a muchos inversa

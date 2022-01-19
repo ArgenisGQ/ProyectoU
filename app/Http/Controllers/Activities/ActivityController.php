@@ -39,17 +39,26 @@ class ActivityController extends Controller
 
         /* control de fechas */
 
+        /* $academic_start = Activity::where('id', $activity->id)
+
+                            ->get($activity->academic_start); */
+
+        $academic_start = $activity->academic_start;
+        $academic_finish = $activity->academic_finish;
+
         $today = now();
 
         $lapse_in = $activity->lapse_in->format('d/m/Y');
 
         $lapse_out = $activity->lapse_out->format('d/m/Y');
 
+        return $academic_start; 
 
-
+        
         return view('activities.show', compact('activity',
                                     'similares', 'facultad',
-                                    'today', 'lapse_in', 'lapse_out'));
+                                    'today', 'lapse_in', 'lapse_out',
+                                    'academic_start', 'academic_finish'));
 
         /* return $activity; */
 
