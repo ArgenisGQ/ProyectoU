@@ -46,22 +46,16 @@ class ActivityAdminController extends Controller
 
         $activity = Activity::all();
 
-        /* return $activity->all(); */
+        $activity->academic_start= Carbon::parse('2022-06-02');
+        $activity->academic_finish = Carbon::parse('2022-09-27');
 
-
-        /* $academic_start = $activity->academic_start;
-        $academic_finish = $activity->academic_finish; */
-
-        /* $academic_start = collect($activity->academic_start()->all());  */
-
-        /* $academic_start = collect($activity->academic_start); */
-
-        /* $academic_start = $activity->academic_start(); */
+        $activity->lapse_in = $activity->academic_start;
+        $activity->lapse_out = $activity->academic_finish;
 
         /* $academic_start = now()->format('d/m/Y'); */
 
-        return view('admin.activities.create', compact('faculties', 'courses', 'activity',
-                                                         ));
+        return view('admin.activities.create', compact('faculties', 'courses', 
+                                                        'activity' ));
     }
 
     /**
@@ -132,6 +126,12 @@ class ActivityAdminController extends Controller
 
         $courses = Course::all();
 
+        $activity->academic_start= Carbon::parse('2022-06-02');
+        $activity->academic_finish = Carbon::parse('2022-09-27');
+
+        /* $activity = Activity::all(); */
+
+        /* return $activity->lapse_in; */
 
         return view('admin.activities.edit', compact('activity', 'faculties', 'courses'));
     }

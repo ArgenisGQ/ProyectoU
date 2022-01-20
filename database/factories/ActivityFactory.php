@@ -38,8 +38,8 @@ class ActivityFactory extends Factory
             'status' => $this->faker->randomElement([1,2]),
             'faculty_id' => Faculty::all()->random()->id,
             'user_id' => User::all()->random()->id,
-            'academic_start' => Carbon::create(2022, 6, 1, 0, 0, 0),
-            'academic_finish' => Carbon::create(2022, 9, 25, 0, 0, 0)
+            /* 'academic_start' => Carbon::create(2022, 6, 1, 0, 0, 0), */
+            /* 'academic_finish' => Carbon::create(2022, 9, 25, 0, 0, 0) */
         ];
     }
 }

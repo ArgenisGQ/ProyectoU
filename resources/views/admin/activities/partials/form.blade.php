@@ -150,7 +150,7 @@
 
     {{Form::date ('academic_finish', \Carbon\Carbon :: now ())}} --}}
 
-
+{{--
     <table class="w-full my-4 border border-separate border-gray-800 table-auto">
         <thead>
             <tr>
@@ -160,8 +160,7 @@
 
         <tbody>
             <tr>
-                {{-- <td class="">{!! $academic_start !!}</td> --}}
-                {{-- <td class="">---</td> --}}
+                <td class="">{!! $activity->academic_start !!}</td>
             </tr>
         </tbody>
     </table>
@@ -175,11 +174,10 @@
 
         <tbody>
             <tr>
-                {{-- <td class="">{!! $activity->academic_finish !!}</td> --}}
-                {{-- <td class="">---</td> --}}
+                <td class="">{!! $activity->academic_finish !!}</td>
             </tr>
         </tbody>
-    </table>
+    </table> --}}
 
 </div>
 
@@ -188,13 +186,16 @@
 <div class="form-group">
 
     {!! Form::label('lapse', 'Fecha de apertura:') !!}
-
+    {{-- ---pasar campo en formato de fecha para la validacion--- --}}
+        @php
+            $academic_start = $activity->academic_start;
+            $academic_finish =  $activity->academic_finish;
+        @endphp
+    
     {{-- {!! Form::textarea('lapse', null, ['class' => 'form-control']) !!} --}}
 
-    {{Form::date ('lapse_in', \Carbon\Carbon :: now ())}}
-
-    {{-- {{Form::date ('lapse_in', null, ["class" => "form-control"])}} --}}
-
+    {{Form::date ('lapse_in', $activity->lapse_in )}}
+   
     @error('lapse_in')
         <span class="text-danger">{{$message}}</span>
     @enderror
@@ -203,10 +204,8 @@
     {{-- ---- --}}
     {!! Form::label('lapse', 'Fecha de cierre:') !!}
 
-    {{Form::date ('lapse_out', \Carbon\Carbon :: now ())}}
-
-    {{-- {{Form::date ('lapse_out', null,  ["class" => "form-control"])}} --}}
-
+    {{Form::date ('lapse_out', $activity->lapse_out )}}
+    
     @error('lapse_out')
         <span class="text-danger">{{$message}}</span>
     @enderror

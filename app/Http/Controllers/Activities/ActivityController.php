@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Activity;
 use App\Models\Course;
 use App\Models\Faculty;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 
@@ -43,8 +44,8 @@ class ActivityController extends Controller
 
                             ->get($activity->academic_start); */
 
-        $academic_start = $activity->academic_start;
-        $academic_finish = $activity->academic_finish;
+        $academic_start = Carbon::parse('2021-06-01');
+        $academic_finish = Carbon::parse('2021-09-25');;
 
         $today = now();
 
@@ -52,9 +53,9 @@ class ActivityController extends Controller
 
         $lapse_out = $activity->lapse_out->format('d/m/Y');
 
-        return $academic_start; 
+        /* return $academic_start; */
 
-        
+
         return view('activities.show', compact('activity',
                                     'similares', 'facultad',
                                     'today', 'lapse_in', 'lapse_out',

@@ -91,7 +91,7 @@
                         <tbody>
                             <tr>
                                 {{-- <td class="">{!! $academic_start !!}</td> --}}
-                                <td class="">{!! $today !!}</td>
+                                <td class="">{!! $activity->academic_start !!}</td>
                                 {{-- <td class="">---</td> --}}
                             </tr>
                         </tbody>
@@ -106,7 +106,7 @@
 
                         <tbody>
                             <tr>
-                                <td class="">{!! $academic_finish !!}</td>
+                                <td class="">{!! $activity->academic_finish !!}</td>
                                 {{-- <td class="">---</td> --}}
                             </tr>
                         </tbody>
@@ -123,7 +123,7 @@
                             <tr>
 
 
-                                <td class="text-center">{!!$lapse_in!!} al {!!$lapse_out!!}</td>
+                                <td class="text-center">{!!$activity->lapse_in!!} al {!!$activity->lapse_out!!}</td>
                                 {{-- <td class="">{!!$lapse_out!!}</td> --}}
 
                             </tr>
