@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\Admin\PeriodController;
 
 use App\Http\Controllers\Activities\IndexController;
 use App\Http\Controllers\Activities\ActivityAdminController;
@@ -43,6 +44,8 @@ Route::resource('faculties', FacultyAdminController::class)->except('show')->nam
 Route::resource('courses', CourseAdminController::class)->except('show')->names('admin.courses');
 
 Route::resource('activities', ActivityAdminController::class)->names('admin.activities');
+
+Route::resource('periods', PeriodController::class)->names('admin.periods');
 /* ======= */
 /* Route::get('activities', [IndexController::class, 'index'])->middleware('can:admin.home')->name('admin.activities'); */
 
