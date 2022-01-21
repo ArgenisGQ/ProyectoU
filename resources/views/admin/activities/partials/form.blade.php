@@ -113,44 +113,22 @@
 
 <div class="form-group">
     {!! Form::label('lapse', 'Lapso de entrega:') !!}
+
+    {{-- ---pasar campo en formato de fecha para la validacion--- --}}
+    @php
+        $academic_start = $activity->academic_start;
+        $academic_finish =  $activity->academic_finish;
+    @endphp
+
+
+    {!! Form::hidden('academic_start', $academic_start) !!}
+    {!! Form::hidden('academic_finish',$academic_finish) !!}
+
+
 </div>
 
 {{-- <div class="form-group">
 
-    {!! Form::label('lapse', 'Fecha de inicio trimestre:') !!}
-
-    {{Form::date ('academic_start', \Carbon\Carbon :: now ())}}
-
-    @error('lapse_in')
-        <span class="text-danger">{{$message}}</span>
-    @enderror
-
-
-    {!! Form::label('lapse', 'Fecha de final trimestre:') !!}
-
-    {{Form::date ('academic_finish', \Carbon\Carbon :: now ())}}
-
-    @error('lapse_in')
-        <span class="text-danger">{{$message}}</span>
-    @enderror
-
-</div> --}}
-
-<div class="form-group">
-
-
-{{--     {!! Form::label('lapse', 'Fecha de inicio trimestre:') !!}
-
-    {{Form::date ('academic_start', \Carbon\Carbon :: now ())}}
-
-
-
-
-    {!! Form::label('lapse', 'Fecha de final trimestre:') !!}
-
-    {{Form::date ('academic_finish', \Carbon\Carbon :: now ())}} --}}
-
-{{--
     <table class="w-full my-4 border border-separate border-gray-800 table-auto">
         <thead>
             <tr>
@@ -160,7 +138,7 @@
 
         <tbody>
             <tr>
-                <td class="">{!! $activity->academic_start !!}</td>
+                <td class="">{!! $academic_start !!}</td>
             </tr>
         </tbody>
     </table>
@@ -174,28 +152,25 @@
 
         <tbody>
             <tr>
-                <td class="">{!! $activity->academic_finish !!}</td>
+                <td class="">{!! $academic_finish !!}</td>
             </tr>
         </tbody>
-    </table> --}}
+    </table>
 
-</div>
+</div> --}}
 
     {{-- --------------------------------------------------------- --}}
 
 <div class="form-group">
 
     {!! Form::label('lapse', 'Fecha de apertura:') !!}
-    {{-- ---pasar campo en formato de fecha para la validacion--- --}}
-        @php
-            $academic_start = $activity->academic_start;
-            $academic_finish =  $activity->academic_finish;
-        @endphp
-    
+
+
     {{-- {!! Form::textarea('lapse', null, ['class' => 'form-control']) !!} --}}
 
+    {{-- {{Form::date ('lapse_in', $activity->lapse_in )}} --}}
     {{Form::date ('lapse_in', $activity->lapse_in )}}
-   
+
     @error('lapse_in')
         <span class="text-danger">{{$message}}</span>
     @enderror
@@ -204,8 +179,9 @@
     {{-- ---- --}}
     {!! Form::label('lapse', 'Fecha de cierre:') !!}
 
+    {{-- {{Form::date ('lapse_out', $activity->lapse_out )}} --}}
     {{Form::date ('lapse_out', $activity->lapse_out )}}
-    
+
     @error('lapse_out')
         <span class="text-danger">{{$message}}</span>
     @enderror
@@ -247,7 +223,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('extract01', 'Criterios de evalulación:') !!}
+    {!! Form::label('extract01', 'Criterios de evaluación:') !!}
     {!! Form::textarea('extract01', null, ['class' => 'form-control']) !!}
 
     @error('extract01')

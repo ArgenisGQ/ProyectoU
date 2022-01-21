@@ -29,7 +29,9 @@ class ActivityRequest extends FormRequest
             'name' => 'required',
             'slug' => 'required|unique:activities',
             'status' => 'required|in:1,2',
-            'file' => 'image'
+            'file' => 'image',
+            'lapse_in' => 'date|after_or_equal:academic_start',
+            'lapse_out' => 'date|before_or_equal:academic_finish'
         ];
 
         if($activity){
@@ -41,8 +43,8 @@ class ActivityRequest extends FormRequest
             'faculty_id' => 'required',
             'courses' => 'required',
             'activity_type' => 'required',
-            'lapse_in' => 'required|after_or_equal:academic_start',
-            'lapse_out' => 'required|before_or_equal:academic_finish',
+            /* 'lapse_in' => 'required|date|after_or_equal:academic_start', */
+            /* 'lapse_out' => 'required|date|before_or_equal:academic_finish', */
             'extract01' => 'required',
             'extract' => 'required',
             'body' => 'required'

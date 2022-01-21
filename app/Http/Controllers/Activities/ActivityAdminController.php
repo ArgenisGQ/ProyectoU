@@ -52,9 +52,11 @@ class ActivityAdminController extends Controller
         $activity->lapse_in = $activity->academic_start;
         $activity->lapse_out = $activity->academic_finish;
 
+        /* return $activity->academic_finish; */
+
         /* $academic_start = now()->format('d/m/Y'); */
 
-        return view('admin.activities.create', compact('faculties', 'courses', 
+        return view('admin.activities.create', compact('faculties', 'courses',
                                                         'activity' ));
     }
 
@@ -91,7 +93,7 @@ class ActivityAdminController extends Controller
         $activity->lapse_in = $request->lapse_in;
         $activity->lapse_out = $request->lapse_in;
 
-        return redirect()->route('admin.activities.edit', $activity);
+        return redirect()->route('admin.activities.edit', $activity)->with('info', 'La actividad se creo con exito');
     }
 
     /**
