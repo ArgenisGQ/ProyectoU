@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Activities;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Period;
+use Carbon\Carbon;
 
 class PeriodController extends Controller
 {
@@ -16,8 +17,11 @@ class PeriodController extends Controller
     public function index()
     {
         //
-        $period = Period::all();
-        return view ('admin.periods.index');
+        $periods = Period::all();
+
+        /* return $period; */
+
+        return view ('admin.periods.index', compact('periods'));
     }
 
     /**

@@ -304,6 +304,13 @@ return [
                         'active' => ['admin/courses*'],
                         /* 'can'    => 'admin.courses.index', */
                         ],
+                        [
+                        'text' => 'Periodos',
+                        'route'  => 'admin.periods.index',
+                        'icon' => 'far fa-fw fa-bookmark',
+                        'active' => ['admin/periods*'],
+                        /* 'can'    => 'admin.courses.index', */
+                        ],
                     ],
                 ],
                 [

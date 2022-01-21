@@ -15,6 +15,11 @@ class CreatePeriodsTable extends Migration
     {
         Schema::create('periods', function (Blueprint $table) {
             $table->id();
+
+            $table->string('name');
+            $table->dateTime('academic_start')->nullable();
+            $table->dateTime('academic_finish')->nullable();
+
             $table->timestamps();
         });
     }

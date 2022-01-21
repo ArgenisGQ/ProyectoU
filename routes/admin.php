@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\ExcelController;
-use App\Http\Controllers\Admin\PeriodController;
+use App\Http\Controllers\Activities\PeriodController;
 
 use App\Http\Controllers\Activities\IndexController;
 use App\Http\Controllers\Activities\ActivityAdminController;
