@@ -10,7 +10,10 @@ class Period extends Model
     use HasFactory;
 
     //Relacion Masiva
-    protected $fillable = ['name'];
+    protected $fillable = [
+        'name',
+        
+    ];
 
     //metodo para mostrar slug y no el id
     /* public function getRouteKeyName()

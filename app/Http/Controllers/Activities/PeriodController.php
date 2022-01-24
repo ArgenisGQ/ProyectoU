@@ -19,7 +19,7 @@ class PeriodController extends Controller
         //
         $periods = Period::all();
 
-        /* return $period; */
+        return $periods;
 
         return view ('admin.periods.index', compact('periods'));
     }
