@@ -36,10 +36,18 @@ class PeriodController extends Controller
         //
         $period = Period::all();
         $today = now();  //fecha actual del sistema
-        $last_period = $period->max('academic_finish');
+        /* $last_period = $period->max('academic_finish'); */
+        $last_period = $period->id(1)->academic_finish;
+        /* $last_period= Period::all('academic_finish')->max('academic_finish'); */
+        /* $last_period = Carbon::parse($last_period)->format('d/m/Y'); */
+        /* $last_period = Period::select('academic_finish')->where($last_period,'like','%'.$row['cliente'].'%')->last(); */
+        $last_period = Period::table('academic_finish')
+                            ->where('status', 0)
+                            ->lasted();
+                return ['academic_finish' => $last_period];
 
-        return $last_period;
-        return view ('admin.periods.create', compact('period','last_period'));
+        return $last_period.'   '.$today;
+        return view ('admin.periods.create', compact('period','last_period', 'today'));
     }
 
     /**

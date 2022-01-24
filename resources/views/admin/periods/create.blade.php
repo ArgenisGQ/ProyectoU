@@ -37,7 +37,7 @@
                 {{-- {!! Form::textarea('lapse', null, ['class' => 'form-control']) !!} --}}
 
                 {{-- {{Form::date ('lapse_in', $activity->lapse_in )}} --}}
-                {{Form::date ('academic_start', $last_period )}}
+                {{Form::date ('academic_start', $today )}}
 
                 @error('academic_start')
                     <span class="text-danger">{{$message}}</span>
