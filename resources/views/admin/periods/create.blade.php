@@ -29,9 +29,40 @@
                 @enderror
             </div> --}}
 
-            {!! Form::submit('Crear facultad', ['class' => 'btn btn-primary']) !!}
+            <div class="form-group">
+
+                {!! Form::label('lapse', 'Fecha de inicio del periodo:') !!}
+
+
+                {{-- {!! Form::textarea('lapse', null, ['class' => 'form-control']) !!} --}}
+
+                {{-- {{Form::date ('lapse_in', $activity->lapse_in )}} --}}
+                {{Form::date ('academic_start', $activity->lapse_in )}}
+
+                @error('lapse_in')
+                    <span class="text-danger">{{$message}}</span>
+                @enderror
+
+
+                {{-- ---- --}}
+                {!! Form::label('lapse', 'Fecha de cierre del periodo:') !!}
+
+                {{-- {{Form::date ('lapse_out', $activity->lapse_out )}} --}}
+                {{Form::date ('academic_finish', $activity->lapse_out )}}
+
+                @error('lapse_out')
+                    <span class="text-danger">{{$message}}</span>
+                @enderror
+                {{-- ---- --}}
+            </div>
+
+
+
+            {!! Form::submit('Crear periodo', ['class' => 'btn btn-primary']) !!}
         {!! Form::close() !!}
         </div>
+
+
     </div>
 @stop
 

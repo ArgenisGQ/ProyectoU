@@ -4,8 +4,10 @@
 
 @section('content_header')
     @can('admin.periods.create')
-        <a href="{{route('admin.periods.create')}}" class="float-right btn btn-secondary btn-sm">Agregar Facultades</a>
+        <a href="{{route('admin.periods.create')}}" class="float-right btn btn-secondary btn-sm">Agregar Periodo</a>
     @endcan
+
+    <a href="{{route('admin.periods.create')}}" class="float-right btn btn-secondary btn-sm">Agregar Periodo</a>
 
     <h1>Lista de Periodos</h1>
 @stop

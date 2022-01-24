@@ -19,6 +19,7 @@ class CreatePeriodsTable extends Migration
             $table->string('name');
             $table->dateTime('academic_start')->nullable();
             $table->dateTime('academic_finish')->nullable();
+            $table->enum('status',[0,1])->default(1);
 
             $table->timestamps();
         });

@@ -115,10 +115,10 @@
     {!! Form::label('lapse', 'Lapso de entrega:') !!}
 
     {{-- ---pasar campo en formato de fecha para la validacion--- --}}
-    @php
+    {{-- @php
         $academic_start = $activity->academic_start;
         $academic_finish =  $activity->academic_finish;
-    @endphp
+    @endphp --}}
 
 
     {!! Form::hidden('academic_start', $academic_start) !!}

@@ -32,7 +32,11 @@ class PeriodController extends Controller
     public function create()
     {
         //
+        $period = Period::all();
+        $today = now();  //fecha actual del sistema
+        $last_period = $period->max('academic_finish');
 
+        return $last_period;
         return view ('admin.periods.create');
     }
 
@@ -47,6 +51,8 @@ class PeriodController extends Controller
         //
         $request->validate([
             'name' => 'required',
+            'academic_start' => 'date|after_or_equal:academic_start',
+            'academic_finish' => 'date|before_or_equal:academic_finish'
             /* 'slug' => 'required|unique:faculties' */
         ]);
         $period =  Period::create($request->all());
