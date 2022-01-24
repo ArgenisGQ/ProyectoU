@@ -37,9 +37,9 @@
                 {{-- {!! Form::textarea('lapse', null, ['class' => 'form-control']) !!} --}}
 
                 {{-- {{Form::date ('lapse_in', $activity->lapse_in )}} --}}
-                {{Form::date ('academic_start', $activity->lapse_in )}}
+                {{Form::date ('academic_start', $last_period )}}
 
-                @error('lapse_in')
+                @error('academic_start')
                     <span class="text-danger">{{$message}}</span>
                 @enderror
 
@@ -48,9 +48,9 @@
                 {!! Form::label('lapse', 'Fecha de cierre del periodo:') !!}
 
                 {{-- {{Form::date ('lapse_out', $activity->lapse_out )}} --}}
-                {{Form::date ('academic_finish', $activity->lapse_out )}}
+                {{Form::date ('academic_finish', $last_period )}}
 
-                @error('lapse_out')
+                @error('academic_finish')
                     <span class="text-danger">{{$message}}</span>
                 @enderror
                 {{-- ---- --}}

@@ -19,7 +19,9 @@ class PeriodController extends Controller
         //
         $periods = Period::all();
 
-        return $periods;
+
+        /* return $periods; */
+        /* return $acad; */
 
         return view ('admin.periods.index', compact('periods'));
     }
@@ -37,7 +39,7 @@ class PeriodController extends Controller
         $last_period = $period->max('academic_finish');
 
         return $last_period;
-        return view ('admin.periods.create');
+        return view ('admin.periods.create', compact('period','last_period'));
     }
 
     /**
@@ -72,6 +74,8 @@ class PeriodController extends Controller
     public function show(Period $period)
     {
         //
+
+
         return view ('admin.periods.show', compact('period'));
     }
 

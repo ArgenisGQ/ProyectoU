@@ -28,6 +28,9 @@
                     <tr>
                         <th>ID</th>
                         <th>Nombre del periodo</th>
+                        <th>Inicio</th>
+                        <th>FInal</th>
+                        <th>Estatus</th>
                         <th colspan="2"></th>
                     </tr>
                 </thead>
@@ -37,11 +40,16 @@
                         <tr>
                             <td>{{$period->id}}</td>
                             <td>{{$period->name}}</td>
+                            <td>{{\Carbon\Carbon::parse($period->academic_start)->format('d/m/Y')}}</td>
+                            <td>{{\Carbon\Carbon::parse($period->academic_finish)->format('d/m/Y')}}</td>
+                            <td>{{$period->status}}</td>
                             <td width="10px">
                                 @can('admin.periods.edit')
                                     <a href="{{route('admin.periods.edit', $period)}}" class="btn btn-primary btn-sm">Editar</a>
                                 @endcan
-
+                                {{-- -------- --}}
+                                <a href="{{route('admin.periods.edit', $period)}}" class="btn btn-primary btn-sm">Editar</a>
+                                {{-- -------- --}}
                             </td>
                             <td width="10px">
                                 @can('admin.periods.destroy')
@@ -51,7 +59,13 @@
                                         <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                     </form>
                                 @endcan
-
+                                {{-- -------- --}}
+                                <form action="{{route('admin.periods.destroy', $period)}}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                </form>
+                                {{-- -------- --}}
                             </td>
                         </tr>
                     @endforeach

@@ -34,5 +34,7 @@ class DatabaseSeeder extends Seeder
         Course::factory(8)->create();
         $this->call(ActivitySeeder::class);
 
+        $this->call(PeriodSeeder::class);
+
     }
 }
