@@ -12,8 +12,16 @@ class Period extends Model
     //Relacion Masiva
     protected $fillable = [
         'name',
-        
+
     ];
+
+    //Variable para manejo de fechas de inicio y final de actividad
+    protected $dates = [
+        'start_acad',
+        'finish_acad',
+        'academic_start',
+        'academic_finish',
+        ];
 
     //metodo para mostrar slug y no el id
     /* public function getRouteKeyName()

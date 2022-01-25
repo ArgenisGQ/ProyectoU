@@ -31,13 +31,15 @@
 
             <div class="form-group">
 
+
+
                 {!! Form::label('lapse', 'Fecha de inicio del periodo:') !!}
 
 
                 {{-- {!! Form::textarea('lapse', null, ['class' => 'form-control']) !!} --}}
 
                 {{-- {{Form::date ('lapse_in', $activity->lapse_in )}} --}}
-                {{Form::date ('academic_start', $today )}}
+                {{Form::date ('academic_start', $start_acad )}}
 
                 @error('academic_start')
                     <span class="text-danger">{{$message}}</span>
@@ -48,12 +50,14 @@
                 {!! Form::label('lapse', 'Fecha de cierre del periodo:') !!}
 
                 {{-- {{Form::date ('lapse_out', $activity->lapse_out )}} --}}
-                {{Form::date ('academic_finish', $last_period )}}
+                {{Form::date ('academic_finish', $finish_acad )}}
 
                 @error('academic_finish')
                     <span class="text-danger">{{$message}}</span>
                 @enderror
                 {{-- ---- --}}
+                {!! Form::hidden('start_acad', $start_acad) !!}
+                {!! Form::hidden('finish_acad',$finish_acad) !!}
             </div>
 
 
