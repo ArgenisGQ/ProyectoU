@@ -43,7 +43,8 @@ class PeriodController extends Controller
         /* $last_period = Period::select('academic_finish')->where($last_period,'like','%'.$row['cliente'].'%')->last(); */
 
         /* $last_period = Period::latest()->first(); */
-
+        
+        /* el 0 para periodo terminado y el 1 para periodo activo */
         $last_period = Period::where('status', '0')
                        ->latest()
                        ->first();
@@ -103,7 +104,7 @@ class PeriodController extends Controller
 
 
 
-        return $request->all();
+        /* return $request->all(); */
 
         $request->validate([
             'name' => 'required|unique:Periods',
@@ -116,7 +117,7 @@ class PeriodController extends Controller
 
         /* return $request; */
 
-        return $period->all();//para control de entrada de datos a STORE
+        /* return $period->all();  */     //para control de entrada de datos a STORE
 
         return redirect()
                     /* ->route('admin.periods.edit', $period) */
