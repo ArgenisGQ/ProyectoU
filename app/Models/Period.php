@@ -12,7 +12,8 @@ class Period extends Model
     //Relacion Masiva
     protected $fillable = [
         'name',
-
+        'academic_start',
+        'academic_finish',
     ];
 
     //Variable para manejo de fechas de inicio y final de actividad

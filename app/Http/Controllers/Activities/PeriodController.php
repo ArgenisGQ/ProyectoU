@@ -44,11 +44,11 @@ class PeriodController extends Controller
 
         /* $last_period = Period::latest()->first(); */
 
-        $last_period = Period::where('status', '1')
+        $last_period = Period::where('status', '0')
                        ->latest()
                        ->first();
 
-        /* $last_period = (object)$last_period; */
+        $last_period = (object)$last_period;
 
 
         $start_acad = $last_period->academic_start->addMonths(4);
@@ -80,14 +80,28 @@ class PeriodController extends Controller
     {
         /* return $request->all();//para control de entrada de datos a STORE */
         //
-´
-
-        $request->academic_start = Carbon::parse($request->academic_start);
-        $request->academic_finish = Carbon::parse($request->academic_finish);
 
 
+        /* $request->academic_start = Carbon::parse($request->academic_start); */
+        /* $request->academic_finish = Carbon::parse($request->academic_finish); */
 
-        /* return $request->academic_start; */
+        $academic_start = Carbon::parse($request->academic_start);
+        $academic_finish = Carbon::parse($request->academic_finish);
+
+        /* $request->academic_start = (object)$academic_start; */
+        /* $request->academic_finish = (object)$academic_finish; */
+
+       /*  $request->academic_start = now(); */
+       /*  $request->academic_finish = now(); */
+
+       $request->merge(['academic_start' => $academic_start,
+                        'academic_finish' => $academic_finish]);
+
+        /* return $request->academic_start.'     '.$request->academic_finish; */
+
+       /*  return $academic_start .'     '.$academic_finish ; */
+
+
 
         return $request->all();
 
