@@ -43,7 +43,7 @@ class PeriodController extends Controller
         /* $last_period = Period::select('academic_finish')->where($last_period,'like','%'.$row['cliente'].'%')->last(); */
 
         /* $last_period = Period::latest()->first(); */
-        
+
         /* el 0 para periodo terminado y el 1 para periodo activo */
         $last_period = Period::where('status', '0')
                        ->latest()
@@ -113,11 +113,13 @@ class PeriodController extends Controller
 
         ]);
 
-        $period =  Period::create($request->all());
-
         /* return $request; */
 
-        /* return $period->all();  */     //para control de entrada de datos a STORE
+        $period =  Period::create($request->all());
+
+
+
+        /* return $period->all(); */   //para control de entrada de datos a STORE
 
         return redirect()
                     /* ->route('admin.periods.edit', $period) */
@@ -149,7 +151,36 @@ class PeriodController extends Controller
     public function edit(Period $period)
     {
         //
-        return view('admin.periods.edit', compact('period'));
+
+        /* $this->authorize('status', 1); */
+
+        /* $period = Period::all(); */
+
+        /* return $period->all(); */
+
+        /* $period = Period::all(); */
+
+        $today = now();  //fecha actual del sistema
+         /* el 0 para periodo terminado y el 1 para periodo activo */
+        $last_period = Period::where('status', '1')
+                       ->latest()
+                       ->first();
+
+        /* $last_period = (object)$last_period; */
+
+        /* return $last_period->all(); */
+
+        $start_acad = $last_period->academic_start;
+        $finish_acad = $last_period->academic_finish;
+        $name = $last_period->name;
+
+
+        /* return $start_acad .'----'.$finish_acad .'----'.$name; */
+
+
+        return view('admin.periods.edit', compact('period','today',
+                                            'finish_acad', 'start_acad','name'));
+
     }
 
     /**
@@ -162,16 +193,36 @@ class PeriodController extends Controller
     public function update(Request $request, Period $period)
     {
         //
-        $request->validate([
+        /* $request->validate([
             'name' => 'required',
-            /* 'slug' => "required|unique:faculties,slug,$faculty->id" */
+
         ]);
+ */
+
+        /* return $period->all(); */
+
+        /* return $request->all(); */
+
+        $academic_start = Carbon::parse($request->academic_start);
+        $academic_finish = Carbon::parse($request->academic_finish);
+
+        $request->merge(['academic_start' => $academic_start,
+                        'academic_finish' => $academic_finish]);
+
+        $request->validate([
+            /* 'name' => 'required|unique:Periods', */
+            'academic_start' => 'date|after_or_equal:start_acad',
+            'academic_finish' => 'date|before_or_equal:finish_acad'
+
+        ]);
+
+        /* return $request->all(); */
 
         $period->update($request->all());
 
-        return redirect()->route('admin.periods.edit', $period)->with('info', 'El periodo se actualizo con exito');
+        return redirect()->route('admin.periods.index', $period)->with('info', 'El periodo se actualizo con exito');
 
-        return view ('admin.periods.edit');
+        /* return view ('admin.periods.edit'); */
     }
 
     /**
