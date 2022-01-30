@@ -19,9 +19,19 @@ class PeriodController extends Controller
         //
         $periods = Period::all();
 
+        $today = today()->addMonths(1);
+        /* return $today; */
 
+
+        /* $today = Carbon::parse('2022-07-02'); */
+
+        $period_status = Period::where('status', '1')
+                        ->where('academic_finish', '<', $today)
+                        ->update(['status' => '0']);
+
+        /* return $period_status; */
         /* return $periods; */
-        /* return $acad; */
+       /*  return $today; */
 
         return view ('admin.periods.index', compact('periods'));
     }
@@ -106,11 +116,39 @@ class PeriodController extends Controller
 
         /* return $request->all(); */
 
+
+        /* $today = Carbon::parse('2022-07-02'); */
+
+
+
+        $today = today();
+
+        $period_status = Period::where('status', '1')
+                        ->where('academic_start', '<', $today)
+                        ->latest()
+                        ->first();
+
+        /* return $period_status; */
+
+
+        /* ----- Cuando el periodo academico esta aun activo, no se permite crear otro------- */
+        if ($period_status->status == 1 ){
+            /* $period = Period::all(); */
+
+            /* return $period; */
+
+            return redirect()
+                    /* ->route('admin.periods.edit', $period) */
+                    ->route('admin.periods.index'/* , $period */)
+                    ->with('info', 'El periodo actual se encuentra ACTIVO');
+        };
+                        /* ->update(['status' => '0']); */
+
+
         $request->validate([
             'name' => 'required|unique:Periods',
             'academic_start' => 'date|after_or_equal:start_acad',
             'academic_finish' => 'date|before_or_equal:finish_acad'
-
         ]);
 
         /* return $request; */
