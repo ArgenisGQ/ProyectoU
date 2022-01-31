@@ -19,7 +19,7 @@ class PeriodController extends Controller
         //
         $periods = Period::all();
 
-        $today = today()->addMonths(1);
+        $today = today()->addMonths(0);
         /* return $today; */
 
 
@@ -61,9 +61,43 @@ class PeriodController extends Controller
 
         $last_period = (object)$last_period;
 
+        /* return $last_period; */
+
+        $last_status = $last_period->status;
+
+        /* $last_status = 0; */
+
+        /* return $last_status; */
+
+        /* -------------VALIDAR STATUS DIFERENTE A 1----------- */
+        if ($last_status == 1 ){
+            /* $period = Period::all(); */
+
+            /* return $period; */
+
+            return redirect()
+                    /* ->route('admin.periods.edit', $period) */
+                    ->route('admin.periods.index'/* , $period */)
+                    ->with('info', 'El periodo actual se encuentra ACTIVO');
+        };
+        /* ---------------------------------------------------- */
+
+
+
+
+        /* return $last_period; */
+
 
         $start_acad = $last_period->academic_start->addMonths(4);
         $finish_acad = $last_period->academic_finish->addMonths(4);
+        /* $status = $last_period->status; */
+
+        $last_period = Period::where('status', '0')
+                        ->where('academic_start', '>', $today)
+                        ->update(['status' => '1']);
+
+
+        /* return $last_period; */
 
         /* $start_acad = $start_acad->addMonths(4); */
         /* $finish_acad = $finish_acad->addMonths(4); */
@@ -92,12 +126,14 @@ class PeriodController extends Controller
         /* return $request->all();//para control de entrada de datos a STORE */
         //
 
+        /* return $request; */
 
         /* $request->academic_start = Carbon::parse($request->academic_start); */
         /* $request->academic_finish = Carbon::parse($request->academic_finish); */
 
         $academic_start = Carbon::parse($request->academic_start);
         $academic_finish = Carbon::parse($request->academic_finish);
+
 
         /* $request->academic_start = (object)$academic_start; */
         /* $request->academic_finish = (object)$academic_finish; */
@@ -123,27 +159,31 @@ class PeriodController extends Controller
 
         $today = today();
 
-        $period_status = Period::where('status', '1')
+        /* $period_status = Period::where('status', '1')
                         ->where('academic_start', '<', $today)
                         ->latest()
                         ->first();
+
+        return $period_status; */
+
+        $period_status = (object)$request->all();
+
+        /* $period_status = (object)$period_status; */
 
         /* return $period_status; */
 
 
         /* ----- Cuando el periodo academico esta aun activo, no se permite crear otro------- */
-        if ($period_status->status == 1 ){
-            /* $period = Period::all(); */
-
-            /* return $period; */
+        /* if ($period_status->status = 1 ){
 
             return redirect()
-                    /* ->route('admin.periods.edit', $period) */
-                    ->route('admin.periods.index'/* , $period */)
+
+                    ->route('admin.periods.index')
                     ->with('info', 'El periodo actual se encuentra ACTIVO');
-        };
+        }; */
                         /* ->update(['status' => '0']); */
 
+        /* $request->merge(['status' => '1']); */
 
         $request->validate([
             'name' => 'required|unique:Periods',
