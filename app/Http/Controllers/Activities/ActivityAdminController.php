@@ -52,12 +52,16 @@ class ActivityAdminController extends Controller
         $activity->lapse_in = $activity->academic_start;
         $activity->lapse_out = $activity->academic_finish;
 
+        $academic_start = Carbon::parse('2022-06-02');
+        $academic_finish = Carbon::parse('2022-09-27');
+
         /* return $activity->academic_finish; */
 
         /* $academic_start = now()->format('d/m/Y'); */
 
         return view('admin.activities.create', compact('faculties', 'courses',
-                                                        'activity' ));
+                                                        'activity',
+                                                    'academic_start', 'academic_finish' ));
     }
 
     /**
