@@ -10,6 +10,7 @@ use App\Models\Course;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ActivityRequest;
 use Carbon\Carbon;
+use App\Models\Period;
 /* use Illuminate\Support\Collection; */
 
 class ActivityAdminController extends Controller
@@ -46,14 +47,40 @@ class ActivityAdminController extends Controller
 
         $activity = Activity::all();
 
-        $activity->academic_start= Carbon::parse('2022-06-02');
-        $activity->academic_finish = Carbon::parse('2022-09-27');
+       /*  $activity->academic_start= Carbon::parse('2022-06-02');
+        $activity->academic_finish = Carbon::parse('2022-09-27'); */
+
+
+        /* --------CONTROL DE FECHAS DEL PERIODO------------ */
+        $today = today();
+
+        $period_status = Period::where('status', '1')
+                        /* ->where('academic_finish', '<', $today) */
+                        /* ->latest() */
+                        ->first();
+
+        /* $last_period = Period::where('status', '1')
+                        ->latest()
+                        ->first(); */
+
+        /* return $period_status; */
+
+        $activity->academic_start = $period_status->academic_start;
+        $activity->academic_finish = $period_status->academic_finish;
+
+        /* ------------------------------------------------- */
+
+        /* $activity->academic_start= Carbon::parse('2022-06-02');
+        $activity->academic_finish = Carbon::parse('2022-09-27'); */
 
         $activity->lapse_in = $activity->academic_start;
         $activity->lapse_out = $activity->academic_finish;
 
-        $academic_start = Carbon::parse('2022-06-02');
-        $academic_finish = Carbon::parse('2022-09-27');
+        /* $academic_start = Carbon::parse('2022-06-02');
+        $academic_finish = Carbon::parse('2022-09-27'); */
+
+        $academic_start = $period_status->academic_start;
+        $academic_finish = $period_status->academic_finish;
 
         /* return $activity->academic_finish; */
 
@@ -132,14 +159,35 @@ class ActivityAdminController extends Controller
 
         $courses = Course::all();
 
-        $activity->academic_start= Carbon::parse('2022-06-02');
-        $activity->academic_finish = Carbon::parse('2022-09-27');
+        /* --------CONTROL DE FECHAS DEL PERIODO------------ */
+        $today = today();
+
+        $period_status = Period::where('status', '1')
+                        /* ->where('academic_finish', '<', $today) */
+                        /* ->latest() */
+                        ->first();
+
+        /* $last_period = Period::where('status', '1')
+                        ->latest()
+                        ->first(); */
+
+        /* return $period_status; */
+
+        $academic_start = $period_status->academic_start;
+        $academic_finish = $period_status->academic_finish;
+
+        /* ------------------------------------------------- */
+
+
+        /* $activity->academic_start= Carbon::parse('2022-06-02'); */
+        /* $activity->academic_finish = Carbon::parse('2022-09-27'); */
 
         /* $activity = Activity::all(); */
 
         /* return $activity->lapse_in; */
 
-        return view('admin.activities.edit', compact('activity', 'faculties', 'courses'));
+        return view('admin.activities.edit', compact('activity', 'faculties', 'courses',
+                                            'academic_start', 'academic_finish'));
     }
 
     /**

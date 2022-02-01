@@ -73,7 +73,7 @@ class PeriodController extends Controller
         /* return $last_status; */
 
         /* -------------VALIDAR STATUS DIFERENTE A 1----------- */
-        if ($last_status == 2 ){
+        if ($last_status == 3 ){
             /* $period = Period::all(); */
 
             /* return $period; */
