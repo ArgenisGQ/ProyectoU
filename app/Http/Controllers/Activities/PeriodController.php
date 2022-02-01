@@ -55,8 +55,11 @@ class PeriodController extends Controller
         /* $last_period = Period::latest()->first(); */
 
         /* el 0 para periodo terminado y el 1 para periodo activo */
-        $last_period = Period::where('status', '0')
+        /* $last_period = Period::where('status', '0')
                        ->latest()
+                       ->first(); */
+
+        $last_period = Period::latest()
                        ->first();
 
         $last_period = (object)$last_period;
@@ -70,7 +73,7 @@ class PeriodController extends Controller
         /* return $last_status; */
 
         /* -------------VALIDAR STATUS DIFERENTE A 1----------- */
-        if ($last_status == 1 ){
+        if ($last_status == 2 ){
             /* $period = Period::all(); */
 
             /* return $period; */
