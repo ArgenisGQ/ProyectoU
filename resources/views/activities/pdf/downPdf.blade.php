@@ -175,13 +175,22 @@
 
         /* evita un elemento salte de pagina antes de tiempo */
         .page-break-no {
-            page-break-before:always;
+            /* page-break-before:auto; */
+
+            /* page-break-inside:always; */
+
+            page-break-after:always
+            /* page-break-after:always; */
         }
 
         /* evita un elemento se divida en un salto de pagina  */
         .page-break-inside {
             page-break-inside: avoid;
         }
+/*
+        table.page-break-inside tr td, table.page-break-inside tr th {
+            page-break-inside: avoid;
+        } */
 
         .lines-widows {
             widows:3;
@@ -257,6 +266,46 @@
             margin-bottom: 0px;
             margin-left: 30px;
         }
+
+        /* para tablas con css */
+        .cell   {
+            display: table-cell;
+            border: solid;
+            border-width: thin;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .tablet  {
+            display: table;
+        }
+
+        .title   {
+            display: table-caption;
+            text-align: center;
+            font-weight: bold;
+            font-size: larger;
+        }
+
+        .heading   {
+            display: table-row;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .row    {
+            display: table-row;
+        }
+        /* ----------------- */
+
+        .my-table {
+            page-break-before: always;
+            page-break-after: always;
+        }
+        .my-table-tr {
+            page-break-inside: avoid;
+        }
+
 
     </style>
 
@@ -363,27 +412,30 @@
                     </div>
 
                     <div class="">
-
-                        <table class="colapsado" border="1">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th class="p-1 text-center bg-gris">Proposito de la actividad</th>
+                    {{-- <div class="tablet"> --}}
+                        {{-- <table class="colapsado" border="1">
+                            <thead class="">
+                                <tr class="">
+                                    <th class="p-1 text-center bg-gris">
+                                        <div class="">Proposito de la actividad</div>
+                                    </th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td class="">{!! $activity->body !!}</td>
+                                <tr class="">
+                                    <td class="">
+                                        <div class="">{!! $activity->body !!}</div>
+                                    </td>
                                 </tr>
                             </tbody>
 
-                        </table>
-
+                        </table> --}}
 
 
                             {{-- <div class="thead-light">
                                 <div>
-                                    <div class="p-1 text-center table-dark">Descripcion de la actividad</div>
+                                    <div class="p-1 text-center table-dark">Proposito de la actividad</div>
                                 </div>
                             </div>
 
@@ -395,8 +447,56 @@
 
 
 
+                            {{-- --------NORMAL--------- --}}
+                            {{-- <div class="thead-light">
+                                <div>
+                                    <div class="p-1 text-center bg-gris">Proposito de la actividad</div>
+                                </div>
+                            </div>
+
+                            <div class="">
+                                <div>
+                                    <div class="">{!! $activity->body !!}</div>
+                                </div>
+                            </div> --}}
+                            {{-- ----------------------- --}}
+
+
+
+                            {{-- <div class="heading">
+                                <div class="cell p-1 text-center bg-gris">
+                                    <div class="">Proposito de la actividad</div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="cell">
+                                    <div class="">{!! $activity->body !!}</div>
+                                </div>
+                            </div> --}}
+
+                            <div class="">
+
+                                <div class="">
+                                    <div class="p-1 text-center bg-gris">
+                                        <div>Proposito de la actividad</div>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="">
+                                        <div>{!! $activity->body !!}</div>
+                                    </div>
+                                </div>
+
+                            </div>
+
 
                     </div>
+
+
+
+
+
                     {{-- <div class="page-break"></div> --}}
 
                     <div class="page-break-inside">
@@ -416,7 +516,7 @@
 
                     <div class="page-break-inside">
 
-                        <table class="colapsado" border="1" >
+                        {{-- <table class="colapsado" border="1" >
                             <thead>
                                 <tr>
                                     <th class="p-1 text-center bg-gris" >Logros de la actividad</th>
@@ -428,13 +528,13 @@
                                     <td class="">{!!$activity->extract!!}</td>
                                 </tr>
                             </tbody>
-                        </table>
+                        </table> --}}
 
 
-                            {{--
+
                             <div>
                                 <div>
-                                    <h5 class="p-1 text-center" >Proposito de la actividad</h5>
+                                    <h5 class="p-1 text-center bg-gris" >Logros de la actividad</h5>
                                 </div>
                             </div>
 
@@ -443,7 +543,7 @@
                                     <div class="">{!!$activity->extract!!}</div>
                                 </div>
                             </div>
-                            --}}
+
 
                     </div>
 
@@ -468,7 +568,7 @@
 
                     <div class="page-break-inside">
 
-                        <table class="colapsado" border="1" >
+                        {{-- <table class="colapsado" border="1" >
                             <thead>
                                 <tr>
                                     <th class="p-1 text-center bg-gris">Puntuacion en la actividad</th>
@@ -480,13 +580,13 @@
                                     <td class="" >{!!$activity->extract01!!}</td>
                                 </tr>
                             </tbody>
-                        </table>
+                        </table> --}}
 
 
 
-                            {{-- <div>
+                        <div>
                                 <div>
-                                    <h5 class="p-1 text-center">Aprendido en la actividad</h5>
+                                    <h5 class="p-1 text-center bg-gris">Puntuacion en la actividad</h5>
                                 </div>
                             </div>
 
@@ -494,8 +594,8 @@
                                 <div>
                                     <div class="" >{!!$activity->extract01!!}</div>
                                 </div>
-                            </div>
-                            --}}
+                        </div>
+
 
                     </div>
                 </div>
