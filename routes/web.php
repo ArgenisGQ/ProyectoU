@@ -25,7 +25,9 @@ Route::any('/register', function() {
     return  view('auth.login');
 });
 
-Route::get('/', [PostController::class, 'index'])->name('posts.index');
+/* Route::get('/', [PostController::class, 'index'])->name('posts.index'); */
+
+Route::get('/', [ActivityController::class, 'index'])->name('activities.index');
 
 Route::get('posts/{post}',[PostController::class, 'show'])->name('posts.show');
 
