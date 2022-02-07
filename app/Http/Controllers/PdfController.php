@@ -34,8 +34,7 @@ class PdfController extends Controller
         $css_data = file_get_contents("./css/bootstrap.min.css");
         $logo = "data:image/png;base64," . base64_encode(file_get_contents("./img/uny_vector_sm.png"));
 
-
-
+       
         return view('posts.pdf.showPdf', compact('post', 'similares', 'categoria', 'css_data', 'logo'));
 
         /* return $css_data; */

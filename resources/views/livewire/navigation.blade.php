@@ -73,7 +73,7 @@
 
 
 
-                        <a href="#" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Catalogo</a>
+                        <a href="{{ url('activities') }}" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Actividades</a>
 
                         <a href="#" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Sima</a>
                     </div>
@@ -126,9 +126,11 @@
                             <a href="{{ route('profile.show') }}" class="block px-4 py-2 text-sm text-gray-700"
                                 role="menuitem" tabindex="-1" id="user-menu-item-0">
                                 Your Profile</a>
+                            @can('admin.home')
                             <a href="{{ route('admin.home') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
                                 id="user-menu-item-1">
                                 Dashboard</a>
+                            @endcan
 
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
@@ -147,9 +149,9 @@
                     <a href="{{ route('login') }}"
                         class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">
                         Login</a>
-                    <a href="{{ route('register') }}"
+                    {{-- <a href="{{ route('register') }}"
                         class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">
-                        Register</a>
+                        Register</a> --}}
                 </div>
             @endauth
 

@@ -19,7 +19,7 @@ class PostsIndex extends Component
     //para usar con el holder de busqueda
     public $search;
 
-    //
+    //para resear el buscador a la primera pagina
     public function updatingSearch(){
         $this->resetPage();
     }

@@ -5,7 +5,7 @@
 @section('content_header')
     <a href="{{route('admin.posts.create')}}" class="float-right btn btn-secondary btn-sm">Nueva Actividad</a>
 
-    <h1>Listado de Actividades desarrolladas</h1>
+    <h1>Listado de Catalogo</h1>
 @stop
 
 @section('content')
