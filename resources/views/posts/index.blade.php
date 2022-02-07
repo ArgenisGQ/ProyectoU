@@ -3,7 +3,7 @@
 
     <!--Container-->
     {{-- <div class="container max-w-6xl px-4 mx-auto -mt-10 md:px-0"> --}}
-    <div class="container max-w-6xl px-4 mx-auto -mt-5 md:px-0">
+    <div class="container max-w-6xl px-4 mx-auto mt-5 md:px-0">
 
         <div class="mx-0 sm:mx-6">
 
@@ -91,7 +91,7 @@
                     <img class="w-10 h-10 mr-4 rounded-full" src="http://i.pravatar.cc/300" alt="Avatar of Author">
                     <div class="flex-1">
                         <p class="text-base font-bold leading-none md:text-xl">Sistema Interactivo Multimodal de Aprendizaje (SIMA)</p>
-                        <p class="text-xs text-gray-600 md:text-base">Creado por el Equipo de Tecnologia de DEMTec <a class="text-gray-800 no-underline border-b-2 border-green-500 hover:text-green-500" href="http://ead.uny.edu.ve/">ead.edu.ve/</a></p>
+                        <p class="text-xs text-gray-600 md:text-base">Creado por el Equipo de Tecnologia de DEMTec <a class="text-gray-800 no-underline border-b-2 border-green-500 hover:text-green-500" href="http://sima.uny.edu.ve/">sima.uny.edu.ve/</a></p>
                     </div>
 
                 </div>
