@@ -1,5 +1,5 @@
 <x-app-layout>
-    
+
 
 	<!--slide in nav-->
 	<div id="header" class="fixed top-0 z-10 hidden w-full bg-white animated" style="opacity: .95;">
@@ -30,7 +30,7 @@
 	<!--Title-->
 	<div class="pt-16 text-center md:pt-32">
 		<p class="text-sm font-bold text-green-500 md:text-base">08 APRIL 2019 <span class="text-gray-900">/</span> GETTING STARTED</p>
-		<h1 class="text-3xl font-bold break-normal md:text-5xl">Welcome to Ghostwind CSS</h1>
+		<h1 class="text-3xl font-bold break-normal md:text-5xl">{{$post->name}}</h1>
 	</div>
 
 	<!--image-->
