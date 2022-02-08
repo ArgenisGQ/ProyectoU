@@ -42,7 +42,8 @@
 	</div>
 
 	<!--image-->
-	<div class="container w-full max-w-6xl mx-auto mt-8 bg-white bg-cover rounded" style="background-image:url('https://source.unsplash.com/collection/1118905/'); height: 75vh;"></div>
+	<div class="container w-full max-w-6xl mx-auto mt-8 bg-white bg-cover rounded" style="background-image:url('@if($post->image) {{Storage::url($post->image->url)}} @else https://source.unsplash.com/collection/225/800x600 @endif'); height: 75vh;"></div>
+
 
 	<!--Container-->
 	<div class="container max-w-5xl mx-auto -mt-32">
