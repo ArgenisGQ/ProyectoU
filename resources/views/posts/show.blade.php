@@ -29,7 +29,7 @@
 
 	<!--Title-->
 	<div class="pt-16 text-center md:pt-32">
-		<p class="text-sm font-bold text-green-500 md:text-base">08 APRIL 2019 <span class="text-gray-900">/</span>
+		<p class="text-sm font-bold text-green-500 md:text-base">{{$created}} <span class="text-gray-900">/</span>
             @foreach ($categoria as $categoriaa)
 
             <a href="{{route('posts.category', $categoriaa)}}">
