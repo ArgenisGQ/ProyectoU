@@ -24,42 +24,49 @@
 
                                     <div class="flex flex-col flex-grow flex-shrink w-full md:w-1/3">
                                         <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg">
-                                            <p class="w-full px-6 pt-6 text-xs text-gray-600 md:text-sm">CATEGORIA
-                                                @foreach ($categoria as $categoriaa)
-
-                                                    {{-- {{$categoriaa->where('id', $post->category_id)->name}} --}}
-                                                    {{$categoriaa->name}}
-
-                                                @endforeach
-
-                                                {{-- {{$categoria->where('id', $post->category_id)->name}} --}}
-
-
-
-
+                                            <p class="w-full px-6 pt-6 text-xs text-gray-600 md:text-sm">
+                                                {{App\Models\Category::find($post->category_id)->name}}
                                             </p>
                                             <div class="w-full px-6 text-xl font-bold text-gray-900">👋 {{$post->name}}</div>
                                             <p class="px-6 mb-5 font-serif text-base text-gray-800">
                                                 This starter template is an attempt to replicate the default Ghost theme "Casper" using Tailwind CSS and vanilla Javascript.
+                                            </p>
+                                            <p class="w-full px-6 pt-6 text-xs text-gray-600 md:text-sm">
+                                                {{App\Models\Category::find($post->category_id)->name}}
                                             </p>
                                         </div>
 
                                         <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow-lg">
                                             <div class="flex items-center justify-between">
                                                 <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
-                                                {{-- <p class="text-xs text-gray-600 md:text-sm">{{$today->diffInDays($post->created_at)}}</p> --}}
                                                 <p class="text-xs text-gray-600 md:text-sm">
-                                                Creado hace
-                                                @if ($today->diffInDays($post->created_at) < 8)
-                                                    {{$today->diffInDays($post->created_at)}}  dias
-                                                @else
-                                                    @if ($today->diffInWeeks($post->created_at) < 5)
-                                                        {{$today->diffInWeeks($post->created_at)}}  semanas
+                                                Creado hace 
+                                                    @if ($today->diffInDays($post->created_at) <= 7)
+                                                        @if ($today->diffInDays($post->created_at) === 1)
+                                                            {{$today->diffInDays($post->created_at)}} dia
+                                                        @else
+                                                            {{$today->diffInDays($post->created_at)}} dias
+                                                        @endif                                                        
+                                                    @elseif ($today->diffInWeeks($post->created_at) <= 4)
+                                                        @if ($today->diffInWeeks($post->created_at) === 1)
+                                                            {{$today->diffInWeeks($post->created_at)}}  semana
+                                                        @else
+                                                            {{$today->diffInWeeks($post->created_at)}}  semanas
+                                                        @endif                                                        
+                                                    @elseif ($today->diffInMonths($post->created_at) <= 12 )
+                                                        @if ($today->diffInMonths($post->created_at) === 1)
+                                                            {{$today->diffInMonths($post->created_at)}}  mes
+                                                        @else
+                                                            {{$today->diffInMonths($post->created_at)}}  meses
+                                                        @endif                                                        
                                                     @else
-                                                        {{$today->diffInMonths($post->created_at)}}  meses
+                                                        @if ($today->diffInYears($post->created_at) === 1)
+                                                            {{$today->diffInYears($post->created_at)}}  año
+                                                        @else
+                                                            {{$today->diffInYears($post->created_at)}}  años
+                                                        @endif                                                        
                                                     @endif
-                                                {{$today->diffInYears($post->created_at)}}  años
-                                                @endif</p>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -78,14 +85,8 @@
                                     <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg">
                                         <a href="{{route('posts.show', $post)}}" class="flex flex-wrap no-underline hover:no-underline">
                                             <img src="@if($post->image) {{Storage::url($post->image->url)}} @else https://source.unsplash.com/collection/225/800x600 @endif" class="w-full h-64 pb-6 rounded-t">
-                                            <p class="w-full px-6 text-xs text-gray-600 md:text-sm">CATEGORIA
-                                                {{-- @foreach ($categoria as $categoriaa)
-
-                                                    <a href="{{route('posts.category', $categoriaa)}}">
-                                                        <span class="ml-2 text-gray-600">{{$categoriaa->name}}</span>
-                                                    </a>
-
-                                                @endforeach --}}
+                                            <p class="w-full px-6 text-xs text-gray-600 md:text-sm">
+                                                {{App\Models\Category::find($post->category_id)->name}}
                                             </p>
                                             <div class="w-full px-6 text-xl font-bold text-gray-900">{{$post->name}}</div>
                                             <p class="px-6 mb-5 font-serif text-base text-gray-800">
@@ -97,17 +98,33 @@
                                         <div class="flex items-center justify-between">
                                             <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
                                             <p class="text-xs text-gray-600 md:text-sm">
-                                            Creado hace
-                                                @if ($today->diffInDays($post->created_at) < 8)
-                                                    {{$today->diffInDays($post->created_at)}}  dias
-                                                @else
-                                                    @if ($today->diffInWeeks($post->created_at) < 5)
+                                            Creado hace 
+                                                @if ($today->diffInDays($post->created_at) <= 7)
+                                                    @if ($today->diffInDays($post->created_at) === 1)
+                                                        {{$today->diffInDays($post->created_at)}} dia
+                                                    @else
+                                                        {{$today->diffInDays($post->created_at)}} dias
+                                                    @endif                                                        
+                                                @elseif ($today->diffInWeeks($post->created_at) <= 4)
+                                                    @if ($today->diffInWeeks($post->created_at) === 1)
+                                                        {{$today->diffInWeeks($post->created_at)}}  semana
+                                                    @else
                                                         {{$today->diffInWeeks($post->created_at)}}  semanas
+                                                    @endif                                                        
+                                                @elseif ($today->diffInMonths($post->created_at) <= 12 )
+                                                    @if ($today->diffInMonths($post->created_at) === 1)
+                                                        {{$today->diffInMonths($post->created_at)}}  mes
                                                     @else
                                                         {{$today->diffInMonths($post->created_at)}}  meses
-                                                    @endif
-                                                {{$today->diffInYears($post->created_at)}}  años
-                                                @endif</p>
+                                                    @endif                                                        
+                                                @else
+                                                    @if ($today->diffInYears($post->created_at) === 1)
+                                                        {{$today->diffInYears($post->created_at)}}  año
+                                                    @else
+                                                        {{$today->diffInYears($post->created_at)}}  años
+                                                    @endif                                                        
+                                                @endif
+                                            </p>
                                             </p>
                                         </div>
                                     </div>
