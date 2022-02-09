@@ -17,7 +17,7 @@
 
 
                         <div class="flex h-full col-span-3 overflow-hidden bg-white rounded shadow-lg">
-                                <a href="{{route('posts.show', $post)}}" class="flex flex-wrap no-underline hover:no-underline">
+                                {{-- <a href="{{route('posts.show', $post)}}" class="flex flex-wrap no-underline hover:no-underline"> --}}
                                     <div class="w-full rounded-t md:w-2/3">
                                         <img src="@if($post->image) {{Storage::url($post->image->url)}} @else https://source.unsplash.com/collection/225/800x600 @endif" class="w-full h-full shadow">
                                     </div>
@@ -25,14 +25,26 @@
                                     <div class="flex flex-col flex-grow flex-shrink w-full md:w-1/3">
                                         <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg">
                                             <p class="w-full px-6 pt-6 text-xs text-gray-600 md:text-sm">
-                                                {{App\Models\Category::find($post->category_id)->name}}
+                                                <a href="{{route('posts.category', $post->category_id)}}" class="flex flex-wrap no-underline hover:no-underline">
+                                                    {{App\Models\Category::find($post->category_id)->name}}
+                                                </a>                                                 
                                             </p>
-                                            <div class="w-full px-6 text-xl font-bold text-gray-900">👋 {{$post->name}}</div>
+                                            <div class="w-full px-6 text-xl font-bold text-gray-900">
+                                                <a href="{{route('posts.show', $post)}}" class="flex flex-wrap no-underline hover:no-underline"> 
+                                                    👋{{$post->name}}
+                                                </a>
+                                            </div>
                                             <p class="px-6 mb-5 font-serif text-base text-gray-800">
                                                 This starter template is an attempt to replicate the default Ghost theme "Casper" using Tailwind CSS and vanilla Javascript.
                                             </p>
                                             <p class="w-full px-6 pt-6 text-xs text-gray-600 md:text-sm">
-                                                {{App\Models\Category::find($post->category_id)->name}}
+                                                @foreach ($post->tags as $tag)
+                                                    {{-- <a href="{{route('posts.tag', $tag)}}" class="inline-block px-3 h-6 bg-{{$tag->color}}-600 text-white rounded-full"> --}}
+                                                    {{-- <a href="{{route('posts.tag', $tag)}}" class="inline-block px-3 h-6 bg-{{$tag->color}}-600 text-white rounded-full"> --}}
+                                                    <a href="{{route('posts.tag', $tag)}}" class="flex flex-wrap no-underline hover:no-underline">
+                                                        #{{$tag->name}}
+                                                    </a>                                                    
+                                                @endforeach
                                             </p>
                                         </div>
 
@@ -71,7 +83,7 @@
                                         </div>
                                     </div>
 
-                                </a>
+                                {{-- </a> --}}
                         </div>
                         <!--/Lead Card-->
 
@@ -91,6 +103,15 @@
                                             <div class="w-full px-6 text-xl font-bold text-gray-900">{{$post->name}}</div>
                                             <p class="px-6 mb-5 font-serif text-base text-gray-800">
                                                 A Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
+                                            </p>
+                                            <p class="w-full px-6 pt-6 text-xs text-gray-600 md:text-sm">
+                                                @foreach ($post->tags as $tag)
+                                                    {{-- <a href="{{route('posts.tag', $tag)}}" class="inline-block px-3 h-6 bg-{{$tag->color}}-600 text-white rounded-full"> --}}
+                                                    {{-- <a href="{{route('posts.tag', $tag)}}" class="inline-block px-3 h-6 bg-{{$tag->color}}-600 text-white rounded-full"> --}}
+                                                    <a href="{{route('posts.tag', $tag)}}" class="flex flex-wrap no-underline hover:no-underline">
+                                                        #{{$tag->name}}
+                                                    </a>                                                    
+                                                @endforeach
                                             </p>
                                         </a>
                                     </div>
@@ -153,7 +174,7 @@
                     <img class="w-10 h-10 mr-4 rounded-full" src="http://i.pravatar.cc/300" alt="Avatar of Author">
                     <div class="flex-1">
                         <p class="text-base font-bold leading-none md:text-xl">Sistema Interactivo Multimodal de Aprendizaje (SIMA)</p>
-                        <p class="text-xs text-gray-600 md:text-base">Creado por el Equipo de Tecnologia de DEMTec <a class="text-gray-800 no-underline border-b-2 border-green-500 hover:text-green-500" href="http://sima.uny.edu.ve/">sima.uny.edu.ve/</a></p>
+                        <p class="text-xs text-gray-600 md:text-base">Creado por el Equipo de Tecnologia de DEMTec <a class="text-gray-800 no-underline border-b-2 border-green-500 hover:text-green-500" href="http://sima.uny.edu.ve/">http://sima.uny.edu.ve/</a></p>
                     </div>
 
                 </div>
