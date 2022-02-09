@@ -46,6 +46,32 @@
     @enderror
 </div>
 
+{{-- IMAGEN A SUBIR EL POST --}}
+<div class="mb-3 row">
+    <div class="col">
+        <div class="image-wrapper">
+            @isset($user->image)
+                <img id="picture" src="{{Storage::url($user->image->url)}}" >
+            @else
+                <img id="picture" src="https://cdn.pixabay.com/photo/2015/09/02/12/28/pencil-918449_960_720.jpg" >
+            @endisset
+        </div>
+    </div>
+    <div class="col">
+        <div class="form-group">
+            {!! Form::label('file', 'Foto del usuario') !!}
+            {!! Form::file('file', ['class' => 'form-control-file', 'accept' => 'image/*']) !!}
+
+        @error('file')
+            <span class="text-danger">{{$message}}</span>
+        @enderror
+    </div>
+
+
+        <p>Foto de usuario</p>
+    </div>
+</div>
+
 {{-- <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">

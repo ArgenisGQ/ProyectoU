@@ -27,15 +27,15 @@
                                             <p class="w-full px-6 pt-6 text-xs text-gray-600 md:text-sm">
                                                 <a href="{{route('posts.category', $post->category_id)}}" class="flex flex-wrap no-underline hover:no-underline">
                                                     {{App\Models\Category::find($post->category_id)->name}}
-                                                </a>                                                 
+                                                </a>
                                             </p>
                                             <div class="w-full px-6 text-xl font-bold text-gray-900">
-                                                <a href="{{route('posts.show', $post)}}" class="flex flex-wrap no-underline hover:no-underline"> 
+                                                <a href="{{route('posts.show', $post)}}" class="flex flex-wrap no-underline hover:no-underline">
                                                     👋{{$post->name}}
                                                 </a>
                                             </div>
                                             <p class="px-6 mb-5 font-serif text-base text-gray-800">
-                                                This starter template is an attempt to replicate the default Ghost theme "Casper" using Tailwind CSS and vanilla Javascript.
+                                                {{$post->extract}}
                                             </p>
                                             <p class="w-full px-6 pt-6 text-xs text-gray-600 md:text-sm">
                                                 @foreach ($post->tags as $tag)
@@ -43,7 +43,7 @@
                                                     {{-- <a href="{{route('posts.tag', $tag)}}" class="inline-block px-3 h-6 bg-{{$tag->color}}-600 text-white rounded-full"> --}}
                                                     <a href="{{route('posts.tag', $tag)}}" class="flex flex-wrap no-underline hover:no-underline">
                                                         #{{$tag->name}}
-                                                    </a>                                                    
+                                                    </a>
                                                 @endforeach
                                             </p>
                                         </div>
@@ -52,31 +52,31 @@
                                             <div class="flex items-center justify-between">
                                                 <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
                                                 <p class="text-xs text-gray-600 md:text-sm">
-                                                Creado hace 
+                                                Creado hace
                                                     @if ($today->diffInDays($post->created_at) <= 7)
                                                         @if ($today->diffInDays($post->created_at) === 1)
                                                             {{$today->diffInDays($post->created_at)}} dia
                                                         @else
                                                             {{$today->diffInDays($post->created_at)}} dias
-                                                        @endif                                                        
+                                                        @endif
                                                     @elseif ($today->diffInWeeks($post->created_at) <= 4)
                                                         @if ($today->diffInWeeks($post->created_at) === 1)
                                                             {{$today->diffInWeeks($post->created_at)}}  semana
                                                         @else
                                                             {{$today->diffInWeeks($post->created_at)}}  semanas
-                                                        @endif                                                        
+                                                        @endif
                                                     @elseif ($today->diffInMonths($post->created_at) <= 12 )
                                                         @if ($today->diffInMonths($post->created_at) === 1)
                                                             {{$today->diffInMonths($post->created_at)}}  mes
                                                         @else
                                                             {{$today->diffInMonths($post->created_at)}}  meses
-                                                        @endif                                                        
+                                                        @endif
                                                     @else
                                                         @if ($today->diffInYears($post->created_at) === 1)
                                                             {{$today->diffInYears($post->created_at)}}  año
                                                         @else
                                                             {{$today->diffInYears($post->created_at)}}  años
-                                                        @endif                                                        
+                                                        @endif
                                                     @endif
                                                 </p>
                                             </div>
@@ -102,7 +102,7 @@
                                             </p>
                                             <div class="w-full px-6 text-xl font-bold text-gray-900">{{$post->name}}</div>
                                             <p class="px-6 mb-5 font-serif text-base text-gray-800">
-                                                A Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
+                                                {{$post->extract}}
                                             </p>
                                             <p class="w-full px-6 pt-6 text-xs text-gray-600 md:text-sm">
                                                 @foreach ($post->tags as $tag)
@@ -110,7 +110,7 @@
                                                     {{-- <a href="{{route('posts.tag', $tag)}}" class="inline-block px-3 h-6 bg-{{$tag->color}}-600 text-white rounded-full"> --}}
                                                     <a href="{{route('posts.tag', $tag)}}" class="flex flex-wrap no-underline hover:no-underline">
                                                         #{{$tag->name}}
-                                                    </a>                                                    
+                                                    </a>
                                                 @endforeach
                                             </p>
                                         </a>
@@ -119,31 +119,31 @@
                                         <div class="flex items-center justify-between">
                                             <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
                                             <p class="text-xs text-gray-600 md:text-sm">
-                                            Creado hace 
+                                            Creado hace
                                                 @if ($today->diffInDays($post->created_at) <= 7)
                                                     @if ($today->diffInDays($post->created_at) === 1)
                                                         {{$today->diffInDays($post->created_at)}} dia
                                                     @else
                                                         {{$today->diffInDays($post->created_at)}} dias
-                                                    @endif                                                        
+                                                    @endif
                                                 @elseif ($today->diffInWeeks($post->created_at) <= 4)
                                                     @if ($today->diffInWeeks($post->created_at) === 1)
                                                         {{$today->diffInWeeks($post->created_at)}}  semana
                                                     @else
                                                         {{$today->diffInWeeks($post->created_at)}}  semanas
-                                                    @endif                                                        
+                                                    @endif
                                                 @elseif ($today->diffInMonths($post->created_at) <= 12 )
                                                     @if ($today->diffInMonths($post->created_at) === 1)
                                                         {{$today->diffInMonths($post->created_at)}}  mes
                                                     @else
                                                         {{$today->diffInMonths($post->created_at)}}  meses
-                                                    @endif                                                        
+                                                    @endif
                                                 @else
                                                     @if ($today->diffInYears($post->created_at) === 1)
                                                         {{$today->diffInYears($post->created_at)}}  año
                                                     @else
                                                         {{$today->diffInYears($post->created_at)}}  años
-                                                    @endif                                                        
+                                                    @endif
                                                 @endif
                                             </p>
                                             </p>

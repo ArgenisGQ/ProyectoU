@@ -9,6 +9,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 class UserController extends Controller
 {
     public function __construct()
@@ -54,6 +55,8 @@ class UserController extends Controller
     {
         /* $user = request()->all; */
 
+        /* return $request; */
+
 
 
         $this->validate($request, [
@@ -64,6 +67,8 @@ class UserController extends Controller
 
         ]);
 
+        
+
 
         $data = request()->all();
 
@@ -73,6 +78,14 @@ class UserController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password'])
         ]);
+
+        if ($request->file('file')) {
+            $url = Storage::put('public/user_photo', $request->file('file'));
+
+            $user->image()->create([
+                'url' => $url
+            ]);
+        }
 
         $user->roles()->sync($request->roles);
 
