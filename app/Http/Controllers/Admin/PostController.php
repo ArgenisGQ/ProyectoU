@@ -70,7 +70,8 @@ class PostController extends Controller
             $post->tags()->attach($request->tags);
         }
 
-        return redirect()->route('admin.posts.edit', $post);
+        return redirect()->route('admin.posts.index', $post)->with('info', 'El Articulo se creo con exito');
+
     }
 
     /**
@@ -139,7 +140,7 @@ class PostController extends Controller
         }
 
 
-        return redirect()->route('admin.posts.edit', $post)->with('info', 'El post se actualizo con exito');
+        return redirect()->route('admin.posts.index', $post)->with('info', 'El Articulo se actualizo con exito');
     }
 
 
@@ -155,6 +156,6 @@ class PostController extends Controller
 
         $post->delete();
 
-        return redirect()->route('admin.posts.index', $post)->with('info', 'El post se elimino con exito');
+        return redirect()->route('admin.posts.index', $post)->with('info', 'El Articulo se elimino con exito');
     }
 }

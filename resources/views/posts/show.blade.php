@@ -56,8 +56,9 @@
 
 
 				<!--Lead Para-->
-				<p class="mb-5 text-2xl md:text-3xl">
-					👋 Welcome fellow <a class="text-gray-800 no-underline border-b-2 border-green-500 hover:text-green-500" href="https://www.tailwindcss.com">Tailwind CSS</a> and <a class="text-gray-800 no-underline border-b-2 border-green-500 hover:text-green-500" href="https://www.ghost.org">Ghost</a> fan.  This starter template is an attempt to replicate the default Ghost theme <a class="text-gray-800 no-underline border-b-2 border-green-500 hover:text-green-500" href="https://demo.ghost.io/welcome">"Casper"</a> using Tailwind CSS and vanilla Javascript.
+				<p class="mb-5 font-bold text-2xl md:text-3xl">
+					👋 {!! $post->extract !!}
+                    {{-- Welcome fellow <a class="text-gray-800 no-underline border-b-2 border-green-500 hover:text-green-500" href="https://www.tailwindcss.com">Tailwind CSS</a> and <a class="text-gray-800 no-underline border-b-2 border-green-500 hover:text-green-500" href="https://www.ghost.org">Ghost</a> fan.  This starter template is an attempt to replicate the default Ghost theme <a class="text-gray-800 no-underline border-b-2 border-green-500 hover:text-green-500" href="https://demo.ghost.io/welcome">"Casper"</a> using Tailwind CSS and vanilla Javascript. --}}
 				</p>
 
 				{{-- <p class="py-6">The basic blog page layout is available and all using the default Tailwind CSS classes (although there are a few hardcoded style tags). If you are going to use this in your project, you will want to convert the classes into components.</p>
@@ -72,7 +73,7 @@
 					<li class="py-3">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nunc vitae pretium elit. Cras leo mauris, tristique in risus ac, tristique rutrum velit. Mauris accumsan tempor felis vitae gravida. Cras egestas convallis malesuada. Etiam ac ante id tortor vulputate pretium. Maecenas vel sapien suscipit, elementum odio et, consequat tellus.</li>
 				</ol> --}}
 
-				<blockquote class="pl-8 my-8 italic border-l-4 border-green-500 md:pl-12">Example of blockquote - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.</blockquote>
+				<blockquote class="pl-8 my-8 italic border-l-4 border-green-500 md:pl-12">{!!$post->extract01!!}</blockquote>
 
 				{{-- <p class="py-6">Example code block:</p>
 				<pre class="p-4 font-mono text-base text-white bg-gray-900 rounded">
@@ -95,14 +96,15 @@
 
 
 				<!--Author-->
-                <div class="flex items-center w-full col-span-3 p-8 font-sans md:p-24">
+                {{-- <div class="flex items-center w-full col-span-3 p-8 font-sans md:p-24">
                     <img class="w-10 h-10 mr-4 rounded-full" src="http://i.pravatar.cc/300" alt="Avatar of Author">
                     <div class="flex-1">
                         <p class="text-base font-bold leading-none md:text-xl">Sistema Interactivo Multimodal de Aprendizaje (SIMA)</p>
                         <p class="text-xs text-gray-600 md:text-base">Creado por el Equipo de Tecnologia de DEMTec <a class="text-gray-800 no-underline border-b-2 border-green-500 hover:text-green-500" href="http://ead.uny.edu.ve/">ead.edu.ve/</a></p>
                     </div>
 
-                </div>
+                </div> --}}
+                @include('posts.partials.footer')
                 <!--/Author-->
 
 		</div>

@@ -77,7 +77,7 @@
                 console.error( error );
             } ); */
 
-            CKEDITOR.replace( 'extract' );
+            CKEDITOR.replace( 'extract-' );
 
             CKEDITOR.replace( 'extract01' );
 
