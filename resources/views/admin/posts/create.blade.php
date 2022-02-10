@@ -22,7 +22,7 @@
 
             @include('admin.posts.partials.form')
 
-
+            
             {!! Form::submit('Crear Articulo', ['class' => 'btn btn-primary']) !!}
         {!! Form::close() !!}
         </div>
@@ -90,6 +90,14 @@
     {{-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script> --}}
     {{-- <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script> --}}
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
+    <script type="text/javascript" src="/js/ckfinder/ckfinder.js"></script>
+    <script>CKFinder.config( { connectorPath: '/ckfinder/connector' } );</script>
+
+    <script>CKFinder.widget( 'ckfinder-widget', {
+        width: '100%',
+        height: 700
+    } );</script>
 
     <script>
         $(document).ready( function() {
