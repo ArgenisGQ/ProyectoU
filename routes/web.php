@@ -6,6 +6,7 @@ use App\Http\Controllers\PdfController;
 use App\Http\Controllers\PdfActiController;
 
 use App\Http\Controllers\Activities\ActivityController;
+use CKSource\CKFinder\CKFinder;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -59,3 +60,12 @@ Route::get('course/{course}', [ActivityController::class, 'course'])->name('acti
 Route::get('activities/pdf/down/{activity}',[PdfActiController::class, 'downPdf'])->name('activities.pdf.down');
 
 Route::get('activities/pdf/show/{activity}',[PdfActiController::class, 'showPdf'])->name('activities.pdf.show');
+
+
+/* CKFinder */
+
+Route::any('/ckfinder/connector', '\CKSource\CKFinderBridge\Controller\CKFinderController@requestAction')
+    ->name('ckfinder_connector');
+
+Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderController@browserAction')
+    ->name('ckfinder_browser');

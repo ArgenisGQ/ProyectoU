@@ -22,7 +22,7 @@
 
             @include('admin.posts.partials.form')
 
-            
+
             {!! Form::submit('Crear Articulo', ['class' => 'btn btn-primary']) !!}
         {!! Form::close() !!}
         </div>
@@ -94,10 +94,10 @@
     <script type="text/javascript" src="/js/ckfinder/ckfinder.js"></script>
     <script>CKFinder.config( { connectorPath: '/ckfinder/connector' } );</script>
 
-    <script>CKFinder.widget( 'ckfinder-widget', {
+    {{-- <script>CKFinder.widget( 'ckfinder-widget', {
         width: '100%',
         height: 700
-    } );</script>
+    } );</script> --}}
 
     <script>
         $(document).ready( function() {
@@ -130,7 +130,16 @@
 
         CKEDITOR.replace( 'extract01' );
 
-        CKEDITOR.replace( 'body' );
+        CKEDITOR.replace('body',
+            {
+            filebrowserBrowseUrl: '{{ asset(route('ckfinder_browser')) }}',
+            filebrowserImageBrowseUrl: '{{ asset(route('ckfinder_browser')) }}?type=Images',
+            filebrowserFlashBrowseUrl: '{{ asset(route('ckfinder_browser')) }}?type=Flash',
+            filebrowserUploadUrl: '{{ asset(route('ckfinder_connector')) }}?command=QuickUpload&type=Files',
+            filebrowserImageUploadUrl: '{{ asset(route('ckfinder_connector')) }}?command=QuickUpload&type=Images',
+            filebrowserFlashUploadUrl: '{{ asset(route('ckfinder_connector')) }}?command=QuickUpload&type=Flash'
+            }
+        );
 
         //Scrip para cargar archivo de imagen en url
         document.getElementById("file").addEventListener('change', cambiarImagen);
