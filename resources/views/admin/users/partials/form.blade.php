@@ -50,8 +50,8 @@
 <div class="mb-3 row">
     <div class="col">
         <div class="image-wrapper">
-            @isset($user->image)
-                <img id="picture" src="{{Storage::url($user->image->url)}}" >
+            @isset($user->profile_photo_path)
+                <img id="picture" src="{{Storage::url($user->profile_photo_path)}}" >
             @else
                 <img id="picture" src="https://cdn.pixabay.com/photo/2015/09/02/12/28/pencil-918449_960_720.jpg" >
             @endisset
