@@ -31,6 +31,7 @@ class User extends Authenticatable
         'ced',
         'email',
         'password',
+        'profile_photo_url',
     ];
 
     /**
