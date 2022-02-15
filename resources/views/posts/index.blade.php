@@ -50,7 +50,8 @@
 
                                         <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow-lg">
                                             <div class="flex items-center justify-between">
-                                                <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
+                                                {{-- <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="{{Storage::url(App\Models\User::find($post->user_id)->profile_photo_path)}}" alt="Avatar of Author"> --}}
+                                                <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="{{(App\Models\User::find($post->user_id)->profile_photo_url)}}" alt="">
                                                 <p class="text-xs text-gray-600 md:text-sm">
                                                 Creado hace
                                                     @if ($today->diffInDays($post->created_at) <= 7)
@@ -117,7 +118,7 @@
                                     </div>
                                     <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow-lg">
                                         <div class="flex items-center justify-between">
-                                            <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
+                                            <img class="w-8 h-8 mr-4 rounded-full avatar" data-tippy-content="Author Name" src="{{(App\Models\User::find($post->user_id)->profile_photo_url)}}" alt="Avatar of Author">
                                             <p class="text-xs text-gray-600 md:text-sm">
                                             Creado hace
                                                 @if ($today->diffInDays($post->created_at) <= 7)
