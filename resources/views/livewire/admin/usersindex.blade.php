@@ -20,7 +20,13 @@
                         @foreach ($users as $user)
                             <tr>
                                 <td>{{$user->id}}</td>
-                                <td>{{$user->name}}</td>
+                                {{-- <td>{{$user->name}}</td> --}}
+                                {{-- <td><a href="{{route('profile.show', $user)}}">
+                                    {{$user->name}}
+                                </a></td> --}}
+                                <td><a href="{{route('admin.users.show', $user)}}">
+                                    {{$user->name}}
+                                </a></td>
                                 <td>{{$user->email}}</td>
                                 <td>
                                     @if(!empty($user->getRoleNames()))
