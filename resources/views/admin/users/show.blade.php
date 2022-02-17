@@ -14,7 +14,7 @@
     @endif
 
 
-    @include('profile.show')
+    @include('profile.show-adminlte')
 
 @stop
 
