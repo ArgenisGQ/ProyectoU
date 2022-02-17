@@ -11,6 +11,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Nombre</th>
+                            <th>Documento</th>
                             <th>Email</th>
                             <th>Rol</th>
                         </tr>
@@ -27,6 +28,7 @@
                                 <td><a href="{{route('admin.users.show', $user)}}">
                                     {{$user->name}}
                                 </a></td>
+                                <td>{{$user->ced}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>
                                     @if(!empty($user->getRoleNames()))
@@ -35,9 +37,9 @@
                                         @endforeach
                                     @endif
                                 </td>
-                                <td width="10px">
+                                {{-- <td width="10px">
                                     <a href="{{route('admin.users.edit', $user)}}" class="btn btn-primary">Editar</a>
-                                </td>
+                                </td> --}}
                                 <td class="10px">
                                     <form action="{{route('admin.users.destroy', $user)}}" method="POST">
                                         @csrf

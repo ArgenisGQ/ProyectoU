@@ -7,8 +7,14 @@
 @stop
 
 @section('content')
+    @if (session('info'))
+    <div class="alert alert-success">
+        {{session('info')}}
+    </div>
+    @endif
 
-    @include('profile.show-adminlte')
+
+    @include('profile.show')
 
 @stop
 
