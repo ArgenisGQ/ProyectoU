@@ -82,14 +82,19 @@
 
 
         <!-- Roles -->
-        {{-- @foreach ($roles as $role)
+        @foreach ($roles as $role)
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-checkbox name={{$role->name}} id={{$role->id}}/>
-                <div class="ml-2">
 
+                <div class="ml-2">
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" value="{{ $role->id}}" wire:model="selectedtypes"  class="form-checkbox h-6 w-6 text-green-500">
+                        <span class="ml-3 text-sm">{{ $type->name }}</span>
+                    </label>
                 </div>
             </div>
-        @endforeach --}}
+
+        @endforeach
 
         <div class="col-span-6 sm:col-span-4">
             <div class="field">
@@ -111,24 +116,9 @@
             </div>
         </div>
 
-        
 
-        @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="col-span-6 sm:col-span-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms"/>
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
-                            </div>
-                        </div>
-                    </x-jet-label>
-                </div>
-        @endif
 
+       
         {{-- <div>
             <label>
                 {!! Form::checkbox('roles[]', $role->id, null, ['class' => 'mr-1']) !!}
