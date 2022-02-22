@@ -322,7 +322,7 @@
     <header>
 
         <span class="p-2">
-            <img src="{{$logo}}" width="70" class="mx-auto mg-logo">
+            <img src="{{$logo}}" width="110" class="mx-auto mg-logo">
         </span>
         <span>
             <p class="text-right small mg-text-codigo "> FOO-VRA140-202321-104 </p>
