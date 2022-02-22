@@ -26,6 +26,8 @@ class ActivityFactory extends Factory
     public function definition()
     {
         $name = $this->faker->unique()->sentence();
+        $startDate = Carbon::create(2021, 9, 6, 0, 0, 0);
+        $endDate = Carbon::create(2021, 12, 17, 0, 0, 0);
 
         return [
             //
@@ -38,8 +40,10 @@ class ActivityFactory extends Factory
             'status' => $this->faker->randomElement([1,2]),
             'faculty_id' => Faculty::all()->random()->id,
             'user_id' => User::all()->random()->id,
-            /* 'academic_start' => Carbon::create(2022, 6, 1, 0, 0, 0), */
-            /* 'academic_finish' => Carbon::create(2022, 9, 25, 0, 0, 0) */
+            'lapse_in' => $this->faker->dateTimeBetween($startDate,$endDate),
+            'lapse_out' => $this->faker->dateTimeBetween($startDate,$endDate)
+            /* 'lapse_in' => Carbon::create(2022, 6, 1, 0, 0, 0), */
+            /* 'lapse_out' => Carbon::create(2022, 9, 25, 0, 0, 0) */
         ];
     }
 }

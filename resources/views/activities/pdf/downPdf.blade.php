@@ -336,7 +336,8 @@
         <span>
             <h6 class="mg-text-emcabezado text-center ">UNIVERSIDAD YACAMBU</h6>
             <h6 class="mg-text-emcabezado text-center ">VICERRECTORADO ACADEMICO</h6>
-            <h6 class="mg-text-emcabezado text-center ">DIRECCION DE ESTUDIOS A DISTANCIA</h6>
+            <h6 class="mg-text-emcabezado text-center ">DIRECCION DE EDUCACION MEDIADA</h6>
+            <h6 class="mg-text-emcabezado text-center ">POR LAS TECNOLOGIAS</h6>
         </span>
 
     </header>
