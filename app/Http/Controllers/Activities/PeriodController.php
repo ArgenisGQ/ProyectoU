@@ -149,7 +149,7 @@ class PeriodController extends Controller
 
         /* return $request->academic_start.'     '.$request->academic_finish; */
 
-       /*  return $academic_start .'     '.$academic_finish ; */
+       /* return $academic_start .'     '.$academic_finish ; */
 
 
 

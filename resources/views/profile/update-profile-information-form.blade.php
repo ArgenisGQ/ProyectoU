@@ -82,7 +82,7 @@
 
 
         <!-- Roles -->
-        @foreach ($roles as $role)
+        {{-- @foreach ($roles as $role)
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-checkbox name={{$role->name}} id={{$role->id}}/>
 
@@ -94,7 +94,7 @@
                 </div>
             </div>
 
-        @endforeach
+        @endforeach --}}
 
         <div class="col-span-6 sm:col-span-4">
             <div class="field">
@@ -118,7 +118,7 @@
 
 
 
-       
+
         {{-- <div>
             <label>
                 {!! Form::checkbox('roles[]', $role->id, null, ['class' => 'mr-1']) !!}
