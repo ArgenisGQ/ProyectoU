@@ -26,9 +26,19 @@ Route::any('/register', function() {
     return  view('auth.login');
 });
 
-Route::get('/', [PostController::class, 'index'])->name('posts.index');
+Route::any('/', function() {
+    return  view('home.version01.index');
+});
+
+/* Route::any('/login', function() {
+    return  view('auth.login');
+}); */
+
+/* Route::get('/', [PostController::class, 'index'])->name('posts.index'); */
 
 /* Route::get('/', [ActivityController::class, 'index'])->name('activities.index'); */
+
+Route::get('posts', [PostController::class, 'index'])->name('posts.index');
 
 Route::get('posts/{post}',[PostController::class, 'show'])->name('posts.show');
 
