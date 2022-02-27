@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
             'ced' => '03',
             'email' => 'usuario@uny.edu.ve',
             'password' => bcrypt('usuario')
-        ])->assignRole('Blogger');
+        ])->assignRole('Profesor');
 
         User::factory(99)->create();
 

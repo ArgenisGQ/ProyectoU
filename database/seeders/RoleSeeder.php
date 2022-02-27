@@ -17,7 +17,7 @@ class RoleSeeder extends Seeder
     public function run()
     {
         $role1 = Role::create(['name' => 'Admin']);
-        $role2 = Role::create(['name' => 'Blogger']);
+        $role2 = Role::create(['name' => 'Profesor']);
 
         Permission::create(['name' => 'admin.home',
                             'description' => 'Ver el dashboard'])->syncRoles($role1, $role2);
@@ -126,7 +126,7 @@ class RoleSeeder extends Seeder
 
 
          /* IMPORTAR PROFESORES */
-        Permission::create(['name' => 'admin.import',
+        Permission::create(['name' => 'admin.users.import',
                     'description' => 'Importar listado de Profesores'])->syncRoles($role1);
 
     }
