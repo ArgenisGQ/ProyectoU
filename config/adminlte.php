@@ -280,6 +280,13 @@ return [
             'label_color' => 'success', */
         ],
 
+        [
+            'text'          => 'Listado de periodos',
+            'route'         => 'admin.periods.index',
+            'icon'          => 'fas fa-users fa-fw',
+            'active'        => ['admin/periods*'],
+            /* 'can'    => 'admin.courses.index', */
+            ],
 
 
         [
@@ -304,13 +311,7 @@ return [
                         'active' => ['admin/courses*'],
                         /* 'can'    => 'admin.courses.index', */
                         ],
-                        [
-                        'text' => 'Periodos',
-                        'route'  => 'admin.periods.index',
-                        'icon' => 'far fa-fw fa-bookmark',
-                        'active' => ['admin/periods*'],
-                        /* 'can'    => 'admin.courses.index', */
-                        ],
+
                     ],
                 ],
                 [

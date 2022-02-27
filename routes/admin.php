@@ -46,7 +46,7 @@ Route::resource('courses', CourseAdminController::class)->except('show')->names(
 
 Route::resource('activities', ActivityAdminController::class)->names('admin.activities');
 
-Route::resource('periods', PeriodController::class)->names('admin.periods');
+Route::resource('periods', PeriodController::class)->only(['index', 'create', 'edit', 'store', 'show', 'update', 'destroy'])->names('admin.periods');
 /* ======= */
 /* Route::get('activities', [IndexController::class, 'index'])->middleware('can:admin.home')->name('admin.activities'); */
 

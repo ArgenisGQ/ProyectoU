@@ -115,13 +115,13 @@ class RoleSeeder extends Seeder
 
 
         /* PERIODOS */
-        Permission::create(['name' => 'admin.roles.index',
-                            'description' => 'Ver listado de roles'])->syncRoles($role1);
-        Permission::create(['name' => 'admin.roles.create',
-                            'description' => 'Crear roles'])->syncRoles($role1);
-        Permission::create(['name' => 'admin.roles.edit',
-                            'description' => 'Editar roles'])->syncRoles($role1);
-        Permission::create(['name' => 'admin.roles.destroy',
-                            'description' => 'Eliminar roles'])->syncRoles($role1);
+        Permission::create(['name' => 'admin.periods.index',
+                            'description' => 'Ver listado de periodos'])->syncRoles($role1);
+        Permission::create(['name' => 'admin.periods.create',
+                            'description' => 'Crear periodos'])->syncRoles($role1);
+        Permission::create(['name' => 'admin.periods.edit',
+                            'description' => 'Editar periodos'])->syncRoles($role1);
+        Permission::create(['name' => 'admin.periods.destroy',
+                            'description' => 'Eliminar periodos'])->syncRoles($role1);
     }
 }
