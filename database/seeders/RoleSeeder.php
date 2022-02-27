@@ -123,5 +123,11 @@ class RoleSeeder extends Seeder
                             'description' => 'Editar periodos'])->syncRoles($role1);
         Permission::create(['name' => 'admin.periods.destroy',
                             'description' => 'Eliminar periodos'])->syncRoles($role1);
+
+
+         /* IMPORTAR PROFESORES */
+        Permission::create(['name' => 'admin.import',
+                    'description' => 'Importar listado de Profesores'])->syncRoles($role1);
+
     }
 }

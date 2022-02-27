@@ -29,9 +29,15 @@ Route::resource('tags', TagController::class)->except('show')->names('admin.tags
 
 Route::resource('posts', PostController::class)->names('admin.posts');
 
-Route::get('users/import', [ExcelController::class, 'importForm'])->name('admin.users.importForm');
+Route::get('import', [ExcelController::class, 'importForm'])->name('admin.users.importform');
 
-Route::post('users/import', [ExcelController::class, 'import'])->name('admin.users.import');
+Route::post('import', [ExcelController::class, 'import'])->name('admin.users.import');
+
+Route::get('users/import', function () {
+    return 'Hello World';
+});
+
+/* Route::post('users/import', [ExcelController::class, 'importForm'])->name('admin.users.import'); */ //test
 
 /* actividades */
 

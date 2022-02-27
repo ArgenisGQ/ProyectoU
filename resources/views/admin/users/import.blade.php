@@ -21,6 +21,8 @@
             <div class="container mt-5">
                 <h3>Importar profesores</h3>
 
+                <p>El listado debe tener en inicio de linea los campos de</p>
+                <p>NOMBRE, CEDULA, EMAIL, CLAVE</p>
                 {{-- @if ( $errors->any() )
                     <div class="alert alert-danger">
                         @foreach( $errors->all() as $error )<li>{{ $error }}</li>@endforeach
