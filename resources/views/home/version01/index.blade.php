@@ -93,7 +93,7 @@
             <!-- start home -->
             <div id="home">
                 <div class="container mx-auto sm:px-4">
-                    <div class="flex flex-wrap ">
+                    <div class="flex flex-wrap">
                         <div class="col-md-offset-2 md:w-2/3 pr-4 pl-4">
                             <h1 class="wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s">La educación, como la luz del sol, puede y debe llegar a todos. &nbsp <span> José Pedro Varela </span></h1>
                             <div class="element">
@@ -101,10 +101,23 @@
                                 <div class="sub-element">ya es la gran cosa ahora.</div>
                                 <div class="sub-element">― Donna J. Abernathy</div>
                             </div>
+                           {{--  <a data-scroll href="posts" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">CATALOGO</a> --}}
+                            {{-- <a data-scroll href="activities" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">ACTIVIDADES</a> --}}
+                            {{-- <a data-scroll href="#" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">GET STARTED</a> --}}
+                        </div>
+
+                        <div class="items-center col-md-offset-2 md:w-2/3 pr-4 pl-4 wow fadeIn" data-wow-offset="50" data-wow-delay="2.9s">
+                            {{-- <h1 class="wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s">La educación, como la luz del sol, puede y debe llegar a todos. &nbsp <span> José Pedro Varela </span></h1>
+                            <div class="element">
+                                <div class="sub-element">El aprendizaje en línea no será la siguiente gran cosa,</div>
+                                <div class="sub-element">ya es la gran cosa ahora.</div>
+                                <div class="sub-element">― Donna J. Abernathy</div>
+                            </div> --}}
                             <a data-scroll href="posts" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">CATALOGO</a>
                             <a data-scroll href="activities" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">ACTIVIDADES</a>
                             {{-- <a data-scroll href="#" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">GET STARTED</a> --}}
                         </div>
+
                     </div>
                 </div>
             </div>
