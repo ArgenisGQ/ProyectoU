@@ -16,11 +16,12 @@ use App\Http\Controllers\Activities\CourseAdminController;
 use App\Http\Controllers\Activities\FacultyAdminController;
 
 
+
 Route::get('', [HomeController::class, 'index'])->middleware('can:admin.home')->name('admin.home');
 
 Route::resource('users', UserController::class)->only(['index', 'create', 'edit', 'store', 'show', 'update', 'destroy'])->names('admin.users');
 
-Route::resource('roles', RoleController::class)->names('admin.roles');
+Route::resource('roles', RoleController::class)->only(['index', 'create', 'edit', 'store', 'show', 'update', 'destroy'])->names('admin.roles');
 
 Route::resource('categories', CategoryController::class)->except('show')->names('admin.categories');
 

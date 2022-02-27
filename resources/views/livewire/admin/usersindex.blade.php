@@ -37,9 +37,9 @@
                                         @endforeach
                                     @endif
                                 </td>
-                                {{-- <td width="10px">
-                                    <a href="{{route('admin.users.edit', $user)}}" class="btn btn-primary">Editar</a>
-                                </td> --}}
+                                <td width="10px">
+                                    <a href="{{route('admin.users.edit', $user)}}" class="btn btn-primary  btn-sm">Editar</a>
+                                </td>
                                 <td class="10px">
                                     <form action="{{route('admin.users.destroy', $user)}}" method="POST">
                                         @csrf
