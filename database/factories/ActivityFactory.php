@@ -40,7 +40,8 @@ class ActivityFactory extends Factory
             'status' => $this->faker->randomElement([1,2]),
             'faculty_id' => Faculty::all()->random()->id,
             'user_id' => User::all()->random()->id,
-            'lapse_in' => $this->faker->dateTimeBetween($startDate,$endDate),
+            /* 'lapse_in' => $this->faker->dateTimeBetween($startDate,$endDate), */
+            'lapse_in' => Carbon::create(2021, 9, 6, 0, 0, 0),
             'lapse_out' => $this->faker->dateTimeBetween($startDate,$endDate)
             /* 'lapse_in' => Carbon::create(2022, 6, 1, 0, 0, 0), */
             /* 'lapse_out' => Carbon::create(2022, 9, 25, 0, 0, 0) */
