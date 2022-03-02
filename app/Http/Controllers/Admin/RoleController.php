@@ -41,7 +41,7 @@ class RoleController extends Controller
         $permissions = Permission::all();
         /* return $permissions; */
 
-        $categories= Category_Permission::all();
+        $categories = Category_Permission::all();
         /* return $categories; */
         /* $similares = Permission::where('group_id', 2)
                     ->get(); */
@@ -90,7 +90,9 @@ class RoleController extends Controller
     {
         $permissions = Permission::all();
 
-        return view('admin.roles.edit', compact('role','permissions'));
+        $categories = Category_Permission::all();
+
+        return view('admin.roles.edit', compact('role','permissions','categories'));
     }
 
     /**
