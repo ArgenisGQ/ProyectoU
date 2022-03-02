@@ -15,14 +15,14 @@ use App\Models\Period;
 
 class ActivityAdminController extends Controller
 {
-    /* public function __construct()
+    public function __construct()
     {
-        this->middleware('can:admin.activities.index')->only('index');
+        $this->middleware('can:admin.activities.index')->only('index');
         $this->middleware('can:admin.activities.create')->only('create', 'store');
         $this->middleware('can:admin.activities.edit')->only('edit', 'update');
         $this->middleware('can:admin.activities.destroy')->only('destroy');
         $this->middleware('can:admin.activities.show')->only('show');
-    } */
+    }
 
     /**
      * Display a listing of the resource.

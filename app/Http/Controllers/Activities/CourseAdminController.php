@@ -8,13 +8,13 @@ use App\Models\Course;
 
 class CourseAdminController extends Controller
 {
-    /* public function __construct()
+    public function __construct()
     {
         $this->middleware('can:admin.courses.index')->only('index');
         $this->middleware('can:admin.courses.create')->only('create', 'store');
         $this->middleware('can:admin.courses.edit')->only('edit', 'update');
         $this->middleware('can:admin.courses.destroy')->only('destroy');
-    } */
+    }
 
     /**
      * Display a listing of the resource.

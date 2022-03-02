@@ -292,11 +292,12 @@ return [
         [
             'text'    => 'ACTIVIDADES',
             'icon'    => 'fas fa-fw fa-share',
-            'can'         => 'admin.faculties.index',
+            'can'         => 'admin.activities.index',
             'submenu' => [
                 [
                     'text'    => 'ADMINISTRAR',
                     'url'     => '#',
+                    'can'     => 'admin.faculties.index',
                     'submenu' => [
                         [
                         'text' => 'Facultades',
