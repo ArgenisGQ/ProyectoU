@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUsernameToUsersTable extends Migration
+class NewGroupIdToPermissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddUsernameToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('username')->nullable();
+        Schema::table('permissions', function (Blueprint $table) {
+            $table->string('group_id')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class AddUsernameToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->removeColumn('username');
+        Schema::table('permissions', function (Blueprint $table) {
+            $table->removeColumn('group_id');
         });
     }
 }

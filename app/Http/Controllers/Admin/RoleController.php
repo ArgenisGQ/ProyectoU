@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 use Spatie\Permission\Models\Permission;
+use App\Models\Category_Permission;
 
 class RoleController extends Controller
 {
@@ -38,8 +39,15 @@ class RoleController extends Controller
     public function create()
     {
         $permissions = Permission::all();
+        /* return $permissions; */
 
-        return view('admin.roles.create', compact('permissions'));
+        $categories= Category_Permission::all();
+        /* return $categories; */
+        /* $similares = Permission::where('group_id', 2)
+                    ->get(); */
+        /* return $similares; */
+
+        return view('admin.roles.create', compact('permissions', 'categories'));
     }
 
     /**
