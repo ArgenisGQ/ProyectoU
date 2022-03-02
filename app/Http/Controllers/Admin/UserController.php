@@ -70,7 +70,7 @@ class UserController extends Controller
 
         ]);
 
-        return $request->file('file');
+        /* return $request->file('file'); */
 
         $data = request()->all();
 
@@ -95,7 +95,7 @@ class UserController extends Controller
             ]);
         }
 
-        return $user; //test de subir imagen
+       /*  return $user; //test de subir imagen */
 
         $user->roles()->sync($request->roles);
 
