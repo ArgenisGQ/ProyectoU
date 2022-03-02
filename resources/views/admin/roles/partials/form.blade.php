@@ -12,8 +12,9 @@
 
         @php
             /* use Spatie\Permission\Models\Permission; */
-            $permisos = Spatie\Permission\Models\Permission::where('group_id', $category->id)->get('name');
+            $permisos = Spatie\Permission\Models\Permission::where('group_id', $category->id)->get();
 
+            /* $permisos = DB::table('permissions')->whereIn('group_id', $category->id)->get(); */
             /* $descripcion = $permisos->description; */
 
         @endphp
@@ -21,25 +22,24 @@
         <div> {{$category->name}}</div>
         {{-- <div> {{$category->id}}</div> --}}
         {{-- {{$category->id }} --}}
-        {{$permisos}}
-        {{-- {{App\Models\Category::find($post->category_id)->name}}
- --}}
+        {{-- {{$permisos}} --}}
 
+        {{-- {{ Spatie\Permission\Models\Permission::find($category->id)->name }} --}}
 
+        {{-- @foreach ($permisos as $permiso )
 
+            {{$permiso->description}}
 
+        @endforeach --}}
 
-
-
-
-            {{-- @foreach ($permissions as $permission)
+        @foreach ($permisos as $permiso)
                     <div>
                         <label>
-                            {!! Form::checkbox('permissions[]', $permission->id, null, ['class' => 'mr-1']) !!}
-                            {{$permission->description}}
+                            {!! Form::checkbox('permissions[]', $permiso->id, null, ['class' => 'mr-1']) !!}
+                            {{$permiso->description}}
                         </label>
                     </div>
-            @endforeach --}}
+        @endforeach
 
     @endforeach
 
