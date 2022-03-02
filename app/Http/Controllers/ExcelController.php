@@ -13,8 +13,8 @@ class ExcelController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('can:admin.import')->only('importForm','create','importExcel');
-        
+        $this->middleware('can:admin.users.import')->only('importForm','create','importExcel');
+
     }
 
 
