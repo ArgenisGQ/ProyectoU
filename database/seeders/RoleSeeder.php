@@ -47,7 +47,7 @@ class RoleSeeder extends Seeder
                             'group_id' => 3,
                             'description' => 'Ver listado de categorias'])->syncRoles($role1, $role2);
         Permission::create(['name' => 'admin.categories.show',
-                            'group_id' => 2,
+                            'group_id' => 3,
                             'description' => 'Ver datos de categoria'])->syncRoles($role1);
         Permission::create(['name' => 'admin.categories.create',
                             'group_id' => 3,
@@ -65,7 +65,7 @@ class RoleSeeder extends Seeder
                             'group_id' => 4,
                             'description' => 'Ver listado de etiquetas'])->syncRoles($role1, $role2);
         Permission::create(['name' => 'admin.tags.show',
-                            'group_id' => 2,
+                            'group_id' => 4,
                             'description' => 'Ver datos de etiqueta'])->syncRoles($role1);
         Permission::create(['name' => 'admin.tags.create',
                             'group_id' => 4,
@@ -83,7 +83,7 @@ class RoleSeeder extends Seeder
                             'group_id' => 5,
                             'description' => 'Ver listado de posts'])->syncRoles($role1, $role2);
         Permission::create(['name' => 'admin.posts.show',
-                            'group_id' => 2,
+                            'group_id' => 5,
                             'description' => 'Ver post'])->syncRoles($role1);
         Permission::create(['name' => 'admin.posts.create',
                             'group_id' => 5,
@@ -101,7 +101,7 @@ class RoleSeeder extends Seeder
                             'group_id' => 6,
                             'description' => 'Ver listado de actividades'])->syncRoles($role1, $role2);
         Permission::create(['name' => 'activities.show',
-                            'group_id' => 2,
+                            'group_id' => 6,
                             'description' => 'Ver actividades'])->syncRoles($role1);
         Permission::create(['name' => 'activities.create',
                             'group_id' => 6,
@@ -118,7 +118,7 @@ class RoleSeeder extends Seeder
                             'group_id' => 7,
                             'description' => 'Ver listado de actividades'])->syncRoles($role1, $role2);
         Permission::create(['name' => 'admin.activities.show',
-                            'group_id' => 2,
+                            'group_id' => 7,
                             'description' => 'Ver actividades'])->syncRoles($role1);
         Permission::create(['name' => 'admin.activities.create',
                             'group_id' => 7,
@@ -145,7 +145,7 @@ class RoleSeeder extends Seeder
                             'group_id' => 9,
                             'description' => 'Ver listado de facultades'])->syncRoles($role1);
         Permission::create(['name' => 'admin.faculties.show',
-                            'group_id' => 2,
+                            'group_id' => 9,
                             'description' => 'Ver facultad'])->syncRoles($role1);
         Permission::create(['name' => 'admin.faculties.create',
                             'group_id' => 9,
@@ -163,7 +163,7 @@ class RoleSeeder extends Seeder
                             'group_id' => 10,
                             'description' => 'Ver listado de materias'])->syncRoles($role1);
         Permission::create(['name' => 'admin.courses.show',
-                            'group_id' => 2,
+                            'group_id' => 10,
                             'description' => 'Ver materia'])->syncRoles($role1);
         Permission::create(['name' => 'admin.courses.create',
                             'group_id' => 10,
@@ -180,7 +180,7 @@ class RoleSeeder extends Seeder
                             'group_id' => 11,
                             'description' => 'Ver listado de roles'])->syncRoles($role1);
         Permission::create(['name' => 'admin.roles.show',
-                            'group_id' => 2,
+                            'group_id' => 11,
                             'description' => 'Ver rol'])->syncRoles($role1);
         Permission::create(['name' => 'admin.roles.create',
                             'group_id' => 11,
@@ -198,7 +198,7 @@ class RoleSeeder extends Seeder
                             'group_id' => 12,
                             'description' => 'Ver listado de periodos'])->syncRoles($role1);
         Permission::create(['name' => 'admin.periods.show',
-                            'group_id' => 2,
+                            'group_id' => 12,
                             'description' => 'Ver periodo'])->syncRoles($role1);
         Permission::create(['name' => 'admin.periods.create',
                             'group_id' => 12,
