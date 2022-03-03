@@ -7,7 +7,7 @@
         <a href="{{route('admin.periods.create')}}" class="float-right btn btn-secondary btn-sm">Agregar Periodo</a>
     @endcan
 
-    <a href="{{route('admin.periods.create')}}" class="float-right btn btn-secondary btn-sm">Agregar Periodo</a>
+    {{-- <a href="{{route('admin.periods.create')}}" class="float-right btn btn-secondary btn-sm">Agregar Periodo</a> --}}
 
     <h1>Lista de Periodos</h1>
 @stop
@@ -48,7 +48,7 @@
                                     <a href="{{route('admin.periods.edit', $period)}}" class="btn btn-primary btn-sm">Editar</a>
                                 @endcan
                                 {{-- -------- --}}
-                                <a href="{{route('admin.periods.edit', $period)}}" class="btn btn-primary btn-sm">Editar</a>
+                                {{-- <a href="{{route('admin.periods.edit', $period)}}" class="btn btn-primary btn-sm">Editar</a> --}}
                                 {{-- -------- --}}
                             </td>
                             <td width="10px">
@@ -60,11 +60,11 @@
                                     </form>
                                 @endcan
                                 {{-- -------- --}}
-                                <form action="{{route('admin.periods.destroy', $period)}}" method="POST">
+                                {{-- <form action="{{route('admin.periods.destroy', $period)}}" method="POST">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                </form>
+                                </form> --}}
                                 {{-- -------- --}}
                             </td>
                         </tr>

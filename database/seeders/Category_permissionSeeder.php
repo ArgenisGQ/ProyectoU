@@ -40,7 +40,10 @@ class Category_permissionSeeder extends Seeder
             'name' => 'ARTICULOS',
         ]);
         DB::table('categories_permissions')->insert([
-            'name' => 'ACTIVIDADES',
+            'name' => 'ACTIVIDADES USUARIOS',
+        ]);
+        DB::table('categories_permissions')->insert([
+            'name' => 'ACTIVIDADES ADMIN',
         ]);
         DB::table('categories_permissions')->insert([
             'name' => 'IMPRIMIR PDF',

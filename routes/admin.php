@@ -50,7 +50,7 @@ Route::resource('faculties', FacultyAdminController::class)->except('show')->nam
 
 Route::resource('courses', CourseAdminController::class)->except('show')->names('admin.courses');
 
-Route::resource('activities', ActivityAdminController::class)->names('admin.activities');
+Route::resource('activities', ActivityAdminController::class)->only(['index', 'create', 'edit', 'store', 'show', 'update', 'destroy'])->names('admin.activities');
 
 Route::resource('periods', PeriodController::class)->only(['index', 'create', 'edit', 'store', 'show', 'update', 'destroy'])->names('admin.periods');
 /* ======= */

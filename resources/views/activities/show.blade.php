@@ -22,7 +22,10 @@
                                 <td class="w-3/4 h-8 bg-gray-100">
                                     @foreach ($activity->courses as $course)
 
-                                            <a href="{{route('activities.course', $course)}}">
+                                            {{-- <a href="{{route('activities.course', $course)}}">
+                                                <span class="ml-2 text-gray-600">{{$course->name}}</span>
+                                            </a> --}}
+                                            <a >
                                                 <span class="ml-2 text-gray-600">{{$course->name}}</span>
                                             </a>
 
@@ -37,7 +40,10 @@
                                 <td class="w-3/4 h-8 bg-gray-100">
                                     @foreach ($facultad as $faculty)
 
-                                            <a href="{{route('posts.category', $faculty)}}">
+                                            {{-- <a href="{{route('posts.category', $faculty)}}">
+                                                <span class="ml-2 text-gray-600">{{$faculty->name}}</span>
+                                            </a> --}}
+                                            <a >
                                                 <span class="ml-2 text-gray-600">{{$faculty->name}}</span>
                                             </a>
 
