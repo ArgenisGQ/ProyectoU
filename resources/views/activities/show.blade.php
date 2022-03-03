@@ -25,9 +25,16 @@
                                             {{-- <a href="{{route('activities.course', $course)}}">
                                                 <span class="ml-2 text-gray-600">{{$course->name}}</span>
                                             </a> --}}
-                                            <a >
+                                            {{-- <a >
                                                 <span class="ml-2 text-gray-600">{{$course->name}}</span>
+                                            </a> --}}
+                                            <a >
+                                                <span class="ml-2 text-gray-600">{{$course->code}}</span>
                                             </a>
+                                            <a >
+                                                <span class="ml-2 text-gray-600">{{$course->section}}</span>
+                                            </a>
+                                            <a >/</a>
 
                                     @endforeach
                                 </td>

@@ -26,6 +26,8 @@
                     <tr>
                         <th>ID</th>
                         <th>Nombre de la Materia</th>
+                        <th>Codigo</th>
+                        <th>Materia</th>
                         <th colspan="2"></th>
                     </tr>
                 </thead>
@@ -35,6 +37,8 @@
                         <tr>
                             <td>{{$course->id}}</td>
                             <td>{{$course->name}}</td>
+                            <td>{{$course->code}}</td>
+                            <td>{{$course->section}}</td>
                             <td width="10px">
                                 @can('admin.courses.edit')
                                     <a href="{{route('admin.courses.edit', $course)}}" class="btn btn-primary btn-sm">Editar</a>

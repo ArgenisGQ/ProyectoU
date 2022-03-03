@@ -23,11 +23,15 @@ class CourseFactory extends Factory
     public function definition()
     {
         $name = $this->faker->unique->word(20);
+        $code = $this->faker->bothify('cod###???');
+        $section = $this->faker->bothify('sec###???');
 
         return [
             //
             'name' => $name,
-            'slug' => Str::slug($name),
+            'code' => $code,
+            'section' => $section,
+            'slug' => Str::slug($code),
             'color' => $this->faker->randomElement(['red', 'yellow', 'green', 'blue', 'indigo', 'purple', 'pink'])
         ];
     }
