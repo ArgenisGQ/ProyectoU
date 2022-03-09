@@ -273,9 +273,9 @@ return [
         ],
         [
             'text'        => 'Carga masiva de Materias',
-            'route'       => 'admin.users.import',
+            'route'       => 'admin.courses.import',
             'icon'        => 'fas fa-users-cog fa-fw',
-            'can'         => 'admin.users.import',
+            /* 'can'         => 'admin.courses.import', */
             /* 'label'       => 4,
             'label_color' => 'success', */
         ],

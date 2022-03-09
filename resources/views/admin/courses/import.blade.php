@@ -3,7 +3,7 @@
 @section('title', 'Proyecto U')
 
 @section('content_header')
-    <h1>Crear usuarios</h1>
+    <h1>Crear materias</h1>
 @stop
 
 @section('content')
@@ -16,12 +16,12 @@
     <div class="card">
         <div class="card-body">
             {{-- {!! Form::open(['route' => 'admin.users.import']) !!} --}}
-            {{-- {!! Form::model($user, ['route' => ['admin.users.store', $user], 'method' => 'put']) !!} --}}
+            {{-- {!! Form::model($user, ['route' => ['admin.courses.store', $user], 'method' => 'put']) !!} --}}
 
             <div class="container mt-5">
-                <h3>Importar profesores</h3>
+                <h3>Importar materias</h3>
 
-                <p>El nombre del archivo debe ser usuarios.xlsx</p>
+                <p>El nombre del archivo debe ser materias.xlsx</p>
                 <p>El listado debe tener en inicio de linea los campos de</p>
                 <p>NOMBRE, CEDULA, EMAIL, CLAVE</p>
                 {{-- @if ( $errors->any() )
@@ -43,7 +43,7 @@
                 @endif
 
 
-                    <form action="{{route('admin.users.import')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('admin.courses.import')}}" method="post" enctype="multipart/form-data">
                         {{-- {{csrf_field()}} --}}
                         @csrf
                         <div class="form-group">
