@@ -22,12 +22,19 @@ class CourseFactory extends Factory
      */
     public function definition()
     {
-        $name = $this->faker->unique->word(20);
+        $name = $this->faker->unique->word(50);
         $code = $this->faker->bothify('cod###???');
         $section = $this->faker->bothify('sec###???');
 
         return [
             //
+            'id_sima' => $this->faker->unique()->numberBetween(10,499),
+            'id_continua' => $this->faker->unique()->numberBetween(10,499),
+            'id_sima_doc' => $this->faker->unique()->numberBetween(10,499),
+            'id_continua_doc' => $this->faker->unique()->numberBetween(10,499),
+            'id_dpto' => $this->faker->unique()->numberBetween(10,499),
+            'id_faculty' => $this->faker->unique()->numberBetween(10,499),
+
             'name' => $name,
             'code' => $code,
             'section' => $section,

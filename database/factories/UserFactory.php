@@ -24,9 +24,18 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $ced = $this->faker->unique()->numberBetween(10,499);
+        $userName = 'V-'.$ced;
+
+
         return [
-            'name' => $this->faker->name(),
-            'ced' => $this->faker->unique()->numberBetween(10,499),
+            'id_sima' => $this->faker->unique()->numberBetween(10,499),
+            'id_continua' => $this->faker->unique()->numberBetween(10,499),
+
+            'name' => $this->faker->firstName(),
+            'lastName' => $this->faker->lastName(),
+            'userName' => $userName,
+            'ced' => $ced,
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
