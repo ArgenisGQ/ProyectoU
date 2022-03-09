@@ -1,12 +1,14 @@
-<div>
+<div class="card">
     {{-- Nothing in the world is as soft and yielding as water. --}}
-    <div class="card-header">
+
+
+    {{-- <div class="card-header">
         <input wire:model="search" class="form-control" placeholder="Ingrese el nombre de la materia">
-    </div>
+    </div> --}}
 
 
-    <div class="card">
-            @if ($courses->count())
+
+    @if ($courses->count())
                 <div class="card-body">
                     <table class="table table-triped">
                         <thead>
@@ -38,7 +40,7 @@
                                                 @method('delete')
 
                                             <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
-                                        </form>
+                                            </form>
                                         @endcan
                                     </td>
                                 </tr>
@@ -49,12 +51,12 @@
                 <div class="card-footer">
                     {{$courses->links()}}
                 </div>
-            @else
+    @else
                 <div class="card-body">
                     <strong>No hay ningun registro...</strong>
                 </div>
-            @endif
-    </div>
+    @endif
+
 
 
 

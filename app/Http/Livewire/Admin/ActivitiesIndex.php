@@ -30,7 +30,7 @@ class ActivitiesIndex extends Component
         $activities = Activity::where('user_id', auth()->user()->id)
                 ->where('name', 'LIKE','%'. $this->search .'%')  //filtro para BUSCADOR
                 ->latest('id') //para colocar el ultimo de primero
-                ->paginate();  //paginar el orden de todo
+                ->paginate(10);  //paginar el orden de todo
 
         return view('livewire.admin.activities-index', compact('activities'));
     }
