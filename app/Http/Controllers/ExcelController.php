@@ -54,7 +54,7 @@ class ExcelController extends Controller
 
             $file->storeAs('',$nameFile);
 
-            $import = new UsersImport();
+            /* $import = new UsersImport(); */
 
             return view('admin.users.import', ['numRows'=>$import->getRowCount()]);
 

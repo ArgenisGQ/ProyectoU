@@ -56,7 +56,7 @@ class ExcelCourseController extends Controller
 
             $file->storeAs('',$nameFile);
 
-            $import = new CoursesImport();
+            /* $import = new CoursesImport(); */
 
             return view('admin.courses.import', ['numRows'=>$import->getRowCount()]);
 
