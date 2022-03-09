@@ -9,6 +9,9 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Monolog\Handler\IFTTTHandler;
+
 class UserController extends Controller
 {
     public function __construct()
@@ -54,6 +57,8 @@ class UserController extends Controller
     {
         /* $user = request()->all; */
 
+        /* return $request; */
+
 
 
         $this->validate($request, [
@@ -61,11 +66,16 @@ class UserController extends Controller
             'ced' => 'numeric|required|unique:users|digits_between:6,10',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
+            /* 'file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048', */
 
         ]);
 
+        /* return $request->file('file'); */
 
         $data = request()->all();
+
+        /* return $data; */
+        /* return $request; */
 
         $user = User::create([
             'name' => $data['name'],
@@ -73,6 +83,19 @@ class UserController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password'])
         ]);
+
+
+
+        if ($request->file('file')) {
+            $url = Storage::put('public/user_photo', $request->file('file'));
+
+            $user->image()->create([
+                /* 'profile_photo_path' => $url */
+                'url' => $url
+            ]);
+        }
+
+       /*  return $user; //test de subir imagen */
 
         $user->roles()->sync($request->roles);
 
@@ -103,9 +126,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('admin.users.show', compact('user'));
     }
 
     /**
@@ -147,6 +170,24 @@ class UserController extends Controller
 
         $input = $request->all();
 
+
+        //PARA ACTUALIZAR FOTO
+        if ($request->hasFile('image')) {
+            if ($user->image != null) {
+                Storage::disk('images')->delete($user->image->path);
+                $user->image->delete();
+            }
+
+            $user->image()->create([
+                'path' => $request->image->store('users', 'images'),
+            ]);
+        }
+
+
+
+
+
+        //----------------------
         /* return $input;  */
 
 

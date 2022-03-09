@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\ExcelCourseController;
 use App\Http\Controllers\Activities\PeriodController;
 
 use App\Http\Controllers\Activities\IndexController;
@@ -16,11 +17,12 @@ use App\Http\Controllers\Activities\CourseAdminController;
 use App\Http\Controllers\Activities\FacultyAdminController;
 
 
+
 Route::get('', [HomeController::class, 'index'])->middleware('can:admin.home')->name('admin.home');
 
-Route::resource('users', UserController::class)->only(['index', 'create', 'edit', 'store', 'update', 'destroy'])->names('admin.users');
+Route::resource('users', UserController::class)->only(['index', 'create', 'edit', 'store', 'show', 'update', 'destroy'])->names('admin.users');
 
-Route::resource('roles', RoleController::class)->names('admin.roles');
+Route::resource('roles', RoleController::class)->only(['index', 'create', 'edit', 'store', 'show', 'update', 'destroy'])->names('admin.roles');
 
 Route::resource('categories', CategoryController::class)->except('show')->names('admin.categories');
 
@@ -28,9 +30,19 @@ Route::resource('tags', TagController::class)->except('show')->names('admin.tags
 
 Route::resource('posts', PostController::class)->names('admin.posts');
 
-Route::get('users/import', [ExcelController::class, 'importForm'])->name('admin.users.importForm');
+Route::get('import', [ExcelController::class, 'importForm'])->name('admin.users.importform');
 
-Route::post('users/import', [ExcelController::class, 'import'])->name('admin.users.import');
+Route::post('import', [ExcelController::class, 'import'])->name('admin.users.import');
+
+Route::get('importcourse', [ExcelCourseController::class, 'importForm'])->name('admin.courses.importform');
+
+Route::post('importcourse', [ExcelCourseController::class, 'import'])->name('admin.courses.import');
+
+Route::get('users/import', function () {
+    return 'Hello World';
+});
+
+/* Route::post('users/import', [ExcelController::class, 'importForm'])->name('admin.users.import'); */ //test
 
 /* actividades */
 
@@ -43,9 +55,9 @@ Route::resource('faculties', FacultyAdminController::class)->except('show')->nam
 
 Route::resource('courses', CourseAdminController::class)->except('show')->names('admin.courses');
 
-Route::resource('activities', ActivityAdminController::class)->names('admin.activities');
+Route::resource('activities', ActivityAdminController::class)->only(['index', 'create', 'edit', 'store', 'show', 'update', 'destroy'])->names('admin.activities');
 
-Route::resource('periods', PeriodController::class)->names('admin.periods');
+Route::resource('periods', PeriodController::class)->only(['index', 'create', 'edit', 'store', 'show', 'update', 'destroy'])->names('admin.periods');
 /* ======= */
 /* Route::get('activities', [IndexController::class, 'index'])->middleware('can:admin.home')->name('admin.activities'); */
 

@@ -322,7 +322,7 @@
     <header>
 
         <span class="p-2">
-            <img src="{{$logo}}" width="70" class="mx-auto mg-logo">
+            <img src="{{$logo}}" width="110" class="mx-auto mg-logo">
         </span>
         <span>
             <p class="text-right small mg-text-codigo "> FOO-VRA140-202321-104 </p>
@@ -336,7 +336,8 @@
         <span>
             <h6 class="mg-text-emcabezado text-center ">UNIVERSIDAD YACAMBU</h6>
             <h6 class="mg-text-emcabezado text-center ">VICERRECTORADO ACADEMICO</h6>
-            <h6 class="mg-text-emcabezado text-center ">DIRECCION DE ESTUDIOS A DISTANCIA</h6>
+            <h6 class="mg-text-emcabezado text-center ">DIRECCION DE EDUCACION MEDIADA</h6>
+            <h6 class="mg-text-emcabezado text-center ">POR LAS TECNOLOGIAS</h6>
         </span>
 
     </header>
@@ -370,9 +371,14 @@
                                     <td class="">
                                         @foreach ($activity->courses as $course)
 
-                                                <a href="{{route('activities.course', $course)}}">
+                                                {{-- <a href="{{route('activities.course', $course)}}">
                                                     <span class="">{{$course->name}}</span>
-                                                </a>
+                                                </a> --}}
+
+
+                                                    <span class="">{{$course->code}}</span>
+                                                    <span class="">{{$course->code}} /</span>
+
 
                                         @endforeach
                                     </td>
@@ -385,9 +391,12 @@
                                     <td class="">
                                         @foreach ($facultad as $facultadd)
 
-                                                <a href="{{route('activities.faculty', $facultadd)}}">
+                                                {{-- <a href="{{route('activities.faculty', $facultadd)}}">
                                                     <span class="ml-2 text-gray-600">{{$facultadd->name}}</span>
-                                                </a>
+                                                </a> --}}
+
+                                                    <span class="ml-2 text-gray-600">{{$facultadd->name}}</span>
+
 
                                         @endforeach
                                     </td>

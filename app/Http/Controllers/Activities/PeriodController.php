@@ -9,6 +9,13 @@ use Carbon\Carbon;
 
 class PeriodController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.periods.index')->only('index');
+        $this->middleware('can:admin.periods.create')->only('create', 'store');
+        $this->middleware('can:admin.periods.edit')->only('edit', 'update');
+        $this->middleware('can:admin.periods.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -149,7 +156,7 @@ class PeriodController extends Controller
 
         /* return $request->academic_start.'     '.$request->academic_finish; */
 
-       /*  return $academic_start .'     '.$academic_finish ; */
+       /* return $academic_start .'     '.$academic_finish ; */
 
 
 

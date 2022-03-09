@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Barryvdh\DomPDF\PDF;
 use App\Models\Activity;
 use App\Models\Faculty;
+use App\Models\Course;
 
 class PdfActiController extends Controller
 {
@@ -67,8 +68,20 @@ class PdfActiController extends Controller
                             ->get();
 
         $facultad = Faculty::where('id', $activity->faculty_id)
-
                             ->get();
+
+        $curso = $activity->courses()
+                           ->latest('id')
+                           ->take(1)
+                           ->get();
+
+        
+
+        /* return $curso->first()->code; */
+
+       /*  $activities = $course->activities()->where('status', 2)
+                        ->latest('id')
+                        ->paginate(4); */
 
         /* ------  Para crear el CSS en el pdf ------------ */
 
@@ -107,14 +120,21 @@ class PdfActiController extends Controller
 
         /* return $post;*/
 
+        $code = $curso->first()->code;
+        $section = $curso->first()->section;
+        $date = $today->format('dmY');
 
+        $file_name = "act-$code-$section-$date.pdf";
+
+        /* return $file_name;
+ */
 
         /* -------- Para mostrar el archivo en otra ventana de PDF  -------- */
 
         return \PDF::loadView('activities.pdf.downPdf', compact('activity', 'similares',
                     'facultad','css_data', 'logo',
                     'today', 'lapse_in', 'lapse_out'))
-                    ->stream('archivo.pdf', ["Attachment" => false]);
+                    ->stream($file_name, ["Attachment" => false]);
 
         /* return $css_data; */
     }

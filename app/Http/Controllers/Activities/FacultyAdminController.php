@@ -8,13 +8,13 @@ use App\Models\Faculty;
 
 class FacultyAdminController extends Controller
 {
-    /* public function __construct()
+    public function __construct()
     {
         $this->middleware('can:admin.faculties.index')->only('index');
         $this->middleware('can:admin.faculties.create')->only('create', 'store');
         $this->middleware('can:admin.faculties.edit')->only('edit', 'update');
         $this->middleware('can:admin.faculties.destroy')->only('destroy');
-    } */
+    }
 
     /**
      * Display a listing of the resource.

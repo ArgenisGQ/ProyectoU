@@ -11,13 +11,28 @@ use Illuminate\Http\File;
 
 class ExcelController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.users.import')->only('importForm','create','importExcel');
+
+    }
+
+
     public function importForm(Request $request)
     {
+
+        /* $alert = 'pagina importForm';
+        return $alert; */
+
         return view('admin.users.import');
     }
 
     public function import(Request $request)
     {
+        /* $alert = 'pagina import';
+        return $alert; */
+
+
         $request->validate([
             'file' => 'required'
         ]);
@@ -39,7 +54,7 @@ class ExcelController extends Controller
 
             $file->storeAs('',$nameFile);
 
-            $import = new UsersImport();
+            /* $import = new UsersImport(); */
 
             return view('admin.users.import', ['numRows'=>$import->getRowCount()]);
 

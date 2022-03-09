@@ -7,9 +7,18 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 use Spatie\Permission\Models\Permission;
+use App\Models\Category_Permission;
 
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.roles.index')->only('index');
+        $this->middleware('can:admin.roles.create')->only('create', 'store');
+        $this->middleware('can:admin.roles.edit')->only('edit', 'update');
+        $this->middleware('can:admin.roles.destroy')->only('destroy');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -30,8 +39,15 @@ class RoleController extends Controller
     public function create()
     {
         $permissions = Permission::all();
+        /* return $permissions; */
 
-        return view('admin.roles.create', compact('permissions'));
+        $categories = Category_Permission::all();
+        /* return $categories; */
+        /* $similares = Permission::where('group_id', 2)
+                    ->get(); */
+        /* return $similares; */
+
+        return view('admin.roles.create', compact('permissions', 'categories'));
     }
 
     /**
@@ -74,7 +90,9 @@ class RoleController extends Controller
     {
         $permissions = Permission::all();
 
-        return view('admin.roles.edit', compact('role','permissions'));
+        $categories = Category_Permission::all();
+
+        return view('admin.roles.edit', compact('role','permissions','categories'));
     }
 
     /**

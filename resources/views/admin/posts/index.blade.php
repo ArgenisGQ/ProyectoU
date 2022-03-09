@@ -3,9 +3,9 @@
 @section('title', 'Proyecto U')
 
 @section('content_header')
-    <a href="{{route('admin.posts.create')}}" class="float-right btn btn-secondary btn-sm">Nueva Actividad</a>
+    <a href="{{route('admin.posts.create')}}" class="float-right btn btn-secondary btn-sm">Nuevo Articulo</a>
 
-    <h1>Listado de Catalogo</h1>
+    <h1>Listado de Articulos</h1>
 @stop
 
 @section('content')

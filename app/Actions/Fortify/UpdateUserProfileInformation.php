@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 
+
+
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {
     /**
@@ -34,9 +36,17 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         } else {
             $user->forceFill([
                 'name' => $input['name'],
+                'ced' => $input['ced'],
                 'email' => $input['email'],
+                'username' => $input['username'],
             ])->save();
         }
+
+
+
+
+
+
     }
 
     /**

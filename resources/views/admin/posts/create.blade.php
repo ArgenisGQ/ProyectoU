@@ -3,7 +3,7 @@
 @section('title', 'Proyecto U')
 
 @section('content_header')
-    <h1>Crear nueva Actividad</h1>
+    <h1>Crear nuevo Articulo</h1>
 @stop
 
 @section('content')
@@ -23,7 +23,7 @@
             @include('admin.posts.partials.form')
 
 
-            {!! Form::submit('Crear Actividad', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Crear Articulo', ['class' => 'btn btn-primary']) !!}
         {!! Form::close() !!}
         </div>
     </div>
@@ -91,6 +91,14 @@
     {{-- <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script> --}}
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
+    <script type="text/javascript" src="/js/ckfinder/ckfinder.js"></script>
+    <script>CKFinder.config( { connectorPath: '/ckfinder/connector' } );</script>
+
+    {{-- <script>CKFinder.widget( 'ckfinder-widget', {
+        width: '100%',
+        height: 700
+    } );</script> --}}
+
     <script>
         $(document).ready( function() {
             $("#name").stringToSlug({
@@ -118,11 +126,20 @@
             console.error( error );
         } ); */
 
-        CKEDITOR.replace( 'extract' );
+        CKEDITOR.replace( 'extract-' );
 
         CKEDITOR.replace( 'extract01' );
 
-        CKEDITOR.replace( 'body' );
+        CKEDITOR.replace('body',
+            {
+            filebrowserBrowseUrl: '{{ asset(route('ckfinder_browser')) }}',
+            filebrowserImageBrowseUrl: '{{ asset(route('ckfinder_browser')) }}?type=Images',
+            filebrowserFlashBrowseUrl: '{{ asset(route('ckfinder_browser')) }}?type=Flash',
+            filebrowserUploadUrl: '{{ asset(route('ckfinder_connector')) }}?command=QuickUpload&type=Files',
+            filebrowserImageUploadUrl: '{{ asset(route('ckfinder_connector')) }}?command=QuickUpload&type=Images',
+            filebrowserFlashUploadUrl: '{{ asset(route('ckfinder_connector')) }}?command=QuickUpload&type=Flash'
+            }
+        );
 
         //Scrip para cargar archivo de imagen en url
         document.getElementById("file").addEventListener('change', cambiarImagen);

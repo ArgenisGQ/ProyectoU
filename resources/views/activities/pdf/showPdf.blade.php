@@ -274,9 +274,14 @@
                                 <td class="ancho-3de4">
                                     @foreach ($activity->courses as $course)
 
-                                            <a href="{{route('activities.course', $course)}}">
+                                            {{-- <a href="{{route('activities.course', $course)}}">
                                                 <span class="">{{$course->name}}</span>
-                                            </a>
+                                            </a> --}}
+
+                                                <span class="">{{$course->code}}</span>
+
+                                                <span class="">{{$course->section}} /</span>
+
 
                                     @endforeach
                                 </td>
@@ -289,9 +294,11 @@
                                 <td class="">
                                     @foreach ($facultad as $facultadd)
 
-                                            <a href="{{route('activities.faculty', $facultadd)}}">
+                                            {{-- <a href="{{route('activities.faculty', $facultadd)}}">
                                                 <span class="ml-2 text-gray-600">{{$facultadd->name}}</span>
-                                            </a>
+                                            </a> --}}
+
+                                                <span class="ml-2 text-gray-600">{{$facultadd->name}}</span>
 
                                     @endforeach
                                 </td>

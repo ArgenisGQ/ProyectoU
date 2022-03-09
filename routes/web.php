@@ -6,6 +6,7 @@ use App\Http\Controllers\PdfController;
 use App\Http\Controllers\PdfActiController;
 
 use App\Http\Controllers\Activities\ActivityController;
+use CKSource\CKFinder\CKFinder;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -25,9 +26,19 @@ Route::any('/register', function() {
     return  view('auth.login');
 });
 
-Route::get('/', [PostController::class, 'index'])->name('posts.index');
+Route::any('/', function() {
+    return  view('home.version01.index');
+});
+
+/* Route::any('/login', function() {
+    return  view('auth.login');
+}); */
+
+/* Route::get('/', [PostController::class, 'index'])->name('posts.index'); */
 
 /* Route::get('/', [ActivityController::class, 'index'])->name('activities.index'); */
+
+Route::get('posts', [PostController::class, 'index'])->name('posts.index');
 
 Route::get('posts/{post}',[PostController::class, 'show'])->name('posts.show');
 
@@ -59,3 +70,12 @@ Route::get('course/{course}', [ActivityController::class, 'course'])->name('acti
 Route::get('activities/pdf/down/{activity}',[PdfActiController::class, 'downPdf'])->name('activities.pdf.down');
 
 Route::get('activities/pdf/show/{activity}',[PdfActiController::class, 'showPdf'])->name('activities.pdf.show');
+
+
+/* CKFinder */
+
+Route::any('/ckfinder/connector', '\CKSource\CKFinderBridge\Controller\CKFinderController@requestAction')
+    ->name('ckfinder_connector');
+
+Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderController@browserAction')
+    ->name('ckfinder_browser');

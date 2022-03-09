@@ -36,7 +36,7 @@ class PeriodFactory extends Factory
             /* 'status' => $this->faker->randomElement([1,2]), */
             /* 'faculty_id' => Faculty::all()->random()->id, */
             /* 'user_id' => User::all()->random()->id, */
-            'status' => '0',
+            'status' => '1',
             'academic_start' => Carbon::create(2021, 9, 6, 0, 0, 0),
             'academic_finish' => Carbon::create(2021, 12, 17, 0, 0, 0)
 

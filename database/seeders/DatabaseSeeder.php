@@ -36,5 +36,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(PeriodSeeder::class);
 
+        $this->call(Category_permissionSeeder::class);
+
     }
 }

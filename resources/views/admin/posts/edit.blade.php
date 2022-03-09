@@ -3,7 +3,7 @@
 @section('title', 'Proyecto U')
 
 @section('content_header')
-    <h1>Editar Actividad</h1>
+    <h1>Editar Articulo</h1>
 @stop
 
 @section('content')
@@ -50,6 +50,10 @@
         <script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}"></script>
         {{-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script> --}}
         <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
+        <script type="text/javascript" src="/js/ckfinder/ckfinder.js"></script>
+        <script>CKFinder.config( { connectorPath: '/ckfinder/connector' } );</script>
+
         <script>
             $(document).ready( function() {
                 $("#name").stringToSlug({
@@ -77,11 +81,22 @@
                 console.error( error );
             } ); */
 
-            CKEDITOR.replace( 'extract' );
+            CKEDITOR.replace( 'extract-' );
 
             CKEDITOR.replace( 'extract01' );
 
-            CKEDITOR.replace( 'body' );
+            /* CKEDITOR.replace( 'body' ); */
+
+            CKEDITOR.replace('body',
+                {
+                    filebrowserBrowseUrl: '{{ asset(route('ckfinder_browser')) }}',
+                    filebrowserImageBrowseUrl: '{{ asset(route('ckfinder_browser')) }}?type=Images',
+                    filebrowserFlashBrowseUrl: '{{ asset(route('ckfinder_browser')) }}?type=Flash',
+                    filebrowserUploadUrl: '{{ asset(route('ckfinder_connector')) }}?command=QuickUpload&type=Files',
+                    filebrowserImageUploadUrl: '{{ asset(route('ckfinder_connector')) }}?command=QuickUpload&type=Images',
+                    filebrowserFlashUploadUrl: '{{ asset(route('ckfinder_connector')) }}?command=QuickUpload&type=Flash'
+                }
+            );
 
 
             //Scrip para cargar archivo de imagen en url

@@ -12,6 +12,16 @@ use Illuminate\Http\Request;
 
 class ActivityController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:activities.index')->only('index');
+        $this->middleware('can:activities.create')->only('create', 'store');
+        $this->middleware('can:activities.edit')->only('edit', 'update');
+        $this->middleware('can:activities.destroy')->only('destroy');
+        $this->middleware('can:activities.show')->only('show');
+    }
+
+
     public function index(){
 
         $activities = Activity::where('status',2)->latest()->paginate(8);
@@ -44,8 +54,8 @@ class ActivityController extends Controller
 
                             ->get($activity->academic_start); */
 
-        $academic_start = Carbon::parse('2021-06-01');
-        $academic_finish = Carbon::parse('2021-09-25');;
+        /* $academic_start = Carbon::parse('2021-06-01'); */
+        /* $academic_finish = Carbon::parse('2021-09-25');; */
 
         $today = now();
 
@@ -59,7 +69,8 @@ class ActivityController extends Controller
         return view('activities.show', compact('activity',
                                     'similares', 'facultad',
                                     'today', 'lapse_in', 'lapse_out',
-                                    'academic_start', 'academic_finish'));
+                                    ));
+                                    /* 'academic_start', 'academic_finish')); */
 
         /* return $activity; */
 

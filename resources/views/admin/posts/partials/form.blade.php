@@ -1,6 +1,6 @@
 <div class="form-group">
-    {!! Form::label('name', 'Nombre de Actividad') !!}
-    {!! Form::text('name', null, ['class'=>'form-control','placeholder'=>'Ingrese el nombre de la actividad']) !!}
+    {!! Form::label('name', 'Nombre del Articulo') !!}
+    {!! Form::text('name', null, ['class'=>'form-control','placeholder'=>'Ingrese el nombre del Articulo']) !!}
 
     @error('name')
         <span class="text-danger">{{$message}}</span>
@@ -9,7 +9,7 @@
 
 <div class="form-group">
     {!! Form::label('slug', 'Slug') !!}
-    {!! Form::text('slug', null, ['class'=>'form-control','placeholder'=>'Slug de la Actividad','readonly']) !!}
+    {!! Form::text('slug', null, ['class'=>'form-control','placeholder'=>'Slug del Articulo','readonly']) !!}
 
     @error('slug')
     <span class="text-danger">{{$message}}</span>
@@ -17,7 +17,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('category_id', 'Facultad') !!}
+    {!! Form::label('category_id', 'Categoria') !!}
     {!! Form::select('category_id', $categories,null,['class' => 'form-control']) !!}
 
     @error('category_id')
@@ -26,7 +26,7 @@
 </div>
 
 <div class="form-group">
-    <p class="font-weight-bold">Materias</p>
+    <p class="font-weight-bold">Etiquetas</p>
 
     @foreach ($tags as $tag)
 
@@ -79,7 +79,7 @@
     </div>
     <div class="col">
         <div class="form-group">
-            {!! Form::label('file', 'Imagen que se mostrara en el post') !!}
+            {!! Form::label('file', 'Imagen que se mostrara en el Articulo') !!}
             {!! Form::file('file', ['class' => 'form-control-file', 'accept' => 'image/*']) !!}
 
         @error('file')
@@ -93,16 +93,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('body', 'Descripción de la actividad:') !!}
-    {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
-
-    @error('body')
-        <span class="text-danger">{{$message}}</span>
-    @enderror
-</div>
-
-<div class="form-group">
-    {!! Form::label('extract', 'Proposito de la actividad:') !!}
+    {!! Form::label('extract', 'Introduccion del Articulo:') !!}
     {!! Form::textarea('extract', null, ['class' => 'form-control']) !!}
 
     @error('extract')
@@ -111,7 +102,16 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('extract01', 'Criterios de evalulación:') !!}
+    {!! Form::label('body', 'Contenido del Articulo:') !!}
+    {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
+
+    @error('body')
+        <span class="text-danger">{{$message}}</span>
+    @enderror
+</div>
+
+<div class="form-group">
+    {!! Form::label('extract01', 'Resumen del Articulo:') !!}
     {!! Form::textarea('extract01', null, ['class' => 'form-control']) !!}
 
     @error('extract01')

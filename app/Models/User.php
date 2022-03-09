@@ -31,6 +31,8 @@ class User extends Authenticatable
         'ced',
         'email',
         'password',
+        'profile_photo_url',
+        'username',
     ];
 
     /**
@@ -43,6 +45,7 @@ class User extends Authenticatable
         'remember_token',
         'two_factor_recovery_codes',
         'two_factor_secret',
+        'url',
     ];
 
     /**
@@ -70,6 +73,11 @@ class User extends Authenticatable
 
     public function activities(){
         return $this->hasMany(Activity::class);
+    }
+
+    //Relacion uno a uno poliformica
+    public function image(){
+        return $this->MorphOne(Image::class, 'imageable');
     }
 
 }

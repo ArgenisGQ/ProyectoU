@@ -147,7 +147,7 @@ return [
     */
 
     'sidebar_mini' => 'lg',
-    'sidebar_collapse' => false,
+    'sidebar_collapse' => true, //colapsar menu de sidebar, true para ocultar y false para mostrar
     'sidebar_collapse_auto_size' => false,
     'sidebar_collapse_remember' => false,
     'sidebar_collapse_remember_no_transition' => true,
@@ -249,7 +249,7 @@ return [
         ],
         [
             'text'        => 'Dashboard',
-            'route'         => 'admin.home',
+            'route'       => 'admin.home',
             'icon'        => 'fas fa-tachometer-alt fa-fw ',
             'can'         => 'admin.home',
             /* 'label'       => 4,
@@ -257,7 +257,7 @@ return [
         ],
         [
             'text'        => 'Usuarios',
-            'route'         => 'admin.users.index',
+            'route'       => 'admin.users.index',
             'icon'        => 'fas fa-users-cog fa-fw',
             'can'         => 'admin.users.index',
             /* 'label'       => 4,
@@ -265,66 +265,77 @@ return [
         ],
         [
             'text'        => 'Carga masiva de usuarios',
-            'route'         => 'admin.users.import',
+            'route'       => 'admin.users.import',
             'icon'        => 'fas fa-users-cog fa-fw',
-            'can'         => 'admin.users.index',
+            'can'         => 'admin.users.import',
+            /* 'label'       => 4,
+            'label_color' => 'success', */
+        ],
+        [
+            'text'        => 'Carga masiva de Materias',
+            'route'       => 'admin.courses.import',
+            'icon'        => 'fas fa-users-cog fa-fw',
+            /* 'can'         => 'admin.courses.import', */
             /* 'label'       => 4,
             'label_color' => 'success', */
         ],
         [
             'text'        => 'Lista de roles',
-            'route'         => 'admin.roles.index',
+            'route'       => 'admin.roles.index',
             'icon'        => 'fas fa-users fa-fw',
-            'can'         => 'admin.users.index',
+            'can'         => 'admin.roles.index',
             /* 'label'       => 4,
             'label_color' => 'success', */
         ],
 
+        [
+            'text'          => 'Listado de periodos',
+            'route'         => 'admin.periods.index',
+            'icon'          => 'fas fa-users fa-fw',
+            'active'        => ['admin/periods*'],
+            'can'           => 'admin.periods.index',
+            ],
 
 
         [
             'text'    => 'ACTIVIDADES',
             'icon'    => 'fas fa-fw fa-share',
+            'can'         => 'admin.activities.index',
             'submenu' => [
                 [
                     'text'    => 'ADMINISTRAR',
-                    'url'  => '#',
+                    'url'     => '#',
+                    'can'     => 'admin.faculties.index',
                     'submenu' => [
                         [
                         'text' => 'Facultades',
                         'route'  => 'admin.faculties.index',
                         'icon' => 'fab fa-fw fa-buffer',
                         'active' => ['admin/faculties*'],
-                        /* 'can'         => 'admin.faculties.index', */
+                        'can'         => 'admin.faculties.index',
                         ],
                         [
                         'text' => 'Materias',
                         'route'  => 'admin.courses.index',
                         'icon' => 'far fa-fw fa-bookmark',
                         'active' => ['admin/courses*'],
-                        /* 'can'    => 'admin.courses.index', */
+                        'can'    => 'admin.courses.index'
                         ],
-                        [
-                        'text' => 'Periodos',
-                        'route'  => 'admin.periods.index',
-                        'icon' => 'far fa-fw fa-bookmark',
-                        'active' => ['admin/periods*'],
-                        /* 'can'    => 'admin.courses.index', */
-                        ],
+
                     ],
                 ],
                 [
                     'text' => 'Lista de Actividades',
                     'route'  => 'admin.activities.index',
                     'icon' => 'fas fa-fw fa-clipboard',
-                    /* 'can'    => 'admin.activities.index', */
+                    'can'    => 'admin.activities.index',
 
                 ],
                 [
                     'text' => 'Crear nuevo Actividad',
                     'route'  => 'admin.activities.create',
                     'icon' => 'fas fa-fw fa-file',
-                    /* 'can'    => 'admin.activities.create', */
+                    'can'    => 'admin.activities.create',
 
                 ],
             ],
@@ -332,10 +343,12 @@ return [
         [
             'text'    => 'CATALOGO',
             'icon'    => 'fas fa-fw fa-share',
+            'can'         => 'admin.posts.index',
             'submenu' => [
                 [
                     'text'    => 'ADMINISTRAR',
                     'url'  => '#',
+                    'can'         => 'admin.categories.index',
                     'submenu' => [
                         [
                         'text' => 'Categorias',

@@ -3,11 +3,11 @@
 @section('title', 'Proyecto U')
 
 @section('content_header')
-    <h1>Mostrar detalle de la etiqueta</h1>
+    <h1>Mostrar detalle de la materia</h1>
 @stop
 
 @section('content')
-        <p>Bienvenido</p>
+        <p>---DESCRIPCION---</p>
 @stop
 
 @section('css')
