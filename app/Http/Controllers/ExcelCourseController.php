@@ -41,7 +41,7 @@ class ExcelCourseController extends Controller
 
         /* $file = $request->file('file');
             Excel::import(new UsersImport, $file); */
-
+        /* return "aqui"; */
 
 
         try {
@@ -50,6 +50,8 @@ class ExcelCourseController extends Controller
             $import = new CoursesImport();
             Excel::import($import, request()->file('file'));
 
+            return "primer nivel";
+
             $file = $request->file('file');
 
             $nameFile = 'materias_'.date("Y-m-d_H-i-s").'.'.$file->guessExtension();
@@ -57,6 +59,8 @@ class ExcelCourseController extends Controller
             $file->storeAs('',$nameFile);
 
             /* $import = new CoursesImport(); */
+
+
 
             return view('admin.courses.import', ['numRows'=>$import->getRowCount()]);
 
@@ -70,6 +74,8 @@ class ExcelCourseController extends Controller
                  $falla->errors(); // Errores de las validaciones de laravel
                  $falla->values(); // Valores de la fila en la que ocurrió el error.
              }
+
+
 
              return view('admin.courses.import', ['numRows'=>$import->getRowCount(), 'fallas'=>$falla->errors()]);
 
@@ -136,10 +142,20 @@ class ExcelCourseController extends Controller
              */
             foreach ($reader->get() as $key => $row) {
                 $usuarios = [
-                    'name'     => $row['nombre'],
+                    /* 'name'     => $row['nombre'],
                     'ced'      => $row['cedula'],
                     'email'    => $row['email'],
-                    'password' => $row['clave'],
+                    'password' => $row['clave'], */
+
+                    'name'              => $row['nombre'],
+                    'code'              => $row['codigo'],
+                    'section'           => $row['seccion'],
+                    'id_sima'           => $row['id_sima'],
+                    'id_continua'       => $row['id_continua'],
+                    'id_sima_doc'       => $row['id_sima_doc'],
+                    'id_continua_doc'   => $row['id_continua_doc'],
+                    'id_dpto'           => $row['id_dpto'],
+                    'id_faculty'        => $row['id_facultad'],
 
                 ];
                 /** Una vez obtenido los datos de la fila procedemos a registrarlos */

@@ -9,7 +9,19 @@ class Course extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','code','section', 'slug', 'color'];
+    protected $fillable = [
+        'name',
+        'code',
+        'section',
+        'id_sima',
+        'id_continua',
+        'id_sima_doc',
+        'id_continua_doc',
+        'id_dpto',
+        'id_faculty',
+        'slug',
+        'color'
+    ];
 
      //metodo para mostrar slug y no el id
      public function getRouteKeyName()

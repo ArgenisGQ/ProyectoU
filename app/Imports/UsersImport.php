@@ -41,8 +41,9 @@ class UsersImport implements ToModel, WithValidation, WithHeadingRow
             'cedula'        => 'numeric|required|unique:users,ced|digits_between:6,10',
             'email'         => 'required|email|unique:users,email',
             'clave'         => 'required',
-            'id_sima'       => 'numeric|required|unique:users,id_sima',
-            'id_continua'   => 'numeric|required|unique:users,id_continua'
+            'id_sima'       => 'unique:users,id_sima',
+            'id_continua'   => 'unique:users,id_continua'
+
         ];
     }
 

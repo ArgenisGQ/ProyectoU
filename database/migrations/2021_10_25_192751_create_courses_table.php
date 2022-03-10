@@ -16,16 +16,16 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
 
-            $table->string('id_sima')->unique()->nullable;
-            $table->string('id_continua')->unique()->nullable;
-            $table->string('id_sima_doc')->unique()->nullable;
-            $table->string('id_continua_doc')->unique()->nullable;
-            $table->string('id_dpto')->unique()->nullable;
-            $table->string('id_faculty')->unique()->nullable;
+            $table->string('id_sima')->unique()->nullable();
+            $table->string('id_continua')->unique()->nullable();
+            $table->string('id_sima_doc')->unique()->nullable();
+            $table->string('id_continua_doc')->unique()->nullable();
+            $table->string('id_dpto')->unique()->nullable();
+            $table->string('id_faculty')->unique()->nullable();
 
             $table->string('name');
-            $table->string('code')->nullable;
-            $table->string('section')->nullable;
+            $table->string('code')->unique();
+            $table->string('section')->nullable();
             $table->string('slug');
             $table->string('color');
 

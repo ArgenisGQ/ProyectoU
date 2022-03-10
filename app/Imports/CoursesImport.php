@@ -21,20 +21,31 @@ class CoursesImport implements ToModel
         ++$this->numRows;
 
         return new Course([
-            'name'     => $row['nombre'],
-            'ced'      => $row['cedula'],
-            'email'    => $row['email'],
-            'password' => $row['clave'],
+            'name'              => $row['nombre'],
+            'code'              => $row['codigo'],
+            'section'           => $row['seccion'],
+            'id_sima'           => $row['id_sima'],
+            'id_continua'       => $row['id_continua'],
+            'id_sima_doc'       => $row['id_sima_doc'],
+            'id_continua_doc'   => $row['id_continua_doc'],
+            'id_dpto'           => $row['id_dpto'],
+            'id_faculty'        => $row['id_facultad'],
+
         ]);
     }
 
     public function rules(): array
     {
         return [
-            'nombre' => 'required',
-            'cedula' => 'numeric|required|unique:users,ced|digits_between:6,10',
-            'email' => 'required|email|unique:users,email',
-            'clave' => 'required'
+            'nombre'            => 'required',
+            'codigo'            => 'required',
+            'seccion'           => 'required',
+            /* 'id_sima'           => 'required', */
+            /* 'id_continua'       => 'required', */
+            /* 'id_sima_doc'       => 'required', */
+            /* 'id_continua_doc'   => 'required', */
+            'id_dpto'           => 'required',
+            'id_facultad'       => 'required'
         ];
     }
 

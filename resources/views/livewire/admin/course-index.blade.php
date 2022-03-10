@@ -14,9 +14,15 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Nombre de la Materia</th>
+                                <th>Nombre</th>
                                 <th>Codigo</th>
                                 <th>Materia</th>
+                                <th>id_sima</th>
+                                <th>id_continua</th>
+                                <th>id_sima_doc</th>
+                                <th>id_continua_doc</th>
+                                <th>id_dpto</th>
+                                <th>id_facultad</th>
                                 <th colspan="2"></th>
                             </tr>
                         </thead>
@@ -28,6 +34,12 @@
                                     <td>{{$course->name}}</td>
                                     <td>{{$course->code}}</td>
                                     <td>{{$course->section}}</td>
+                                    <td>{{$course->id_sima}}</td>
+                                    <td>{{$course->id_continua}}</td>
+                                    <td>{{$course->id_sima_doc}}</td>
+                                    <td>{{$course->id_continua_doc}}</td>
+                                    <td>{{$course->id_dpto}}</td>
+                                    <td>{{$course->id_faculty}}</td>
                                     <td width="10px">
                                         @can('admin.courses.edit')
                                             <a href="{{route('admin.courses.edit', $course)}}" class="btn btn-primary btn-sm">Editar</a>

@@ -58,13 +58,26 @@ class CourseAdminController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'code' => 'required',
+            'section' => 'required',
+            'id_sima' => 'required',
+            'id_continua' => 'required',
+            'id_sima_doc' => 'required',
+            'id_continua_doc' => 'required',
+            'id_dpto' => 'required',
+            'id_faculty' => 'required',
+
             'slug' => 'required|unique:courses',
             'color' => 'required'
         ]);
 
         $course = Course::create($request->all());
 
-        return redirect()->route('admin.courses.edit', compact('course'))->with('info', 'La materia se creo con exito');
+        $courses = Course::all();
+
+        /* return redirect()->route('admin.courses.edit', compact('course'))->with('info', 'La materia se creo con exito'); */
+        /* return view('admin.courses.index', compact('courses')); */
+        return redirect()->route('admin.courses.index', compact('courses'))->with('info', 'La materia se creo con exito');
     }
 
     /**
@@ -76,6 +89,7 @@ class CourseAdminController extends Controller
     public function show(Course $course)
     {
         return view('admin.courses.show', compact('course'));
+
     }
 
     /**
@@ -110,13 +124,27 @@ class CourseAdminController extends Controller
     {
         $request->validate([
             'name' => 'required',
+
+            'code' => 'required',
+            'section' => 'required',
+            'id_sima' => 'required',
+            'id_continua' => 'required',
+            'id_sima_doc' => 'required',
+            'id_continua_doc' => 'required',
+            'id_dpto' => 'required',
+            'id_faculty' => 'required',
+
             'slug' => "required|unique:courses,slug,$course->id",
             'color' => 'required'
         ]);
 
         $course->update($request->all());
 
-        return redirect()->route('admin.courses.edit', $course)->with('info','La materia se actualizo con exito');
+        $courses = Course::all();
+
+        /* return redirect()->route('admin.courses.edit', $course)->with('info','La materia se actualizo con exito'); */
+        /* return view('admin.courses.index', compact('courses')); */
+        return redirect()->route('admin.courses.index', compact('courses'))->with('info', 'La materia se edito con exito');
     }
 
     /**

@@ -23,7 +23,7 @@
 
                 <p>El nombre del archivo debe ser materias.xlsx</p>
                 <p>El listado debe tener en inicio de linea los campos de</p>
-                <p>NOMBRE, CEDULA, EMAIL, CLAVE</p>
+                <p>nombre. codigo, seccion, id_sima, id_continua, id_sima_doc, id_continua_doc, id_dpto, id_facultad</p>
                 {{-- @if ( $errors->any() )
                     <div class="alert alert-danger">
                         @foreach( $errors->all() as $error )<li>{{ $error }}</li>@endforeach
