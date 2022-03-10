@@ -264,7 +264,7 @@ return [
             'label_color' => 'success', */
         ],
         [
-            'text'        => 'Carga masiva de usuarios',
+            'text'        => 'Carga masiva de Usuarios',
             'route'       => 'admin.users.import',
             'icon'        => 'fas fa-users-cog fa-fw',
             'can'         => 'admin.users.import',
@@ -332,7 +332,7 @@ return [
 
                 ],
                 [
-                    'text' => 'Crear nuevo Actividad',
+                    'text' => 'Crear nueva Actividad',
                     'route'  => 'admin.activities.create',
                     'icon' => 'fas fa-fw fa-file',
                     'can'    => 'admin.activities.create',
