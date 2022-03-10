@@ -57,18 +57,20 @@ class CourseAdminController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'code' => 'required',
-            'section' => 'required',
-            'id_sima' => 'required',
-            'id_continua' => 'required',
-            'id_sima_doc' => 'required',
-            'id_continua_doc' => 'required',
-            'id_dpto' => 'required',
-            'id_faculty' => 'required',
+            'name' => 'required|unique:courses,name',
 
-            'slug' => 'required|unique:courses',
-            'color' => 'required'
+
+            'code' => 'required|unique:courses,code',
+            'section' => 'required|unique:courses,section',
+            'id_sima' => 'required|unique:courses,id_sima',
+            'id_continua' => 'required|unique:courses,id_continua',
+            'id_sima_doc' => 'required|unique:courses,id_sima_doc',
+            'id_continua_doc' => 'required|unique:courses,id_continua_doc',
+            'id_dpto' => 'required|unique:courses,id_dpto',
+            'id_faculty' => 'required|unique:courses,id_faculty',
+
+            'slug' => 'required|unique:courses,slug',
+            /* 'color' => 'required' */
         ]);
 
         $course = Course::create($request->all());
@@ -76,8 +78,8 @@ class CourseAdminController extends Controller
         $courses = Course::all();
 
         /* return redirect()->route('admin.courses.edit', compact('course'))->with('info', 'La materia se creo con exito'); */
-        /* return view('admin.courses.index', compact('courses')); */
-        return redirect()->route('admin.courses.index', compact('courses'))->with('info', 'La materia se creo con exito');
+        return view('admin.courses.index', compact('courses'));
+        /* return redirect()->route('admin.courses.index', compact('courses'))->with('info', 'La materia se creo con exito'); */
     }
 
     /**
@@ -110,6 +112,8 @@ class CourseAdminController extends Controller
             'ping' => 'Color rosado'
         ];
 
+        /* return "edit"; */
+
         return view('admin.courses.edit', compact('course', 'colors'));
     }
 
@@ -122,29 +126,35 @@ class CourseAdminController extends Controller
      */
     public function update(Request $request, Course $course)
     {
+        /* return "update"; */
+
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:courses,name',
 
-            'code' => 'required',
-            'section' => 'required',
-            'id_sima' => 'required',
-            'id_continua' => 'required',
-            'id_sima_doc' => 'required',
-            'id_continua_doc' => 'required',
-            'id_dpto' => 'required',
-            'id_faculty' => 'required',
 
-            'slug' => "required|unique:courses,slug,$course->id",
+            'code' => 'required|unique:courses,code',
+            'section' => 'required|unique:courses,section',
+            'id_sima' => 'required|unique:courses,id_sima',
+            'id_continua' => 'required|unique:courses,id_continua',
+            'id_sima_doc' => 'required|unique:courses,id_sima_doc',
+            'id_continua_doc' => 'required|unique:courses,id_continua_doc',
+            'id_dpto' => 'required|unique:courses,id_dpto',
+            'id_faculty' => 'required|unique:courses,id_faculty',
+
+            /* 'slug' => "required|unique:courses,slug,$course->id", */
+            'slug' => "required|unique:courses,slug",
             'color' => 'required'
         ]);
+
+        return "update nivel";
 
         $course->update($request->all());
 
         $courses = Course::all();
 
         /* return redirect()->route('admin.courses.edit', $course)->with('info','La materia se actualizo con exito'); */
-        /* return view('admin.courses.index', compact('courses')); */
-        return redirect()->route('admin.courses.index', compact('courses'))->with('info', 'La materia se edito con exito');
+        return view('admin.courses.index', compact('courses'));
+        /* return redirect()->route('admin.courses.index', compact('courses'))->with('info', 'La materia se edito con exito'); */
     }
 
     /**

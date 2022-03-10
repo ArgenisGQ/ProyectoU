@@ -26,8 +26,8 @@ class CreateCoursesTable extends Migration
             $table->string('name');
             $table->string('code')->unique();
             $table->string('section')->nullable();
-            $table->string('slug');
-            $table->string('color');
+            $table->string('slug')->nullable();
+            $table->string('color')->nullable();
 
             $table->timestamps();
         });
