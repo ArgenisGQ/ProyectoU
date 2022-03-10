@@ -62,7 +62,9 @@ class UserController extends Controller
 
 
         $this->validate($request, [
+            'userName' => 'required',
             'name' => 'required',
+            'lastName' => 'required',
             'ced' => 'numeric|required|unique:users|digits_between:6,10',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
@@ -78,10 +80,14 @@ class UserController extends Controller
         /* return $request; */
 
         $user = User::create([
+            'userName' => $data['userName'],
             'name' => $data['name'],
+            'lastName' => $data['lastName'],
             'ced' => $data['ced'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password'])
+            'password' => bcrypt($data['password']),
+            'id_sima' => $data['id_sima'],
+            'id_continua' => $data['id_continua'],
         ]);
 
 

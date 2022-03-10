@@ -21,20 +21,28 @@ class UsersImport implements ToModel, WithValidation, WithHeadingRow
         ++$this->numRows;
 
         return new User([
-            'name'     => $row['nombre'],
-            'ced'      => $row['cedula'],
-            'email'    => $row['email'],
-            'password' => $row['clave'],
+            'userName'      => $row['usuario'],
+            'name'          => $row['nombre'],
+            'lastName'      => $row['apellido'],
+            'ced'           => $row['cedula'],
+            'email'         => $row['email'],
+            'password'      => $row['clave'],
+            'id_sima'       => $row['id_sima'],
+            'id_continua'   => $row['id_continua'],
         ]);
     }
 
     public function rules(): array
     {
         return [
-            'nombre' => 'required',
-            'cedula' => 'numeric|required|unique:users,ced|digits_between:6,10',
-            'email' => 'required|email|unique:users,email',
-            'clave' => 'required'
+            'usuario'       => 'required|unique:users,userName',
+            'nombre'        => 'required',
+            'apellido'      => 'required',
+            'cedula'        => 'numeric|required|unique:users,ced|digits_between:6,10',
+            'email'         => 'required|email|unique:users,email',
+            'clave'         => 'required',
+            'id_sima'       => 'numeric|required|unique:users,id_sima',
+            'id_continua'   => 'numeric|required|unique:users,id_continua'
         ];
     }
 

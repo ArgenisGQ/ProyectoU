@@ -242,11 +242,11 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
         ],
-        [
+        /* [
             'text' => 'blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
-        ],
+        ], */
         [
             'text'        => 'Dashboard',
             'route'       => 'admin.home',
@@ -332,7 +332,7 @@ return [
 
                 ],
                 [
-                    'text' => 'Crear nuevo Actividad',
+                    'text' => 'Crear nueva Actividad',
                     'route'  => 'admin.activities.create',
                     'icon' => 'fas fa-fw fa-file',
                     'can'    => 'admin.activities.create',

@@ -23,7 +23,7 @@
 
                 <p>El nombre del archivo debe ser usuarios.xlsx</p>
                 <p>El listado debe tener en inicio de linea los campos de</p>
-                <p>NOMBRE, CEDULA, EMAIL, CLAVE</p>
+                <p>usuario, nombre, apellido, cedula, email, clave, id_sima, id_continua</p>
                 {{-- @if ( $errors->any() )
                     <div class="alert alert-danger">
                         @foreach( $errors->all() as $error )<li>{{ $error }}</li>@endforeach
