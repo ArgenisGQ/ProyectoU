@@ -72,16 +72,14 @@ class ExcelCourseController extends Controller
              $fallas = $e->failures();
 
              foreach ($fallas as $falla) {
-                 $falla->row(); // fila en la que ocurrió el error 
+                 $falla->row(); // fila en la que ocurrió el error
                  $falla->attribute(); // el número de columna o la "llave" de la columna
                  $falla->errors(); // Errores de las validaciones de laravel
                  $falla->values(); // Valores de la fila en la que ocurrió el error.
              }
 
 
-
              return view('admin.courses.import', ['numRows'=>$import->getRowCount(), 'fallas'=>$falla->errors()]);
-
 
 
         }

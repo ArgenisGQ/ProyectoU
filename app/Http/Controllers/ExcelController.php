@@ -72,8 +72,6 @@ class ExcelController extends Controller
 
              return view('admin.users.import', ['numRows'=>$import->getRowCount(), 'fallas'=>$falla->errors()]);
 
-
-
         }
 
         /* $fallas = $falla; */  /* ++++ */
