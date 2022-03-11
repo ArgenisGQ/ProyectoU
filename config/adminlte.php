@@ -250,7 +250,8 @@ return [
         [
             'text'        => 'Dashboard',
             'route'       => 'admin.home',
-            'icon'        => 'fas fa-tachometer-alt fa-fw ',
+            /* 'icon'        => 'fas fa-tachometer-alt fa-fw ', */
+            'icon'        => 'fas fa-fw fa-border-none',
             'can'         => 'admin.home',
             /* 'label'       => 4,
             'label_color' => 'success', */
@@ -258,7 +259,8 @@ return [
         [
             'text'        => 'Usuarios',
             'route'       => 'admin.users.index',
-            'icon'        => 'fas fa-users-cog fa-fw',
+            /* 'icon'        => 'fas fa-users-cog fa-fw', */
+            'icon'        => 'fas fa-solid fa-user-tie',
             'can'         => 'admin.users.index',
             /* 'label'       => 4,
             'label_color' => 'success', */
@@ -274,7 +276,7 @@ return [
         [
             'text'        => 'Carga masiva de Materias',
             'route'       => 'admin.courses.import',
-            'icon'        => 'fas fa-users-cog fa-fw',
+            'icon'        => 'fas fa-fw fa-brain',
             /* 'can'         => 'admin.courses.import', */
             /* 'label'       => 4,
             'label_color' => 'success', */
@@ -291,7 +293,7 @@ return [
         [
             'text'          => 'Listado de periodos',
             'route'         => 'admin.periods.index',
-            'icon'          => 'fas fa-users fa-fw',
+            'icon'          => 'fas fa-fw   fa-opera',
             'active'        => ['admin/periods*'],
             'can'           => 'admin.periods.index',
             ],
@@ -310,7 +312,8 @@ return [
                         [
                         'text' => 'Facultades',
                         'route'  => 'admin.faculties.index',
-                        'icon' => 'fab fa-fw fa-buffer',
+                        /* 'icon' => 'fab fa-fw fa-buffer', */
+                        'icon' => 'fas fa-solid fa-graduation-cap',
                         'active' => ['admin/faculties*'],
                         'can'         => 'admin.faculties.index',
                         ],
