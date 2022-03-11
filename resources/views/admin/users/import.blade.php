@@ -32,7 +32,9 @@
 
                 @if ( isset($fallas))
                     <div class="alert alert-danger">
-                        @foreach( $fallas as $falla )<li>{{ $falla }}</li>@endforeach
+                        @foreach( $fallas as $falla )
+                        <li>{{ $falla }}</li>
+                        @endforeach
                     </div>
                 @endif
 

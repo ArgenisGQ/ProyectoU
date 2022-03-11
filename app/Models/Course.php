@@ -20,7 +20,7 @@ class Course extends Model
         'id_dpto',
         'id_faculty',
         'slug',
-        'color'
+        'color',
     ];
 
      //metodo para mostrar slug y no el id

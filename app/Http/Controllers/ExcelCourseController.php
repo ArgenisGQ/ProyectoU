@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Course;
 use App\Imports\CoursesImport;
@@ -48,9 +46,14 @@ class ExcelCourseController extends Controller
 
 
             $import = new CoursesImport();
+
+            /* dd (request()->file('file')); */
+
+            /* return "primer nivel"; */
+
             Excel::import($import, request()->file('file'));
 
-            return "primer nivel";
+            /* return "segundo nivel"; */
 
             $file = $request->file('file');
 
@@ -69,7 +72,7 @@ class ExcelCourseController extends Controller
              $fallas = $e->failures();
 
              foreach ($fallas as $falla) {
-                 $falla->row(); // fila en la que ocurrió el error
+                 $falla->row(); // fila en la que ocurrió el error 
                  $falla->attribute(); // el número de columna o la "llave" de la columna
                  $falla->errors(); // Errores de las validaciones de laravel
                  $falla->values(); // Valores de la fila en la que ocurrió el error.

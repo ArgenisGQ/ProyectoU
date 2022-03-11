@@ -75,7 +75,7 @@ class PdfActiController extends Controller
                            ->take(1)
                            ->get();
 
-        
+
 
         /* return $curso->first()->code; */
 
@@ -124,7 +124,8 @@ class PdfActiController extends Controller
         $section = $curso->first()->section;
         $date = $today->format('dmY');
 
-        $file_name = "act-$code-$section-$date.pdf";
+        /* $file_name = "act-$code-$section-$date.pdf"; */
+        $file_name = "ACT $code $section $date.pdf";
 
         /* return $file_name;
  */

@@ -44,6 +44,7 @@ class ExcelController extends Controller
 
         try {
 
+            /* dd (request()->file('file')); */
 
             $import = new UsersImport();
             Excel::import($import, request()->file('file'));
