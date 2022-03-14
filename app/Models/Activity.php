@@ -20,11 +20,11 @@ class Activity extends Model
                     ];
 
     //Relacion de uno a muchos inversa
-
     public function user(){
         return $this->belongsTo(User::class);
     }
 
+    //Relacion de uno a muchos inversa
     public function faculty(){
         return $this->belongsTo(Faculty::class);
     }

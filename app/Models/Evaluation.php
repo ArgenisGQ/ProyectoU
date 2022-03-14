@@ -11,6 +11,6 @@ class Evaluation extends Model
 
     protected $fillable = [
         'name',
-        'id_course',
+        'id_activity',
     ];
 }
