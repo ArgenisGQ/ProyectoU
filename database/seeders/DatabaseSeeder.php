@@ -6,6 +6,8 @@ use App\Models\Category;
 use App\Models\Course;
 use App\Models\Faculty;
 use App\Models\Tag;
+use App\Models\Departament;
+use App\Models\Evaluation;
 use Illuminate\Database\Seeder;
 
 use Illuminate\Support\Facades\Storage;
@@ -26,6 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleSeeder::class);
 
         $this->call(UserSeeder::class);
+
         Category::factory(4)->create();
         Tag::factory(8)->create();
         $this->call(PostSeeder::class);
@@ -34,9 +37,14 @@ class DatabaseSeeder extends Seeder
         Course::factory(8)->create();
         $this->call(ActivitySeeder::class);
 
+
         $this->call(PeriodSeeder::class);
 
         $this->call(Category_permissionSeeder::class);
+
+        $this->call(DepartamentSeeder::class);
+
+        $this->call(EvaluationSeeder::class);
 
     }
 }

@@ -18,7 +18,7 @@ class ActivitySeeder extends Seeder
     public function run()
     {
         //
-        $activities = Activity::factory(300)->create();
+        $activities = Activity::factory(30)->create();
 
 
         foreach ($activities as $activity) {

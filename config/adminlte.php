@@ -293,7 +293,7 @@ return [
         [
             'text'          => 'Listado de periodos',
             'route'         => 'admin.periods.index',
-            'icon'          => 'fas fa-fw   fa-opera',
+            'icon'          => 'fas fa-fw   fa-calender',
             'active'        => ['admin/periods*'],
             'can'           => 'admin.periods.index',
             ],

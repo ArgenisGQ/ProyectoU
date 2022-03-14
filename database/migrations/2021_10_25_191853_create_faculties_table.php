@@ -17,6 +17,9 @@ class CreateFacultiesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
+
+            $table->string('id_sima_faculty')->unique()->nullable();
+            $table->string('id_continua_faculty')->unique()->nullable();
             $table->timestamps();
         });
     }

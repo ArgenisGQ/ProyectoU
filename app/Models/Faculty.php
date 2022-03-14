@@ -10,7 +10,12 @@ class Faculty extends Model
     use HasFactory;
 
     //Relacion Masiva
-    protected $fillable = ['name', 'slug'];
+    protected $fillable = [
+        'name',
+        'slug',
+        'id_sima_faculty',
+        'id_continua_faculty',
+    ];
 
     //metodo para mostrar slug y no el id
     public function getRouteKeyName()

@@ -10,7 +10,10 @@ class Category extends Model
     use HasFactory;
 
     //Relacion Masiva
-    protected $fillable = ['name', 'slug'];
+    protected $fillable = [
+        'name',
+        'slug'
+    ];
 
     //metodo para mostrar slug y no el id
     public function getRouteKeyName()
