@@ -7,6 +7,7 @@ use Barryvdh\DomPDF\PDF;
 use App\Models\Activity;
 use App\Models\Faculty;
 use App\Models\Course;
+use App\Models\Evaluation;
 
 class PdfActiController extends Controller
 {
@@ -29,6 +30,10 @@ class PdfActiController extends Controller
 
                             ->get();
 
+        $evaluacion = Evaluation::where('id', $activity->type)
+
+                            ->get();
+
         /* $css_data = '<style>
         '.file_get_contents("./css/bootstrap.min.css").'
         </style>'; */
@@ -44,7 +49,7 @@ class PdfActiController extends Controller
 
         $lapse_out = $activity->lapse_out->format('d/m/Y');
 
-        return view('activities.pdf.showPdf', compact('activity', 'similares',
+        return view('activities.pdf.showPdf', compact('activity', 'similares', 'evaluacion',
                                                       'facultad', 'css_data', 'logo',
                                                       'today', 'lapse_in', 'lapse_out'));
 
@@ -73,6 +78,10 @@ class PdfActiController extends Controller
         $curso = $activity->courses()
                            ->latest('id')
                            ->take(1)
+                           ->get();
+
+        $evaluacion = Evaluation::where('id', $activity->type)
+
                            ->get();
 
 
@@ -133,7 +142,7 @@ class PdfActiController extends Controller
         /* -------- Para mostrar el archivo en otra ventana de PDF  -------- */
 
         return \PDF::loadView('activities.pdf.downPdf', compact('activity', 'similares',
-                    'facultad','css_data', 'logo',
+                    'facultad','css_data', 'logo', 'evaluacion',
                     'today', 'lapse_in', 'lapse_out'))
                     ->stream($file_name, ["Attachment" => false]);
 

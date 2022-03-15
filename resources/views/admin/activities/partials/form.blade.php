@@ -201,7 +201,7 @@
 </div>
 
 
-<div class="form-group">
+{{-- <div class="form-group">
     <p class="font-weight-bold">Tipo de evaluacion:</p>
 
     <label>
@@ -215,6 +215,16 @@
     </label>
 
 
+
+    @error('type')
+        <br>
+        <span class="text-danger">{{$message}}</span>
+    @enderror
+</div> --}}
+
+<div class="form-group">
+    {!! Form::label('tupe', 'Tipo de evaluacion') !!}
+    {!! Form::select('type', $evaluations,null,['class' => 'form-control']) !!}
 
     @error('type')
         <br>

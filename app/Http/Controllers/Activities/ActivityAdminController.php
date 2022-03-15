@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Activity;
 use App\Models\Faculty;
 use App\Models\Course;
+use App\Models\Evaluation;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ActivityRequest;
 use Carbon\Carbon;
@@ -46,6 +47,8 @@ class ActivityAdminController extends Controller
         $courses = Course::all();
 
         $activity = Activity::all();
+
+        $evaluations = Evaluation::pluck('name', 'id');
 
        /*  $activity->academic_start= Carbon::parse('2022-06-02');
         $activity->academic_finish = Carbon::parse('2022-09-27'); */
@@ -87,7 +90,7 @@ class ActivityAdminController extends Controller
         /* $academic_start = now()->format('d/m/Y'); */
 
         return view('admin.activities.create', compact('faculties', 'courses',
-                                                        'activity',
+                                                        'activity', 'evaluations',
                                                     'academic_start', 'academic_finish' ));
     }
 
@@ -159,6 +162,8 @@ class ActivityAdminController extends Controller
 
         $courses = Course::all();
 
+        $evaluations = Evaluation::pluck('name', 'id');
+
         /* --------CONTROL DE FECHAS DEL PERIODO------------ */
         $today = today();
 
@@ -187,6 +192,7 @@ class ActivityAdminController extends Controller
         /* return $activity->lapse_in; */
 
         return view('admin.activities.edit', compact('activity', 'faculties', 'courses',
+                                            'evaluations',
                                             'academic_start', 'academic_finish'));
     }
 

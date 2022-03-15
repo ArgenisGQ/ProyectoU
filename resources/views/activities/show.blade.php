@@ -170,7 +170,7 @@
                         <tr>
                             {{-- <td class="">{!! $activity->extract!!}</td> --}}
 
-                            <td class="">{!! $activity->type!!}</td>
+                            <td class="">{!! $evaluacion->first()->name !!}</td>
                         </tr>
                     </tbody>
                 </table>

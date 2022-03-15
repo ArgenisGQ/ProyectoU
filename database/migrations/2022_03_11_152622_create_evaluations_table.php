@@ -16,7 +16,9 @@ class CreateEvaluationsTable extends Migration
         Schema::create('evaluations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('id_activity')->nullable();
+            $table->string('description')->nullable();
+            /* $table->unsignedBigInteger('id_activity'); */
+            /* $table->foreign('id_activity')->references('id')->on('activities')->onDelete('cascade'); */ /* opcion 'cascade' borra todos las evaluaciones de de la actividad si se va de baja*/
             $table->timestamps();
         });
     }

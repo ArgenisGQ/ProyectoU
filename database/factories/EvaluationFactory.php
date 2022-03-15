@@ -27,7 +27,7 @@ class EvaluationFactory extends Factory
         return [
 
             'name' => $name,
-            'id_activity' => $this->faker->unique()->numberBetween(10,499),
+            'description' => $this->faker->text(15),
         ];
     }
 }

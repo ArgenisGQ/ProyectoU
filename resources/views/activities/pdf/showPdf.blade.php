@@ -379,7 +379,7 @@
                         <tbody>
                             <tr>
                                 <th class="p-1 text-center bg-gris ancho-1de4" >Tipo de evaluacion</th>
-                                <td class="ancho-3de4 text-left"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {!!$activity->type!!} </td>
+                                <td class="ancho-3de4 text-left"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {!! $evaluacion->first()->name !!} </td>
                             </tr>
                         </tbody>
 

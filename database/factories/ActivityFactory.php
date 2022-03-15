@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Faculty;
 use App\Models\Activity;
+use App\Models\Evaluation;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -39,6 +40,7 @@ class ActivityFactory extends Factory
             'body' => $this->faker->text(2000),
             'status' => $this->faker->randomElement([1,2]),
             'faculty_id' => Faculty::all()->random()->id,
+            'type' => Evaluation::all()->random()->id,
             'user_id' => User::all()->random()->id,
             /* 'lapse_in' => $this->faker->dateTimeBetween($startDate,$endDate), */
             'lapse_in' => Carbon::create(2021, 9, 6, 0, 0, 0),

@@ -11,6 +11,11 @@ class Evaluation extends Model
 
     protected $fillable = [
         'name',
-        'id_activity',
+        'description',
     ];
+
+    //Relacion de uno a muchos inversa
+    /* public function activity(){
+        return $this->belongsTo(Activity::class);
+    } */
 }

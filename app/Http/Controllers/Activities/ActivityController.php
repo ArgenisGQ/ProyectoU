@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Activities;
 use App\Http\Controllers\Controller;
 use App\Models\Activity;
 use App\Models\Course;
+use App\Models\Evaluation;
 use App\Models\Faculty;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -48,6 +49,12 @@ class ActivityController extends Controller
 
                             ->get();
 
+        $evaluacion = Evaluation::where('id', $activity->type)
+
+                            ->get();
+
+       
+
         /* control de fechas */
 
         /* $academic_start = Activity::where('id', $activity->id)
@@ -65,9 +72,11 @@ class ActivityController extends Controller
 
         /* return $academic_start; */
 
+        /* return $evaluacion; */
+
 
         return view('activities.show', compact('activity',
-                                    'similares', 'facultad',
+                                    'similares', 'facultad', 'evaluacion',
                                     'today', 'lapse_in', 'lapse_out',
                                     ));
                                     /* 'academic_start', 'academic_finish')); */
@@ -97,5 +106,7 @@ class ActivityController extends Controller
                         ->paginate(4);
         return view('activities.course', compact('activities', 'course'));
     }
+
+
 
 }

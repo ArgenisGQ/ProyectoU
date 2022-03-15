@@ -39,4 +39,9 @@ class Activity extends Model
         return $this->MorphOne(Image::class, 'imageable');
     }
 
+    /* //Relacion de uno a muchos inversa
+    public function evaluation(){
+        return $this->belongsTo(Evaluation::class);
+    } */
+
 }
