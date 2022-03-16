@@ -33,6 +33,8 @@ class DatabaseSeeder extends Seeder
         Tag::factory(8)->create();
         $this->call(PostSeeder::class);
 
+        $this->call(EvaluationSeeder::class);
+
         Faculty::factory(4)->create();
         Course::factory(8)->create();
         $this->call(ActivitySeeder::class);
@@ -44,7 +46,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(DepartamentSeeder::class);
 
-        $this->call(EvaluationSeeder::class);
+
 
     }
 }

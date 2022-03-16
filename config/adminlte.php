@@ -275,7 +275,15 @@ return [
         ],
         [
             'text'        => 'Carga masiva de Materias',
-            'route'       => 'admin.courses.import',
+            'route'       => 'admin.courses.import', 
+            'icon'        => 'fas fa-fw fa-brain',
+            /* 'can'         => 'admin.courses.import', */
+            /* 'label'       => 4,
+            'label_color' => 'success', */
+        ],
+        [
+            'text'        => 'Carga masiva de Usuarios y Materias',
+            'route'       => 'admin.usercourses.import',
             'icon'        => 'fas fa-fw fa-brain',
             /* 'can'         => 'admin.courses.import', */
             /* 'label'       => 4,

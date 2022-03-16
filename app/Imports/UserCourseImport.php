@@ -2,14 +2,14 @@
 
 namespace App\Imports;
 
-use App\Models\Course;
+use App\Models\User_course;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Illuminate\Support\Str;
 
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
-class CoursesImport implements ToModel, WithValidation, WithHeadingRow
+class UserCourseImport implements ToModel, WithValidation, WithHeadingRow
 {
     private $numRows = 0;
     /**
@@ -21,17 +21,17 @@ class CoursesImport implements ToModel, WithValidation, WithHeadingRow
     {
         ++$this->numRows;
 
-        return new Course([
-            'name'              => $row['nombre'],
+        return new User_course([
             'code'              => $row['codigo'],
+            'course'            => $row['materia'],
             'section'           => $row['seccion'],
-            'id_sima'           => $row['id_sima'],
-            'id_continua'       => $row['id_continua'],
-            'id_sima_doc'       => $row['id_sima_doc'],
+            'ced'               => $row['cedula'],
+            'name'              => $row['profesor'],
+            /* 'id_sima_doc'       => $row['id_sima_doc'],
             'id_continua_doc'   => $row['id_continua_doc'],
             'id_dpto'           => $row['id_dpto'],
             'id_faculty'        => $row['id_facultad'],
-            'slug'              => Str::slug('codigo'),
+            'slug'              => Str::slug('codigo'), */
 
         ]);
     }
@@ -39,15 +39,16 @@ class CoursesImport implements ToModel, WithValidation, WithHeadingRow
     public function rules(): array
     {
         return [
-            'nombre'            => 'required|unique:courses,name',
-            'codigo'            => 'required|unique:courses,code',
-            'seccion'           => 'required',
-            'id_sima'           => 'unique:courses,id_sima',
-            'id_continua'       => 'unique:courses,id_continua',
-            'id_sima_doc'       => 'unique:courses,id_sima_doc',
+            'codigo'            => 'required',            
+            'materia'            => 'required',
+            'seccion'                   => 'required',
+            'cedula'                    => 'required',
+            'profesor'           => 'required',
+            /* 'id_sima_doc'       => 'unique:courses,id_sima_doc',
             'id_continua_doc'   => 'unique:courses,id_continua_doc',
             'id_dpto'           => 'unique:courses,id_dpto',
-            'id_facultad'       => 'unique:courses,id_faculty',
+            'id_facultad'       => 'unique:courses,id_faculty', */
+
         ];
     }
 

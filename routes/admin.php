@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\ExcelCourseController;
+use App\Http\Controllers\ExcelUserCourseController;
 use App\Http\Controllers\Activities\PeriodController;
 
 use App\Http\Controllers\Activities\IndexController;
@@ -37,6 +38,10 @@ Route::post('import', [ExcelController::class, 'import'])->name('admin.users.imp
 Route::get('importcourse', [ExcelCourseController::class, 'importForm'])->name('admin.courses.importform');
 
 Route::post('importcourse', [ExcelCourseController::class, 'import'])->name('admin.courses.import');
+
+Route::get('importusercourse', [ExcelUserCourseController::class, 'importForm'])->name('admin.usercourses.importform');
+
+Route::post('importusercourse', [ExcelUserCourseController::class, 'import'])->name('admin.usercourses.import');
 
 Route::get('users/import', function () {
     return 'Hello World';
