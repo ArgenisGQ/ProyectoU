@@ -112,7 +112,7 @@ class CourseAdminController extends Controller
             'ping' => 'Color rosado'
         ];
 
-        /* return "edit"; */
+        return "edit";
 
         return view('admin.courses.edit', compact('course', 'colors'));
     }
@@ -124,6 +124,7 @@ class CourseAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function update(Request $request, Course $course)
     {
         /* return "update"; */
@@ -132,21 +133,21 @@ class CourseAdminController extends Controller
             'name' => 'required|unique:courses,name',
 
 
-            'code' => 'required|unique:courses,code',
-            'section' => 'required|unique:courses,section',
-            'id_sima' => 'required|unique:courses,id_sima',
+            'code' => 'required',
+            'section' => 'required',
+            /* 'id_sima' => 'required|unique:courses,id_sima',
             'id_continua' => 'required|unique:courses,id_continua',
             'id_sima_doc' => 'required|unique:courses,id_sima_doc',
             'id_continua_doc' => 'required|unique:courses,id_continua_doc',
             'id_dpto' => 'required|unique:courses,id_dpto',
-            'id_faculty' => 'required|unique:courses,id_faculty',
+            'id_faculty' => 'required|unique:courses,id_faculty', */
 
             /* 'slug' => "required|unique:courses,slug,$course->id", */
-            'slug' => "required|unique:courses,slug",
-            'color' => 'required'
+            /* 'slug' => "required|unique:courses,slug",
+            'color' => 'required' */
         ]);
 
-        return "update nivel";
+        /* return "update nivel"; */
 
         $course->update($request->all());
 

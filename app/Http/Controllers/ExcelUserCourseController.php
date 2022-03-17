@@ -197,16 +197,10 @@ class ExcelUserCourseController extends Controller
         try {
             foreach ($total_courses as $total_course) {
 
-                $user = User::create([
-                    'name' => $total_course->name,
-                    'ced' => $total_course->ced,
-
-                    'userName' => 'V-'.$total_course->ced,
-
-                    'lastName' => 'sistema',
-                    'email' => 'V-'.$total_course->ced.'@uny.edu.ve',
-
-                    'password' => bcrypt('Yacambu')
+                $user = Course::create([
+                    'name' => $total_course->course,
+                    'code' => $total_course->code,
+                    'section' => $total_course->section,                  
 
                 ]); 
 
@@ -228,7 +222,7 @@ class ExcelUserCourseController extends Controller
 
             /* return response()->json(['message' => 'Error']); */
             return $fallas;
-        }
+        };
 
 
         /* $total_courses = $total_courses; */

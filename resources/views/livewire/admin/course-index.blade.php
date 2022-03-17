@@ -16,11 +16,7 @@
                                 <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Codigo</th>
-                                <th>Materia</th>
-                                <th>id_sima</th>
-                                <th>id_continua</th>
-                                <th>id_sima_doc</th>
-                                <th>id_continua_doc</th>
+                                <th>Materia</th>                                
                                 <th>id_dpto</th>
                                 <th>id_facultad</th>
                                 <th colspan="2"></th>
@@ -33,11 +29,7 @@
                                     <td>{{$course->id}}</td>
                                     <td>{{$course->name}}</td>
                                     <td>{{$course->code}}</td>
-                                    <td>{{$course->section}}</td>
-                                    <td>{{$course->id_sima}}</td>
-                                    <td>{{$course->id_continua}}</td>
-                                    <td>{{$course->id_sima_doc}}</td>
-                                    <td>{{$course->id_continua_doc}}</td>
+                                    <td>{{$course->section}}</td>                                    
                                     <td>{{$course->id_dpto}}</td>
                                     <td>{{$course->id_faculty}}</td>
                                     <td width="10px">
@@ -47,12 +39,12 @@
                                     </td>
                                     <td width="10px">
                                         @can('admin.courses.destroy')
-                                            <form action="{{route('admin.courses.destroy', $course)}}" method="POST">
+                                            {{-- <form action="{{route('admin.courses.destroy', $course)}}" method="POST">
                                                 @csrf
                                                 @method('delete')
 
                                             <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
-                                            </form>
+                                            </form> --}}
                                         @endcan
                                     </td>
                                 </tr>
