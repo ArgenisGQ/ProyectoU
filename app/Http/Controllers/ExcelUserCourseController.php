@@ -9,6 +9,7 @@ use App\Imports\UserCourseImport;
 use App\Models\Course;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
+use App\Models\User;
 
 class ExcelUserCourseController extends Controller
 {
@@ -172,5 +173,118 @@ class ExcelUserCourseController extends Controller
         });
 
         return ;
+    }
+
+    public function alls()
+    {
+        $totals = User_course::all();
+
+
+
+        /* $total_courses = $total_courses; */
+
+        /* return $total_courses; */
+
+        return view('admin.usercourses.analisys', compact('totals'));
+    }
+
+    public function courses()
+    {
+        $courses = User_course::all();
+        $total_courses = $courses->unique('code');
+        /* $total_courses = $courses; */
+
+        try {
+            foreach ($total_courses as $total_course) {
+
+                $user = User::create([
+                    'name' => $total_course->name,
+                    'ced' => $total_course->ced,
+
+                    'userName' => 'V-'.$total_course->ced,
+
+                    'lastName' => 'sistema',
+                    'email' => 'V-'.$total_course->ced.'@uny.edu.ve',
+
+                    'password' => bcrypt('Yacambu')
+
+                ]); 
+
+            }
+
+
+
+            
+        } catch (\Maatwebsite\Excel\Validators\ValidationException\Exception $e) {
+                $fallas = $e->failures();
+
+                foreach ($fallas as $falla) {
+                    $falla->row(); // fila en la que ocurrió el error
+                    $falla->attribute(); // el número de columna o la "llave" de la columna
+                    $falla->errors(); // Errores de las validaciones de laravel
+                    $falla->values(); // Valores de la fila en la que ocurrió el error.
+                }
+
+
+            /* return response()->json(['message' => 'Error']); */
+            return $fallas;
+        }
+
+
+        /* $total_courses = $total_courses; */
+
+        /* return $total_courses; */
+
+        return view('admin.usercourses.analisyscourses', compact('total_courses'));
+    }
+
+    public function users()
+    {
+        $users = User_course::all();
+        $total_users = $users->unique('ced');
+
+        /* return $users->ced; */
+
+        try {
+            foreach ($total_users as $total_user) {
+
+                $user = User::create([
+                    'name' => $total_user->name,
+                    'ced' => $total_user->ced,
+
+                    'userName' => 'V-'.$total_user->ced,
+
+                    'lastName' => 'sistema',
+                    'email' => 'V-'.$total_user->ced.'@uny.edu.ve',
+
+                    'password' => bcrypt('Yacambu')
+
+                ]); 
+
+            }
+
+
+
+            
+        } catch (\Maatwebsite\Excel\Validators\ValidationException\Exception $e) {
+                $fallas = $e->failures();
+
+                foreach ($fallas as $falla) {
+                    $falla->row(); // fila en la que ocurrió el error
+                    $falla->attribute(); // el número de columna o la "llave" de la columna
+                    $falla->errors(); // Errores de las validaciones de laravel
+                    $falla->values(); // Valores de la fila en la que ocurrió el error.
+                }
+
+
+            /* return response()->json(['message' => 'Error']); */
+            return $fallas;
+        }
+        /* return response()->json(['message' => 'Success']); */
+
+
+        /* return $total_courses; */
+
+        return view('admin.usercourses.analisysusers', compact('total_users'));
     }
 }

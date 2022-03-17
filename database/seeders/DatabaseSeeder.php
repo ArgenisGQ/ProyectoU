@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
         $this->call(EvaluationSeeder::class);
 
         Faculty::factory(4)->create();
-        Course::factory(8)->create();
+        Course::factory(0)->create();
         $this->call(ActivitySeeder::class);
 
 

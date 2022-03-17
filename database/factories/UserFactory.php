@@ -24,7 +24,7 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        $ced = $this->faker->unique()->numberBetween(10,499);
+        $ced = $this->faker->unique()->numberBetween(1000,1100);
         $userName = 'V-'.$ced;
 
 

@@ -43,6 +43,12 @@ Route::get('importusercourse', [ExcelUserCourseController::class, 'importForm'])
 
 Route::post('importusercourse', [ExcelUserCourseController::class, 'import'])->name('admin.usercourses.import');
 
+Route::get('analisys', [ExcelUserCourseController::class, 'alls'])->name('admin.usercourses.analisys' );
+
+Route::get('analisyscourses', [ExcelUserCourseController::class, 'courses'])->name('admin.usercourses.analisyscourses' );
+
+Route::get('analisysusers', [ExcelUserCourseController::class, 'users'])->name('admin.usercourses.analisysusers' );
+
 Route::get('users/import', function () {
     return 'Hello World';
 });

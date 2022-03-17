@@ -39,11 +39,11 @@ class UserCourseImport implements ToModel, WithValidation, WithHeadingRow
     public function rules(): array
     {
         return [
-            'codigo'            => 'required',            
-            'materia'            => 'required',
-            'seccion'                   => 'required',
-            'cedula'                    => 'required',
-            'profesor'           => 'required',
+            'codigo'            => 'required',
+            'materia'           => 'required',
+            'seccion'           => 'required',
+            'cedula'            => 'required',
+            'profesor'          => 'required',
             /* 'id_sima_doc'       => 'unique:courses,id_sima_doc',
             'id_continua_doc'   => 'unique:courses,id_continua_doc',
             'id_dpto'           => 'unique:courses,id_dpto',
