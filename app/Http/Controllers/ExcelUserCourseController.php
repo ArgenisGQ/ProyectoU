@@ -10,6 +10,7 @@ use App\Models\Course;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
 use App\Models\User;
+use Illuminate\Support\Str;
 
 class ExcelUserCourseController extends Controller
 {
@@ -200,15 +201,17 @@ class ExcelUserCourseController extends Controller
                 $user = Course::create([
                     'name' => $total_course->course,
                     'code' => $total_course->code,
-                    'section' => $total_course->section,                  
+                    'section' => $total_course->code.' '.$total_course->section,
+                    'turma' => $total_course->section,
+                    'slug' => Str::slug($total_course->code),
 
-                ]); 
+                ]);
 
             }
 
 
 
-            
+
         } catch (\Maatwebsite\Excel\Validators\ValidationException\Exception $e) {
                 $fallas = $e->failures();
 
@@ -253,13 +256,13 @@ class ExcelUserCourseController extends Controller
 
                     'password' => bcrypt('Yacambu')
 
-                ]); 
+                ]);
 
             }
 
 
 
-            
+
         } catch (\Maatwebsite\Excel\Validators\ValidationException\Exception $e) {
                 $fallas = $e->failures();
 

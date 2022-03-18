@@ -29,8 +29,8 @@ class UserFactory extends Factory
 
 
         return [
-            'id_sima' => $this->faker->unique()->numberBetween(10,499),
-            'id_continua' => $this->faker->unique()->numberBetween(10,499),
+            /* 'id_sima' => $this->faker->unique()->numberBetween(10,499), */
+            /* 'id_continua' => $this->faker->unique()->numberBetween(10,499), */
 
             'name' => $this->faker->firstName(),
             'lastName' => $this->faker->lastName(),

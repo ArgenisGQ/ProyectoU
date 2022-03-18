@@ -89,6 +89,20 @@ class ActivityAdminController extends Controller
 
         /* $academic_start = now()->format('d/m/Y'); */
 
+
+
+
+        /* --------------relacion de usuarios con materias---------------- */
+
+        
+
+
+
+
+
+
+
+
         return view('admin.activities.create', compact('faculties', 'courses',
                                                         'activity', 'evaluations',
                                                     'academic_start', 'academic_finish' ));

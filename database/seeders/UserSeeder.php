@@ -16,8 +16,8 @@ class UserSeeder extends Seeder
     {
         //
         User::create([
-            'id_sima' => '1',
-            'id_continua' => '1',
+            /* 'id_sima' => '1',
+            'id_continua' => '1', */
             'name' => 'Control de Calidad',
             'lastName' => 'DEMTec',
             'userName' => 'Calidad',
@@ -27,8 +27,8 @@ class UserSeeder extends Seeder
         ])->assignRole('Admin');
 
         User::create([
-            'id_sima' => '2',
-            'id_continua' => '2',
+            /* 'id_sima' => '2',
+            'id_continua' => '2', */
             'name' => 'Administrador',
             'lastName' => 'DEMTec',
             'userName' => 'Admin',
@@ -38,8 +38,8 @@ class UserSeeder extends Seeder
         ])->assignRole('Admin');
 
         User::create([
-            'id_sima' => '3',
-            'id_continua' => '3',
+            /* 'id_sima' => '3',
+            'id_continua' => '3', */
             'name' => 'Usuario',
             'lastName' => 'DEMTec',
             'userName' => 'usuario',

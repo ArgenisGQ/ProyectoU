@@ -16,8 +16,8 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
 
-            $table->string('id_sima')->nullable();
-            $table->string('id_continua')->nullable();
+            /* $table->string('id_sima')->nullable(); */
+            /* $table->string('id_continua')->nullable(); */
 
             $table->string('name');
             $table->string('lastName');
@@ -31,6 +31,8 @@ class CreateUsersTable extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
+
+            
         });
     }
 

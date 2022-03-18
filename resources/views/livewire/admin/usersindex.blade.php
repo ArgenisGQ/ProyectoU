@@ -12,11 +12,11 @@
                             <th>ID</th>
                             <th>Usuario</th>
                             <th>Nombre</th>
-                            <th>Apellido</th>
+                            {{-- <th>Apellido</th> --}}
                             <th>Documento</th>
                             <th>Email</th>
-                            <th>Id_sima</th>
-                            <th>Id_continua</th>
+                            {{-- <th>Id_sima</th> --}}
+                            {{-- <th>Id_continua</th> --}}
                             <th>Rol</th>
                         </tr>
                     </thead>
@@ -33,11 +33,11 @@
                                     {{$user->userName}}
                                 </a></td>
                                 <td>{{$user->name}}</td>
-                                <td>{{$user->lastName}}</td>
+                                {{-- <td>{{$user->lastName}}</td> --}}
                                 <td>{{$user->ced}}</td>
                                 <td>{{$user->email}}</td>
-                                <td>{{$user->id_sima}}</td>
-                                <td>{{$user->id_continua}}</td>
+                                {{-- <td>{{$user->id_sima}}</td> --}}
+                                {{-- <td>{{$user->id_continua}}</td> --}}
                                 <td>
                                     @if(!empty($user->getRoleNames()))
                                         @foreach ($user->getRoleNames() as $rolName )

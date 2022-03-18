@@ -16,7 +16,7 @@
                                 <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Codigo</th>
-                                <th>Materia</th>                                
+                                <th>Turma</th>
                                 <th>id_dpto</th>
                                 <th>id_facultad</th>
                                 <th colspan="2"></th>
@@ -29,7 +29,8 @@
                                     <td>{{$course->id}}</td>
                                     <td>{{$course->name}}</td>
                                     <td>{{$course->code}}</td>
-                                    <td>{{$course->section}}</td>                                    
+                                    <td>{{$course->section}}</td>
+                                    <td>{{$course->turma}}</td>
                                     <td>{{$course->id_dpto}}</td>
                                     <td>{{$course->id_faculty}}</td>
                                     <td width="10px">
@@ -39,12 +40,12 @@
                                     </td>
                                     <td width="10px">
                                         @can('admin.courses.destroy')
-                                            {{-- <form action="{{route('admin.courses.destroy', $course)}}" method="POST">
+                                            <form action="{{route('admin.courses.destroy', $course)}}" method="POST">
                                                 @csrf
                                                 @method('delete')
 
                                             <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
-                                            </form> --}}
+                                            </form>
                                         @endcan
                                     </td>
                                 </tr>

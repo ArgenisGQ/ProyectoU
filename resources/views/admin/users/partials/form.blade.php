@@ -16,14 +16,14 @@
     @enderror
 </div>
 
-<div class="form-group">
+{{-- <div class="form-group">
     {!! Form::label('lastName', 'Apellido') !!}
     {!! Form::text('lastName', null, ['class'=>'form-control','placeholder'=>'Ingrese el apellido del Usuario']) !!}
 
     @error('lastName')
         <small class="text-danger">{{$message}}</small>
     @enderror
-</div>
+</div> --}}
 
 <div class="form-group">
     {!! Form::label('ced', 'Cedula') !!}
@@ -43,23 +43,6 @@
     @enderror
 </div>
 
-<div class="form-group">
-    {!! Form::label('id_sima', 'Id_sima') !!}
-    {!! Form::text('id_sima', null, ['class'=>'form-control','placeholder'=>'Ingrese el apellido del Usuario']) !!}
-
-    @error('id_sima')
-        <small class="text-danger">{{$message}}</small>
-    @enderror
-</div>
-
-<div class="form-group">
-    {!! Form::label('id_continua', 'Id_continua') !!}
-    {!! Form::text('id_continua', null, ['class'=>'form-control','placeholder'=>'Ingrese el apellido del Usuario']) !!}
-
-    @error('id_continua')
-        <small class="text-danger">{{$message}}</small>
-    @enderror
-</div>
 
 
 <div class="form-group">
