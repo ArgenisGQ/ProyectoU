@@ -25,7 +25,99 @@
     @enderror
 </div>
 
+
+{{-- <div class="form-group">
+    {!! Form::label('faculty_id', 'Materias') !!}
+    {!! Form::select('faculty_id', $coursesForUser->code,null,['class' => 'form-control']) !!}
+
+    @error('faculty_id')
+    <span class="text-danger">{{$message}}</span>
+    @enderror
+</div> --}}
+
+{{-- <div class="form-group">
+    {!! Form::label('faculty_id', 'Materias') !!}
+    {!! Form::select('animal',[
+    'Cats' => ['leopard' => 'Leopard'],
+    'Dogs' => ['spaniel' => 'Spaniel'],
+    ]); !!}
+
+    @error('faculty_id')
+    <span class="text-danger">{{$message}}</span>
+    @enderror
+</div> --}}
+
+
 <div class="form-group">
+    <p class="font-weight-bold">Materias</p>
+
+
+
+    @foreach ( $courses as $curso )
+
+        @php
+            $cursox = App\Models\User_course::where('code',$curso->code)->get();
+        @endphp
+
+        <dt>{{ $curso->code.' '.$curso->course }} </dt>
+
+                @foreach ($cursox as $cursoy )
+                    <dl>
+                        <dd>
+                            <div>
+                                <label>
+                                    {!! Form::checkbox('courses[]', $cursoy->id, null, ['class' => 'mr-1']) !!}
+                                    {{ $cursoy->section }}
+                                </label>
+                            </div>
+                        </dd>
+                    </dl>
+                @endforeach
+
+    @endforeach
+
+
+
+
+    {{-- @foreach ($coursesForUser as $courseForUser) --}}
+
+        {{-- <dl>
+            <dt>{{$courseForUser->course}}</dt>
+            <dt>{{App\Models\User_course::find($courseForUser->code)->name}}</dt>
+            <dd>{!! Form::checkbox('courseForUser[]', $courseForUser->id, null) !!}
+                {{$courseForUser->code.' '.$courseForUser->section}}</dd>
+        </dl> --}}
+
+        {{-- <dl>
+            <dt>{{$courseForUser->course}}</dt>
+            <dd>{!! Form::checkbox('courseForUser[]', $courseForUser->id, null) !!}
+                {{$courseForUser->code.' '.$courseForUser->section.' '.$courseForUser->course}}</dd>
+        </dl> --}}
+
+        {{-- <label class="mr-2">
+            {!! Form::checkbox('courseForUser[]', $courseForUser->id, null) !!}
+            {{$courseForUser->code.' '.$courseForUser->section.' '.$courseForUser->course}}
+        </label> --}}
+
+    {{-- @endforeach --}}
+
+    {{-- @php
+        $courses = $cursos;
+    @endphp --}}
+
+
+    {{-- @error('courses')
+        <br>
+        <span class="text-danger">{{$message}}</span>
+    @enderror --}}
+
+    @error('couses')
+        <br>
+        <span class="text-danger">{{$message}}</span>
+    @enderror
+</div>
+
+{{-- <div class="form-group">
     <p class="font-weight-bold">Materias</p>
 
     @foreach ($courses as $course)
@@ -44,7 +136,7 @@
         <span class="text-danger">{{$message}}</span>
     @enderror
 </div>
-
+ --}}
 <div class="form-group">
     <p class="font-weight-bold">Estado</p>
 
@@ -67,7 +159,7 @@
 </div>
 
 {{-- IMAGEN A SUBIR EL POST --}}
-<div class="mb-3 row">
+{{-- <div class="mb-3 row">
     <div class="col">
         <div class="image-wrapper">
             @isset($activity->image)
@@ -90,7 +182,8 @@
 
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus enim qui veniam nostrum fugit animi, odit aut numquam alias eaque adipisci, non necessitatibus optio esse obcaecati et iusto tempore tenetur.</p>
     </div>
-</div>
+</div> --}}
+{{-- -------------------------------------------- --}}
 
 <div class="form-group">
     {!! Form::label('activity_type', 'Tipo de Actividad:') !!}
