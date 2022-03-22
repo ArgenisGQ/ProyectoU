@@ -49,6 +49,8 @@ Route::get('analisyscourses', [ExcelUserCourseController::class, 'courses'])->na
 
 Route::get('analisysusers', [ExcelUserCourseController::class, 'users'])->name('admin.usercourses.analisysusers' );
 
+Route::get('activities/selectcourse', [ActivityAdminController::class, 'selectCourse'])->name('admin.activities.selectcourse' );
+
 Route::get('users/import', function () {
     return 'Hello World';
 });

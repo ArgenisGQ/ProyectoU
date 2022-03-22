@@ -3,7 +3,7 @@
 @section('title', 'Proyecto U')
 
 @section('content_header')
-    <h1>Crear nueva Actividad</h1>
+    <h1>Seleccionar Materia</h1>
 @stop
 
 @section('content')
@@ -16,16 +16,84 @@
 
     <div class="card">
         <div class="card-body">
-        {!! Form::open(['route' => 'admin.activities.store', 'autocomplete' => 'off', 'files' => 'true' ]) !!}
+        {!! Form::open(['route' => 'admin.activities.create', 'method' => 'PUT', 'autocomplete' => 'off', 'files' => 'true' ]) !!}
 
             {!! Form::hidden('user_id', auth()->user()->id) !!}
 
             {{-- @include('admin.activities.partials.form') --}}
 
-            @livewire('admin.activities-create')
+            <div class="form-group">
+                <p class="font-weight-bold">Materias</p>
 
 
-            {!! Form::submit('Crear Actividad', ['class' => 'btn btn-primary']) !!}
+
+                @foreach ( $courses as $curso )
+
+                    @php
+                        $cursox = App\Models\User_course::where('code',$curso->code)->get();
+                    @endphp
+
+                    <dt>{{ $curso->code.' '.$curso->course }} </dt>
+
+                            @foreach ($cursox as $cursoy )
+                                <dl>
+                                    <dd>
+                                        <div>
+                                            <label>
+                                                {!! Form::checkbox('courses[]', $cursoy->id, null, ['class' => 'mr-1']) !!}
+                                                {{ $cursoy->section }}
+                                            </label>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            @endforeach
+
+                @endforeach
+
+
+
+
+                {{-- @foreach ($coursesForUser as $courseForUser) --}}
+
+                    {{-- <dl>
+                        <dt>{{$courseForUser->course}}</dt>
+                        <dt>{{App\Models\User_course::find($courseForUser->code)->name}}</dt>
+                        <dd>{!! Form::checkbox('courseForUser[]', $courseForUser->id, null) !!}
+                            {{$courseForUser->code.' '.$courseForUser->section}}</dd>
+                    </dl> --}}
+
+                    {{-- <dl>
+                        <dt>{{$courseForUser->course}}</dt>
+                        <dd>{!! Form::checkbox('courseForUser[]', $courseForUser->id, null) !!}
+                            {{$courseForUser->code.' '.$courseForUser->section.' '.$courseForUser->course}}</dd>
+                    </dl> --}}
+
+                    {{-- <label class="mr-2">
+                        {!! Form::checkbox('courseForUser[]', $courseForUser->id, null) !!}
+                        {{$courseForUser->code.' '.$courseForUser->section.' '.$courseForUser->course}}
+                    </label> --}}
+
+                {{-- @endforeach --}}
+
+                {{-- @php
+                    $courses = $cursos;
+                @endphp --}}
+
+
+                {{-- @error('courses')
+                    <br>
+                    <span class="text-danger">{{$message}}</span>
+                @enderror --}}
+
+
+                @error('courses')
+                    <br>
+                    <span class="text-danger">{{$message}}</span>
+                @enderror
+            </div>
+
+
+            {!! Form::submit('Seleccionar materia', ['class' => 'btn btn-primary']) !!}
         {!! Form::close() !!}
         </div>
 

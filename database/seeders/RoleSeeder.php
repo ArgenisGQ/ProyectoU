@@ -112,6 +112,9 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'activities.destroy',
                             'group_id' => 6,
                             'description' => 'Eliminar actividad'])->syncRoles($role1, $role2);
+        Permission::create(['name' => 'activities.selectcourse',
+                            'group_id' => 6,
+                            'description' => 'Seleccionar curso'])->syncRoles($role1, $role2);
 
         /* ACTIVIDADES ADMIN*/
         Permission::create(['name' => 'admin.activities.index',

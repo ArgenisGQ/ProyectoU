@@ -10,6 +10,7 @@ use App\Models\Course;
 use App\Models\Evaluation;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ActivityRequest;
+use App\Http\Requests\SelectCreateRequest;
 use Carbon\Carbon;
 use App\Models\Period;
 use App\Models\User_course;
@@ -25,6 +26,7 @@ class ActivityAdminController extends Controller
         $this->middleware('can:admin.activities.edit')->only('edit', 'update');
         $this->middleware('can:admin.activities.destroy')->only('destroy');
         $this->middleware('can:admin.activities.show')->only('show');
+        $this->middleware('can:admin.activities.selectcourse')->only('selectcourse');
     }
 
     /**
@@ -38,11 +40,43 @@ class ActivityAdminController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function selectCourse()
+    {
+         /* --------------relacion de usuarios con materias---------------- */
+        /* $user_courses = User_course::all(); */
+        $userActive = auth()->user()->ced;
+        $coursesForUser =  User_course::where('ced', $userActive)
+                        /* ->where('academic_finish', '<', $today) */
+                        /* ->latest() */
+                        ->get();
+        $courses = $coursesForUser->unique('code');
+
+
+        /* $sectionForCourseX =  User_course::where('ced', $userActive)
+                        ->where('code', $cursos)
+
+                        ->get(); */
+
+        /* return $courses; */
+        /* return $sectionForCourseX; */
+        /* return $userActive; */
+        /* return $coursesForUser; */
+        /* --------------------------------------------------------------- */
+
+
+        return view('admin.activities.selectcourse', compact('courses'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $faculties = Faculty::pluck('name', 'id');
 
@@ -96,12 +130,14 @@ class ActivityAdminController extends Controller
 
         /* --------------relacion de usuarios con materias---------------- */
         /* $user_courses = User_course::all(); */
+
+
+
         $userActive = auth()->user()->ced;
         $coursesForUser =  User_course::where('ced', $userActive)
-                        /* ->where('academic_finish', '<', $today) */
-                        /* ->latest() */
-                        ->get();
+                            ->get();
         $courses = $coursesForUser->unique('code');
+
 
 
         /* $sectionForCourseX =  User_course::where('ced', $userActive)
@@ -109,14 +145,14 @@ class ActivityAdminController extends Controller
 
                         ->get(); */
 
-        /* return $cursos; */
+        /* return $request; */
         /* return $sectionForCourseX; */
         /* return $userActive; */
         /* return $coursesForUser; */
         /* --------------------------------------------------------------- */
 
 
-        return view('admin.activities.create', compact('faculties', 'courses',
+        return view('admin.activities.create', compact('faculties', 'courses', 
                                                         'activity', 'evaluations',
                                                     'academic_start', 'academic_finish',
                                                     'coursesForUser'));
@@ -219,7 +255,7 @@ class ActivityAdminController extends Controller
 
         /* return $activity->lapse_in; */
 
-        return view('admin.activities.edit', compact('activity', 'faculties', 'courses',
+        return view('admin.activities.edit', compact('activity', 'faculties', /* 'courses', */
                                             'evaluations',
                                             'academic_start', 'academic_finish'));
     }
