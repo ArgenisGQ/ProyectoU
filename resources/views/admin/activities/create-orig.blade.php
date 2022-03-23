@@ -14,26 +14,21 @@
     </div>
     @endif
 
-    {{-- <div class="card">
+    <div class="card">
         <div class="card-body">
+        {!! Form::open(['route' => 'admin.activities.store', 'autocomplete' => 'off', 'files' => 'true' ]) !!}
 
+            {!! Form::hidden('user_id', auth()->user()->id) !!}
+
+            {{-- @include('admin.activities.partials.form') --}}
 
             @livewire('admin.activities-create')
 
 
-
+            {!! Form::submit('Crear Actividad', ['class' => 'btn btn-primary']) !!}
+        {!! Form::close() !!}
         </div>
 
-    </div> --}}
-
-
-    <div class="container">
-        <div class="row" style="margin-top:50px">
-              <div class="col-md-6 offset-md-3">
-                  {{-- <h1>Creacion de Actividades</h1><hr> --}}
-                  @livewire('admin.activities-create', compact('courses'))
-              </div>
-        </div>
     </div>
 @stop
 
@@ -41,7 +36,6 @@
     {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
     <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-    @livewireStyles
 
     <style>
         .image-wrapper{
@@ -97,7 +91,6 @@
 @stop
 
 @section('js')
-    @livewireScripts
     <script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}"></script>
     {{-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script> --}}
     {{-- <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script> --}}

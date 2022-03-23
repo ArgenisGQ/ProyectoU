@@ -111,7 +111,7 @@
         <span class="text-danger">{{$message}}</span>
     @enderror --}}
 
-    @error('couses')
+    @error('courses')
         <br>
         <span class="text-danger">{{$message}}</span>
     @enderror

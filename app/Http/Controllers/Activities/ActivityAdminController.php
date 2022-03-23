@@ -136,7 +136,7 @@ class ActivityAdminController extends Controller
         $userActive = auth()->user()->ced;
         $coursesForUser =  User_course::where('ced', $userActive)
                             ->get();
-        $courses = $coursesForUser->unique('code');
+        $courses = $coursesForUser->unique('code')->toArray();
 
 
 
@@ -152,7 +152,7 @@ class ActivityAdminController extends Controller
         /* --------------------------------------------------------------- */
 
 
-        return view('admin.activities.create', compact('faculties', 'courses', 
+        return view('admin.activities.create', compact('faculties', 'courses',
                                                         'activity', 'evaluations',
                                                     'academic_start', 'academic_finish',
                                                     'coursesForUser'));
