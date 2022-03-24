@@ -84,7 +84,10 @@ class ActivityAdminController extends Controller
 
         $activity = Activity::all();
 
-        $evaluations = Evaluation::pluck('name', 'id');
+        /* $evaluations = Evaluation::pluck('name', 'id'); */ //para uso de plantilla de forms de laravel colletions
+        $evaluations = Evaluation::all();
+
+        /* return $evaluations; */
 
        /*  $activity->academic_start= Carbon::parse('2022-06-02');
         $activity->academic_finish = Carbon::parse('2022-09-27'); */
@@ -125,8 +128,7 @@ class ActivityAdminController extends Controller
 
         /* $academic_start = now()->format('d/m/Y'); */
 
-
-
+        $userActiveName = auth()->user()->name;
 
         /* --------------relacion de usuarios con materias---------------- */
         /* $user_courses = User_course::all(); */
@@ -155,7 +157,7 @@ class ActivityAdminController extends Controller
         return view('admin.activities.create', compact('faculties', 'courses',
                                                         'activity', 'evaluations',
                                                     'academic_start', 'academic_finish',
-                                                    'coursesForUser'));
+                                                    'coursesForUser','userActiveName'));
     }
 
     /**

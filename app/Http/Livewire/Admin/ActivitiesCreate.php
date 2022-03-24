@@ -26,14 +26,19 @@ class ActivitiesCreate extends Component
     public $terms;
 
     public $courses = [];
+    public $faculties = [];
+    public $evaluations = [];
+    public $academic_start, $academic_finish;
+    public $userActiveName;
+    public $name;
 
-    public $totalSteps = 4;
+    public $totalSteps = 6;
     public $currentStep = 1;
 
 
-    public function mount($courses){
+    public function mount(){
         $this->currentStep = 1;
-        $this->courses = $courses;
+        /* $this->courses = $courses; */
 
     }
 

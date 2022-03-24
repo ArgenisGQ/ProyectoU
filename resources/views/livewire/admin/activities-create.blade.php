@@ -61,51 +61,25 @@
 
         <div class="step-one">
             <div class="card">
-                <div class="card-header bg-secondary text-white">Paso 1/4 - Seleccionar Materias</div>
+                <div class="card-header bg-secondary text-white">Paso 1/6 - Seleccionar Materias</div>
                 <div class="card-body">
 
                     <div class="frameworks d-flex flex-column align-items-left mt-2">
 
                         @foreach ( $courses as $curso )
-
-                            {{-- <p>{{ $curso['course'] }}</p> --}}
-
                             @php
                                 $cursox = App\Models\User_course::where('code',$curso['code'])->get();
                             @endphp
-
-                            {{-- <dt>{{ $curso['code'].' '.$curso['course'] }} </dt>
-
-                                @foreach ($cursox as $cursoy )
-                                    <dl>
-                                        <dd>
-                                            <div>
-                                                <label>
-
-                                                    {{ $cursoy['section'] }}
-
-                                                    <label for="{{ $cursoy->id }}">
-                                                        <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}" wire:model="courses">
-                                                    </label>
-                                                </label>
-                                            </div>
-                                        </dd>
-                                    </dl>
-                                @endforeach --}}
-
                             <h4> {{ $curso['code'].' '.$curso['course'] }} </h4>
-                            @foreach ($cursox as $cursoy )
-
-                                <label for="{{ $cursoy->id }}">
-                                    {{ $cursoy['section'] }}
-                                    {{-- <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}" wire:click="<button wire:click="$emitUp('courses')"> --}}
-                                    <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:click="$emitUp('courses')"> {{-- revisar --}}
-                                </label>
-                            @endforeach
-
-
-
-
+                            <div class="content-start">
+                                @foreach ($cursox as $cursoy )
+                                        <label for="{{ $cursoy['id'] }}">
+                                        {{ $cursoy['section'] }}
+                                        {{-- <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}" wire:click="<button wire:click="$emitUp('courses')"> --}}
+                                        <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:click="$emitUp('courses')"> {{-- revisar --}}
+                                    </label>
+                                @endforeach
+                            </div>
                         @endforeach
 
 
@@ -184,16 +158,17 @@
             </div> --}}
 
             <div class="card">
-                <div class="card-header bg-secondary text-white">Paso 2/4 - Datos</div>
+                <div class="card-header bg-secondary text-white">Paso 2/6 - Datos</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Nombre de Actividad</label>
-                                <input type="text" class="form-control" placeholder="Ingrese el nombre de la actividad" wire:model="email">
-                                <span class="text-danger">@error('email'){{ $message }}@enderror</span>
+                                <input type="text" class="form-control" placeholder="Ingrese el nombre de la actividad" wire:model.defer="name">
+                                <span class="text-danger">@error('name'){{ $message }}@enderror</span>
                             </div>
                         </div>
+
                         {{-- <div class="col-md-6">
                            <div class="form-group">
                                <label for="">Facultad</label>
@@ -201,6 +176,18 @@
                                <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
                            </div>
                        </div> --}}
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="">Factultad de la materia:</label>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group w-full">
+                            <label for="">Nombre del Profesor: {{ $userActiveName }}</label>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -210,7 +197,7 @@
         @endif
         {{-- STEP 3 --}}
 
-        @if ($currentStep == 3)
+        {{-- @if ($currentStep == 3)
 
 
         <div class="step-three">
@@ -236,10 +223,112 @@
                 </div>
             </div>
         </div>
+        @endif --}}
+
+        {{-- STEP 3 --}}
+
+        @if ($currentStep == 3)
+
+
+        <div class="step-three">
+            <div class="card">
+                <div class="card-header bg-secondary text-white">Paso 3/6 - Descripcion de Actividad</div>
+                <div class="card-body">
+                    <div class = "form-group my-4">
+                        <label for="comment" class="p-r-mute">   </label>
+                        <textarea id="comment" wire:model="input" class="form-control w-full" placeholder="Indique de manera especifica como realizar la actividad" rows="6" required></textarea>
+                    </div>
+                    {{-- <div class="frameworks d-flex flex-column align-items-left mt-2">
+                        <label for="laravel">
+                            <input type="checkbox" id="laravel" value="laravel" wire:model="frameworks"> Laravel
+                        </label>
+                        <label for="codeigniter">
+                           <input type="checkbox" id="codeigniter" value="codeigniter" wire:model="frameworks"> Codeigniter
+                       </label>
+                       <label for="vuejs">
+                           <input type="checkbox" id="vuejs" value="vuejs" wire:model="frameworks"> Vue Js
+                       </label>
+                       <label for="cakePHP">
+                           <input type="checkbox" id="cakePHP" value="cakePHP" wire:model="frameworks"> CakePHP
+                       </label>
+                    </div> --}}
+                    <span class="text-danger">@error('frameworks'){{ $message }}@enderror</span>
+                </div>
+            </div>
+        </div>
         @endif
 
+
         {{-- STEP 4 --}}
+
         @if ($currentStep == 4)
+
+        <div class="step-four">
+            <div class="card">
+                <div class="card-header bg-secondary text-white">Paso 4/6 - Proposito de la Actividad</div>
+                <div class="card-body">
+                    <div class = "form-group my-4">
+                        <label for="comment" class="p-r-mute">   </label>
+                        <textarea id="comment" wire:model="input" class="form-control" placeholder="Indique de manera especifica el proposito de la actividad" rows="6" required></textarea>
+                    </div>
+
+                    {{-- <div class="frameworks d-flex flex-column align-items-left mt-2">
+                        <label for="laravel">
+                            <input type="checkbox" id="laravel" value="laravel" wire:model="frameworks"> Laravel
+                        </label>
+                        <label for="codeigniter">
+                           <input type="checkbox" id="codeigniter" value="codeigniter" wire:model="frameworks"> Codeigniter
+                       </label>
+                       <label for="vuejs">
+                           <input type="checkbox" id="vuejs" value="vuejs" wire:model="frameworks"> Vue Js
+                       </label>
+                       <label for="cakePHP">
+                           <input type="checkbox" id="cakePHP" value="cakePHP" wire:model="frameworks"> CakePHP
+                       </label>
+                    </div> --}}
+                    <span class="text-danger">@error('frameworks'){{ $message }}@enderror</span>
+                </div>
+            </div>
+        </div>
+        @endif
+
+
+        {{-- STEP 5 --}}
+
+        @if ($currentStep == 5)
+
+        <div class="step-five">
+            <div class="card">
+                <div class="card-header bg-secondary text-white">Paso 5/6 - Criterios de la Evaluacion</div>
+                <div class="card-body">
+                    <div class = "form-group my-4">
+                        <label for="comment" class="p-r-mute">   </label>
+                        <textarea id="comment" wire:model="input" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
+                    </div>
+                    {{-- <div class="frameworks d-flex flex-column align-items-left mt-2">
+                        <label for="laravel">
+                            <input type="checkbox" id="laravel" value="laravel" wire:model="frameworks"> Laravel
+                        </label>
+                        <label for="codeigniter">
+                           <input type="checkbox" id="codeigniter" value="codeigniter" wire:model="frameworks"> Codeigniter
+                       </label>
+                       <label for="vuejs">
+                           <input type="checkbox" id="vuejs" value="vuejs" wire:model="frameworks"> Vue Js
+                       </label>
+                       <label for="cakePHP">
+                           <input type="checkbox" id="cakePHP" value="cakePHP" wire:model="frameworks"> CakePHP
+                       </label>
+                    </div> --}}
+                    <span class="text-danger">@error('frameworks'){{ $message }}@enderror</span>
+                </div>
+            </div>
+        </div>
+        @endif
+
+
+
+        {{-- STEP 4 --}}
+      {{--  @if ($currentStep == 4)
 
 
         <div class="step-four">
@@ -262,6 +351,54 @@
             </div>
         </div>
 
+        @endif --}}
+
+        @if ($currentStep == 6)
+
+
+        <div class="step-six">
+            <div class="card">
+                <div class="card-header bg-secondary text-white">Paso 6/6 - Asignaciones Finales</div>
+                <div class="card-body">
+                    {{-- Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque delectus officia inventore id facere at aspernatur ad corrupti asperiores placeat, fugiat tempora soluta optio recusandae eligendi impedit ipsam ullam amet! --}}
+                    {{-- <div class="form-group">
+                        <label for="cv">CV</label>
+                        <input type="file" class="form-control" wire:model="cv">
+                        <span class="text-danger">@error('cv'){{ $message }}@enderror</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="terms" class="d-block">
+                            <input type="checkbox"  id="terms" wire:model="terms"> You must agree with our <a href="#">Terms and Conditions</a>
+                        </label>
+                        <span class="text-danger">@error('terms'){{ $message }}@enderror</span>
+                    </div> --}}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                               @if(count($evaluations) > 0)
+                                <label for="evaluation"></label>
+                                    <select names="evaluation" wire:model="evaluation"
+                                    class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
+                                        <option value="" selected>Seleccione tipo de Evaluacion</option>
+                                        @foreach ($evaluations as $evaluation)
+                                            <option value="{{ $evaluation['id'] }}">{{ $evaluation['name'] }}</option>
+                                            {{-- <option value="{{ $evaluation->id }}">{{ $evaluation->name }}</option> --}}
+                                            {{-- <option value="Bangladesh">Bangladesh</option> --}}
+                                        @endforeach
+                                    </select>
+                                @endif
+                                {{-- <span class="text-danger">@error('country'){{ $message }}@enderror</span> --}}
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+
+                </div>
+            </div>
+        </div>
+
         @endif
 
         <div class="action-buttons d-flex justify-content-between bg-white pt-2 pb-2">
@@ -270,15 +407,15 @@
                <div></div>
            @endif
 
-           @if ($currentStep == 2 || $currentStep == 3 || $currentStep == 4)
+           @if ($currentStep == 2 || $currentStep == 3 || $currentStep == 4 || $currentStep == 5 || $currentStep == 6)
                <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseStep()">Back</button>
            @endif
 
-           @if ($currentStep == 1 || $currentStep == 2 || $currentStep == 3)
+           @if ($currentStep == 1 || $currentStep == 2 || $currentStep == 3 || $currentStep == 4 || $currentStep == 5)
                <button type="button" class="btn btn-md btn-success" wire:click="increaseStep()">Next</button>
            @endif
 
-           @if ($currentStep == 4)
+           @if ($currentStep == 6)
                 <button type="submit" class="btn btn-md btn-primary">Submit</button>
            @endif
 

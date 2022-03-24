@@ -25,29 +25,6 @@
     @enderror
 </div>
 
-
-{{-- <div class="form-group">
-    {!! Form::label('faculty_id', 'Materias') !!}
-    {!! Form::select('faculty_id', $coursesForUser->code,null,['class' => 'form-control']) !!}
-
-    @error('faculty_id')
-    <span class="text-danger">{{$message}}</span>
-    @enderror
-</div> --}}
-
-{{-- <div class="form-group">
-    {!! Form::label('faculty_id', 'Materias') !!}
-    {!! Form::select('animal',[
-    'Cats' => ['leopard' => 'Leopard'],
-    'Dogs' => ['spaniel' => 'Spaniel'],
-    ]); !!}
-
-    @error('faculty_id')
-    <span class="text-danger">{{$message}}</span>
-    @enderror
-</div> --}}
-
-
 <div class="form-group">
     <p class="font-weight-bold">Materias</p>
 
@@ -316,7 +293,7 @@
 </div> --}}
 
 <div class="form-group">
-    {!! Form::label('tupe', 'Tipo de evaluacion') !!}
+    {!! Form::label('type', 'Tipo de evaluacion') !!}
     {!! Form::select('type', $evaluations,null,['class' => 'form-control']) !!}
 
     @error('type')
