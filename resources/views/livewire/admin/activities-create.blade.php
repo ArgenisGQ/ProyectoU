@@ -392,7 +392,9 @@
                         </div>
                     </div>
 
-                    
+                    <div>
+                        <input type="text" id="datepicker">
+                    </div>
 
 
                 </div>
