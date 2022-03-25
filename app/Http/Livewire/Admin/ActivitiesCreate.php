@@ -27,6 +27,7 @@ class ActivitiesCreate extends Component
     public $terms; */
 
     public $courses = [];
+    public $coursess = [];
     public $faculties = [];
     public $evaluations = [];
     public $activity = [];
@@ -51,10 +52,6 @@ class ActivitiesCreate extends Component
     }
 
 
-    /* public function render()
-    {
-        return view('livewire.multi-step-form');
-    } */
 
     public function render()
     {
@@ -71,11 +68,11 @@ class ActivitiesCreate extends Component
     public function increaseStep(){
         $this->resetErrorBag();
 
-        /* $this->validateData(); */
-         $this->currentStep++;
-         if($this->currentStep > $this->totalSteps){
+        $this->validateData();
+        $this->currentStep++;
+        if($this->currentStep > $this->totalSteps){
              $this->currentStep = $this->totalSteps;
-         }
+        }
     }
 
     public function decreaseStep(){
@@ -86,9 +83,9 @@ class ActivitiesCreate extends Component
         }
     }
 
-    public function courses()
+    public function coursesss()
     {
-        $this->emitUp('courses');//nose
+        /* $this->emitUp('courses'); *///nose
     }
 
     public function validateData(){
@@ -125,8 +122,8 @@ class ActivitiesCreate extends Component
 
         if($this->currentStep == 1){
             $this->validate([
-                
-                'courses' => 'required',
+
+                'coursess' => 'required',
             ]);
         }
         elseif($this->currentStep == 2){
@@ -145,6 +142,37 @@ class ActivitiesCreate extends Component
                 'lapse_out' => 'date|before_or_equal:academic_finish'
               ]);
         }
+    }
+
+    public function saving(){
+          $this->resetErrorBag();
+
+
+          /* $cv_name = 'CV_'.time().$this->cv->getClientOriginalName();
+          $upload_cv = $this->cv->storeAs('students_cvs', $cv_name); */
+
+         /*  if($upload_cv){
+              $values = array(
+                  "first_name"=>$this->first_name,
+                  "last_name"=>$this->last_name,
+                  "gender"=>$this->gender,
+                  "email"=>$this->email,
+                  "phone"=>$this->phone,
+                  "country"=>$this->country,
+                  "city"=>$this->city,
+                  "frameworks"=>json_encode($this->frameworks),
+                  "description"=>$this->description,
+                  "cv"=>$cv_name,
+              );
+
+              Student::insert($values);
+
+            $data = ['name'=>$this->first_name.' '.$this->last_name,'email'=>$this->email];
+            return redirect()->route('registration.success', $data);
+          } */
+          return redirect()->route('admin.activities.index');
+
+
     }
 
     /* public function validateData(){

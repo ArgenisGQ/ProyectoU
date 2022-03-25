@@ -2,7 +2,7 @@
 
 <div>
 
-    <form wire:submit.prevent="register">
+    <form wire:submit.prevent="saving">
 
         {{-- STEP 1 --}}
 
@@ -76,7 +76,8 @@
                                         <label for="{{ $cursoy['id'] }}">
                                         {{ $cursoy['section'] }}
                                         {{-- <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}" wire:click="<button wire:click="$emitUp('courses')"> --}}
-                                        <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:click="$emitUp('courses')"> {{-- revisar --}}
+                                        {{-- <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:click="$emitUp('courses')"> --}} {{-- revisar --}}
+                                        <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="coursess">
                                     </label>
                                 @endforeach
                             </div>
@@ -97,7 +98,7 @@
                        </label> --}}
                     </div>
 
-                    <span class="text-danger">@error('courses'){{ $message }}@enderror</span>
+                    <span class="text-danger">@error('coursess'){{ $message }}@enderror</span>
                 </div>
             </div>
         </div>
@@ -200,7 +201,8 @@
                         <label for="body" class="p-r-mute">   </label>
                         <textarea id="body" wire:model="body" class="form-control w-full" placeholder="Indique de manera especifica como realizar la actividad" rows="6" required></textarea>
                     </div>
-                    {{-- <div class="frameworks d-flex flex-column align-items-left mt-2">
+                    {{--
+                    <div class="frameworks d-flex flex-column align-items-left mt-2">
                         <label for="laravel">
                             <input type="checkbox" id="laravel" value="laravel" wire:model="frameworks"> Laravel
                         </label>
@@ -213,7 +215,8 @@
                        <label for="cakePHP">
                            <input type="checkbox" id="cakePHP" value="cakePHP" wire:model="frameworks"> CakePHP
                        </label>
-                    </div> --}}
+                    </div>
+                    --}}
                     <span class="text-danger">@error('body'){{ $message }}@enderror</span>
                 </div>
             </div>
@@ -226,7 +229,8 @@
                         <textarea id="extract" wire:model="extract" class="form-control" placeholder="Indique de manera especifica el proposito de la actividad" rows="6" required></textarea>
                     </div>
 
-                    {{-- <div class="frameworks d-flex flex-column align-items-left mt-2">
+                    {{--
+                    <div class="frameworks d-flex flex-column align-items-left mt-2">
                         <label for="laravel">
                             <input type="checkbox" id="laravel" value="laravel" wire:model="frameworks"> Laravel
                         </label>
@@ -239,7 +243,8 @@
                        <label for="cakePHP">
                            <input type="checkbox" id="cakePHP" value="cakePHP" wire:model="frameworks"> CakePHP
                        </label>
-                    </div> --}}
+                    </div>
+                    --}}
                     <span class="text-danger">@error('extract'){{ $message }}@enderror</span>
                 </div>
             </div>
@@ -251,7 +256,8 @@
                         <label for="extract01" class="p-r-mute">   </label>
                         <textarea id="extract01" wire:model="extract01" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
                     </div>
-                    {{-- <div class="frameworks d-flex flex-column align-items-left mt-2">
+                    {{--
+                    <div class="frameworks d-flex flex-column align-items-left mt-2">
                         <label for="laravel">
                             <input type="checkbox" id="laravel" value="laravel" wire:model="frameworks"> Laravel
                         </label>
@@ -264,7 +270,8 @@
                        <label for="cakePHP">
                            <input type="checkbox" id="cakePHP" value="cakePHP" wire:model="frameworks"> CakePHP
                        </label>
-                    </div> --}}
+                    </div>
+                    --}}
                     <span class="text-danger">@error('extract01'){{ $message }}@enderror</span>
                 </div>
             </div>
@@ -382,8 +389,6 @@
                         <input wire:model="status" name="status" type="radio" value="3" /> Publicado
                     </div>
 
-
-
                 </div>
             </div>
         </div>
@@ -461,7 +466,7 @@
            @endif --}}
 
            @if ($currentStep == 2 || $currentStep == 3 )
-               <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseStep()">Back</button>
+               <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseStep()">Anterior</button>
            @endif
 
           {{--  @if ($currentStep == 1 || $currentStep == 2 || $currentStep == 3 || $currentStep == 4 || $currentStep == 5)
@@ -469,11 +474,11 @@
            @endif --}}
 
            @if ($currentStep == 1 || $currentStep == 2)
-               <button type="button" class="btn btn-md btn-success" wire:click="increaseStep()">Next</button>
+               <button type="button" class="btn btn-md btn-success" wire:click="increaseStep()">Siguiente</button>
            @endif
 
            @if ($currentStep == 3)
-                <button type="submit" class="btn btn-md btn-primary">Submit</button>
+                <button type="submit" class="btn btn-md btn-primary">Guardar</button>
            @endif
 
 
