@@ -96,6 +96,7 @@
                            <input type="checkbox" id="cakePHP" value="cakePHP" wire:model="frameworks"> CakePHP
                        </label> --}}
                     </div>
+
                     <span class="text-danger">@error('courses'){{ $message }}@enderror</span>
                 </div>
             </div>
@@ -180,14 +181,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="">Factultad de la materia:</label>
-
                         </div>
+                        {{-- <span class="text-danger">@error('body'){{ $message }}@enderror</span> --}}
                     </div>
                     <div class="col-md-6">
                         <div class="form-group w-full">
                             <label for="">Nombre del Profesor: {{ $userActiveName }}</label>
-
                         </div>
+                        {{-- <span class="text-danger">@error('body'){{ $message }}@enderror</span> --}}
                     </div>
                 </div>
             </div>
@@ -196,8 +197,8 @@
                 <div class="card-header bg-secondary text-white">Descripcion de Actividad</div>
                 <div class="card-body">
                     <div class = "form-group my-4">
-                        <label for="comment" class="p-r-mute">   </label>
-                        <textarea id="comment" wire:model="input" class="form-control w-full" placeholder="Indique de manera especifica como realizar la actividad" rows="6" required></textarea>
+                        <label for="body" class="p-r-mute">   </label>
+                        <textarea id="body" wire:model="body" class="form-control w-full" placeholder="Indique de manera especifica como realizar la actividad" rows="6" required></textarea>
                     </div>
                     {{-- <div class="frameworks d-flex flex-column align-items-left mt-2">
                         <label for="laravel">
@@ -213,7 +214,7 @@
                            <input type="checkbox" id="cakePHP" value="cakePHP" wire:model="frameworks"> CakePHP
                        </label>
                     </div> --}}
-                    <span class="text-danger">@error('frameworks'){{ $message }}@enderror</span>
+                    <span class="text-danger">@error('body'){{ $message }}@enderror</span>
                 </div>
             </div>
 
@@ -221,8 +222,8 @@
                 <div class="card-header bg-secondary text-white">Proposito de la Actividad</div>
                 <div class="card-body">
                     <div class = "form-group my-4">
-                        <label for="comment" class="p-r-mute">   </label>
-                        <textarea id="comment" wire:model="input" class="form-control" placeholder="Indique de manera especifica el proposito de la actividad" rows="6" required></textarea>
+                        <label for="extract" class="p-r-mute">   </label>
+                        <textarea id="extract" wire:model="extract" class="form-control" placeholder="Indique de manera especifica el proposito de la actividad" rows="6" required></textarea>
                     </div>
 
                     {{-- <div class="frameworks d-flex flex-column align-items-left mt-2">
@@ -239,7 +240,7 @@
                            <input type="checkbox" id="cakePHP" value="cakePHP" wire:model="frameworks"> CakePHP
                        </label>
                     </div> --}}
-                    <span class="text-danger">@error('frameworks'){{ $message }}@enderror</span>
+                    <span class="text-danger">@error('extract'){{ $message }}@enderror</span>
                 </div>
             </div>
 
@@ -247,8 +248,8 @@
                 <div class="card-header bg-secondary text-white">Criterios de la Evaluacion</div>
                 <div class="card-body">
                     <div class = "form-group my-4">
-                        <label for="comment" class="p-r-mute">   </label>
-                        <textarea id="comment" wire:model="input" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
+                        <label for="extract01" class="p-r-mute">   </label>
+                        <textarea id="extract01" wire:model="extract01" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
                     </div>
                     {{-- <div class="frameworks d-flex flex-column align-items-left mt-2">
                         <label for="laravel">
@@ -264,7 +265,7 @@
                            <input type="checkbox" id="cakePHP" value="cakePHP" wire:model="frameworks"> CakePHP
                        </label>
                     </div> --}}
-                    <span class="text-danger">@error('frameworks'){{ $message }}@enderror</span>
+                    <span class="text-danger">@error('extract01'){{ $message }}@enderror</span>
                 </div>
             </div>
 
@@ -357,6 +358,7 @@
                                     <input type="date" name="experience-start" id="datepicker-start" class="input-text" placeholder="dd/mm/yyyy">
                                 </div>
                                 {{-- <a href="#" class="calendar-btn calendar-start hide-text">View calendar</a>--}}
+                                <p>{{date('d-m-Y', strtotime($academic_start))}}</p>
                             </div>
 
                             <div class="field clearfix date-range-start date-wrapper">
@@ -367,6 +369,8 @@
                                 <input type="date" name="experience-end" id="datepicker-end" class="input-text" placeholder="dd/mm/yyyy">
                                 </div>
                                 {{-- <a href="#" class="calendar-btn hide-text">View calendar</a> --}}
+                                <p>{{date('d-m-Y', strtotime($academic_finish))}}</p>
+
                             </div>
 
                         </div>

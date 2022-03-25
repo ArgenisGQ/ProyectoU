@@ -126,6 +126,8 @@ class ActivityAdminController extends Controller
 
         /* return $activity->academic_finish; */
 
+        /* return $academic_finish; */
+
         /* $academic_start = now()->format('d/m/Y'); */
 
         $userActiveName = auth()->user()->name;
@@ -140,7 +142,7 @@ class ActivityAdminController extends Controller
                             ->get();
         $courses = $coursesForUser->unique('code')->toArray();
 
-
+        
 
         /* $sectionForCourseX =  User_course::where('ced', $userActive)
                         ->where('code', $cursos)

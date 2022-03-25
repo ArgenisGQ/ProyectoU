@@ -31,8 +31,8 @@
         <div class="row" style="margin-top:50px">
               <div class="col-md-6 offset-md-3">
                   {{-- <h1>Creacion de Actividades</h1><hr> --}}
-                  @livewire('admin.activities-create', compact('courses', 'userActiveName',
-                                                                'evaluations'))
+                  @livewire('admin.activities-create', compact('courses', 'userActiveName','activity',
+                                                                'evaluations','academic_start','academic_finish'))
               </div>
         </div>
     </div>
