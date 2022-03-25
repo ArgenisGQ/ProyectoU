@@ -392,8 +392,14 @@
                         </div>
                     </div>
 
-                    <div>
-                        <input type="text" id="datepicker">
+                    <div class = "mb-4">
+                        <label for="name" class="block font-medium text-sm text-gray-700"></label>
+                        <input wire:model.lazy = "date" type="text"
+                                id = "date"
+                                class = "mt-2 text-sm sm:text-base pl-2 pr-4 rounded-lg boder border-gray-400 w-full"
+                                requered
+                                placeholder="DD/MM/YYYY">
+                        {{-- <input type="text" id="datepicker"> --}}
                     </div>
 
 
