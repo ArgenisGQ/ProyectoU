@@ -12,7 +12,7 @@ class ActivitiesCreate extends Component
 
     use WithFileUploads;
 
-    public $first_name;
+    /* public $first_name;
     public $last_name;
     public $gender;
     public $age;
@@ -23,7 +23,7 @@ class ActivitiesCreate extends Component
     public $city;
     public $frameworks = [];
     public $cv;
-    public $terms;
+    public $terms; */
 
     public $courses = [];
     public $faculties = [];
@@ -31,6 +31,7 @@ class ActivitiesCreate extends Component
     public $academic_start, $academic_finish;
     public $userActiveName;
     public $name;
+    public $status;
 
     public $totalSteps = 6;
     public $currentStep = 1;

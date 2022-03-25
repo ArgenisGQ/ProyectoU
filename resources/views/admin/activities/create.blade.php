@@ -115,11 +115,64 @@
         });
     </script> --}}
 
-    <script src="moment.js"></script>
-    <script src="pikaday.js"></script>
-    <script>
+
+
+    {{-- <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script> --}}
+    {{-- <script src="moment.js"></script>
+    <script src="pikaday.js"></script> --}}
+    {{-- <script>
         var picker = new Pikaday({ field: document.getElementById('datepicker') });
+    </script> --}}
+    {{-- <script>
+        var picker = new Pikaday({
+            field: document.getElementById('datepicker'),
+            format: 'D MM YYYY',
+            onSelect: function() {
+                console.log(this.getMoment().format('Do MM YYYY'));
+            }
+        });
+    </script> --}}
+
+    {{-- <script>
+        if ( $('html').hasClass('no-touch') ) {
+        var $input, $btn;
+        $( ".date-wrapper" ).each(function( index ) {
+            $input = $(this).find('input');
+            $btn = $(this).find('.calendar-btn');
+            $input.attr('type', 'text');
+            var pickerStart = new Pikaday({
+            field: $input[0],
+            trigger: $btn[0],
+            container: $(this)[0],
+            format: 'DD/MM/YYYY',
+            firstDay: 1
+            });
+            $btn.show();
+        });
+        } else {
+        $('.date-wrapper input').attr('type', 'date');
+        $('.calendar-btn').hide();
+        }
+    </script> --}}
+
+    <script>
+        var picker = new Pikaday({
+        field: document.getElementById('fecha'),
+        i18n: {
+            previousMonth : 'Anterior',
+            nextMonth     : 'Siguiente',
+            months        : ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+            weekdays      : ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+            weekdaysShort : ['Dom','Lun','Mar','Mie','Jue','Vie','Sáb']
+        },
+        format: 'DD/MM/YYYY',
+        onSelect: function(date) {
+            field.value = this.getMoment().format('DD/MM/YYYY');
+        }
+        });
     </script>
+
+
 
     <script>
         $(document).ready( function() {
