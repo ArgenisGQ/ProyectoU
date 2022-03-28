@@ -12,7 +12,7 @@ class ActivitiesCreate extends Component
 
     use WithFileUploads;
 
-    public $first_name;
+    /* public $first_name;
     public $last_name;
     public $gender;
     public $age;
@@ -23,14 +23,16 @@ class ActivitiesCreate extends Component
     public $city;
     public $frameworks = [];
     public $cv;
-    public $terms;
+    public $terms; */
 
     public $courses = [];
+    public $coursess = [];
     public $faculties = [];
     public $evaluations = [];
     public $academic_start, $academic_finish;
     public $userActiveName;
     public $name;
+    public $body, $extract, $extract01;
 
     public $totalSteps = 6;
     public $currentStep = 1;
@@ -63,11 +65,11 @@ class ActivitiesCreate extends Component
     public function increaseStep(){
         $this->resetErrorBag();
 
-        /* $this->validateData(); */
-         $this->currentStep++;
-         if($this->currentStep > $this->totalSteps){
+        $this->validateData();
+        $this->currentStep++;
+        if($this->currentStep > $this->totalSteps){
              $this->currentStep = $this->totalSteps;
-         }
+        }
     }
 
     public function decreaseStep(){
@@ -80,8 +82,66 @@ class ActivitiesCreate extends Component
 
     public function courses()
     {
-        $this->emitUp('courses');//nose
+        /* $this->emitUp('courses');//nose */
     }
+
+
+    public function validateData(){
+
+        /* $activity = $this->route()->parameter('activity'); // caso NULL
+
+        $rules = [
+            'name' => 'required',
+            'slug' => 'required|unique:activities',
+            'status' => 'required|in:1,2',
+            'file' => 'image',
+            'lapse_in' => 'date|after_or_equal:academic_start',
+            'lapse_out' => 'date|before_or_equal:academic_finish'
+        ];
+
+        if($activity){
+            $rules['slug'] = 'required|unique:activities,slug,' . $activity->id;
+        }
+
+        if($this->status == 2){
+            $rules = array_merge($rules,[
+            'faculty_id' => 'required',
+            'courses' => 'required',
+            'activity_type' => 'required',
+            'extract01' => 'required',
+            'extract' => 'required',
+            'body' => 'required'
+            ]);
+        }
+
+        return $rules; */
+
+        /* ---------------- */
+
+        if($this->currentStep == 1){
+            $this->validate([
+
+                'coursess' => 'required',
+            ]);
+        }
+        elseif($this->currentStep == 2){
+              $this->validate([
+                'name' => 'required',
+                /* 'slug' => 'required|unique:activities', */
+                'body' => 'required',
+                'extract' => 'required',
+                'extract01' => 'required',
+              ]);
+        }
+        elseif($this->currentStep == 3){
+              $this->validate([
+                'activity_type' => 'required',
+                'lapse_in' => 'date|after_or_equal:academic_start',
+                'lapse_out' => 'date|before_or_equal:academic_finish'
+              ]);
+        }
+    }
+
 
     /* public function validateData(){
 
