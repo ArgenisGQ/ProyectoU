@@ -32,7 +32,7 @@
               <div class="col-md-6 offset-md-3">
                   {{-- <h1>Creacion de Actividades</h1><hr> --}}
                   @livewire('admin.activities-create', compact('courses', 'userActiveName',
-                                                                'evaluations'))
+                                                                'evaluations', 'userActiveId'))
               </div>
         </div>
     </div>

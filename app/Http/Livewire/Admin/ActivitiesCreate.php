@@ -5,6 +5,11 @@ namespace App\Http\Livewire\Admin;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\User_course;
+use App\Models\Activity;
+use App\Models\Course;
+use App\Models\Evaluation;
+use App\Models\Period;
+
 
 class ActivitiesCreate extends Component
 {
@@ -31,8 +36,11 @@ class ActivitiesCreate extends Component
     public $evaluations = [];
     public $academic_start, $academic_finish;
     public $userActiveName;
+    public $userActiveId;
     public $name;
     public $body, $extract, $extract01;
+    public $status, $evaluation;
+    public $lapse_in, $lapse_out;
 
     public $totalSteps = 6;
     public $currentStep = 1;
@@ -127,7 +135,7 @@ class ActivitiesCreate extends Component
         elseif($this->currentStep == 2){
               $this->validate([
                 'name' => 'required',
-                /* 'slug' => 'required|unique:activities', */
+                /* 'slug' => 'required|unique:activities',  */            
                 'body' => 'required',
                 'extract' => 'required',
                 'extract01' => 'required',
@@ -201,4 +209,121 @@ class ActivitiesCreate extends Component
             return redirect()->route('registration.success', $data);
           }
     } */
+
+    public function register(){
+          $this->resetErrorBag();
+          /* if($this->currentStep == 4){
+              $this->validate([
+                  'cv'=>'required|mimes:doc,docx,pdf|max:1024',
+                  'terms'=>'accepted'
+              ]);
+          } */
+
+          /* $cv_name = 'CV_'.time().$this->cv->getClientOriginalName();
+          $upload_cv = $this->cv->storeAs('students_cvs', $cv_name); */
+
+          /* if($upload_cv){
+              $values = array(
+                  "first_name"=>$this->first_name,
+                  "last_name"=>$this->last_name,
+                  "gender"=>$this->gender,
+                  "email"=>$this->email,
+                  "phone"=>$this->phone,
+                  "country"=>$this->country,
+                  "city"=>$this->city,
+                  "frameworks"=>json_encode($this->frameworks),
+                  "description"=>$this->description,
+                  "cv"=>$cv_name,
+              );
+
+              Student::insert($values);
+            //   $this->reset();
+            //   $this->currentStep = 1;
+            $data = ['name'=>$this->first_name.' '.$this->last_name,'email'=>$this->email];
+            return redirect()->route('registration.success', $data);
+          } */
+
+          $data01 = array(
+            /* "first_name"=>$this->first_name,
+            "last_name"=>$this->last_name,
+            "gender"=>$this->gender,
+            "email"=>$this->email,
+            "phone"=>$this->phone,
+            "country"=>$this->country,
+            "city"=>$this->city,
+            "frameworks"=>json_encode($this->frameworks),
+            "description"=>$this->description,
+            "cv"=>$cv_name, */           
+
+            );
+
+            
+
+            /* $cours = User_course::where('ced',$userActiveName)->get(); */
+
+            
+
+            /* $period = Period::all();
+            $periodName = $period->name; */
+
+            $data = [
+                /* 'courses'           => $this->courses, */
+                'name'              => $this->name,
+                'slug'              => $this->name,
+                'body'              => $this->body,
+                'extract'           => $this->extract,
+                'extract01'         => $this->extract01,
+                /* 'activity_type'     => $this->activity_type, */
+                'lapse_in'          => $this->lapse_in,
+                'lapse_out'         => $this->lapse_out,
+                /* 'status'            => $this->status, */
+                /* 'evaluation'        => $this->evaluation, */
+                'user_id'           => $this->userActiveId,
+            ];
+
+            /* if($data){
+                            $data['slug'] = 'required|unique:activities,slug,' . $activity->id;
+            } */
+
+            /* $acti = Activity::all(); */
+            
+            /* dd($data); */
+
+
+            /* dd($data); */
+
+            
+
+            $activity = Activity::create([
+                /* 'courses'           => $this->courses, */
+                'name'              => $this->name,
+                'slug'              => $this->name,
+                'body'              => $this->body,
+                'extract'           => $this->extract,
+                'extract01'         => $this->extract01,
+                /* 'activity_type'     => $this->activity_type, */
+                'lapse_in'          => $this->lapse_in,
+                'lapse_out'         => $this->lapse_out,
+                /* 'status'            => $this->status, */
+                /* 'evaluation'        => $this->evaluation, */
+                'user_id'           => $this->userActiveId,
+                'faculty_id'        => '1',
+
+            ]);
+
+
+
+
+            /* $activity = Activity::create($data->all());
+            $activity->courses()->attach($courses); */
+
+            /* Student::insert($values);
+            //   $this->reset();
+            //   $this->currentStep = 1;
+            $data = ['name'=>$this->first_name.' '.$this->last_name,'email'=>$this->email]; */
+            /* dd($data); */
+            return redirect()->route('admin.activities.index');
+
+
+    }
 }

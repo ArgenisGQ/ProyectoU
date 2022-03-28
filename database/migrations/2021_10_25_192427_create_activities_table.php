@@ -28,7 +28,7 @@ class CreateActivitiesTable extends Migration
             $table->dateTime('lapse_out')->nullable();
             /* $table->enum('type',[1,2])->default(1); */ //tip de evaluacion
             $table->unsignedBigInteger('type')->default(1); //tip de evaluacion
-            $table->enum('status',[1,2])->default(1); //status para imprimir o no pdf
+            $table->enum('status',[1,2,3])->default(1); //status para imprimir o no pdf
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('faculty_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); /* opcion 'cascade' borra todos los posts del usuario si se va de baja*/

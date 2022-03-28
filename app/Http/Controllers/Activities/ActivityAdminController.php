@@ -134,6 +134,9 @@ class ActivityAdminController extends Controller
         /* $user_courses = User_course::all(); */
 
 
+        $author = auth()->user();
+        $userActiveId = auth()->user()->id;
+        /* return $author; */
 
         $userActive = auth()->user()->ced;
         $coursesForUser =  User_course::where('ced', $userActive)
@@ -157,7 +160,7 @@ class ActivityAdminController extends Controller
         return view('admin.activities.create', compact('faculties', 'courses',
                                                         'activity', 'evaluations',
                                                     'academic_start', 'academic_finish',
-                                                    'coursesForUser','userActiveName'));
+                                                    'coursesForUser','userActiveName', 'userActiveId'));
     }
 
     /**
@@ -169,7 +172,7 @@ class ActivityAdminController extends Controller
     public function store(ActivityRequest $request)
     {
         /* return Storage::put('posts', $request->file('file')); */
-        /* return $request->all(); */
+        return $request->all();
 
         $activity = Activity::create($request->all());
 

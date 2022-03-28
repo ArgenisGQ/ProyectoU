@@ -362,7 +362,7 @@
                                 <label for="datepicker-start">Inicio de actividad:</label>
                                 </div>
                                 <div class="input">
-                                    <input type="date" name="experience-start" id="datepicker-start" class="input-text" placeholder="dd/mm/yyyy">
+                                    <input type="date" name="lapse_in" id="lapse_in" class="input-text" placeholder="dd/mm/yyyy">
                                 </div>
                                 {{-- <a href="#" class="calendar-btn calendar-start hide-text">View calendar</a>--}}
                                 <p>{{date('d-m-Y', strtotime($academic_start))}}</p>
@@ -373,7 +373,7 @@
                                 <label for="datepicker-end">Final de actividad:</label>
                                 </div>
                                 <div class="input">
-                                <input type="date" name="experience-end" id="datepicker-end" class="input-text" placeholder="dd/mm/yyyy">
+                                <input type="date" name="lapse_out" id="lapse_out" class="input-text" placeholder="dd/mm/yyyy">
                                 </div>
                                 {{-- <a href="#" class="calendar-btn hide-text">View calendar</a> --}}
                                 <p>{{date('d-m-Y', strtotime($academic_finish))}}</p>
