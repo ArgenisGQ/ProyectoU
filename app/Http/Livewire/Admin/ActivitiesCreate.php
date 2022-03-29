@@ -10,6 +10,7 @@ use App\Models\Course;
 use App\Models\Evaluation;
 use App\Models\Period;
 use Carbon\Carbon;
+use App\Models\Activity_course;
 
 
 class ActivitiesCreate extends Component
@@ -272,9 +273,10 @@ class ActivitiesCreate extends Component
             $this->lapse_out =Carbon::createFromFormat('Y-m-d', $this->lapse_out);
             /* $this->lapse_out =Carbon::createFromFormat('Y-m-d', $this->lapse_out)->toDateTimeString(); */
             /* dd($this->lapse_in); */
+            dd($this->coursess);
 
             $data = [
-                'courses'           => $this->coursess,
+                /* 'courses'           => $this->coursess, */
                 'name'              => $this->name,
                 'slug'              => $this->name,
                 'body'              => $this->body,
@@ -302,7 +304,7 @@ class ActivitiesCreate extends Component
 
 
             $activity = Activity::create([
-                'courses'           => $this->coursess,
+                /* 'courses'           => $this->coursess, */
                 'name'              => $this->name,
                 'slug'              => $this->name,
                 'body'              => $this->body,
@@ -317,7 +319,10 @@ class ActivitiesCreate extends Component
 
             ]);
 
-
+            $activity_courses = Activity_course::create([
+                'id_activity'           => $this->coursess,
+                'id_course'              => $this->name,
+            ]);
 
 
             /* $activity = Activity::create($data->all());

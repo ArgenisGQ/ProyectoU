@@ -9,6 +9,8 @@ use App\Models\Evaluation;
 use App\Models\Faculty;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\User_course;
 
 
 class ActivityController extends Controller
@@ -36,7 +38,7 @@ class ActivityController extends Controller
 
         /* $users = User::orderBy('id','ASC'); */
 
-
+        /* return $activity; */
 
         $similares = Activity::where('faculty_id', $activity->faculty_id)
                             ->where('status', 2)
@@ -53,7 +55,20 @@ class ActivityController extends Controller
 
                             ->get();
 
-       
+        /* $courses = Courses::where('',); */
+
+        /* $courses = Course::all(); */
+        /* $users = User::all(); */
+        /* $user_courses = User_course::all(); */
+
+        /* $cursox = User_course::where('code',$curso['code'])->get(); */
+
+        $userActive = auth()->user()->ced;
+        $coursesForUser =  User_course::where('ced', $userActive)
+                            ->get();
+        $activity_unique = Activity::all();
+
+        return $activity_unique;
 
         /* control de fechas */
 
