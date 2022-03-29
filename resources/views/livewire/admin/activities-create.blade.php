@@ -81,20 +81,6 @@
                                 @endforeach
                             </div>
                         @endforeach
-
-
-                        {{-- <label for="laravel">
-                            <input type="checkbox" id="laravel" value="laravel" wire:model="frameworks"> Laravel
-                        </label>
-                        <label for="codeigniter">
-                           <input type="checkbox" id="codeigniter" value="codeigniter" wire:model="frameworks"> Codeigniter
-                       </label>
-                       <label for="vuejs">
-                           <input type="checkbox" id="vuejs" value="vuejs" wire:model="frameworks"> Vue Js
-                       </label>
-                       <label for="cakePHP">
-                           <input type="checkbox" id="cakePHP" value="cakePHP" wire:model="frameworks"> CakePHP
-                       </label> --}}
                     </div>
 
                     <span class="text-danger">@error('coursess'){{ $message }}@enderror</span>
@@ -362,10 +348,12 @@
                                 <label for="lapse_in">Inicio de actividad:</label>
                                 </div>
                                 <div class="input">
-                                    <input type="date" name="lapse_in" id="datapicker" class="input-text" wire:model="lapse_in" placeholder="{{date('d-m-Y', strtotime($academic_start))}}">
+                                    <input type="date" name="lapse_in" id="datapicker" class="input-text"
+                                    placeholder="{{date('d-m-Y', strtotime($academic_start))}}"
+                                    wire:model="lapse_in">
                                 </div>
                                 {{-- <a href="#" class="calendar-btn calendar-start hide-text">View calendar</a>--}}
-                                <p>{{date('d-m-Y', strtotime($academic_start))}}</p>
+                                {{-- <p>{{date('d-m-Y', strtotime($academic_start))}}</p> --}}
                             </div>
 
                             <div class="field clearfix date-range-start date-wrapper">
@@ -373,10 +361,12 @@
                                 <label for="lapse_out">Final de actividad:</label>
                                 </div>
                                 <div class="input">
-                                <input type="date" name="lapse_out" id="datapicker" class="input-text" wire:model="lapse_out" placeholder="{{date('d-m-Y', strtotime($academic_finish))}}">
+                                    <input type="date" name="lapse_out" id="datapicker" class="input-text"
+                                    placeholder="{{date('d-m-Y', strtotime($academic_finish))}}"
+                                    wire:model="lapse_out">
                                 </div>
                                 {{-- <a href="#" class="calendar-btn hide-text">View calendar</a> --}}
-                                <p>{{date('d-m-Y', strtotime($academic_finish))}}</p>
+                                {{-- <p>{{date('d-m-Y', strtotime($academic_finish))}}</p> --}}
 
                             </div>
 

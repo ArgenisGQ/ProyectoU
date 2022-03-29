@@ -9,6 +9,7 @@ use App\Models\Activity;
 use App\Models\Course;
 use App\Models\Evaluation;
 use App\Models\Period;
+use Carbon\Carbon;
 
 
 class ActivitiesCreate extends Component
@@ -266,6 +267,12 @@ class ActivitiesCreate extends Component
             /* $period = Period::all();
             $periodName = $period->name; */
 
+            /* $this->lapse_in = Carbon::parse($this->lapse_in)->format('d/m/Y'); */
+            $this->lapse_in =Carbon::createFromFormat('Y-m-d', $this->lapse_in);
+            $this->lapse_out =Carbon::createFromFormat('Y-m-d', $this->lapse_out);
+            /* $this->lapse_out =Carbon::createFromFormat('Y-m-d', $this->lapse_out)->toDateTimeString(); */
+            /* dd($this->lapse_in); */
+
             $data = [
                 'courses'           => $this->coursess,
                 'name'              => $this->name,
@@ -274,6 +281,7 @@ class ActivitiesCreate extends Component
                 'extract'           => $this->extract,
                 'extract01'         => $this->extract01,
                 'lapse_in'          => $this->lapse_in,
+                /* 'lapse_in'          => $this->lapse_in, */
                 'lapse_out'         => $this->lapse_out,
                 'status'            => $this->status,
                 'activity_type'     => $this->evaluation,
@@ -286,7 +294,7 @@ class ActivitiesCreate extends Component
 
             /* $acti = Activity::all(); */
 
-            dd($data);
+            /* dd($data); */
 
 
             /* dd($data); */

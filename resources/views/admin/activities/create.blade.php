@@ -94,7 +94,113 @@
         border-radius: 5px;
         }
 
+        @import "compass/css3";
 
+        * {
+        box-sizing: border-box;
+        }
+
+        body {
+        padding: 2em;
+        font-family: Arial, sans-serif;
+        font-weight: normal;
+        color: #333;
+        }
+
+        .dates-wrapper {
+        background: #f0f0f0;
+        padding: 1em 1em 0 1em;
+        display: inline-block;
+        }
+
+        .input-text {
+        background-color: #ffffff;
+        padding: 2px 10px;
+        color: #333;
+        border: 1px solid #dddddd;
+        outline: none;
+        vertical-align: middle;
+        height: 36px;
+        border-radius: 0;
+        display: block;
+        width: 100%;
+        -webkit-appearance: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        }
+
+        .date-wrapper {
+        position: relative;
+        margin: 0 42px 10px 0;
+        display: inline-block;
+        .label {
+            float: left;
+            display: inline-block;
+            margin-right: 28px;
+            padding-top: 10px;
+        }
+        .input {
+            font-size: 15px;
+            color: #333;
+            max-width: 172px;
+            float: left;
+            margin-right: 10px;
+            input {
+            float: left;
+            width: 100%;
+            padding: 2px 10px;
+            }
+        }
+        .calendar-btn {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            border-radius: 18px;
+            float: left;
+            background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/9487/icon-calendar-72x72.png);
+            background-repeat: no-repeat;
+            background-size: 36px 36px;
+        }
+}
+
+        .pika-single {
+        position: absolute;
+        top: 40px;
+        left: 0px;
+        .pika-title {
+            color: #444;
+        }
+        .is-selected .pika-button {
+            border-radius: 0;
+            box-shadow: none;
+            background: #ec0000;
+        }
+        .pika-table tbody td {
+            border: 1px solid #b9b9b9;
+        }
+        .pika-button:hover {
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            background: #868686 !important;
+        }
+        .is-today .pika-button {
+            color: #ec0000;
+        }
+        .is-today.is-selected .pika-button {
+            color: #fff;
+        }
+        }
+
+        .hide-text {
+        text-indent: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        }
+        .group:after {
+        content: "";
+        display: table;
+        clear: both;
+        }
     </style>
 @stop
 
@@ -104,8 +210,9 @@
     {{-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script> --}}
     {{-- <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script> --}}
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
-    <script>src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"</script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script> --}}
+    {{-- <script>src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"</script> --}}
+    <script src="https://rawgit.com/dbushell/Pikaday/master/pikaday.js"></script>
 
     {{-- --DATEPICKER-- --}}
     {{-- <script src="//code.jquery.com/jquery-1.10.2.js"></script> --}}
@@ -116,13 +223,76 @@
         });
     </script> --}}
 
-    {{-- <script src="moment.js"></script>
-    <script src="pikaday.js"></script> --}}
-    <script>
+    <script src="moment.js"></script>
+    <script src="pikaday.js"></script>
+    {{-- <script>
         var picker = new Pikaday({ field: document.getElementById('datepicker'),
                                    format: 'MM/DD/YYYY',
 
         });
+    </script> --}}
+
+    <script>
+            /* var picker = new Pikaday({
+            field: document.getElementById('datepicker'),
+            i18n: {
+                previousMonth : 'Anterior',
+                nextMonth     : 'Siguiente',
+                months        : ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+                weekdays      : ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+                weekdaysShort : ['Dom','Lun','Mar','Mie','Jue','Vie','Sáb']
+                },
+                format: 'DD/MM/YYYY',
+                onSelect: function(date) {
+                    field.value = this.getMoment().format('DD/MM/YYYY');
+
+                }
+            }); */
+
+            /* var picker = new Pikaday({
+                    field: document.getElementById('datapicker'),
+                    toString(date, format) { // using moment
+                        return moment(date).format('MM/DD/YYYY');
+                    },
+                }); */
+
+
+                var picker = new Pikaday({
+                field: document.getElementById('datepicker'),
+                onSelect: date => {
+                    const year = date.getFullYear()
+                        ,month = date.getMonth() + 1
+                        ,day = date.getDate()
+                        ,formattedDate = [
+                                    month < 10 ? '0' + month : month,
+                                    day < 10 ? '0' + day : day,
+                                    year
+                        ].join('/')
+                    document.getElementById('datepicker').value = formattedDate
+                }
+                })
+
+                /* if ( $('html').hasClass('no-touch') ) {
+                var $input, $btn;
+                $( ".date-wrapper" ).each(function( index ) {
+                    $input = $(this).find('input');
+                    $btn = $(this).find('.calendar-btn');
+                    $input.attr('type', 'text');
+                    var pickerStart = new Pikaday({
+                                        field: $input[0],
+                                        trigger: $btn[0],
+                                        container: $(this)[0],
+                                        format: 'DD/MM/YYYY',
+                                        firstDay: 1
+                    });
+                    $btn.show();
+                });
+                } else {
+                $('.date-wrapper input').attr('type', 'date');
+                $('.calendar-btn').hide();
+                } */
+
+
     </script>
 
     <script>
