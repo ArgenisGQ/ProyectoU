@@ -105,6 +105,7 @@
     {{-- <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script> --}}
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+    <script>src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"</script>
 
     {{-- --DATEPICKER-- --}}
     {{-- <script src="//code.jquery.com/jquery-1.10.2.js"></script> --}}
@@ -115,10 +116,13 @@
         });
     </script> --}}
 
-    <script src="moment.js"></script>
-    <script src="pikaday.js"></script>
+    {{-- <script src="moment.js"></script>
+    <script src="pikaday.js"></script> --}}
     <script>
-        var picker = new Pikaday({ field: document.getElementById('datepicker') });
+        var picker = new Pikaday({ field: document.getElementById('datepicker'),
+                                   format: 'MM/DD/YYYY',
+
+        });
     </script>
 
     <script>
@@ -174,7 +178,7 @@
                 .create( document.querySelector( '#body' ) )
                 .then( editor => {
                     console.log( 'Editor was initialized', editor );
-                    myEditor = editor;
+            p        myEditor = editor;
                 } )
             .catch( err => {
                 console.error( err.stack );

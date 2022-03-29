@@ -135,7 +135,7 @@ class ActivitiesCreate extends Component
         elseif($this->currentStep == 2){
               $this->validate([
                 'name' => 'required',
-                /* 'slug' => 'required|unique:activities',  */            
+                /* 'slug' => 'required|unique:activities',  */
                 'body' => 'required',
                 'extract' => 'required',
                 'extract01' => 'required',
@@ -253,31 +253,30 @@ class ActivitiesCreate extends Component
             "city"=>$this->city,
             "frameworks"=>json_encode($this->frameworks),
             "description"=>$this->description,
-            "cv"=>$cv_name, */           
+            "cv"=>$cv_name, */
 
             );
 
-            
+
 
             /* $cours = User_course::where('ced',$userActiveName)->get(); */
 
-            
+
 
             /* $period = Period::all();
             $periodName = $period->name; */
 
             $data = [
-                /* 'courses'           => $this->courses, */
+                'courses'           => $this->coursess,
                 'name'              => $this->name,
                 'slug'              => $this->name,
                 'body'              => $this->body,
                 'extract'           => $this->extract,
                 'extract01'         => $this->extract01,
-                /* 'activity_type'     => $this->activity_type, */
                 'lapse_in'          => $this->lapse_in,
                 'lapse_out'         => $this->lapse_out,
-                /* 'status'            => $this->status, */
-                /* 'evaluation'        => $this->evaluation, */
+                'status'            => $this->status,
+                'activity_type'     => $this->evaluation,
                 'user_id'           => $this->userActiveId,
             ];
 
@@ -286,26 +285,25 @@ class ActivitiesCreate extends Component
             } */
 
             /* $acti = Activity::all(); */
-            
-            /* dd($data); */
+
+            dd($data);
 
 
             /* dd($data); */
 
-            
+
 
             $activity = Activity::create([
-                /* 'courses'           => $this->courses, */
+                'courses'           => $this->coursess,
                 'name'              => $this->name,
                 'slug'              => $this->name,
                 'body'              => $this->body,
                 'extract'           => $this->extract,
                 'extract01'         => $this->extract01,
-                /* 'activity_type'     => $this->activity_type, */
+                'activity_type'     => $this->evaluation,
                 'lapse_in'          => $this->lapse_in,
                 'lapse_out'         => $this->lapse_out,
-                /* 'status'            => $this->status, */
-                /* 'evaluation'        => $this->evaluation, */
+                'status'            => $this->status,
                 'user_id'           => $this->userActiveId,
                 'faculty_id'        => '1',
 

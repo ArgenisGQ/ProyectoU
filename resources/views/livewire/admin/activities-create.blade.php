@@ -359,10 +359,10 @@
 
                             <div class="field clearfix date-range-start date-wrapper">
                                 <div class="label">
-                                <label for="datepicker-start">Inicio de actividad:</label>
+                                <label for="lapse_in">Inicio de actividad:</label>
                                 </div>
                                 <div class="input">
-                                    <input type="date" name="lapse_in" id="lapse_in" class="input-text" placeholder="dd/mm/yyyy">
+                                    <input type="date" name="lapse_in" id="datapicker" class="input-text" wire:model="lapse_in" placeholder="{{date('d-m-Y', strtotime($academic_start))}}">
                                 </div>
                                 {{-- <a href="#" class="calendar-btn calendar-start hide-text">View calendar</a>--}}
                                 <p>{{date('d-m-Y', strtotime($academic_start))}}</p>
@@ -370,10 +370,10 @@
 
                             <div class="field clearfix date-range-start date-wrapper">
                                 <div class="label">
-                                <label for="datepicker-end">Final de actividad:</label>
+                                <label for="lapse_out">Final de actividad:</label>
                                 </div>
                                 <div class="input">
-                                <input type="date" name="lapse_out" id="lapse_out" class="input-text" placeholder="dd/mm/yyyy">
+                                <input type="date" name="lapse_out" id="datapicker" class="input-text" wire:model="lapse_out" placeholder="{{date('d-m-Y', strtotime($academic_finish))}}">
                                 </div>
                                 {{-- <a href="#" class="calendar-btn hide-text">View calendar</a> --}}
                                 <p>{{date('d-m-Y', strtotime($academic_finish))}}</p>
@@ -385,8 +385,8 @@
 
                     <div>
                         <input wire:model="status" name="status" type="radio" value="1" /> Borrador
-                        <input wire:model="status" name="status" type="radio" value="2" /> Revision
-                        <input wire:model="status" name="status" type="radio" value="3" /> Publicado
+                        <input wire:model="status" name="status" type="radio" value="3" /> Revision
+                        <input wire:model="status" name="status" type="radio" value="2" /> Publicado
                     </div>
 
 
