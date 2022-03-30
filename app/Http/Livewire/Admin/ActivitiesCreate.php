@@ -43,6 +43,7 @@ class ActivitiesCreate extends Component
     public $body, $extract, $extract01;
     public $status, $evaluation;
     public $lapse_in, $lapse_out;
+    public $id_activityLast;
 
     public $totalSteps = 6;
     public $currentStep = 1;
@@ -273,7 +274,7 @@ class ActivitiesCreate extends Component
             $this->lapse_out =Carbon::createFromFormat('Y-m-d', $this->lapse_out);
             /* $this->lapse_out =Carbon::createFromFormat('Y-m-d', $this->lapse_out)->toDateTimeString(); */
             /* dd($this->lapse_in); */
-            dd($this->coursess);
+            /* dd($this->coursess); */
 
             $data = [
                 /* 'courses'           => $this->coursess, */
@@ -319,10 +320,26 @@ class ActivitiesCreate extends Component
 
             ]);
 
-            $activity_courses = Activity_course::create([
-                'id_activity'           => $this->coursess,
-                'id_course'              => $this->name,
-            ]);
+            $this->id_activityLast = Activity::where('user_id', $this->userActiveId)
+                                    ->latest('id')
+                                    ->first('id');
+            /* dd($this->id_activityLast->id); */
+            /* dd($this->coursess[0]); */
+
+            $this->c = count($this->coursess);
+
+            for( $this->i=0;$this->i<$this->c;$this->i++ )
+            {
+                $activity_courses = Activity_course::create([
+                    'id_activity'        => $this->id_activityLast->id,
+                    'id_course'          => $this->coursess[$this->i],
+                ]);
+            };
+
+            /* $activity_courses = Activity_course::create([
+                'id_activity'        => $this->id_activityLast,
+                'id_course'          => $this->coursess,
+            ]); */
 
 
             /* $activity = Activity::create($data->all());
