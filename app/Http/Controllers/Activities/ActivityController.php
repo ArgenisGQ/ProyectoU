@@ -68,7 +68,7 @@ class ActivityController extends Controller
                             ->get();
         $activity_unique = Activity::all();
 
-        return $activity_unique;
+       /*  return $activity_unique; */
 
         /* control de fechas */
 

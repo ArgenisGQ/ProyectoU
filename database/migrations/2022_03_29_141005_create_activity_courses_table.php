@@ -16,8 +16,9 @@ class CreateActivityCoursesTable extends Migration
         Schema::create('activity_courses', function (Blueprint $table) {
             $table->id();
             /* $table->string('id_activity')->nullable(); */
-            $table->string('id_course')->nullable();
             $table->string('id_period')->nullable();
+            $table->unsignedBigInteger('id_course');
+            $table->foreign('id_course')->references('id')->on('user_courses')->onDelete('cascade');
             $table->unsignedBigInteger('id_activity');
             $table->foreign('id_activity')->references('id')->on('activities')->onDelete('cascade');
             $table->timestamps();

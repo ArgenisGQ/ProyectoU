@@ -8,6 +8,8 @@ use App\Models\Activity;
 use App\Models\Faculty;
 use App\Models\Course;
 use App\Models\Evaluation;
+use App\Models\Activity_course;
+use App\Models\User_course;
 
 class PdfActiController extends Controller
 {
@@ -34,6 +36,20 @@ class PdfActiController extends Controller
 
                             ->get();
 
+        $activity_courses = Activity_course::all();
+
+        $coursesThisActivity = Activity_course::where('id_activity', $activity->id)
+                            ->get();
+                            
+        
+        $User_courses = User_course::all();
+        
+        
+
+        
+        /* return $User_courses; */
+        /* return $coursesThisActivity; */
+
         /* $css_data = '<style>
         '.file_get_contents("./css/bootstrap.min.css").'
         </style>'; */
@@ -51,7 +67,8 @@ class PdfActiController extends Controller
 
         return view('activities.pdf.showPdf', compact('activity', 'similares', 'evaluacion',
                                                       'facultad', 'css_data', 'logo',
-                                                      'today', 'lapse_in', 'lapse_out'));
+                                                      'today', 'lapse_in', 'lapse_out',
+                                                       'coursesThisActivity', 'User_courses'));
 
         /* return $activity; */
 
@@ -83,6 +100,14 @@ class PdfActiController extends Controller
         $evaluacion = Evaluation::where('id', $activity->type)
 
                            ->get();
+
+        $activity_courses = Activity_course::all();
+
+        $coursesThisActivity = Activity_course::where('id_activity', $activity->id)
+                            ->get();
+                                               
+                           
+        $User_courses = User_course::all();
 
 
 
@@ -129,6 +154,15 @@ class PdfActiController extends Controller
 
         /* return $post;*/
 
+        $coursesThisActivityX = Activity_course::where('id_activity', $activity->id)
+                            ->first()
+                            ->get();
+        /* return  $coursesThisActivityX; */
+
+        $curso = User_course::where('id', $coursesThisActivityX->first()->id_course)
+                            ->get();
+        /* return $curso; */
+
         $code = $curso->first()->code;
         $section = $curso->first()->section;
         $date = $today->format('dmY');
@@ -143,7 +177,7 @@ class PdfActiController extends Controller
 
         return \PDF::loadView('activities.pdf.downPdf', compact('activity', 'similares',
                     'facultad','css_data', 'logo', 'evaluacion',
-                    'today', 'lapse_in', 'lapse_out'))
+                    'today', 'lapse_in', 'lapse_out', 'coursesThisActivity', 'User_courses'))
                     ->stream($file_name, ["Attachment" => false]);
 
         /* return $css_data; */

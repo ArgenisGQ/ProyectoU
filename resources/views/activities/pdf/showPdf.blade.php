@@ -272,18 +272,23 @@
                             <tr>
                                 <th scope="row" class="ancho-1de4 bg-gris">Asignatura</th>
                                 <td class="ancho-3de4">
-                                    @foreach ($activity->courses as $course)
 
-                                            {{-- <a href="{{route('activities.course', $course)}}">
-                                                <span class="">{{$course->name}}</span>
-                                            </a> --}}
+                                    @foreach ($coursesThisActivity as $course)
 
-                                                <span class="">{{$course->code}}</span>
+                                        @php                                       
 
-                                                <span class="">{{$course->section}} /</span>
+                                            $cursox = App\Models\User_course::where('id',$course->id_course)                                                                    
+                                                                    ->get()
+                                                                    ->first();
+                                        @endphp                                        
+                                        
+
+                                        <span>{{$cursox->code.' '.$cursox->section}}/</span>                                       
 
 
                                     @endforeach
+
+                                   
                                 </td>
                             </tr>
                         </tbody>

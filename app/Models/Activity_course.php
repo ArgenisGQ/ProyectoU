@@ -14,4 +14,14 @@ class Activity_course extends Model
         'id_course',
         'id_period',
     ];
+
+    public function activity()
+    {
+     return $this->belongsToMany(Activity::class);
+    }
+
+    public function courses()
+    {
+     return $this->belongsToMany(User_course::class);
+    }
 }
