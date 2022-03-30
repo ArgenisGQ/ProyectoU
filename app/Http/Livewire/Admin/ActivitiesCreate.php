@@ -33,12 +33,14 @@ class ActivitiesCreate extends Component
     public $terms; */
 
     public $courses = [];
+    public $coursesForUser = [];
     public $coursess = [];
     public $faculties = [];
     public $evaluations = [];
     public $academic_start, $academic_finish;
-    public $userActiveName;
+    public $userActiveName, $userActiveCed;
     public $userActiveId;
+    public $userActive = [];
     public $name;
     public $body, $extract, $extract01;
     public $status, $evaluation;

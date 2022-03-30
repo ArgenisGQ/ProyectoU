@@ -66,21 +66,32 @@
 
                     <div class="d-flex flex-column align-items-left mt-2">
 
+                        {{-- @foreach ( $coursesForUser as $curso ) --}}
                         @foreach ( $courses as $curso )
+
                             @php
-                                $cursox = App\Models\User_course::where('code',$curso['code'])->get();
+                                    /* $cursox = App\Models\User_course::where('ced',$userActiveCed)
+                                                                    ->where('code',$curso['code'])
+                                                                    ->get(); */
+
+                                    $cursox = App\Models\User_course::where('name',$userActiveName)
+                                                                    ->where('code',$curso['code'])
+                                                                    ->get();
+
                             @endphp
+
                             <h4> {{ $curso['code'].' '.$curso['course'] }} </h4>
                             <div class="content-start">
                                 @foreach ($cursox as $cursoy )
                                         <label for="{{ $cursoy['id'] }}">
                                         {{ $cursoy['section'] }}
                                         {{-- <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}" wire:click="<button wire:click="$emitUp('courses')"> --}}
-                                        <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="coursess"> {{-- revisar --}}
-                                    </label>
+                                        <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="coursess"> {{--  --}}
+                                        </label>
                                 @endforeach
                             </div>
                         @endforeach
+
                     </div>
 
                     <span class="text-danger">@error('coursess'){{ $message }}@enderror</span>

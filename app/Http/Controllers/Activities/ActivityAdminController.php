@@ -136,13 +136,22 @@ class ActivityAdminController extends Controller
 
         $author = auth()->user();
         $userActiveId = auth()->user()->id;
+        $userActiveCed = auth()->user()->ced;
+        /* return $userActiveCed; */
         /* return $author; */
 
-        $userActive = auth()->user()->ced;
-        $coursesForUser =  User_course::where('ced', $userActive)
+        $userActive = auth()->user();
+        $coursesForUser =  User_course::where('ced', $userActive->ced)
                             ->get();
         $courses = $coursesForUser->unique('code')->toArray();
 
+        /* return $courses; */
+        /* return $coursesForUser; */
+
+        $cursox = User_course::where('ced',$userActiveCed)
+                                        ->where('code', 'TIF-0374')
+                                        ->get();
+        /* return $cursox; */
 
 
         /* $sectionForCourseX =  User_course::where('ced', $userActive)
@@ -160,7 +169,7 @@ class ActivityAdminController extends Controller
         return view('admin.activities.create', compact('faculties', 'courses',
                                                         'activity', 'evaluations',
                                                     'academic_start', 'academic_finish',
-                                                    'coursesForUser','userActiveName', 'userActiveId'));
+                                                    'coursesForUser','userActiveName', 'userActiveId', 'userActive', 'userActiveCed'));
     }
 
     /**
