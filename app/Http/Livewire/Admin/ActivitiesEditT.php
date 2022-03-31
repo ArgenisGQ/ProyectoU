@@ -13,12 +13,26 @@ use Carbon\Carbon;
 use App\Models\Activity_course;
 
 
-class ActivitiesCreate extends Component
+class ActivitiesEdit extends Component
 {
-
-
     use WithFileUploads;
 
+    /* public $first_name;
+    public $last_name;
+    public $gender;
+    public $age;
+    public $description;
+    public $email;
+    public $phone;
+    public $country;
+    public $city;
+    public $frameworks = [];
+    public $cv;
+    public $terms; */
+
+    /* public $activityx; */
+    public Activity $activityx;
+    public $id_activity;
 
     public $courses = [];
     public $coursesForUser = [];
@@ -35,40 +49,48 @@ class ActivitiesCreate extends Component
     public $lapse_in, $lapse_out;
     public $id_activityLast;
 
-    /* public $activity; */
 
     public $totalSteps = 3;
     public $currentStep = 1;
 
+    protected $rules = [
+        'activity.name' => 'required',
+        'activity.extract' => 'required',
+        'activity.extract01' => 'required',
+        'activity.body' => 'required',
+        'activity.lapse_in' => 'required',
+        'activity.lapse_out' => 'required',
+        'activity.type' => 'required',
+        'activity.status' => 'required',
 
-    public function mount(){
+    ];
+
+
+
+    public function mount($activityx){
+    /* public function mount(Activity $activityx){ */
+    /* public function mount($courses){ */
         $this->currentStep = 1;
+        $this->activityx = $activityx;
+        dd($activityx);
+        /* dd($courses); */
+        /* $this->id_activity = $activity->id;
+        $this->id_activity = $id_activity; */
+        /* $this->id_activity = 2; */
+        /* $this->name = $activity->name; */
         /* $this->courses = $courses; */
 
     }
 
-
-    /* public function render()
-    {
-        return view('livewire.multi-step-form');
-    } */
-
     public function render()
     {
-        /* --------------relacion de usuarios con materias---------------- */
-        /* $userActive = auth()->user()->ced;
-        $coursesForUser =  User_course::where('ced', $userActive)
-                            ->get();
-        $courses = $coursesForUser->unique('code') */;
-        /* ------------------------------------------------------------------ */
-
-        return view('livewire.admin.activities-create');
+        return view('livewire.admin.activities-edit');
     }
 
     public function increaseStep(){
         $this->resetErrorBag();
 
-        $this->validateData();
+        /* $this->validateData(); */
         $this->currentStep++;
         if($this->currentStep > $this->totalSteps){
              $this->currentStep = $this->totalSteps;
@@ -171,19 +193,24 @@ class ActivitiesCreate extends Component
         }
     } */
 
-    /* public function register(){
+    public function edit(){
+
+    }
+
+
+    public function register(){
           $this->resetErrorBag();
-          if($this->currentStep == 4){
+          /* if($this->currentStep == 4){
               $this->validate([
                   'cv'=>'required|mimes:doc,docx,pdf|max:1024',
                   'terms'=>'accepted'
               ]);
-          }
+          } */
 
-          $cv_name = 'CV_'.time().$this->cv->getClientOriginalName();
-          $upload_cv = $this->cv->storeAs('students_cvs', $cv_name);
+          /* $cv_name = 'CV_'.time().$this->cv->getClientOriginalName();
+          $upload_cv = $this->cv->storeAs('students_cvs', $cv_name); */
 
-          if($upload_cv){
+          /* if($upload_cv){
               $values = array(
                   "first_name"=>$this->first_name,
                   "last_name"=>$this->last_name,
@@ -202,83 +229,7 @@ class ActivitiesCreate extends Component
             //   $this->currentStep = 1;
             $data = ['name'=>$this->first_name.' '.$this->last_name,'email'=>$this->email];
             return redirect()->route('registration.success', $data);
-          }
-    } */
-
-    public function edit($id){
-
-            $activity =            Activity::find($id);
-            $this->id_activity     =  $activity->id;
-            $this->name            =  $activity->name;
-            /* $this->name            =  $activity->slug; */
-            $this->body            =  $activity->id;
-            $this->extract         =  $activity->id;
-            $this->extract01       =  $activity->id;
-            $this->evaluation      =  $activity->id;
-            $this->lapse_in        =  $activity->id;
-            $this->lapse_out       =  $activity->id;
-            $this->status          =  $activity->id;
-            $this->userActiveId    =  $activity->id;
-
-
-
-    }
-
-    public function update(){
-            /* $this->validate([
-                'name' => 'required',
-                'description' => 'required',
-                'quantity' => 'required',
-                'price' => 'required'
-            ]); */
-
-            $activity = Activity::find($this->id_activity);
-            $activity->update([
-
-                /* 'courses'           => $this->coursess, */
-                'name'              => $this->name,
-                'slug'              => $this->name,
-                'body'              => $this->body,
-                'extract'           => $this->extract,
-                'extract01'         => $this->extract01,
-                'activity_type'     => $this->evaluation,
-                'lapse_in'          => $this->lapse_in,
-                'lapse_out'         => $this->lapse_out,
-                'status'            => $this->status,
-                'user_id'           => $this->userActiveId,
-                'faculty_id'        => '1',
-            ]);
-
-           /*  $this->id_activityLast = Activity::where('user_id', $this->userActiveId)
-                                    ->latest('id')
-                                    ->first('id'); */
-
-            $this->id_activityLast = $this->id_activity;
-
-            /* dd($this->id_activityLast->id); */
-            /* dd($this->coursess[0]); */
-
-            $this->c = count($this->coursess);
-
-            for( $this->i=0;$this->i<$this->c;$this->i++ )
-            {
-                $activity_courses = Activity_course::update([
-                'id_activity'        => $this->id_activityLast->id,
-                'id_course'          => $this->coursess[$this->i],
-                ]);
-            };
-
-            $this->reset();
-
-
-
-            return redirect()->route('admin.activities.index')->with('info', 'La actividad se edito con exito');
-
-    }
-
-    public function register(){
-          $this->resetErrorBag();
-          
+          } */
 
 
 
@@ -372,7 +323,7 @@ class ActivitiesCreate extends Component
             //   $this->currentStep = 1;
             $data = ['name'=>$this->first_name.' '.$this->last_name,'email'=>$this->email]; */
             /* dd($data); */
-            return redirect()->route('admin.activities.index')->with('info', 'La actividad se creo con exito');
+            return redirect()->route('admin.activities.index');
 
 
     }

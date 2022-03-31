@@ -128,11 +128,11 @@ class ActivityAdminController extends Controller
 
         /* $academic_start = now()->format('d/m/Y'); */
 
-        $userActiveName = auth()->user()->name;
+
 
         /* --------------relacion de usuarios con materias---------------- */
         /* $user_courses = User_course::all(); */
-
+        $userActiveName = auth()->user()->name;
 
         $author = auth()->user();
         $userActiveId = auth()->user()->id;
@@ -269,9 +269,56 @@ class ActivityAdminController extends Controller
 
         /* return $activity->lapse_in; */
 
-        return view('admin.activities.edit', compact('activity', 'faculties', /* 'courses', */
+        /* -------- proceso de editar ------------------ */
+        $id_activity = $activity->id;
+        $activityx = $activity;
+
+        /* return $activityx; */
+        /* dd($activityx); */
+
+        /* --------------------------------------------- */
+
+        /* --------------relacion de usuarios con materias---------------- */
+        /* $user_courses = User_course::all(); */
+        $userActiveName = auth()->user()->name;
+
+        $author = auth()->user();
+        $userActiveId = auth()->user()->id;
+        $userActiveCed = auth()->user()->ced;
+        /* return $userActiveCed; */
+        /* return $author; */
+
+        $userActive = auth()->user();
+        $coursesForUser =  User_course::where('ced', $userActive->ced)
+                            ->get();
+        $courses = $coursesForUser->unique('code')->toArray();
+
+        /* return $courses; */
+        /* return $coursesForUser; */
+
+        $cursox = User_course::where('ced',$userActiveCed)
+                                        ->where('code', 'TIF-0374')
+                                        ->get();
+        /* return $cursox; */
+
+
+        /* $sectionForCourseX =  User_course::where('ced', $userActive)
+                        ->where('code', $cursos)
+
+                        ->get(); */
+        /* return $activity; */
+        /* return $request; */
+        /* return $sectionForCourseX; */
+        /* return $userActive; */
+        /* return $coursesForUser; */
+        /* --------------------------------------------------------------- */
+
+        return view('admin.activities.edit', compact('activity', 'faculties', 'courses',
                                             'evaluations',
-                                            'academic_start', 'academic_finish'));
+                                            'academic_start', 'academic_finish',
+                                            'coursesForUser','userActiveName', 'userActiveId', 'userActive', 'userActiveCed', 'id_activity'));
+
+
     }
 
     /**
