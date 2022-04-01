@@ -329,7 +329,8 @@ class ActivityAdminController extends Controller
 
         /* $products = Activity_course::with(['id_activity', 'id_course'])
                     ->where('id_activity', $id_activity)
-                    ->get(); */
+                    ->get();
+        return $products; */
         return $coursess;
 
         /* $cour = Activity_course::all(); */
