@@ -34,6 +34,8 @@ class ActivitiesEdit extends Component
     /* public Activity $activityx; */
     public $id_activity;
     public $activity;
+    public $activity_course;
+    /* public Activity_course $activity_course; */
 
     public $courses = [];
     public $coursesForUser = [];
@@ -62,7 +64,9 @@ class ActivitiesEdit extends Component
         'activity.lapse_in' => 'required',
         'activity.lapse_out' => 'required',
         'activity.type' => 'required',
+        /* 'activity.evaluation' => 'required', */
         'activity.status' => 'required',
+
 
     ];
 
@@ -70,10 +74,12 @@ class ActivitiesEdit extends Component
 
     /* public function mount($activityx){ */
     /* public function mount(){ */
-    public function mount(Activity $activity){
+    public function mount(Activity $activity/* , Activity_course $activity_course */){
         $this->currentStep = 1;
         $this->activity = $activity;
-        /* dd($activity);  */
+        /* $this->activity_course = $activity_course;
+        dd($activity_course); */
+        /* dd($activity); */
         /* dd($courses); */
         /* $this->id_activity = $activity->id;
         $this->id_activity = $id_activity; */
@@ -268,12 +274,7 @@ class ActivitiesEdit extends Component
         }
 
         public function updateb(){
-            /* $this->validate([
-                'name' => 'required',
-                'description' => 'required',
-                'quantity' => 'required',
-                'price' => 'required'
-            ]); */
+
 
             /* $activity = Activity::find($this->id_activity);
             $activity->update([

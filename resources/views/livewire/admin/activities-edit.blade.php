@@ -30,15 +30,22 @@
                                                                     ->where('code',$curso['code'])
                                                                     ->get();
 
+
                             @endphp
 
                             <h4> {{ $curso['code'].' '.$curso['course'] }} </h4>
                             <div class="content-start">
                                 @foreach ($cursox as $cursoy )
+
+
+
                                         <label for="{{ $cursoy['id'] }}">
                                         {{ $cursoy['section'] }}
                                         {{-- <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}" wire:click="<button wire:click="$emitUp('courses')"> --}}
-                                        <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="coursess"> {{--  --}}
+                                        <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="coursess">
+
+                                        {{-- <input type="checkbox" wire:model="PermissionCheckbox.{{ $key }}" {{ in_array($pms->id , $PermissionCheckbox)? "checked":"" }} /> --}}
+
                                         </label>
                                 @endforeach
                             </div>
@@ -50,6 +57,7 @@
                 </div>
             </div>
         </div>
+
 
 
         @endif
@@ -169,15 +177,16 @@
                                             @endforeach
                                         </select> --}}
 
-                                        <select names="evaluation" wire:model="activity.evaluation"
+                                        <select names="evaluation" wire:model="activity.type"
                                         class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
                                             <option value="{{ $activity->type }}" selected>{{ $activity->type }}</option>
-                                            {{-- @foreach ($evaluations as $evaluation)
-                                                <option value="{{ $evaluation['id'] }}">{{ $evaluation['name'] }}</option>
-                                            @endforeach --}}
+                                            @foreach ($evaluations as $evaluation)
+                                                {{-- <option value="{{ $evaluation['id'] }}">{{ $evaluation['name'] }}</option> --}}
+                                                <option value="{{ $evaluation->id }}">{{ $evaluation->name }}</option>
+                                            @endforeach
                                         </select>
                                 @endif
-                                <p>{{$activity->type}}</p>
+                                {{-- <p>{{$activity->type}}</p> --}}
                                 {{-- <span class="text-danger">@error('evaluation'){{ $message }}@enderror</span> --}}
                             </div>
                         </div>
@@ -244,7 +253,7 @@
            @endif --}}
 
            @if ($currentStep == 2 || $currentStep == 3 )
-               <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseStep()">Devolver</button>
+               <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseStep()">Atras</button>
            @endif
 
            {{-- @if ($currentStep == 1 || $currentStep == 2 || $currentStep == 3 || $currentStep == 4 || $currentStep == 5)

@@ -278,7 +278,7 @@ class ActivitiesCreate extends Component
 
     public function register(){
           $this->resetErrorBag();
-          
+
 
 
 
@@ -347,6 +347,7 @@ class ActivitiesCreate extends Component
                                     ->first('id');
             /* dd($this->id_activityLast->id); */
             /* dd($this->coursess[0]); */
+            /* dd($this->coursess); */
 
             $this->c = count($this->coursess);
 
@@ -372,7 +373,8 @@ class ActivitiesCreate extends Component
             //   $this->currentStep = 1;
             $data = ['name'=>$this->first_name.' '.$this->last_name,'email'=>$this->email]; */
             /* dd($data); */
-            return redirect()->route('admin.activities.index')->with('info', 'La actividad se creo con exito');
+            /* return redirect()->route('admin.activities.index')->with('info', 'La actividad se creo con exito'); */
+            return redirect()->route('admin.activities.index');
 
 
     }

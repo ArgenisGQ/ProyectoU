@@ -14,6 +14,7 @@ use App\Http\Requests\SelectCreateRequest;
 use Carbon\Carbon;
 use App\Models\Period;
 use App\Models\User_course;
+use App\Models\Activity_course;
 
 /* use Illuminate\Support\Collection; */
 
@@ -238,9 +239,12 @@ class ActivityAdminController extends Controller
 
         $faculties = Faculty::pluck('name', 'id');
 
-        $courses = Course::all();
+        $courses_all = Course::all();
+        /* return $courses_all; */
 
-        $evaluations = Evaluation::pluck('name', 'id');
+        /* $evaluations = Evaluation::pluck('name', 'id'); */
+        $evaluations = Evaluation::all();
+        /* return $evaluations; */
 
         /* --------CONTROL DE FECHAS DEL PERIODO------------ */
         $today = today();
@@ -271,7 +275,7 @@ class ActivityAdminController extends Controller
 
         /* -------- proceso de editar ------------------ */
         $id_activity = $activity->id;
-        $activityx = $activity;
+        /* $activityx = $activity; */
 
         /* return $activityx; */
         /* dd($activityx); */
@@ -292,6 +296,10 @@ class ActivityAdminController extends Controller
         $coursesForUser =  User_course::where('ced', $userActive->ced)
                             ->get();
         $courses = $coursesForUser->unique('code')->toArray();
+        /* return $courses; */
+
+        $activity_course = Activity_course::all();
+        /* return $activity_course; */
 
         /* return $courses; */
         /* return $coursesForUser; */
@@ -311,10 +319,30 @@ class ActivityAdminController extends Controller
         /* return $sectionForCourseX; */
         /* return $userActive; */
         /* return $coursesForUser; */
+
+        /* $acti_courses = Activity_course::find(); */
+
+        /* return $acti_courses; */
+
+        $coursess = Activity_course::where('id_activity', $id_activity )
+                    ->get();
+
+        /* $products = Activity_course::with(['id_activity', 'id_course'])
+                    ->where('id_activity', $id_activity)
+                    ->get(); */
+        return $coursess;
+
+        /* $cour = Activity_course::all(); */
+
+        /* return $cour; */
+
+
+
+
         /* --------------------------------------------------------------- */
 
         return view('admin.activities.edit', compact('activity', 'faculties', 'courses',
-                                            'evaluations',
+                                            'evaluations', 'activity_course',
                                             'academic_start', 'academic_finish',
                                             'coursesForUser','userActiveName', 'userActiveId', 'userActive', 'userActiveCed', 'id_activity'));
 
