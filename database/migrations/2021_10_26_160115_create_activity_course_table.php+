@@ -18,8 +18,10 @@ class CreateActivityCourseTable extends Migration
 
             $table->unsignedBigInteger('activity_id');
             $table->unsignedBigInteger('course_id');
-            $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            /* $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade'); */
+            $table->foreign('activity_id')->references('id')->on('activities');
+            $table->foreign('course_id')->references('id')->on('user_courses');
 
             $table->timestamps();
         });

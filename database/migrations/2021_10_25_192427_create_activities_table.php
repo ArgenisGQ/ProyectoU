@@ -31,8 +31,12 @@ class CreateActivitiesTable extends Migration
             $table->enum('status',[1,2,3])->default(1); //status para imprimir o no pdf
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('faculty_id');
+            /* $table->unsignedBigInteger('course_id'); */
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); /* opcion 'cascade' borra todos los posts del usuario si se va de baja*/
             $table->foreign('faculty_id')->references('id')->on('faculties')->onDelete('cascade'); /* opcion 'cascade' borra todos los posts del usuario si se va de baja*/
+            /* $table->foreign('course_id')->nullable()->references('id')->on('courses'); */ /* opcion 'cascade' borra todos los posts del usuario si se va de baja*/
+            /* $table->foreignId('course_id')->nullable()->constrained('courses')->cascadeOnUpdate()->nullOnDelete(); */
+            /* $table->foreignId('course_id')->nullable()->constrained('courses'); */
             /* $table->foreign('type')->references('id')->on('evaluations')->onDelete('cascade'); */ /* opcion 'cascade' borra todos los posts del usuario si se va de baja*/
 
             $table->timestamps();

@@ -18,9 +18,9 @@ class CreateActivityCoursesTable extends Migration
             /* $table->string('id_activity')->nullable(); */
             $table->string('id_period')->nullable();
             $table->unsignedBigInteger('id_course');
-            $table->foreign('id_course')->references('id')->on('user_courses')->onDelete('cascade');
+            $table->foreign('id_course')->references('id')->on('user_courses');
             $table->unsignedBigInteger('id_activity');
-            $table->foreign('id_activity')->references('id')->on('activities')->onDelete('cascade');
+            $table->foreign('id_activity')->references('id')->on('activities');
             $table->timestamps();
         });
     }

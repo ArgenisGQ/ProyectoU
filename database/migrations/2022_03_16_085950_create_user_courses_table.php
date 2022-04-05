@@ -18,11 +18,16 @@ class CreateUserCoursesTable extends Migration
 
             $table->string('code')->nullable();
             /* $table->string('code')->unique()->nullable(); */
+
             $table->string('section')->nullable();
             $table->string('course')->nullable();
 
-            $table->string('ced')->nullable();
+            /* $table->unsignedBigInteger('ced')->nullable(); */
+            $table->unsignedBigInteger('ced');
             $table->string('name')->nullable();
+
+            /* $table->unsignedBigInteger('id_course')->nullable();
+            $table->foreign('id_course')->references('id')->on('courses'); */
 
             $table->timestamps();
         });

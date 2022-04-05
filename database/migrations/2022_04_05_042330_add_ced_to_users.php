@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUsernameToUsersTable extends Migration
+class AddCedToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class AddUsernameToUsersTable extends Migration
      */
     public function up()
     {
-        /* Schema::table('users', function (Blueprint $table) {
-            $table->string('username')->nullable();
-        }); */
         Schema::table('users', function (Blueprint $table) {
-            /* $table->string('ced')->unique();
-            $table->foreign('ced')->references('ced')->on('user_courses'); */
+            /* $table->unsignedBigInteger('ced')->unique(); */
+            /* $table->foreign('ced')->references('ced')->on('user_courses'); */
         });
-
     }
 
     /**
@@ -30,9 +26,6 @@ class AddUsernameToUsersTable extends Migration
      */
     public function down()
     {
-        /* Schema::table('users', function (Blueprint $table) {`
-            $table->removeColumn('username');
-        }); */
         Schema::table('users', function (Blueprint $table) {
             /* $table->removeColumn('ced'); */
         });

@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Validation\Rules\Unique;
 
 class CreateUsersTable extends Migration
 {
@@ -23,7 +24,10 @@ class CreateUsersTable extends Migration
             $table->string('lastName');
             $table->string('userName');
 
-            $table->string('ced')->unique();
+            $table->unsignedBigInteger('ced')->unique();
+            /* $table->foreign('ced')->references('ced')->on('user_courses'); */
+            /* $table->string('ced')->unique(); */
+
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -32,7 +36,7 @@ class CreateUsersTable extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
 
-            
+
         });
     }
 

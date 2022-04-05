@@ -30,8 +30,12 @@ class Activity extends Model
     }
 
     //Relacion de muchos a muchos
-    public function courses(){
+    /* public function courses(){
         return $this->belongsToMany(Course::class);
+    } */
+
+    public function courses(){
+        return $this->hasMany(Activity_course::class, 'id_activity');
     }
 
     //Relacion uno a uno poliformica

@@ -15,13 +15,22 @@ class Activity_course extends Model
         'id_period',
     ];
 
+    //relacion muchos a muchos
     public function activity()
     {
-     return $this->belongsToMany(Activity::class);
+     /* return $this->belongsToMany(Activity::class); */
+     return $this->belongsTo(Activity::class, 'id');
     }
 
-    public function courses()
+    //relacion de uno a muchos
+    /* public function activity()
     {
-     return $this->belongsToMany(User_course::class);
+     return $this->belongsTo(Activity::class);
+    } */
+
+    public function course()
+    {
+     /* return $this->belongsToMany(User_course::class, 'id'); */
+     return $this->belongsTo(User_course::class, 'id_course');
     }
 }

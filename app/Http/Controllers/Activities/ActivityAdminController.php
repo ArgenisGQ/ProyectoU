@@ -15,6 +15,7 @@ use Carbon\Carbon;
 use App\Models\Period;
 use App\Models\User_course;
 use App\Models\Activity_course;
+use Illuminate\Support\Collection;
 
 /* use Illuminate\Support\Collection; */
 
@@ -293,6 +294,8 @@ class ActivityAdminController extends Controller
         /* return $author; */
 
         $userActive = auth()->user();
+        return $userActive->courses;
+        
         $coursesForUser =  User_course::where('ced', $userActive->ced)
                             ->get();
         $courses = $coursesForUser->unique('code')->toArray();
@@ -324,18 +327,55 @@ class ActivityAdminController extends Controller
 
         /* return $acti_courses; */
 
-        $coursess = Activity_course::where('id_activity', $id_activity )
-                    ->get();
+
+        /* $coursess = Activity_course::select('id_course')
+                    ->where('id_activity', $id_activity )
+                    ->get(); */
+        /* $coursessv = $coursess; */
+
+
+        /* return $coursessv; */
+
+        /* $c = count($coursess);
+
+        return $c; */
+
+        /* for( $i=0;$i<$c;$i++ )
+                    {
+                        $activity_courses = Activity_course::create([
+                            'id_activity'        => $id_activityLast->id,
+                            'id_course'          => $coursess[$i],
+                        ]);
+                        $coursez[$i] = $courses->id;
+
+                    }; */
+
+
+        /* foreach ($coursess as $coursesz) {
+            $cours = $coursesz->id_course;
+        }; */
 
         /* $products = Activity_course::with(['id_activity', 'id_course'])
                     ->where('id_activity', $id_activity)
                     ->get();
+
         return $products; */
-        return $coursess;
+        /* return $cours; */
+
+        /* $coursesa = $activity_course->course; */
+        /* return $coursesa; */
+
+        $activity_coursex = $activity->courses;
+        /* return $activity_coursex; */
+
+        /* $activityForCourse = $activity->courses; */
+        /* return $activityForCourse; */
 
         /* $cour = Activity_course::all(); */
+        /* $cour = Activity_course::all();
+        $cour2 = $cour->activity->id;
 
-        /* return $cour; */
+        return $cour2; */
 
 
 

@@ -78,10 +78,14 @@ class User extends Authenticatable
         return $this->hasMany(Activity::class);
     }
 
+    public function courses(){
+        return $this->hasMany(User_course::class, 'ced');
+    }
+
     //Relacion uno a uno poliformica
     public function image(){
         return $this->MorphOne(Image::class, 'imageable');
     }
 
-    
+
 }
