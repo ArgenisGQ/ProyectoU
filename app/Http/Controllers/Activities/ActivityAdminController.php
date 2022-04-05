@@ -294,8 +294,8 @@ class ActivityAdminController extends Controller
         /* return $author; */
 
         $userActive = auth()->user();
-        return $userActive->courses;
-        
+        /* return $userActive->courses; */
+
         $coursesForUser =  User_course::where('ced', $userActive->ced)
                             ->get();
         $courses = $coursesForUser->unique('code')->toArray();
@@ -366,7 +366,9 @@ class ActivityAdminController extends Controller
         /* return $coursesa; */
 
         $activity_coursex = $activity->courses;
+        $activity_coursey = $activity->user->courses;
         /* return $activity_coursex; */
+        return $activity_coursey;
 
         /* $activityForCourse = $activity->courses; */
         /* return $activityForCourse; */
