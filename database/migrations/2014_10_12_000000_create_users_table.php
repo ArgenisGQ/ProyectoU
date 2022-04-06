@@ -25,7 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('userName');
 
             $table->unsignedBigInteger('ced')->unique();
-            /* $table->foreign('ced')->references('ced')->on('user_courses'); */
+            /* $table->unsignedBigInteger('ced_user')->unique();
+            $table->foreign('ced_user')->references('ced')->on('user_courses'); */
             /* $table->string('ced')->unique(); */
 
             $table->string('email')->unique();

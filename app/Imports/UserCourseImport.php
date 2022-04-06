@@ -26,6 +26,7 @@ class UserCourseImport implements ToModel, WithValidation, WithHeadingRow
             'course'            => $row['materia'],
             'section'           => $row['seccion'],
             'ced'               => $row['cedula'],
+            /* 'ced_user'          => $row['cedula'], */
             'name'              => $row['profesor'],
             /* 'id_sima_doc'       => $row['id_sima_doc'],
             'id_continua_doc'   => $row['id_continua_doc'],

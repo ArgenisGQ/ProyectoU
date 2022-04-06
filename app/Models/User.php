@@ -79,7 +79,7 @@ class User extends Authenticatable
     }
 
     public function courses(){
-        return $this->hasMany(User_course::class, 'ced');
+        return $this->hasMany(User_course::class, 'ced_user');
     }
 
     //Relacion uno a uno poliformica

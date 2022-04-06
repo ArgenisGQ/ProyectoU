@@ -23,8 +23,16 @@ class CreateUserCoursesTable extends Migration
             $table->string('course')->nullable();
 
             /* $table->unsignedBigInteger('ced')->nullable(); */
-            $table->unsignedBigInteger('ced');
+            $table->unsignedBigInteger('ced')->nullable();
+            /* $table->foreign('ced')->references('ced')->on('users'); */
+
+            $table->unsignedBigInteger('ced_user')->nullable();
+            $table->foreign('ced_user')->references('ced')->on('users');
+
             $table->string('name')->nullable();
+
+
+            /* $table->foreign('id_user')->references('id')->on('users'); */
 
             /* $table->unsignedBigInteger('id_course')->nullable();
             $table->foreign('id_course')->references('id')->on('courses'); */

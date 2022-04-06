@@ -15,5 +15,6 @@ class User_course extends Model
         'course',
         'ced',
         'name',
+        'ced_user',
     ];
 }

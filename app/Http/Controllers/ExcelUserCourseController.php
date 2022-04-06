@@ -201,7 +201,7 @@ class ExcelUserCourseController extends Controller
                 $user = Course::create([
                     'name' => $total_course->course,
                     'code' => $total_course->code,
-                    'section' => $total_course->section, 
+                    'section' => $total_course->section,
                     'turma' => $total_course->code.' '.$total_course->section,
                     'slug' => Str::slug($total_course->code),
 
@@ -248,6 +248,7 @@ class ExcelUserCourseController extends Controller
                 $user = User::create([
                     'name' => $total_user->name,
                     'ced' => $total_user->ced,
+                    /* 'ced_user' => $total_user->ced, */
 
                     'userName' => 'V-'.$total_user->ced,
 

@@ -305,7 +305,7 @@ class ActivityAdminController extends Controller
         /* return $activity_course; */
 
         /* return $courses; */
-        /* return $coursesForUser; */
+        return $coursesForUser;
 
         $cursox = User_course::where('ced',$userActiveCed)
                                         ->where('code', 'TIF-0374')
@@ -365,10 +365,11 @@ class ActivityAdminController extends Controller
         /* $coursesa = $activity_course->course; */
         /* return $coursesa; */
 
+
         $activity_coursex = $activity->courses;
         $activity_coursey = $activity->user->courses;
         /* return $activity_coursex; */
-        return $activity_coursey;
+        /* return $activity_coursey; */
 
         /* $activityForCourse = $activity->courses; */
         /* return $activityForCourse; */

@@ -51,6 +51,8 @@
                             </div>
                         @endforeach
 
+                        <P>DOS</P>
+
                         @foreach ( $courses as $curso )
 
                             @php
@@ -69,16 +71,14 @@
                             <div class="content-start">
                                 @foreach ($activity->courses as $course)
 
-                                    
-
                                     {{-- <p>{{$course->course->code.' '.$course->course->section}}</p> --}}
 
                                     <label for="{{$course->course->id }}">
                                     {{ $course->course->section }}
-                                    {{-- <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}" wire:click="<button wire:click="$emitUp('courses')"> --}}
-                                    <input type="checkbox" id="{{ $course->course->id}}" value="{{ $course->course->id }}"  wire:model="coursess">
 
-                                    {{-- <input type="checkbox" wire:model="PermissionCheckbox.{{ $key }}" {{ in_array($pms->id , $PermissionCheckbox)? "checked":"" }} /> --}}
+                                    <input type="checkbox" id="{{ $course->course->id}}" value="{{ $course->course->id }}"  wire:model="activity.courses">
+
+
 
                                     </label>
 
@@ -86,37 +86,32 @@
                                 @endforeach
 
 
-                                @foreach ($cursox as $cursoy )
 
 
-
-                                        <label for="{{ $cursoy['id'] }}">
-                                        {{ $cursoy['section'] }}
-                                        {{-- <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}" wire:click="<button wire:click="$emitUp('courses')"> --}}
-                                        <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="activity.courses">
-
-                                        {{-- <input type="checkbox" wire:model="PermissionCheckbox.{{ $key }}" {{ in_array($pms->id , $PermissionCheckbox)? "checked":"" }} /> --}}
-
-                                        </label>
-                                @endforeach
                             </div>
                         @endforeach
 
-                        @foreach ($activity->courses as $course)
+                        {{-- @foreach ($course as $cour)
+
+                            <p>{{$cour['id']}}</p>
+
+                        @endforeach
+ --}}
+                       {{--  @foreach ($activity->courses as $course) --}}
 
                         {{-- <p>{{$course->course->code.' '.$course->course->section}}</p> --}}
 
-                            <label for="{{$course->course->id }}">
-                            {{ $course->course->section }}
+                            {{-- <label for="{{$course->course->id }}">
+                            {{ $course->course->section }} --}}
                             {{-- <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}" wire:click="<button wire:click="$emitUp('courses')"> --}}
-                            <input type="checkbox" id="{{ $course->course->id}}" value="{{ $course->course->id }}"  wire:model="coursess">
+                            {{-- <input type="checkbox" id="{{ $course->course->id}}" value="{{ $course->course->id }}"  wire:model="coursess"> --}}
 
                             {{-- <input type="checkbox" wire:model="PermissionCheckbox.{{ $key }}" {{ in_array($pms->id , $PermissionCheckbox)? "checked":"" }} /> --}}
 
-                            </label>
+                           {{--  </label>
+ --}}
 
-
-                        @endforeach
+                       {{--  @endforeach --}}
 
                     </div>
 
