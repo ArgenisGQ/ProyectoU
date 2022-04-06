@@ -33,7 +33,7 @@
                   <div class="col-md-6 offset-md-3">
                       {{-- <h1>Creacion de Actividades</h1><hr> --}}
                       @livewire('admin.activities-edit', compact('courses', 'userActiveName',
-                                                                    'evaluations', 'userActiveId', 'activity', 'id_activity', 'activity_course'))
+                                                                    'evaluations', 'userActiveId', 'activity', 'id_activity', 'activity_course', 'coursesForUser'))
                   </div>
             </div>
         </div>

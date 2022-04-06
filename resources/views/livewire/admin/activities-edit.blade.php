@@ -42,7 +42,7 @@
                                         <label for="{{ $cursoy['id'] }}">
                                         {{ $cursoy['section'] }}
                                         {{-- <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}" wire:click="<button wire:click="$emitUp('courses')"> --}}
-                                        <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="activity.courses">
+                                        <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="activity.courses" {{ "checked" }} >
 
                                         {{-- <input type="checkbox" wire:model="PermissionCheckbox.{{ $key }}" {{ in_array($pms->id , $PermissionCheckbox)? "checked":"" }} /> --}}
 
@@ -51,27 +51,53 @@
                             </div>
                         @endforeach
 
-                        <P>DOS</P>
+                        {{-- <p>{{$course->course->code.' '.$course->course->section}}</p> --}}
 
-                        @foreach ( $courses as $curso )
+                        {{-- <P>DOS</P> --}}
 
-                            @php
-                                    /* $cursox = App\Models\User_course::where('ced',$userActiveCed)
-                                                                    ->where('code',$curso['code'])
-                                                                    ->get(); */
+                        @foreach ( $activity->courses as $key=>$curso )
+
+                            {{-- @php
 
                                     $cursox = App\Models\User_course::where('name',$userActiveName)
                                                                     ->where('code',$curso['code'])
                                                                     ->get();
 
 
-                            @endphp
+                            @endphp --}}
 
-                            <h4> {{ $curso['code'].' '.$curso['course'] }} </h4>
+                            {{-- <h4> {{ $curso['code'].' '.$curso['course'] }} </h4> --}}
+                            {{-- <h4> {{ $curso->course->code.' '.$curso->course->course }} </h4> --}}
+                            {{-- <h4> {{ $curso->course->code }} </h4> --}}
+                            <h4> {{ $curso->id_course }} </h4>
                             <div class="content-start">
-                                @foreach ($activity->courses as $course)
 
-                                    {{-- <p>{{$course->course->code.' '.$course->course->section}}</p> --}}
+                                <p>{{$key}}</p>
+                                <label for="{{$curso->course->id }}">
+                                    {{ $curso->course->code.' '.$curso->course->course.' '.$curso->course->section.' '.$curso->course->id }}
+
+
+                                    <input type="checkbox" id="{{ $curso->course->id}}" value="{{ $curso->course->id }}"  wire:model="activity.courses.{{$key}}"
+                                    {{ "checked" }}>
+
+
+
+                                </label>
+
+                                {{-- <label for="{{$curso->course->id }}">
+                                    {{ $curso->course->code.' '.$curso->course->course.' '.$curso->course->section.' '.$curso->course->id }}
+
+
+                                    <input type="checkbox" id="{{ $curso->course->id}}" value="{{ $curso->course->id }}"  wire:model="activity.courses">
+
+
+
+                                </label> --}}
+
+
+
+                               {{--  @foreach ($activity->courses as $course)
+
 
                                     <label for="{{$course->course->id }}">
                                     {{ $course->course->section }}
@@ -83,7 +109,7 @@
                                     </label>
 
 
-                                @endforeach
+                                @endforeach --}}
 
 
 

@@ -39,7 +39,7 @@
                                         <label for="{{ $cursoy['id'] }}">
                                         {{ $cursoy['section'] }}
                                         {{-- <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}" wire:click="<button wire:click="$emitUp('courses')"> --}}
-                                        <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="coursess"> {{--  --}}
+                                        <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="coursess">
                                         </label>
                                 @endforeach
                             </div>

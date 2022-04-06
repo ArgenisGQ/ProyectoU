@@ -305,7 +305,7 @@ class ActivityAdminController extends Controller
         /* return $activity_course; */
 
         /* return $courses; */
-        return $coursesForUser;
+        /* return $coursesForUser; */
 
         $cursox = User_course::where('ced',$userActiveCed)
                                         ->where('code', 'TIF-0374')
@@ -365,11 +365,12 @@ class ActivityAdminController extends Controller
         /* $coursesa = $activity_course->course; */
         /* return $coursesa; */
 
-
+        $activity_test = $activity;
         $activity_coursex = $activity->courses;
-        $activity_coursey = $activity->user->courses;
+        $activity_coursey = $activity;
         /* return $activity_coursex; */
         /* return $activity_coursey; */
+        /* return $activity_test; */
 
         /* $activityForCourse = $activity->courses; */
         /* return $activityForCourse; */
@@ -388,7 +389,7 @@ class ActivityAdminController extends Controller
         return view('admin.activities.edit', compact('activity', 'faculties', 'courses',
                                             'evaluations', 'activity_course',
                                             'academic_start', 'academic_finish',
-                                            'coursesForUser','userActiveName', 'userActiveId', 'userActive', 'userActiveCed', 'id_activity'));
+                                            'coursesForUser','userActiveName', 'userActiveId', 'userActive', 'userActiveCed', 'id_activity', 'coursesForUser'));
 
 
     }
