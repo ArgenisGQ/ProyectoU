@@ -40,6 +40,8 @@ class ActivitiesEdit extends Component
     public $courses = [];
     public $coursesForUser = [];
     public $coursess = [];
+    public $coursessz = [];
+    public $cour = [];
     public $faculties = [];
     public $evaluations = [];
     public $academic_start, $academic_finish;
@@ -66,6 +68,8 @@ class ActivitiesEdit extends Component
         'activity.type' => 'required',
         /* 'activity.evaluation' => 'required', */
         'activity.status' => 'required',
+        /* 'activity.courses' => 'required', */
+        'cours' => 'required|array',
 
 
     ];
@@ -87,6 +91,25 @@ class ActivitiesEdit extends Component
         /* $this->name = $activity->name; */
         /* $this->courses = $courses; */
 
+        // get an array of ids
+        $courses_ids= $activity->courses->pluck('id_course')->toArray();
+        /* $courses_ids= $activity->courses->pluck('id')->toArray(); */
+        /* $courses_ids= $activity->courses; */
+        /* dd($courses_ids); */
+		//  ---- PREFILL!!! ----
+		// use the ids as the keys
+		// fill the values with true so all the checkboxes are checked
+		$this->cour = array_fill_keys($courses_ids, true);
+        /* $this->cour = array_fill_keys($id, true); */
+        /* dd($this->cour); */
+
+        // set the many stuff for the loop
+		$this->coursessz= $activity->courses;
+         /* dd($this->coursess); */
+        /* $this->lapse_in = $activity->lapse_in;
+        $this->lapse_out = $activity->lapse_out; */
+        /* dd($this->lapse_in); */
+
     }
 
     public function render()
@@ -97,7 +120,7 @@ class ActivitiesEdit extends Component
     public function increaseStep(){
         $this->resetErrorBag();
 
-        /* $this->validateData(); */
+        $this->validateData();
         $this->currentStep++;
         if($this->currentStep > $this->totalSteps){
              $this->currentStep = $this->totalSteps;
@@ -120,85 +143,45 @@ class ActivitiesEdit extends Component
 
     public function validateData(){
 
-        /* $activity = $this->route()->parameter('activity'); // caso NULL
 
-        $rules = [
-            'name' => 'required',
-            'slug' => 'required|unique:activities',
-            'status' => 'required|in:1,2',
-            'file' => 'image',
-            'lapse_in' => 'date|after_or_equal:academic_start',
-            'lapse_out' => 'date|before_or_equal:academic_finish'
-        ];
-
-        if($activity){
-            $rules['slug'] = 'required|unique:activities,slug,' . $activity->id;
-        }
-
-        if($this->status == 2){
-            $rules = array_merge($rules,[
-            'faculty_id' => 'required',
-            'courses' => 'required',
-            'activity_type' => 'required',
-            'extract01' => 'required',
-            'extract' => 'required',
-            'body' => 'required'
-            ]);
-        }
-
-        return $rules; */
-
-        /* ---------------- */
 
         if($this->currentStep == 1){
+            $valid = 0;
+            foreach ($this->cour as $course) {
+                if ($course) {
+                    $valid = 1 + $valid;
+                }
+            }
+            /* dd($valid); */
+            if ($valid == 0) {
+                $this->cour = [];
+            }
+            /* dd($this->cour); */
             $this->validate([
 
-                'coursess' => 'required',
+                'cour' => 'required',
             ]);
         }
         elseif($this->currentStep == 2){
               $this->validate([
-                'name' => 'required',
+                'activity.name' => 'required',
                 /* 'slug' => 'required|unique:activities',  */
-                'body' => 'required',
-                'extract' => 'required',
-                'extract01' => 'required',
+                'activity.body' => 'required',
+                'activity.extract' => 'required',
+                'activity.extract01' => 'required',
               ]);
         }
         elseif($this->currentStep == 3){
               $this->validate([
-                'activity_type' => 'required',
-                'lapse_in' => 'date|after_or_equal:academic_start',
-                'lapse_out' => 'date|before_or_equal:academic_finish'
+                'activity.activity_type' => 'required',
+                'activity.lapse_in' => 'date|after_or_equal:academic_start',
+                'activity.lapse_out' => 'date|before_or_equal:academic_finish'
               ]);
         }
     }
 
 
-    /* public function validateData(){
 
-        if($this->currentStep == 1){
-            $this->validate([
-                'first_name'=>'required|string',
-                'last_name'=>'required|string',
-                'gender'=>'required',
-                'age'=>'required|digits:2'
-            ]);
-        }
-        elseif($this->currentStep == 2){
-              $this->validate([
-                 'email'=>'required|email|unique:students',
-                 'phone'=>'required',
-                 'country'=>'required',
-                 'city'=>'required'
-              ]);
-        }
-        elseif($this->currentStep == 3){
-              $this->validate([
-                  'frameworks'=>'required|array|min:2|max:3'
-              ]);
-        }
-    } */
 
 
 
@@ -222,12 +205,7 @@ class ActivitiesEdit extends Component
         }
 
         public function update(){
-                /* $this->validate([
-                    'name' => 'required',
-                    'description' => 'required',
-                    'quantity' => 'required',
-                    'price' => 'required'
-                ]); */
+
 
                 $activity = Activity::find($this->id_activity);
                 $activity->update([
@@ -273,40 +251,160 @@ class ActivitiesEdit extends Component
 
         }
 
+
+
         public function updateb(){
 
 
-            /* $activity = Activity::find($this->id_activity);
-            $activity->update([
-
-
-                'name'              => $this->name,
-                'slug'              => $this->name,
-                'body'              => $this->body,
-                'extract'           => $this->extract,
-                'extract01'         => $this->extract01,
-                'activity_type'     => $this->evaluation,
-                'lapse_in'          => $this->lapse_in,
-                'lapse_out'         => $this->lapse_out,
-                'status'            => $this->status,
-                'user_id'           => $this->userActiveId,
-                'faculty_id'        => '1',
-            ]); */
 
             $this->activity->save();
 
-        /*  $this->id_activityLast = Activity::where('user_id', $this->userActiveId)
+            /* $this->id_activityLast = Activity::where('user_id', $this->userActiveId)
                                     ->latest('id')
                                     ->first('id'); */
 
             $this->id_activityLast = $this->id_activity;
 
-            /* dd($this->id_activityLast->id); */
+            /* dd($this->id_activityLast); */
             /* dd($this->coursess[0]); */
+            /* dd($this->coursess); */
+            /*   */
+            /* $this->cour->save(); */
 
-            $this->c = count($this->coursess);
+            /* dd($this->cour); */
+
+           /*  --------------- */
+           /* dd($this->$activity_courses); */
+           /* dd($this->cour); */
+
+           $cursoByUser = User_course::where('name',$this->userActiveName)
+                    /* ->where('code',$curso['code']) */
+                    ->get();
+
+            /* dd($cursoByUser); */
+            $courObj = (object)$this->cour;
+            /* $courObj2 = $courObj; */
+            /* dd($courObj); */
+
+
+            /* foreach ($cursoByUser as $key => $value) { */
+            foreach ($cursoByUser as $cursoz) {
+
+                $id_cours = $cursoz->id;
+
+
+                /* $id_cours = '1052'; */
+                $indice = array_key_exists($id_cours,$this->cour);
+
+                /* dd($indice); */
+
+                if ($indice) {
+                    if ( $this->cour[$id_cours]) {
+                        $test = 'SI';
+                        $activity_courses = Activity_course::create([
+                            'id_activity'        => $this->id_activityLast,
+                            'id_course'          => $id_cours,
+                        ]);
+                    } else {
+                        $test = 'NO';
+                        $activity_courses = Activity_course::where([
+                                        ['id_activity', $this->id_activityLast],
+                                        ['id_course', $id_cours],
+                                        ])
+                                        ->delete();
+                    };
+                } else {
+                    $test = 'NO LIST';
+                };
+                /* dd($test); */
+                /* dd($activity_courses); */
+
+                /* dd($id_cours); */
+
+                /* if ($this->cour[$id_cours]) { */
+
+                /* dd($test); */
+
+
+                /* $activity_courses = Activity_course::where('id_activity', $this->id_activityLast )
+                                        ->where('id_course', $cursoz->id)
+                                        ->update(
+                                            [
+                                                'id_activity' => $this->id_activityLast,
+                                                'id_course'   => $this->coursess[$this->i],
+                                            ]
+                                        );
+
+
+
+
+                $this->c = count($this->cour);
+
+                for( $this->i=0;$this->i<$this->c;$this->i++ )
+                    {
+                        $activity_courses = Activity_course::where('id_activity', $this->id_activityLast )
+                                        ->where('id_course', $cursoz->id)
+                                        ->update(
+                                            [
+                                                'id_activity' => $this->id_activityLast,
+                                                'id_course'   => $this->coursess[$this->i],
+                                            ]
+                                        );
+                    }; */
+
+            }
+
+
+           /* $this->c = count($this->cour);
+
+           for( $this->i=0;$this->i<$this->c;$this->i++ )
+            {
+                $activity_courses = Activity_course::where('id_activity', $this->id_activityLast )
+                                ->where('id_course', $this->cour)->pluck('id_course');
+
+
+
+
+                $activity_courses = Activity_course::where('id_activity', $this->id_activityLast )
+                                ->where('id_course', $this->cour[$this->i])
+                                ->update(
+                                    [
+                                        'id_activity' => $this->id_activityLast,
+                                        'id_course'   => $this->coursess[$this->i],
+                                    ]
+                                );
+            }; */
+
+           /*  --------------- */
+
+            /* $data = [
+                'id_activity' => $this->id_activityLast,
+                'id_course'   => $this->coursess,
+            ]; */
+
+            /* dd($this->cour); */
+
+            /* $this->c = count($this->cour);
+            $activity_courses = Activity_course::where('id_course', $this->cour)->pluck('id_course');
+            dd($this->$activity_courses); */
+
 
             /* for( $this->i=0;$this->i<$this->c;$this->i++ )
+            {
+                $activity_courses = Activity_course::where('id', $this->cour[$this->i])->update(
+
+                    [
+                        'id_activity' => $this->id_activityLast,
+                        'id_course'   => $this->coursess[$this->i],
+                    ]
+                );
+            }; */
+
+
+
+           /*  $this->c = count($this->coursess);
+
+            for( $this->i=0;$this->i<$this->c;$this->i++ )
             {
                 $activity_courses = Activity_course::update([
                 'id_activity'        => $this->id_activityLast->id,
@@ -314,7 +412,7 @@ class ActivitiesEdit extends Component
                 ]);
             }; */
 
-            /* $this->reset(); */
+            /* $this->reset();
 
 
 

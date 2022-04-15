@@ -33,7 +33,8 @@
                   <div class="col-md-6 offset-md-3">
                       {{-- <h1>Creacion de Actividades</h1><hr> --}}
                       @livewire('admin.activities-edit', compact('courses', 'userActiveName',
-                                                                    'evaluations', 'userActiveId', 'activity', 'id_activity', 'activity_course', 'coursesForUser'))
+                                                                    'evaluations', 'userActiveId', 'lapse_in', 'lapse_out',
+                                                                    'activity', 'id_activity', 'activity_course', 'coursesForUser'))
                   </div>
             </div>
         </div>
@@ -44,6 +45,12 @@
         <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+        {{-- <link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet"> --}}
+
+        {{-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> --}}
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+
         @livewireStyles
 
         <style>
@@ -209,12 +216,26 @@
 @section('js')
         @livewireScripts
         <script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}"></script>
-        {{-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script> --}}
+        {{-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script> NO--}}
         <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-        <script src="https://rawgit.com/dbushell/Pikaday/master/pikaday.js"></script>
 
-        <script src="moment.js"></script>
-        <script src="pikaday.js"></script>
+
+        {{-- <script src="https://rawgit.com/dbushell/Pikaday/master/pikaday.js"></script> --}}
+        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script> --}}
+        {{-- <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script> --}}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+
+        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script src="https://cdn.jsdelivr/npm/pikaday/pikaday.js"></script> --}}
+
+
+        {{-- <script src="moment.js"></script>
+        <script src="pikaday.js"></script> --}}
+
+        @stack('js')
 
         <script>
             $(document).ready( function() {
@@ -225,7 +246,7 @@
                 });
             });
 
-            var picker = new Pikaday({
+            /* var picker = new Pikaday({
                 field: document.getElementById('datepicker'),
                 onSelect: date => {
                     const year = date.getFullYear()
@@ -238,7 +259,34 @@
                         ].join('/')
                     document.getElementById('datepicker').value = formattedDate
                 }
-                })
+                }) */
+
+
+            /* $(function() { */
+                var picker = new Pikaday({
+                        field: document.getElementById('#datetimepicker2'),
+                        format: 'DD MM YYYY'
+                        /* onSelect: function() {
+                        console.log(this.getMoment().format('Do MMMM YYYY')); */
+                    })
+                /* }); */
+            /* }); */
+
+
+            $(function() {
+                $('#datetimepicker1').datetimepicker();
+            });
+
+            /* $(function () { */
+                    $('.datetimepicker').datepicker({
+                        format: "mm/dd/yy",
+                        weekStart: 0,
+                        calendarWeeks: true,
+                        autoclose: true,
+                        todayHighlight: true,
+                        orientation: "auto"
+                    });
+            /*     }); */
 
             /* ClassicEditor
             .create( document.querySelector( '#extract' ) )
@@ -258,11 +306,13 @@
                 console.error( error );
             } ); */
 
-            CKEDITOR.replace( 'extract' );
+
+
+            /* CKEDITOR.replace( 'extract' );
 
             CKEDITOR.replace( 'extract01' );
 
-            CKEDITOR.replace( 'body' );
+            CKEDITOR.replace( 'body' ); */
 
 
             //Scrip para cargar archivo de imagen en url
@@ -280,4 +330,7 @@
             }
 
         </script>
+
 @stop
+
+

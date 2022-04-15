@@ -15,6 +15,7 @@ use Carbon\Carbon;
 use App\Models\Period;
 use App\Models\User_course;
 use App\Models\Activity_course;
+use App\Models\User;
 use Illuminate\Support\Collection;
 
 /* use Illuminate\Support\Collection; */
@@ -362,25 +363,39 @@ class ActivityAdminController extends Controller
         return $products; */
         /* return $cours; */
 
-        /* $coursesa = $activity_course->course; */
-        /* return $coursesa; */
+        /* $coursesa = $activity_course->course;
+        return $coursesa; */
 
         $activity_test = $activity;
         $activity_coursex = $activity->courses;
         $activity_coursey = $activity;
+
+        /* $user_test = User::all();
+        $user_test2 = $user_test->courses;
+        return $user_test2; */
+
+        /* $coursesForUserX =  User_course::all();
+        $coursesForUserY = find(1051)->$coursesForUserX->user;
+        return $coursesForUserY; */
+
         /* return $activity_coursex; */
         /* return $activity_coursey; */
         /* return $activity_test; */
+        /* return $activity_course; */
 
-        /* $activityForCourse = $activity->courses; */
-        /* return $activityForCourse; */
+        /* $activityForCourse = $activity->courses;
+        return $activityForCourse; */
 
         /* $cour = Activity_course::all(); */
         /* $cour = Activity_course::all();
-        $cour2 = $cour->activity->id;
+        $cour2 = $cour->course; */
 
-        return $cour2; */
+        /* return $cour2; */
 
+        $lapse_in = $activity->lapse_in;
+        $lapse_out = $activity->lapse_out;
+
+        /* return $lapse_in; */
 
 
 
@@ -388,7 +403,7 @@ class ActivityAdminController extends Controller
 
         return view('admin.activities.edit', compact('activity', 'faculties', 'courses',
                                             'evaluations', 'activity_course',
-                                            'academic_start', 'academic_finish',
+                                            'academic_start', 'academic_finish', 'lapse_in', 'lapse_out',
                                             'coursesForUser','userActiveName', 'userActiveId', 'userActive', 'userActiveCed', 'id_activity', 'coursesForUser'));
 
 

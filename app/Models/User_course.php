@@ -15,6 +15,11 @@ class User_course extends Model
         'course',
         'ced',
         'name',
-        'ced_user',
+        /* 'ced_user', */
     ];
+
+    public function user()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

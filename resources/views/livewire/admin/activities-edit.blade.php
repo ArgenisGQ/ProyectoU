@@ -37,85 +37,40 @@
                             <div class="content-start">
                                 @foreach ($cursox as $cursoy )
 
-
-
                                         <label for="{{ $cursoy['id'] }}">
-                                        {{ $cursoy['section'] }}
-                                        {{-- <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}" wire:click="<button wire:click="$emitUp('courses')"> --}}
-                                        <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="activity.courses" {{ "checked" }} >
-
-                                        {{-- <input type="checkbox" wire:model="PermissionCheckbox.{{ $key }}" {{ in_array($pms->id , $PermissionCheckbox)? "checked":"" }} /> --}}
+                                        {{ $cursoy['id'].' '.$cursoy['section'] }}
+                                        {{-- <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="activity.courses"  > --}}
+                                        <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="cour.{{ $cursoy['id'] }}"  >
 
                                         </label>
                                 @endforeach
                             </div>
                         @endforeach
 
-                        {{-- <p>{{$course->course->code.' '.$course->course->section}}</p> --}}
-
-                        {{-- <P>DOS</P> --}}
+                        {{-- <p>---------------------------------------------------------------</p>
 
                         @foreach ( $activity->courses as $key=>$curso )
 
-                            {{-- @php
-
-                                    $cursox = App\Models\User_course::where('name',$userActiveName)
-                                                                    ->where('code',$curso['code'])
-                                                                    ->get();
-
-
-                            @endphp --}}
-
-                            {{-- <h4> {{ $curso['code'].' '.$curso['course'] }} </h4> --}}
-                            {{-- <h4> {{ $curso->course->code.' '.$curso->course->course }} </h4> --}}
-                            {{-- <h4> {{ $curso->course->code }} </h4> --}}
                             <h4> {{ $curso->id_course }} </h4>
                             <div class="content-start">
-
                                 <p>{{$key}}</p>
                                 <label for="{{$curso->course->id }}">
                                     {{ $curso->course->code.' '.$curso->course->course.' '.$curso->course->section.' '.$curso->course->id }}
-
-
-                                    <input type="checkbox" id="{{ $curso->course->id}}" value="{{ $curso->course->id }}"  wire:model="activity.courses.{{$key}}"
-                                    {{ "checked" }}>
-
-
-
+                                    <input type="checkbox" id="{{ $curso->course->id}}" value="{{ $curso->course->id }}"  wire:model="activity.courses.{{$key}}">
                                 </label>
-
-                                {{-- <label for="{{$curso->course->id }}">
-                                    {{ $curso->course->code.' '.$curso->course->course.' '.$curso->course->section.' '.$curso->course->id }}
-
-
-                                    <input type="checkbox" id="{{ $curso->course->id}}" value="{{ $curso->course->id }}"  wire:model="activity.courses">
-
-
-
-                                </label> --}}
-
-
-
-                               {{--  @foreach ($activity->courses as $course)
-
-
-                                    <label for="{{$course->course->id }}">
-                                    {{ $course->course->section }}
-
-                                    <input type="checkbox" id="{{ $course->course->id}}" value="{{ $course->course->id }}"  wire:model="activity.courses">
-
-
-
-                                    </label>
-
-
-                                @endforeach --}}
-
-
-
-
                             </div>
-                        @endforeach
+                        @endforeach --}}
+
+                        {{-- <p>---------------------------------------------------------------</p>
+
+                        @foreach($coursessz as $course)
+                            <div class="content-start">
+                                <label for="{{$course->id }}">
+                                    {{ $course->id.' '. $course->course->code.' '.$course->course->course.' '.$course->course->section.' '.$course->course->id }}
+                                    <input type="checkbox" id="{{ $course->id}}" value="{{ $course->id }}"  wire:model="cour.{{ $course->course->id }}">
+                                </label>
+                            </div>
+                        @endforeach --}}
 
                         {{-- @foreach ($course as $cour)
 
@@ -141,7 +96,7 @@
 
                     </div>
 
-                    <span class="text-danger">@error('coursess'){{ $message }}@enderror</span>
+                    <span class="text-danger">@error('cour'){{ $message }}@enderror</span>
                 </div>
             </div>
         </div>
@@ -202,6 +157,10 @@
                     <div class = "form-group my-4">
                         <label for="body" class="p-r-mute">   </label>
                         <textarea id="body" wire:model="activity.body" placeholder="Indique de manera especifica como realizar la actividad" class="form-control w-full" rows="6" required></textarea>
+                        {{-- <script>
+                            CKEDITOR.replace( 'body' );
+                        </script> --}}
+
                     </div>
 
                     <span class="text-danger">@error('body'){{ $message }}@enderror</span>
@@ -233,6 +192,12 @@
                 </div>
             </div>
 
+            <script>
+                CKEDITOR.replace( 'body' );
+                CKEDITOR.replace( 'extract' );
+                CKEDITOR.replace( 'extract01' );
+
+            </script>
 
         </div>
 
@@ -286,10 +251,12 @@
                             <div class="field clearfix date-range-start date-wrapper">
                                 <div class="label">
                                 <label for="lapse_in">Inicio de actividad:</label>
+                                <p>{{date('d/m/Y', strtotime($lapse_in))}}</p>
                                 </div>
                                 <div class="input">
-                                    <input type="date" name="lapse_in" id="datapicker" class="input-text"
-                                    placeholder="{{date('d-m-Y', strtotime($academic_start))}}"
+                                    <input type="text" name="lapse_in" id="datetimepicker" class="form-control datetimepicker"
+                                    placeholder="{{date('d/m/Y', strtotime($lapse_in))}}"
+                                    placeholder="inicio"
                                     wire:model="activity.lapse_in">
                                 </div>
                                 {{-- <a href="#" class="calendar-btn calendar-start hide-text">View calendar</a>--}}
@@ -299,16 +266,23 @@
                             <div class="field clearfix date-range-start date-wrapper">
                                 <div class="label">
                                 <label for="lapse_out">Final de actividad:</label>
+                                <p>{{date('d/m/Y', strtotime($lapse_out))}}</p>
                                 </div>
                                 <div class="input">
-                                    <input type="date" name="lapse_out" id="datapicker" class="input-text"
-                                    placeholder="{{date('d-m-Y', strtotime($academic_finish))}}"
-                                    wire:model="activity.lapse_out">
+                                    {{-- <input type="date" name="lapse_out" id="datapicker" class="input-text" --}}
+                                    <input type="text" name="lapse_out" id="datetimepicker" class="form-control datetimepicker"
+                                    placeholder="{{date('d/m/-Y', strtotime($lapse_out))}}"
+                                    wire:model.lazy="activity.lapse_out">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
                                 </div>
                                 {{-- <a href="#" class="calendar-btn hide-text">View calendar</a> --}}
                                 {{-- <p>{{date('d-m-Y', strtotime($academic_finish))}}</p> --}}
 
                             </div>
+
+
 
                         </div>
                     </div>
@@ -324,6 +298,55 @@
 
                 </div>
             </div>
+            <script>
+                /* var picker = new Pikaday({
+                            field: document.getElementById('#datetimepicker'),
+                            format: 'DD MM YYYY'
+
+                        }) */
+                /* $('.datetimepickerIN').datepicker({
+                        format: "mm/dd/yy",
+                        weekStart: 0,
+                        calendarWeeks: true,
+                        autoclose: true,
+                        todayHighlight: true,
+                        orientation: "auto"
+                }); */
+
+
+                /* $(function () {
+                    $('#datetimepickerIn').datepicker({
+
+                    });
+                    $('#datetimepickerOut').datepicker({
+                        useCurrent: true, //Important! See issue #1075
+
+                    });
+                    $("#datetimepickerIn").on("dp.change", function (e) {
+                    $('#datetimepickerOut').data("DateTimePicker").minDate(e.date);
+                        });
+                    $("#datetimepickerOut").on("dp.change", function (e) {
+                            $('#datetimepickerIn').data("DateTimePicker").maxDate(e.date);
+                        });
+                }); */
+
+
+
+
+
+                $('.datetimepicker').datepicker({
+                        format: "mm/dd/yy",
+                        multidate: true,
+                        weekStart: 0,
+                        calendarWeeks: fakse,
+                        language: "es",
+                        autoclose: true,
+                        todayHighlight: true,
+                        orientation: "auto"
+                });
+
+
+            </script>
         </div>
         @endif
 
@@ -364,6 +387,22 @@
 
         </div>
 
+
+
+
     </form>
+
+        {{-- <script>
+            CKEDITOR.replace( 'body' );
+            CKEDITOR.replace( 'extract' );
+            CKEDITOR.replace( 'extract01' );
+
+            var picker = new Pikaday({
+                        field: document.getElementById('#datetimepicker'),
+                        format: 'DD MM YYYY'
+
+                    })
+        </script> --}}
+
 
 </div>
