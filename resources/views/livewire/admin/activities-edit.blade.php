@@ -154,25 +154,26 @@
             <div class="card">
                 <div class="card-header bg-secondary text-white">Descripcion de Actividad</div>
                 <div class="card-body">
-                    <div class = "form-group my-4">
+                    {{-- {!! $activity->body!!} --}}
+                    <div class = "form-group my-4" wire:ignore>
                         <label for="body" class="p-r-mute">   </label>
-                        <textarea id="body" wire:model="activity.body" placeholder="Indique de manera especifica como realizar la actividad" class="form-control w-full" rows="6" required></textarea>
-                        {{-- <script>
-                            CKEDITOR.replace( 'body' );
-                        </script> --}}
+                        <textarea id="bodyy" wire:model="activity.body" placeholder="Indique de manera especifica como realizar la actividad" class="form-control w-full" rows="6" required></textarea>
+
 
                     </div>
 
-                    <span class="text-danger">@error('body'){{ $message }}@enderror</span>
+                    <span class="text-danger">@error('bodyy'){{ $message }}@enderror</span>
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-header bg-secondary text-white">Proposito de la Actividad</div>
                 <div class="card-body">
-                    <div class = "form-group my-4">
+                    <div class = "form-group my-4" wire:ignore>
                         <label for="extract" class="p-r-mute">   </label>
-                        <textarea id="extract" wire:model="activity.extract" class="form-control" placeholder="Indique de manera especifica el proposito de la actividad" rows="6" required></textarea>
+                        <textarea id="extract" wire:model="activity.extract"
+                        class="form-control"
+                        placeholder="Indique de manera especifica el proposito de la actividad" rows="6" required></textarea>
                     </div>
 
 
@@ -183,7 +184,7 @@
             <div class="card">
                 <div class="card-header bg-secondary text-white">Criterios de la Evaluacion</div>
                 <div class="card-body">
-                    <div class = "form-group my-4">
+                    <div class = "form-group my-4" wire:ignore>
                         <label for="extract01" class="p-r-mute">   </label>
                         <textarea id="extract01" wire:model="activity.extract01" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
                     </div>
@@ -192,10 +193,92 @@
                 </div>
             </div>
 
+            {{-- @push('js')
+                <script>
+                    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
+                    CKEDITOR.replace( 'body' );
+                    CKEDITOR.replace( 'extract' );
+                    CKEDITOR.replace( 'extract01' );
+
+                </script>
+            @endpush --}}
+
+            {{-- @stack('js') --}}
+
             <script>
-                CKEDITOR.replace( 'body' );
+                /* CKEDITOR01
+                        .create( document.querySelector('body'))
+                        .catch(error => {
+                            console.error (error);
+                        }); */
+
+
+
+
+
+                        /* .then(function(editor){
+                            editor.model.document.on('change:data',() => {
+                                @this.set('body', editor.getData());
+                            })
+                        )}; */
+
+
+                ClassicEditor
+                    .create( document.querySelector( '#bodyy' ) )
+
+                    .then(editor => {
+                        editor.model.document.on('change:data', () => {
+                            editor.model.document.on('change:data', () => {
+                                @this.set('activity.body', editor.getData());
+                            })
+                            /* console.log(editor.getData()) */
+                            /* document.querySelector("#bodyy").value = editor.getData() */
+                        });
+                    })
+                    .catch( error => {
+                        console.error( error )
+                } );
+
+                ClassicEditor
+                    .create( document.querySelector( '#extract' ) )
+
+                    .then(editor => {
+                        editor.model.document.on('change:data', () => {
+                            editor.model.document.on('change:data', () => {
+                                @this.set('activity.extract', editor.getData());
+                            })
+                            /* console.log(editor.getData()) */
+                            /* document.querySelector("#bodyy").value = editor.getData() */
+                        });
+                    })
+                    .catch( error => {
+                        console.error( error )
+                } );
+
+                ClassicEditor
+                    .create( document.querySelector( '#extract01' ) )
+
+                    .then(editor => {
+                        editor.model.document.on('change:data', () => {
+                            editor.model.document.on('change:data', () => {
+                                @this.set('activity.extract01', editor.getData());
+                            })
+                            /* console.log(editor.getData()) */
+                            /* document.querySelector("#bodyy").value = editor.getData() */
+                        });
+                    })
+                    .catch( error => {
+                        console.error( error )
+                } );
+
+
+
+                /* new Pikaday({ field: $extract.input, 'format': 'MM/DD/YYYY', firstDay: 1, minDate: new Date(), }); */
+
+                /* CKEDITOR.replace( 'body' );
                 CKEDITOR.replace( 'extract' );
-                CKEDITOR.replace( 'extract01' );
+                CKEDITOR.replace( 'extract01' ); */
 
             </script>
 
@@ -254,7 +337,11 @@
                                 <p>{{date('d/m/Y', strtotime($lapse_in))}}</p>
                                 </div>
                                 <div class="input">
-                                    <input type="text" name="lapse_in" id="datetimepicker" class="form-control datetimepicker"
+                                    <input type="text" name="lapse_in" id="datepickerIn" class="form-control datepickerIn date
+                                    bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg
+                                    focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5
+                                    dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+                                    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="{{date('d/m/Y', strtotime($lapse_in))}}"
                                     placeholder="inicio"
                                     wire:model="activity.lapse_in">
@@ -270,7 +357,7 @@
                                 </div>
                                 <div class="input">
                                     {{-- <input type="date" name="lapse_out" id="datapicker" class="input-text" --}}
-                                    <input type="text" name="lapse_out" id="datetimepicker" class="form-control datetimepicker"
+                                    <input type="text" name="lapse_out" id="datepickerOut" class="form-control datepickerOut date"
                                     placeholder="{{date('d/m/-Y', strtotime($lapse_out))}}"
                                     wire:model.lazy="activity.lapse_out">
                                     <span class="input-group-addon">
@@ -279,6 +366,13 @@
                                 </div>
                                 {{-- <a href="#" class="calendar-btn hide-text">View calendar</a> --}}
                                 {{-- <p>{{date('d-m-Y', strtotime($academic_finish))}}</p> --}}
+                                {{-- <script>
+                                    $('.datepicker').datepicker({
+                                        format: "dd/mm/yyyy",
+                                        language: "es",
+                                        autoclose: true
+                                    });
+                                </script> --}}
 
                             </div>
 
@@ -299,42 +393,46 @@
                 </div>
             </div>
             <script>
-                /* var picker = new Pikaday({
-                            field: document.getElementById('#datetimepicker'),
-                            format: 'DD MM YYYY'
-
-                        }) */
-                /* $('.datetimepickerIN').datepicker({
-                        format: "mm/dd/yy",
-                        weekStart: 0,
-                        calendarWeeks: true,
-                        autoclose: true,
-                        todayHighlight: true,
-                        orientation: "auto"
-                }); */
-
 
                 /* $(function () {
-                    $('#datetimepickerIn').datepicker({
-
-                    });
-                    $('#datetimepickerOut').datepicker({
-                        useCurrent: true, //Important! See issue #1075
-
-                    });
-                    $("#datetimepickerIn").on("dp.change", function (e) {
-                    $('#datetimepickerOut').data("DateTimePicker").minDate(e.date);
-                        });
-                    $("#datetimepickerOut").on("dp.change", function (e) {
-                            $('#datetimepickerIn').data("DateTimePicker").maxDate(e.date);
-                        });
+                    $('#datetimepicker').datetimepicker();
                 }); */
 
+                /* $('.datepicker').datepicker({
+                    format: "dd/mm/yyyy",
+                    language: "es",
+                    autoclose: true
+                }); */
 
+                $(function () {
+                    $('#datepickerIn').datepicker({
+                        format: "dd/mm/yyyy",
+                        language: "es",
+                        autoclose: true,
+                        todayHighlight: true,
+                        orientation: "auto",
+                        weekStart: 0,
+                        calendarWeeks: false,
+                    });
+                    $('#datepickerOut').datepicker({
+                        useCurrent: false, //Important! See issue #1075
+                        format: "dd/mm/yyyy",
+                        language: "es",
+                        autoclose: true,
+                        todayHighlight: true,
+                        orientation: "auto",
+                        weekStart: 0,
+                        calendarWeeks: false,
+                    });
+                    $('#datepickerIn').on("dp.change", function (e) {
+                        $('#datepickerOut').data("DateTimePicker").minDate(e.date);
+                    });
+                    $('#datepickerOut').on("dp.change", function (e) {
+                        $('#datepickerIn').data("DateTimePicker").maxDate(e.date);
+                    });
+                });
 
-
-
-                $('.datetimepicker').datepicker({
+                /* $('.datetimepicker').datepicker({
                         format: "mm/dd/yy",
                         multidate: true,
                         weekStart: 0,
@@ -343,7 +441,7 @@
                         autoclose: true,
                         todayHighlight: true,
                         orientation: "auto"
-                });
+                }); */
 
 
             </script>

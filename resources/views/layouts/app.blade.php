@@ -23,7 +23,7 @@
 
         <!-- < class="min-h-screen bg-gray-100"> -->
             @livewire('navigation')
- 
+
             <!-- Page Heading -->
 
 
@@ -33,6 +33,10 @@
                 {{ $slot }}
             </main>
         </div>
+
+        <script>
+            
+        </script>
 
         @stack('modals')
 

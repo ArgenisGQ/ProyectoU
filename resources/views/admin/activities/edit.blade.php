@@ -44,11 +44,21 @@
 
         <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+        {{-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css"> --}}
         {{-- <link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet"> --}}
 
         {{-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> --}}
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+
+        {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet"> --}}
+
+        {{-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css"> --}}
+
+
+
+        <link rel="stylesheet" href="{{asset('datePicker/css/bootstrap-datepicker3.css')}}">
+        <link rel="stylesheet" href="{{asset('datePicker/css/bootstrap-standalone.css')}}">
+
+        {{-- @import './node_modules/pikaday/css/pikaday.css'; --}}
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
 
         @livewireStyles
@@ -215,27 +225,51 @@
 
 @section('js')
         @livewireScripts
-        <script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}"></script>
+        {{-- @stack('js') --}}
+
+        {{-- @push('js')
+                <script>
+                    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
+                    /
+                        .create( document.querySelector('body'))
+                        .catch(error => {
+                            console.error (error);
+                        });
+
+
+                </script>
+        @endpush --}}
+        {{-- <script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}"></script> --}}
         {{-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script> NO--}}
-        <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
+        {{-- <script src="{{ asset('ckeditor/ckeditor.js') }}"></script> --}}
+        <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+
 
 
         {{-- <script src="https://rawgit.com/dbushell/Pikaday/master/pikaday.js"></script> --}}
         {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script> --}}
         {{-- <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script> --}}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
+        {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script> --}}
+
+
+
+        <script src="{{ asset('dataPicker/js/bootstrap-datepicker.min.js') }}"></script>
+        <script src="{{ asset('dataPicker/locales/bootstrap-datepicker.es.min.js') }}"></script>
 
         {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-        <script src="https://cdn.jsdelivr/npm/pikaday/pikaday.js"></script> --}}
+        {{-- <script src="https://cdn.jsdelivr/npm/pikaday/pikaday.js"></script> --}}
 
 
         {{-- <script src="moment.js"></script>
         <script src="pikaday.js"></script> --}}
 
-        @stack('js')
+        {{-- @stack('js') --}}
 
         <script>
             $(document).ready( function() {
@@ -263,29 +297,28 @@
 
 
             /* $(function() { */
-                var picker = new Pikaday({
+                /* var picker = new Pikaday({
                         field: document.getElementById('#datetimepicker2'),
                         format: 'DD MM YYYY'
-                        /* onSelect: function() {
-                        console.log(this.getMoment().format('Do MMMM YYYY')); */
-                    })
+
+                    }) */
                 /* }); */
             /* }); */
 
 
-            $(function() {
+            /* $(function() {
                 $('#datetimepicker1').datetimepicker();
-            });
+            }); */
 
             /* $(function () { */
-                    $('.datetimepicker').datepicker({
+                    /* $('.datetimepicker').datepicker({
                         format: "mm/dd/yy",
                         weekStart: 0,
                         calendarWeeks: true,
                         autoclose: true,
                         todayHighlight: true,
                         orientation: "auto"
-                    });
+                    }); */
             /*     }); */
 
             /* ClassicEditor

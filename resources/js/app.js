@@ -6,4 +6,4 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-/* window.Pikaday = require("pikaday"); */
+window.Pikaday = require("pikaday");
