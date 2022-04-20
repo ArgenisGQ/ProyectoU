@@ -395,6 +395,8 @@ class ActivityAdminController extends Controller
         $lapse_in = $activity->lapse_in;
         $lapse_out = $activity->lapse_out;
 
+        /* return $activity->lapse_in; */
+
         /* return $lapse_in; */
 
 

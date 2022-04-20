@@ -42,8 +42,11 @@
 
 @section('css')
 
-        <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+        {{-- <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css"> --}}
+
+        {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker-standalone.min.css" integrity="sha256-SMGbWcp5wJOVXYlZJyAXqoVWaE/vgFA5xfrH3i/jVw0=" crossorigin="anonymous" /> --}}
+
         {{-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css"> --}}
         {{-- <link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet"> --}}
 
@@ -55,11 +58,14 @@
 
 
 
-        <link rel="stylesheet" href="{{asset('datePicker/css/bootstrap-datepicker3.css')}}">
-        <link rel="stylesheet" href="{{asset('datePicker/css/bootstrap-standalone.css')}}">
+        <link rel="stylesheet"  href="{{asset('datePicker/css/bootstrap-datepicker3.css')}}">
+        <link rel="stylesheet"  href="{{asset('datePicker/css/bootstrap-standalone.css')}}">
+
+        {{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css"> --}}
+
 
         {{-- @import './node_modules/pikaday/css/pikaday.css'; --}}
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+        {{-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css"> --}}
 
         @livewireStyles
 
@@ -258,7 +264,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script> --}}
 
 
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
         <script src="{{ asset('dataPicker/js/bootstrap-datepicker.min.js') }}"></script>
         <script src="{{ asset('dataPicker/locales/bootstrap-datepicker.es.min.js') }}"></script>
 

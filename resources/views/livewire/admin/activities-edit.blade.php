@@ -334,17 +334,20 @@
                             <div class="field clearfix date-range-start date-wrapper">
                                 <div class="label">
                                 <label for="lapse_in">Inicio de actividad:</label>
-                                <p>{{date('d/m/Y', strtotime($lapse_in))}}</p>
+                                {{-- <p>{{date('d/m/Y', strtotime($lapse_in))}}</p> --}}
+                                {{-- <p>{{$this->lapse_in}}</p> --}}
                                 </div>
-                                <div class="input">
+                                <div class="input" >
                                     <input type="text" name="lapse_in" id="datepickerIn" class="form-control datepickerIn date
                                     bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg
                                     focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5
                                     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                                     dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="{{date('d/m/Y', strtotime($lapse_in))}}"
-                                    placeholder="inicio"
-                                    wire:model="activity.lapse_in">
+                                    {{-- placeholder="{{date('d/m/Y', strtotime($lapse_in))}}" --}}
+                                    {{-- placeholder="{{$this->lapse_in}}" --}}
+                                    {{-- placeholder="inicio" --}}
+                                    {{-- wire:model.lazy="activity.lapse_in"> --}}
+                                    wire:model.lazy="lapse_in">
                                 </div>
                                 {{-- <a href="#" class="calendar-btn calendar-start hide-text">View calendar</a>--}}
                                 {{-- <p>{{date('d-m-Y', strtotime($academic_start))}}</p> --}}
@@ -353,13 +356,15 @@
                             <div class="field clearfix date-range-start date-wrapper">
                                 <div class="label">
                                 <label for="lapse_out">Final de actividad:</label>
-                                <p>{{date('d/m/Y', strtotime($lapse_out))}}</p>
+                                {{-- <p>{{date('d/m/Y', strtotime($lapse_out))}}</p> --}}
                                 </div>
                                 <div class="input">
                                     {{-- <input type="date" name="lapse_out" id="datapicker" class="input-text" --}}
                                     <input type="text" name="lapse_out" id="datepickerOut" class="form-control datepickerOut date"
-                                    placeholder="{{date('d/m/-Y', strtotime($lapse_out))}}"
-                                    wire:model.lazy="activity.lapse_out">
+                                    {{-- placeholder="{{date('d/m/-Y', strtotime($lapse_out))}}" --}}
+                                    {{-- placeholder="{{$this->lapse_out}}" --}}
+                                    {{-- wire:model.lazy="activity.lapse_out"> --}}
+                                    wire:model.lazy="lapse_out">
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
