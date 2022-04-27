@@ -347,8 +347,9 @@
                                     {{-- placeholder="{{$this->lapse_in}}" --}}
                                     {{-- placeholder="inicio" --}}
                                     {{-- wire:model.lazy="activity.lapse_in"> --}}
-                                    wire:model.lazy="lapse_in">
+                                    wire:model="lapse_in">
                                 </div>
+                                <p>{{$this->lapse_in}}</p>
                                 {{-- <a href="#" class="calendar-btn calendar-start hide-text">View calendar</a>--}}
                                 {{-- <p>{{date('d-m-Y', strtotime($academic_start))}}</p> --}}
                             </div>
@@ -364,7 +365,7 @@
                                     {{-- placeholder="{{date('d/m/-Y', strtotime($lapse_out))}}" --}}
                                     {{-- placeholder="{{$this->lapse_out}}" --}}
                                     {{-- wire:model.lazy="activity.lapse_out"> --}}
-                                    wire:model.lazy="lapse_out">
+                                    wire:model="lapse_out">
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>

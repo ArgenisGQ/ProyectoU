@@ -109,9 +109,9 @@ class ActivitiesEdit extends Component
         /* $this->lapse_in = $activity->lapse_in;
         $this->lapse_out = $activity->lapse_out; */
         /* dd($this->lapse_in); */
-        $this->lapse_in = Carbon::parse($activity->lapse_in)->format('d/m/Y');
+        $this->lapse_in = Carbon::parse($activity->lapse_in)->format('d-m-Y');
         /* dd($this->lapse_in); */
-        $this->lapse_out = Carbon::parse($activity->lapse_out)->format('d/m/Y');
+        $this->lapse_out = Carbon::parse($activity->lapse_out)->format('d-m-Y');
         /* $this->lapse_out = Carbon::parse($activity->lapse_out); */
         /* dd($this->lapse_out); */
 
@@ -262,21 +262,31 @@ class ActivitiesEdit extends Component
 
 
 
-            $this->activity->save();
+            /* $this->activity->save(); */
 
             /* $this->id_activityLast = Activity::where('user_id', $this->userActiveId)
                                     ->latest('id')
                                     ->first('id'); */
 
             $this->id_activityLast = $this->id_activity;
+
+            /* dd($this->lapse_in); */
+
             $this->lapse_in = Carbon::parse($this->lapse_in);
             $this->lapse_out = Carbon::parse($this->lapse_out);
 
-            /* $activity = Activity::find($this->id_activity);
+            dd($this->lapse_in);
+
+
+
+            $activity = Activity::find($this->id_activity);
                 $activity->update([
                     'lapse_in'          => $this->lapse_in,
                     'lapse_out'         => $this->lapse_out,
-                ]); */
+                ]);
+
+
+            dd($activity);
 
             /* dd($this->id_activityLast); */
             /* dd($this->coursess[0]); */
