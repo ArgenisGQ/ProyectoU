@@ -97,7 +97,7 @@
             <div class="card">
                 <div class="card-header bg-secondary text-white">Descripcion de Actividad</div>
                 <div class="card-body">
-                    <div class = "form-group my-4">
+                    <div class = "form-group my-4"  wire:ignore>
                         <label for="body" class="p-r-mute">   </label>
                         <textarea id="body" wire:model="body" class="form-control w-full" placeholder="Indique de manera especifica como realizar la actividad" rows="6" required></textarea>
                     </div>
@@ -122,7 +122,7 @@
             <div class="card">
                 <div class="card-header bg-secondary text-white">Proposito de la Actividad</div>
                 <div class="card-body">
-                    <div class = "form-group my-4">
+                    <div class = "form-group my-4"  wire:ignore>
                         <label for="extract" class="p-r-mute">   </label>
                         <textarea id="extract" wire:model="extract" class="form-control" placeholder="Indique de manera especifica el proposito de la actividad" rows="6" required></textarea>
                     </div>
@@ -135,7 +135,7 @@
             <div class="card">
                 <div class="card-header bg-secondary text-white">Criterios de la Evaluacion</div>
                 <div class="card-body">
-                    <div class = "form-group my-4">
+                    <div class = "form-group my-4"  wire:ignore>
                         <label for="extract01" class="p-r-mute">   </label>
                         <textarea id="extract01" wire:model="extract01" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
                     </div>
@@ -143,6 +143,82 @@
                     <span class="text-danger">@error('extract01'){{ $message }}@enderror</span>
                 </div>
             </div>
+
+            <script>
+                /* CKEDITOR01
+                        .create( document.querySelector('body'))
+                        .catch(error => {
+                            console.error (error);
+                        }); */
+
+
+
+
+
+                        /* .then(function(editor){
+                            editor.model.document.on('change:data',() => {
+                                @this.set('body', editor.getData());
+                            })
+                        )}; */
+
+
+                ClassicEditor
+                    .create( document.querySelector( '#body' ) )
+
+                    .then(editor => {
+                        editor.model.document.on('change:data', () => {
+                            editor.model.document.on('change:data', () => {
+                                @this.set('body', editor.getData());
+                            })
+                            /* console.log(editor.getData()) */
+                            /* document.querySelector("#bodyy").value = editor.getData() */
+                        });
+                    })
+                    .catch( error => {
+                        console.error( error )
+                } );
+
+                ClassicEditor
+                    .create( document.querySelector( '#extract' ) )
+
+                    .then(editor => {
+                        editor.model.document.on('change:data', () => {
+                            editor.model.document.on('change:data', () => {
+                                @this.set('extract', editor.getData());
+                            })
+                            /* console.log(editor.getData()) */
+                            /* document.querySelector("#bodyy").value = editor.getData() */
+                        });
+                    })
+                    .catch( error => {
+                        console.error( error )
+                } );
+
+                ClassicEditor
+                    .create( document.querySelector( '#extract01' ) )
+
+                    .then(editor => {
+                        editor.model.document.on('change:data', () => {
+                            editor.model.document.on('change:data', () => {
+                                @this.set('extract01', editor.getData());
+                            })
+                            /* console.log(editor.getData()) */
+                            /* document.querySelector("#bodyy").value = editor.getData() */
+                        });
+                    })
+                    .catch( error => {
+                        console.error( error )
+                } );
+
+
+
+                /* new Pikaday({ field: $extract.input, 'format': 'MM/DD/YYYY', firstDay: 1, minDate: new Date(), }); */
+
+                /* CKEDITOR.replace( 'body' );
+                CKEDITOR.replace( 'extract' );
+                CKEDITOR.replace( 'extract01' ); */
+
+            </script>
 
 
         </div>

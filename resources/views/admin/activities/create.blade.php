@@ -209,7 +209,10 @@
     <script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}"></script>
     {{-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script> --}}
     {{-- <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script> --}}
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
+    {{-- <script src="{{ asset('ckeditor/ckeditor.js') }}"></script> --}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+
     {{-- <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script> --}}
     {{-- <script>src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"</script> --}}
     <script src="https://rawgit.com/dbushell/Pikaday/master/pikaday.js"></script>
@@ -322,12 +325,12 @@
             console.error( error );
         } ); */
 
-        CKEDITOR.replace( 'extract' );
+        /* CKEDITOR.replace( 'extract' );
 
         CKEDITOR.replace( 'extract01' );
 
         CKEDITOR.replace( 'body' );
-
+ */
         //Scrip para cargar archivo de imagen en url
         document.getElementById("file").addEventListener('change', cambiarImagen);
 
