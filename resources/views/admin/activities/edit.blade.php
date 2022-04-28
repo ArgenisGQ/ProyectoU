@@ -58,8 +58,11 @@
 
 
 
-        <link rel="stylesheet"  href="{{asset('datePicker/css/bootstrap-datepicker3.css')}}">
-        <link rel="stylesheet"  href="{{asset('datePicker/css/bootstrap-standalone.css')}}">
+        {{-- <link rel="stylesheet"  href="{{asset('datePicker/css/bootstrap-datepicker3.css')}}">
+        <link rel="stylesheet"  href="{{asset('datePicker/css/bootstrap-standalone.css')}}"> --}}
+
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
 
         {{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css"> --}}
 
@@ -268,6 +271,10 @@
         <script src="{{ asset('dataPicker/js/bootstrap-datepicker.min.js') }}"></script>
         <script src="{{ asset('dataPicker/locales/bootstrap-datepicker.es.min.js') }}"></script>
 
+        <script src="https://rawgit.com/dbushell/Pikaday/master/pikaday.js"></script>
+
+
+
         {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
         {{-- <script src="https://cdn.jsdelivr/npm/pikaday/pikaday.js"></script> --}}
 
@@ -276,6 +283,11 @@
         <script src="pikaday.js"></script> --}}
 
         {{-- @stack('js') --}}
+
+
+        {{-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script> --}}
 
         <script>
             $(document).ready( function() {

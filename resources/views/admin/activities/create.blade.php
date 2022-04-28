@@ -226,8 +226,8 @@
         });
     </script> --}}
 
-    <script src="moment.js"></script>
-    <script src="pikaday.js"></script>
+    {{-- <script src="moment.js"></script>
+    <script src="pikaday.js"></script> --}}
     {{-- <script>
         var picker = new Pikaday({ field: document.getElementById('datepicker'),
                                    format: 'MM/DD/YYYY',

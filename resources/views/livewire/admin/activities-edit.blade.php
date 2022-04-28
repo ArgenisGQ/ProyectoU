@@ -337,8 +337,8 @@
                                 {{-- <p>{{date('d/m/Y', strtotime($lapse_in))}}</p> --}}
                                 {{-- <p>{{$this->lapse_in}}</p> --}}
                                 </div>
-                                <div class="input" >
-                                    <input type="text" name="lapse_in" id="datepickerIn" class="form-control datepickerIn date
+                                <div class="input" wire:ignore>
+                                    <input type="text" name="lapse_in" id="datepickerInP" class="form-control datepickerIn date
                                     bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg
                                     focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5
                                     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
@@ -359,9 +359,9 @@
                                 <label for="lapse_out">Final de actividad:</label>
                                 {{-- <p>{{date('d/m/Y', strtotime($lapse_out))}}</p> --}}
                                 </div>
-                                <div class="input">
+                                <div class="input" wire:ignore>
                                     {{-- <input type="date" name="lapse_out" id="datapicker" class="input-text" --}}
-                                    <input type="text" name="lapse_out" id="datepickerOut" class="form-control datepickerOut date"
+                                    <input type="text" name="lapse_out" id="datepickerOutP" class="form-control datepickerOut date"
                                     {{-- placeholder="{{date('d/m/-Y', strtotime($lapse_out))}}" --}}
                                     {{-- placeholder="{{$this->lapse_out}}" --}}
                                     {{-- wire:model.lazy="activity.lapse_out"> --}}
@@ -381,6 +381,10 @@
                                 </script> --}}
 
                             </div>
+
+
+
+
 
 
 
@@ -412,7 +416,7 @@
 
                 $(function () {
                     $('#datepickerIn').datepicker({
-                        format: "dd/mm/yyyy",
+                        format: "dd-mm-yyyy",
                         language: "es",
                         autoclose: true,
                         todayHighlight: true,
@@ -422,7 +426,7 @@
                     });
                     $('#datepickerOut').datepicker({
                         useCurrent: false, //Important! See issue #1075
-                        format: "dd/mm/yyyy",
+                        format: "dd-mm-yyyy",
                         language: "es",
                         autoclose: true,
                         todayHighlight: true,
@@ -431,12 +435,92 @@
                         calendarWeeks: false,
                     });
                     $('#datepickerIn').on("dp.change", function (e) {
+                        console.log(e.date);
+                        console.log('IN');
                         $('#datepickerOut').data("DateTimePicker").minDate(e.date);
                     });
                     $('#datepickerOut').on("dp.change", function (e) {
+                        console.log(e.date);
+                        console.log('OUT');
                         $('#datepickerIn').data("DateTimePicker").maxDate(e.date);
                     });
+                    console.log('lapse_in');
                 });
+
+                var picker = new Pikaday({
+                field: document.getElementById('datepickerInX'),
+                onSelect: date => {
+                    const year = date.getFullYear()
+                        ,month = date.getMonth() + 1
+                        ,day = date.getDate()
+                        ,formattedDate = [
+                                    month < 10 ? '0' + month : month,
+                                    day < 10 ? '0' + day : day,
+                                    year
+                        ].join('/')
+                    document.getElementById('datepicker').value = formattedDate
+                }
+                })
+
+                var picker = new Pikaday({
+                field: document.getElementById('datepickerOutX'),
+                onSelect: date => {
+                    const year = date.getFullYear()
+                        ,month = date.getMonth() + 1
+                        ,day = date.getDate()
+                        ,formattedDate = [
+                                    month < 10 ? '0' + month : month,
+                                    day < 10 ? '0' + day : day,
+                                    year
+                        ].join('/')
+                    document.getElementById('datepicker').value = formattedDate
+                }
+                })
+
+
+                var lapse_in = document.getElementById('datepicker');
+                var picker = new Pikaday({
+                    field: document.getElementById('datepickerInP'),
+                    format: 'dd-mm-YYYY',
+                    onSelect: function() {
+                        /* console.log(this.getMoment().format('Do MMMM YYYY')); */
+                        /* lapse_in.value = picker.toString(); */
+                        @this.set('lapse_in', this.toString());
+                        console.log(lapse_in);
+                    }
+                });
+
+                var picker = new Pikaday({
+                    field: document.getElementById('datepickerOutP'),
+                    format: 'dd-mm-YYYY',
+                    onSelect: function() {
+                        console.log(this.getMoment().format('Do MMMM YYYY'));
+                    }
+                });
+
+               
+
+
+               /* $('#datepickerIn').datepicker({
+                    format: 'dd-mm-yyyy',
+                    step: 5,
+                    minDate:0,
+                    onChangeDateTime: function (dp,$input) {
+                        console.log("A new date: " + $input.val()),
+                        console.log($input.getData()),
+                        @this.set('lapse_in', $input.val());
+                    },
+                });
+
+
+                $('#datepickerOut').datepicker({
+                    format: 'dd/mm/yyyy',
+                    step: 5,
+                    onChangeDateTime: function (dp,$input) {
+                        @this.set('lapse_out', $input.val());
+                    },
+                }); */
+
 
                 /* $('.datetimepicker').datepicker({
                         format: "mm/dd/yy",
