@@ -275,18 +275,18 @@ class ActivitiesEdit extends Component
             $this->lapse_in = Carbon::parse($this->lapse_in);
             $this->lapse_out = Carbon::parse($this->lapse_out);
 
-           /*  dd($this->lapse_in); */
+            /* dd($this->lapse_in); */
 
 
 
-            /* $activity = Activity::find($this->id_activity);
+            $activity = Activity::find($this->id_activity);
                 $activity->update([
                     'lapse_in'          => $this->lapse_in,
                     'lapse_out'         => $this->lapse_out,
                 ]);
 
 
-            dd($activity); */
+            dd($activity);
 
             /* dd($this->id_activityLast); */
             /* dd($this->coursess[0]); */
