@@ -19,9 +19,14 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <div>
+            {{-- <div>
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email')" required autofocus />
+            </div> --}}
+
+            <div>
+                <x-jet-label for="email" value="{{ __('Username/Email') }}" />
+                <x-jet-input id="email" class="block w-full mt-1" type="text" name="userName" :value="old('email')" required autofocus />
             </div>
 
             <div class="mt-4">
