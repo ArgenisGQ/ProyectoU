@@ -11,6 +11,8 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Monolog\Handler\IFTTTHandler;
+/* use Illuminate\Support\Facades\Auth; */
+
 
 class UserController extends Controller
 {
@@ -176,6 +178,10 @@ class UserController extends Controller
 
         $input = $request->all();
 
+        /* return $request; */
+        /* return $input; */
+        /* return $user; */
+
 
         //PARA ACTUALIZAR FOTO
         if ($request->hasFile('image')) {
@@ -196,26 +202,45 @@ class UserController extends Controller
         //----------------------
         /* return $input;  */
 
-
+        //PARA ACTUALIZAR PASSWORD -
         if(!empty($input['password'])){
             $input['password'] = Hash::make($input['password']);
+            $user = User::find($user->id);
+            $user->password = $input['password'];
+            $user->save();
         }else{
             $input = Arr::except($input, ['password']);
         }
 
-        /* return $input; */
 
-        $user = User::find($user->id);
+       /*  return $input; */
 
         /* return $user; */
 
-        $user->update([$input]);
+        $user = User::find($user->id);
+        /* $user->password = $input['password']; */
+        /* $user->save(); */
+
+
+
+        /* $user->update([$input]); */
+
+        $user->update([
+            'userName' =>           $input['userName'],
+            'name' =>               $input['name'],
+            'email' =>              $input['email'],
+            'ced' =>                $input['ced'],
+            ]);
+        /* $user->save([$input]);
+ */
+
+
 
         /* return $user; */
 
         DB::table('model_has_roles')->where('model_id', $user)->delete();
 
-        return redirect()->route('admin.users.edit', $user)->with('info', 'Se asigno los roles correspondientes'); //
+        return redirect()->route('admin.users.edit', $user)->with('info', 'Se editaron los datos con exito'); //
     }
 
     /**
