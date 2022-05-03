@@ -9,6 +9,7 @@
 
     <x-slot name="form">
         <!-- Profile Photo -->
+        @can('admin.users.edit.photo')
         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
             <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
                 <!-- Profile Photo File Input -->
@@ -51,34 +52,43 @@
                 <x-jet-input-error for="photo" class="mt-2" />
             </div>
         @endif
+        @endcan
 
         <!-- Name -->
+        @can('admin.users.edit.name')
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="name" value="{{ __('Name') }}" />
             <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
             <x-jet-input-error for="name" class="mt-2" />
         </div>
+        @endcan
 
         <!-- Id Number -->
+        @can('admin.users.edit.ced')
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="ced" value="{{ __('Ced') }}" />
             <x-jet-input id="ced" type="text" class="mt-1 block w-full" wire:model.defer="state.ced" autocomplete="ced" />
             <x-jet-input-error for="ced" class="mt-2" />
         </div>
+        @endcan
 
         <!-- Email -->
+        @can('admin.users.edit.email')
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="email" value="{{ __('Email') }}" />
             <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
             <x-jet-input-error for="email" class="mt-2" />
         </div>
+        @endcan
 
         <!-- UserName -->
+        @can('admin.users.edit.username')
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="username" value="{{ __('Username') }}" />
-            <x-jet-input id="username" type="text" class="mt-1 block w-full" wire:model.defer="state.username" autocomplete="username" />
+            <x-jet-input id="username" type="text" class="mt-1 block w-full" wire:model.defer="state.userName" autocomplete="username" />
             <x-jet-input-error for="username" class="mt-2" />
         </div>
+        @endcan
 
 
         <!-- Roles -->
@@ -96,25 +106,7 @@
 
         @endforeach --}}
 
-        <div class="col-span-6 sm:col-span-4">
-            <div class="field">
-                <label class="label is-small">Sports:</label>
-                <div class="control">
-                  <label class="checkbox">
-                    <input type="checkbox" name="football" value="1" {{ Auth::user()->football === '1' ? 'checked' :''}} wire:model.defer="state.football">
-                        Football
-                    </label>
-                    <label class="checkbox">
-                    <input type="checkbox" name="rugby" value="1"  {{ Auth::user()->rugby === '1' ? 'checked' :''}}>
-                        Rugby
-                    </label>
-                    <label class="checkbox">
-                    <input type="checkbox" name="tennis" value="1"  {{ Auth::user()->tennis === '1' ? 'checked' :''}}>
-                        Radio
-                    </label>
-                </div>
-            </div>
-        </div>
+
 
 
 

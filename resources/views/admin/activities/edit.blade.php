@@ -240,7 +240,7 @@
                 <script>
                     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
-                    /
+                    / 
                         .create( document.querySelector('body'))
                         .catch(error => {
                             console.error (error);
