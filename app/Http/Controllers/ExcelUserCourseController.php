@@ -16,7 +16,10 @@ class ExcelUserCourseController extends Controller
 {
     public function __construct()
     {
-       /*  $this->middleware('can:admin.users.import')->only('importForm','create','importExcel'); */
+        $this->middleware('can:admin.usercourses.import')->only('importForm','create','importExcel');
+        $this->middleware('can:admin.usercourses.analisys')->only('alls');
+        $this->middleware('can:admin.usercourses.analisyscourses')->only('courses');
+        $this->middleware('can:admin.usercourses.analisysusers')->only('users');
 
     }
 
