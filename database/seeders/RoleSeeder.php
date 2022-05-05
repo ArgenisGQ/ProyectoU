@@ -198,7 +198,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin.usercourses.import',
                             'group_id' => 10,
                             'description' => 'Carga masiva de relacion Materia/Profesor'])->syncRoles($role1);
-        Permission::create(['name' => 'admin.usercourses.analisys',
+        Permission::create(['name' => 'admin.usercourses.analisys', 
                             'group_id' => 10,
                             'description' => 'Analisis Materia (Manual)'])->syncRoles($role1);
         Permission::create(['name' => 'admin.usercourses.analisyscourses',

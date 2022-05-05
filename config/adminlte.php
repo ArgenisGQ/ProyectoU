@@ -290,7 +290,7 @@ return [
             'label_color' => 'success', */
         ],
         [
-            'text'        => 'analisis de MATERIA-PROFESOR',
+            'text'        => 'Analisis MATERIA-PROFESOR',
             'route'       => 'admin.usercourses.analisys',
             'icon'        => 'fas fa-fw fa-brain',
             'can'         => 'admin.usercourses.analisys',
@@ -309,10 +309,11 @@ return [
         [
             'text'          => 'Listado de periodos',
             'route'         => 'admin.periods.index',
-            'icon'          => 'fas fa-fw   fa-calender',
+            /* 'icon'          => 'fas fa-fw   fa-calender', */
+            'icon'        => 'fas fa-tachometer-alt fa-fw ',
             'active'        => ['admin/periods*'],
             'can'           => 'admin.periods.index',
-            ],
+        ],
 
 
         [
