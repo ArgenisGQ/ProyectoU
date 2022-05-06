@@ -124,13 +124,13 @@ class RoleSeeder extends Seeder
 
 
         /* ACTIVIDADES USUARIO*/
-        Permission::create(['name' => 'activities.index',
+        /* Permission::create(['name' => 'activities.index',
                             'group_id' => 6,
-                            'description' => 'Ver listado de actividades'])->syncRoles($role1, $role2);
-        Permission::create(['name' => 'activities.show',
+                            'description' => 'Ver listado de actividades'])->syncRoles($role1, $role2); */
+        /* Permission::create(['name' => 'activities.show',
                             'group_id' => 6,
-                            'description' => 'Ver actividades'])->syncRoles($role1);
-        Permission::create(['name' => 'activities.create',
+                            'description' => 'Visualizar Actividad'])->syncRoles($role1); */
+        /* Permission::create(['name' => 'activities.create',
                             'group_id' => 6,
                             'description' => 'Crear actividad'])->syncRoles($role1, $role2);
         Permission::create(['name' => 'activities.edit',
@@ -141,7 +141,7 @@ class RoleSeeder extends Seeder
                             'description' => 'Eliminar actividad'])->syncRoles($role1, $role2);
         Permission::create(['name' => 'activities.selectcourse',
                             'group_id' => 6,
-                            'description' => 'Seleccionar curso'])->syncRoles($role1, $role2);
+                            'description' => 'Seleccionar curso'])->syncRoles($role1, $role2); */
 
         /* ACTIVIDADES ADMIN*/
         Permission::create(['name' => 'admin.activities.index',
@@ -149,7 +149,10 @@ class RoleSeeder extends Seeder
                             'description' => 'Ver listado de actividades'])->syncRoles($role1, $role2);
         Permission::create(['name' => 'admin.activities.show',
                             'group_id' => 7,
-                            'description' => 'Ver actividades'])->syncRoles($role1);
+                            'description' => 'Ver actividades + UNIFICAR '])->syncRoles($role1);
+        Permission::create(['name' => 'activities.show',
+                            'group_id' => 6,//DE OTRO GRUPO PARA UNIFIFICAR
+                            'description' => 'Visualizar Actividad + UNIFIRCAR'])->syncRoles($role1);
         Permission::create(['name' => 'admin.activities.create',
                             'group_id' => 7,
                             'description' => 'Crear actividad'])->syncRoles($role1, $role2);
