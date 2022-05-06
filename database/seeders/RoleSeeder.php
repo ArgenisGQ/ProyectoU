@@ -126,7 +126,7 @@ class RoleSeeder extends Seeder
         /* ACTIVIDADES USUARIO*/
         Permission::create(['name' => 'activities.index',
                             'group_id' => 6,
-                            'description' => 'Ver listado de actividades+'])->syncRoles($role1, $role2);
+                            'description' => 'Ver listado de actividades'])->syncRoles($role1, $role2);
         Permission::create(['name' => 'activities.show',
                             'group_id' => 6,
                             'description' => 'Ver actividades'])->syncRoles($role1);
