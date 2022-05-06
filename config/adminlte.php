@@ -278,24 +278,18 @@ return [
             'route'       => 'admin.courses.import',
             'icon'        => 'fas fa-fw fa-brain',
             'can'         => 'admin.courses.import',
-            /* 'label'       => 4,
-            'label_color' => 'success', */
         ],
         [
-            'text'        => 'Carga masiva de Usuarios y Materias',
+            'text'        => 'Carga masiva de USUARIO-MATERIAS',
             'route'       => 'admin.usercourses.import',
             'icon'        => 'fas fa-fw fa-brain',
             'can'         => 'admin.usercourses.import',
-            /* 'label'       => 4,
-            'label_color' => 'success', */
         ],
         [
-            'text'        => 'Analisis MATERIA-PROFESOR',
+            'text'        => 'Analisis MATERIA-USUARIO',
             'route'       => 'admin.usercourses.analisys',
             'icon'        => 'fas fa-fw fa-brain',
             'can'         => 'admin.usercourses.analisys',
-            /* 'label'       => 4,
-            'label_color' => 'success', */
         ],
         [
             'text'        => 'Lista de roles',
@@ -310,7 +304,7 @@ return [
             'text'          => 'Listado de periodos',
             'route'         => 'admin.periods.index',
             /* 'icon'          => 'fas fa-fw   fa-calender', */
-            'icon'        => 'fas fa-tachometer-alt fa-fw ',
+            'icon'          => 'nav-icon fas fa-calendar-alt ',
             'active'        => ['admin/periods*'],
             'can'           => 'admin.periods.index',
         ],
