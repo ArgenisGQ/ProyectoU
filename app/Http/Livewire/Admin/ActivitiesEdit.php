@@ -286,7 +286,7 @@ class ActivitiesEdit extends Component
                 ]);
 
 
-            dd($activity);
+            /* dd($activity); */
 
             /* dd($this->id_activityLast); */
             /* dd($this->coursess[0]); */
