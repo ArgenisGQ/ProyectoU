@@ -105,10 +105,10 @@
                         <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
                       </p>
 
-                      {{-- <div class="chart">
+                      <div class="chart">
                         <!-- Sales Chart Canvas -->
                         <canvas id="salesChart" height="180" style="height: 180px;"></canvas>
-                      </div> --}}
+                      </div>
                       <!-- /.chart-responsive -->
                     </div>
                     <!-- /.col -->
@@ -697,9 +697,9 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-8">
-                      {{-- <div class="chart-responsive">
+                      <div class="chart-responsive">
                         <canvas id="pieChart" height="150"></canvas>
-                      </div> --}}
+                      </div>
                       <!-- ./chart-responsive -->
                     </div>
                     <!-- /.col -->

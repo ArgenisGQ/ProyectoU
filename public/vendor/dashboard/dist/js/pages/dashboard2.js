@@ -84,7 +84,7 @@ $(function () {
   var pieData = {
     labels: [
       'Chrome',
-      'IE',
+      'IE+nada',
       'FireFox',
       'Safari',
       'Opera',
