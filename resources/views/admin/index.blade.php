@@ -315,13 +315,22 @@
                       <tr>
                         <th>ID Guia</th>
                         <th>Guia</th>
-                        <th>Materia</th>
+                        <th>Asignatura</th>
                         <th>Status</th>
                       </tr>
                       </thead>
                       <tbody>
 
-                      <tr>
+                    @foreach ($activities as $activity )
+                        <tr>
+                            <td><a href="pages/examples/invoice.html">{{$activity->id}}</a></td>
+                            <td>{{$activity->name}}</td>
+                            <td>-</td>
+                            <td><span class="badge badge-success">Shipped</span></td>
+                        </tr>
+                    @endforeach
+
+                      {{-- <tr>
                         <td><a href="pages/examples/invoice.html">1001</a></td>
                         <td>Matematica primer corte</td>
                         <td>Matematica I</td>
@@ -351,7 +360,8 @@
                         <td>Matematica I</td>
                         <td><span class="badge badge-warning">Pending</span></td>
                       </tr>
-                      </tbody>
+                      </tbody> --}}
+
                     </table>
                   </div>
                   <!-- /.table-responsive -->
@@ -450,38 +460,38 @@
                     {{-- @foreach ( as )
 
                     @endforeach; --}}
-                    
-                    <!-- /.item -->
-                    <li class="item">
-                      <div class="product-info">
-                        <a href="javascript:void(0)" class="product-title">Matematica I
-                          <span class="badge badge-info float-right">Secciones: 2</span></a>
-                        <span class="product-description">
-                          Texto explicativo.
-                        </span>
-                      </div>
-                    </li>
-                    <!-- /.item -->
-                    <li class="item">
-                      <div class="product-info">
-                        <a href="javascript:void(0)" class="product-title">Fisica II
-                          <span class="badge badge-info float-right">Secciones: 1</span></a>
-                        <span class="product-description">
-                          Texto explicativo.
-                        </span>
-                      </div>
-                    </li>
-                    <!-- /.item -->
-                    <li class="item">
-                      <div class="product-info">
-                        <a href="javascript:void(0)" class="product-title">Electronica III
-                          <span class="badge badge-info float-right">Secciones: 3</span></a>
-                        <span class="product-description">
-                          Texto explicativo.
-                        </span>
-                      </div>
-                    </li>
-                    <!-- /.item -->
+                    @foreach ($courses as $course)
+                            {{-- <tr>
+                                <td>{{$role->id}}</td>
+                                <td>{{$role->name}}</td>
+                                <td width="10px">
+
+                                        <a href="{{route('admin.roles.edit', $role)}}" class="btn btn-primary btn-sm">Editar</a>
+
+
+                                </td>
+                                <td width="10px">
+
+                                        <form action="{{route('admin.roles.destroy', $role)}}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                        </form>
+
+                                </td>
+                            </tr> --}}
+                            <!-- /.item -->
+                            <li class="item">
+                                <div class="product-info">
+                                <a href="javascript:void(0)" class="product-title">{{$course->course}}
+                                    <span class="badge badge-info float-right">Secciones: 2</span></a>
+                                <span class="product-description">
+                                    Texto explicativo.
+                                </span>
+                                </div>
+                            </li>
+                    @endforeach
+
                   </ul>
                 </div>
                 <!-- /.card-body -->
