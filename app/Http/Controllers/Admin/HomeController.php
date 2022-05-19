@@ -23,8 +23,12 @@ class HomeController extends Controller
                         ->get();
         $courses = $coursesForUser->unique('code');
 
-        $activities = Activity::where('status',2)
+        /* $activities = Activity::where('status',2)
                         ->where('user_id', auth()->user()->id)
+                        ->latest()
+                        ->paginate(8); */
+        $activities = Activity::where('user_id', auth()->user()->id)
+                        /* ->where('status',2) */                        
                         ->latest()
                         ->paginate(8);
 
@@ -43,6 +47,16 @@ class HomeController extends Controller
                         ->get()
                         ->count();
         /* -------------------------- */
+        $coursesCount = $coursesForUser->unique('code')->count();//materias en total por usuario
+        $activitiesCount = Activity::where('user_id', auth()->user()->id)
+                        ->get()
+                        ->count(); //activaides en total creadas
+        $activitiesCountPdf = Activity::where('user_id', auth()->user()->id)
+                        ->where('status',2)
+                        ->get()
+                        ->count(); //actividades terminadas (Para pdf)
+        
+
 
         /* return $coursesForUserCount; */
 
@@ -53,6 +67,7 @@ class HomeController extends Controller
         /* $activities = Activity::where('status',2)->latest()->paginate(8); */
 
 
-        return view('admin.index', compact('courses', 'activities', 'coursesForUser', 'activityCourse', 'userActive'));
+        return view('admin.index', compact('courses', 'activities', 'coursesForUser', 'activityCourse', 'userActive',
+                                            'coursesCount', 'activitiesCount', 'activitiesCountPdf'));
     }
 }

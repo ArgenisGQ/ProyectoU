@@ -15,7 +15,7 @@
 
                 <div class="info-box-content">
                   <span class="info-box-text">Materias</span>
-                  <span class="info-box-number">10
+                  <span class="info-box-number">{{$coursesCount}}
                     {{-- <small>%</small> --}}
                   </span>
                 </div>
@@ -29,8 +29,8 @@
                 <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
                 <div class="info-box-content">
-                  <span class="info-box-text">Guias creadas</span>
-                  <span class="info-box-number">0</span>
+                  <span class="info-box-text">Actividades creadas</span>
+                  <span class="info-box-number">{{$activitiesCount}}</span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -46,8 +46,8 @@
                 <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
 
                 <div class="info-box-content">
-                  <span class="info-box-text">Guias aceptadas</span>
-                  <span class="info-box-number">0</span>
+                  <span class="info-box-text">Actividades terminadas</span>
+                  <span class="info-box-number">{{$activitiesCountPdf}}</span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -60,7 +60,7 @@
 
                 <div class="info-box-content">
                   <span class="info-box-text">Cronogramas</span>
-                  <span class="info-box-number">0</span>
+                  <span class="info-box-number">1</span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -296,7 +296,7 @@
               <!-- TABLE: LATEST ORDERS -->
               <div class="card">
                 <div class="card-header border-transparent">
-                  <h3 class="card-title">Ultimas Guias</h3>
+                  <h3 class="card-title">Ultimas Actividades</h3>
 
                   <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -313,8 +313,8 @@
                     <table class="table m-0">
                       <thead>
                       <tr>
-                        <th>ID Guia</th>
-                        <th>Guia</th>
+                        <th>ID Actividad</th>
+                        <th>Actividad</th>
                         <th>Asignatura</th>
                         <th>Status</th>
                       </tr>
@@ -331,8 +331,13 @@
                         <tr>
                             <td><a href={{route('activities.show', $activity)}}>{{$activity->id}}</a></td>
                             <td>{{$activity->name}}</td>
-                            <td>{{$cursoData->course}}</td>
-                            <td><span class="badge badge-success">Shipped</span></td>
+                            <td>{{$cursoData->course}}</td>                 
+                            @if ($activity->status == 2)
+                                <td><span class="badge badge-success">Terminada</span></td>
+                            @else
+                                <td><span class="badge badge-warning">Borrador</span></td>
+                            @endif
+                            
                         </tr>
                     @endforeach
 
@@ -374,8 +379,8 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer clearfix">
-                  <a href="{{route('admin.activities.create')}}" class="btn btn-sm btn-info float-left">Place New Order</a>
-                  <a href="{{route('admin.activities.index')}}" class="btn btn-sm btn-secondary float-right">View All Orders</a>
+                  <a href="{{route('admin.activities.create')}}" class="btn btn-sm btn-info float-left">Crear nueva Actividad</a>
+                  <a href="{{route('admin.activities.index')}}" class="btn btn-sm btn-secondary float-right">Ver todas las Actividades</a>
                 </div>
                 <!-- /.card-footer -->
 
@@ -466,26 +471,7 @@
                     {{-- @foreach ( as )
 
                     @endforeach; --}}
-                    @foreach ($courses as $course)
-                            {{-- <tr>
-                                <td>{{$role->id}}</td>
-                                <td>{{$role->name}}</td>
-                                <td width="10px">
-
-                                        <a href="{{route('admin.roles.edit', $role)}}" class="btn btn-primary btn-sm">Editar</a>
-
-
-                                </td>
-                                <td width="10px">
-
-                                        <form action="{{route('admin.roles.destroy', $role)}}" method="POST">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                        </form>
-
-                                </td>
-                            </tr> --}}
+                    @foreach ($courses as $course)                            
                             <!-- /.item -->
                             @php
                                 $cursoData = App\Models\User_course::where('ced', $userActive)
