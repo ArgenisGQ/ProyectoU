@@ -322,10 +322,19 @@
                       <tbody>
 
                     @foreach ($activities as $activity )
+                        @php
+                            $cursoId = App\Models\Activity_course::where('id_activity',$activity->id)->first();
+                            /* dd($cursoId->id_course); */
+                            $cursoData = App\Models\User_course::where('id', $cursoId->id_course)->first();
+
+
+                            /* dd($cursoData->course); */
+                        @endphp
                         <tr>
-                            <td><a href="pages/examples/invoice.html">{{$activity->id}}</a></td>
+                            <td><a href={{route('activities.show', $activity)}}>{{$activity->id}}</a></td>
                             <td>{{$activity->name}}</td>
-                            <td>-</td>
+                            {{-- <td>{{$cursoData->course}}</td> --}}
+                            <td>{{$cursoData->course}}</td>
                             <td><span class="badge badge-success">Shipped</span></td>
                         </tr>
                     @endforeach
@@ -368,8 +377,8 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer clearfix">
-                  <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>
-                  <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>
+                  <a href="{{route('admin.activities.create')}}" class="btn btn-sm btn-info float-left">Place New Order</a>
+                  <a href="{{route('admin.activities.index')}}" class="btn btn-sm btn-secondary float-right">View All Orders</a>
                 </div>
                 <!-- /.card-footer -->
 

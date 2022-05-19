@@ -28,14 +28,20 @@ class HomeController extends Controller
                         ->latest()
                         ->paginate(8);
 
-        $activity_course = Activity_course::all();
+        $activityCourse = Activity_course::all();
+
+        $coursesForActivity =  User_course::where('ced', $userActive)
+                        /* ->where('academic_finish', '<', $today) */
+                        /* ->latest() */
+                        ->get();
 
         /* return $activity_course; */
         /* return $activities; */
         /* return $courses;*/
+        /* return $coursesForUser; */
         /* $activities = Activity::where('status',2)->latest()->paginate(8); */
 
 
-        return view('admin.index', compact('courses', 'activities'));
+        return view('admin.index', compact('courses', 'activities', 'coursesForUser', 'activityCourse'));
     }
 }
