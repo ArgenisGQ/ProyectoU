@@ -296,7 +296,7 @@
 
                     <div>
                         <input wire:model="status" name="status" type="radio" value="1" /> Borrador
-                        <input wire:model="status" name="status" type="radio" value="3" /> Revision
+                        {{-- <input wire:model="status" name="status" type="radio" value="3" /> Revision --}}
                         <input wire:model="status" name="status" type="radio" value="2" /> Publicado
                     </div>
 

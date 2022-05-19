@@ -18,7 +18,10 @@
                         <tr>
                             <td>{{$activity->id}}</td>
                             {{-- <td>{{$post->name}}</td> --}}
-                            <td><a href="{{route('activities.show', $activity)}}">
+                            {{-- <td><a href="{{route('activities.show', $activity)}}">
+                                {{$activity->name}}
+                            </a></td> --}}
+                            <td><a href="{{route('activities.pdf.down', $activity)}}">
                                 {{$activity->name}}
                             </a></td>
                             <td with="10px">

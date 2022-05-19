@@ -95,6 +95,7 @@ class ActivityController extends Controller
                                     'today', 'lapse_in', 'lapse_out',
                                     ));
                                     /* 'academic_start', 'academic_finish')); */
+                                    
 
         /* return $activity; */
 

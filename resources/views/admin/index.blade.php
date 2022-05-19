@@ -329,7 +329,8 @@
                             /* dd($cursoData->course); */
                         @endphp
                         <tr>
-                            <td><a href={{route('activities.show', $activity)}}>{{$activity->id}}</a></td>
+                           {{--  <td><a href={{route('activities.show', $activity)}}>{{$activity->id}}</a></td> --}}
+                            <td><a href={{route('activities.pdf.down', $activity)}}>{{$activity->id}}</a></td>                            
                             <td>{{$activity->name}}</td>
                             <td>{{$cursoData->course}}</td>                 
                             @if ($activity->status == 2)
