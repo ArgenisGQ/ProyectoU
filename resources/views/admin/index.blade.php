@@ -326,14 +326,11 @@
                             $cursoId = App\Models\Activity_course::where('id_activity',$activity->id)->first();
                             /* dd($cursoId->id_course); */
                             $cursoData = App\Models\User_course::where('id', $cursoId->id_course)->first();
-
-
                             /* dd($cursoData->course); */
                         @endphp
                         <tr>
                             <td><a href={{route('activities.show', $activity)}}>{{$activity->id}}</a></td>
                             <td>{{$activity->name}}</td>
-                            {{-- <td>{{$cursoData->course}}</td> --}}
                             <td>{{$cursoData->course}}</td>
                             <td><span class="badge badge-success">Shipped</span></td>
                         </tr>
@@ -490,10 +487,17 @@
                                 </td>
                             </tr> --}}
                             <!-- /.item -->
+                            @php
+                                $cursoData = App\Models\User_course::where('ced', $userActive)
+                                                                    ->where('code', $course->code)
+                                                                    ->get()
+                                                                    ->count();
+                                /* dd($cursoData); */                                
+                            @endphp
                             <li class="item">
                                 <div class="product-info">
                                 <a href="javascript:void(0)" class="product-title">{{$course->course}}
-                                    <span class="badge badge-info float-right">Secciones: 2</span></a>
+                                    <span class="badge badge-info float-right">Secciones: {{$cursoData}}</span></a>
                                 <span class="product-description">
                                     Texto explicativo.
                                 </span>

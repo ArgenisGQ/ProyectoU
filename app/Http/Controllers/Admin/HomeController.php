@@ -35,6 +35,17 @@ class HomeController extends Controller
                         /* ->latest() */
                         ->get();
 
+        /* ejemplos para contadores de registros */
+        $activityCount = Activity::count(); //contador total de registros en actividades        
+        $coursesForUserCount =  User_course::where('ced', $userActive)
+                        /* ->where('academic_finish', '<', $today) */
+                        /* ->latest() */
+                        ->get()
+                        ->count();
+        /* -------------------------- */
+
+        /* return $coursesForUserCount; */
+
         /* return $activity_course; */
         /* return $activities; */
         /* return $courses;*/
@@ -42,6 +53,6 @@ class HomeController extends Controller
         /* $activities = Activity::where('status',2)->latest()->paginate(8); */
 
 
-        return view('admin.index', compact('courses', 'activities', 'coursesForUser', 'activityCourse'));
+        return view('admin.index', compact('courses', 'activities', 'coursesForUser', 'activityCourse', 'userActive'));
     }
 }
