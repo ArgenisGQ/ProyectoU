@@ -321,7 +321,7 @@
                       </thead>
                       <tbody>
 
-                    {{-- @if ($coursesCount = 0) --}}
+
 
                         @foreach ($activities as $activity )
                             @php
@@ -354,7 +354,7 @@
                             </tr>
                         @endforeach
 
-                    {{-- @endif --}}
+
 
 
 

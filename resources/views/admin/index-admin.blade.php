@@ -1,9 +1,38 @@
-@extends('adminlte::page')
+@foreach ($activities as $activity )
+                            @php
+                                $cursoId = App\Models\Activity_course::where('id_activity',$activity->id)->first();
+                                /* dd($cursoId); */
+                                if ($cursoId) {
+                                    $cursoData = App\Models\User_course::where('id', $cursoId->id_course)->first();
+                                }   else {
+                                    $cursoData = 0;
+                                };
+
+                                /* $cursoData = App\Models\User_course::where('id', $cursoId->id_course)->first(); */
+                                /* dd($cursoData->course); */
+                            @endphp
+                            <tr>
+                            {{--  <td><a href={{route('activities.show', $activity)}}>{{$activity->id}}</a></td> --}}
+                                <td><a href={{route('activities.pdf.down', $activity)}}>{{$activity->id}}</a></td>
+                                <td>{{$activity->name}}</td>
+                                @if ($cursoData != 0)
+                                    <td>{{$cursoData->course}}</td>
+                                @else
+                                    <td>--</td>
+                                @endif
+                                @if ($activity->status == 2)
+                                    <td><span class="badge badge-success">Terminada</span></td>
+                                @else
+                                    <td><span class="badge badge-warning">Borrador</span></td>
+                                @endif
+
+                            </tr>
+                        @endforeach
 
 @section('title', 'Proyecto U')
 
 @section('content_header')
-    <h1>PANEL DE ADMINISTRACION</h1>
+    <h1>PANEL DE ADMINISTRACION - ROOT</h1>
 @stop
 
 @section('content')
@@ -321,26 +350,36 @@
                       </thead>
                       <tbody>
 
-                    @foreach ($activities as $activity )
-                        @php
-                            $cursoId = App\Models\Activity_course::where('id_activity',$activity->id)->first();
-                            /* dd($cursoId->id_course); */
-                            $cursoData = App\Models\User_course::where('id', $cursoId->id_course)->first();
-                            /* dd($cursoData->course); */
-                        @endphp
-                        <tr>
-                           {{--  <td><a href={{route('activities.show', $activity)}}>{{$activity->id}}</a></td> --}}
-                            <td><a href={{route('activities.pdf.down', $activity)}}>{{$activity->id}}</a></td>                            
-                            <td>{{$activity->name}}</td>
-                            <td>{{$cursoData->course}}</td>                 
-                            @if ($activity->status == 2)
-                                <td><span class="badge badge-success">Terminada</span></td>
-                            @else
-                                <td><span class="badge badge-warning">Borrador</span></td>
-                            @endif
-                            
-                        </tr>
-                    @endforeach
+                        @foreach ($activities as $activity )
+                            @php
+                                $cursoId = App\Models\Activity_course::where('id_activity',$activity->id)->first();
+                                /* dd($cursoId); */
+                                if ($cursoId) {
+                                    $cursoData = App\Models\User_course::where('id', $cursoId->id_course)->first();
+                                }   else {
+                                    $cursoData = 0;
+                                };
+
+                                /* $cursoData = App\Models\User_course::where('id', $cursoId->id_course)->first(); */
+                                /* dd($cursoData->course); */
+                            @endphp
+                            <tr>
+                            {{--  <td><a href={{route('activities.show', $activity)}}>{{$activity->id}}</a></td> --}}
+                                <td><a href={{route('activities.pdf.down', $activity)}}>{{$activity->id}}</a></td>
+                                <td>{{$activity->name}}</td>
+                                @if ($cursoData != 0)
+                                    <td>{{$cursoData->course}}</td>
+                                @else
+                                    <td>--</td>
+                                @endif
+                                @if ($activity->status == 2)
+                                    <td><span class="badge badge-success">Terminada</span></td>
+                                @else
+                                    <td><span class="badge badge-warning">Borrador</span></td>
+                                @endif
+
+                            </tr>
+                        @endforeach
 
                       {{-- <tr>
                         <td><a href="pages/examples/invoice.html">1001</a></td>
@@ -472,14 +511,14 @@
                     {{-- @foreach ( as )
 
                     @endforeach; --}}
-                    @foreach ($courses as $course)                            
+                    @foreach ($courses as $course)
                             <!-- /.item -->
                             @php
                                 $cursoData = App\Models\User_course::where('ced', $userActive)
                                                                     ->where('code', $course->code)
                                                                     ->get()
                                                                     ->count();
-                                /* dd($cursoData); */                                
+                                /* dd($cursoData); */
                             @endphp
                             <li class="item">
                                 <div class="product-info">

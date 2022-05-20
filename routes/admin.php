@@ -21,6 +21,8 @@ use App\Http\Controllers\Activities\FacultyAdminController;
 
 Route::get('', [HomeController::class, 'index'])->middleware('can:admin.home')->name('admin.home');
 
+Route::get('root', [HomeController::class, 'root'])->middleware('can:admin.home')->name('admin.root'); //colocar el CAN 
+
 Route::resource('users', UserController::class)->only(['index', 'create', 'edit', 'store', 'show', 'update', 'destroy'])->names('admin.users');
 
 Route::resource('roles', RoleController::class)->only(['index', 'create', 'edit', 'store', 'show', 'update', 'destroy'])->names('admin.roles');

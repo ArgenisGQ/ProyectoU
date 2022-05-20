@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Proyecto UNY',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -66,11 +66,11 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
+    'usermenu_header' => false,//false
     'usermenu_header_class' => 'bg-primary',
-    'usermenu_image' => false,
-    'usermenu_desc' => false,
-    'usermenu_profile_url' => false,
+    'usermenu_image' => false,//false
+    'usermenu_desc' => true,//false
+    'usermenu_profile_url' => false,//false
 
     /*
     |--------------------------------------------------------------------------
@@ -236,6 +236,11 @@ return [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
+        [
+            'text'         => 'Logout',
+            'url'          => 'logout',
+            'topnav_right' => true,
+        ],
 
         // Sidebar items:
         [
@@ -253,6 +258,15 @@ return [
             /* 'icon'        => 'fas fa-tachometer-alt fa-fw ', */
             'icon'        => 'fas fa-fw fa-border-none',
             'can'         => 'admin.home',
+            /* 'label'       => 4,
+            'label_color' => 'success', */
+        ],
+        [
+            'text'        => 'Dashboard-ROOT',
+            'route'       => 'admin.root',
+            /* 'icon'        => 'fas fa-tachometer-alt fa-fw ', */
+            'icon'        => 'fas fa-fw fa-border-none',
+            /* 'can'         => 'admin.root', */
             /* 'label'       => 4,
             'label_color' => 'success', */
         ],
