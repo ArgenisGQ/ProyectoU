@@ -32,7 +32,7 @@
               {{-- <div class="col-md-6 offset-md-3"> --}}
               <div class="col-md-10 max-w-sm w-full lg:max-w-full lg:flex offset-md-1">
                   {{-- <h1>Creacion de Actividades</h1><hr> --}}
-                  @livewire('admin.activities-create', compact('courses', 'userActiveName',
+                  @livewire('admin.activities-create', compact('courses', 'userActiveName', /* 'academic_start', 'academic_finish' */
                                                                 'evaluations', 'userActiveId'))
               </div>
         </div>
@@ -253,6 +253,10 @@
                 }
             }); */
 
+
+
+
+
             /* var picker = new Pikaday({
                     field: document.getElementById('datapicker'),
                     toString(date, format) { // using moment
@@ -260,9 +264,14 @@
                     },
                 }); */
 
+                /* -------------------------FUNCIONAL---------------------------------------- */
 
-                var picker = new Pikaday({
-                field: document.getElementById('datepicker'),
+
+
+
+
+                /* var picker = new Pikaday({
+                field: document.getElementById('datepickerDD'),
                 onSelect: date => {
                     const year = date.getFullYear()
                         ,month = date.getMonth() + 1
@@ -274,7 +283,9 @@
                         ].join('/')
                     document.getElementById('datepicker').value = formattedDate
                 }
-                })
+                }) */
+
+                /* -------------------------------------------------------------------------- */
 
                 /* if ( $('html').hasClass('no-touch') ) {
                 var $input, $btn;

@@ -265,7 +265,7 @@
                                 <label for="lapse_in">Inicio de actividad:</label>
                                 </div>
                                 <div class="input">
-                                    <input type="date" name="lapse_in" id="datapicker" class="input-text"
+                                    <input type="text" name="lapse_in" id="datepickerInP" class="input-text"
                                     placeholder="{{date('d-m-Y', strtotime($academic_start))}}"
                                     wire:model="lapse_in">
                                 </div>
@@ -278,7 +278,7 @@
                                 <label for="lapse_out">Final de actividad:</label>
                                 </div>
                                 <div class="input">
-                                    <input type="date" name="lapse_out" id="datapicker" class="input-text"
+                                    <input type="text" name="lapse_out" id="datepickerOutP" class="input-text"
                                     placeholder="{{date('d-m-Y', strtotime($academic_finish))}}"
                                     wire:model="lapse_out">
                                 </div>
@@ -287,8 +287,63 @@
 
                             </div>
 
+                            <script>
+                                var startDate,endDate,
+                                updateStartDate = function() {
+                                    startPicker.setStartRange(startDate);
+                                    endPicker.setStartRange(startDate);
+                                    endPicker.setMinDate(startDate);
+                                },
+                                updateEndDate = function() {
+                                    startPicker.setEndRange(endDate);
+                                    startPicker.setMaxDate(endDate);
+                                    endPicker.setEndRange(endDate);
+                                },
+                                startPicker = new Pikaday({
+                                    field: document.getElementById('datepickerInP'),
+                                    i18n: {
+                                        previousMonth : 'Anterior',
+                                        nextMonth     : 'Siguiente',
+                                        months        : ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+                                        weekdays      : ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+                                        weekdaysShort : ['Dom','Lun','Mar','Mie','Jue','Vie','Sáb']
+                                    },
+                                    format: 'DD-MM-YYYY',
+                                    minDate: new Date(),
+                                    maxDate: new Date(2022, 12, 31),
+                                    onSelect: function() {
+                                        startDate = this.getDate();
+                                        updateStartDate();
+                                        @this.set('lapse_in', this.toString());
+                                        /* @this.set('lapse_in'); */
+                                    }
+                                }),
+                                endPicker = new Pikaday({
+                                    field: document.getElementById('datepickerOutP'),
+                                    i18n: {
+                                        previousMonth : 'Anterior',
+                                        nextMonth     : 'Siguiente',
+                                        months        : ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+                                        weekdays      : ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+                                        weekdaysShort : ['Dom','Lun','Mar','Mie','Jue','Vie','Sáb']
+                                    },
+                                    format: 'DD-MM-YYYY',
+                                    minDate: new Date(),
+                                    maxDate: new Date(2022, 12, 31),
+                                    onSelect: function() {
+                                        endDate = this.getDate();
+                                        updateEndDate();
+                                        @this.set('lapse_out', this.toString());
+                                        /* @this.set('lapse_out'); */
+                                    }
+                                }),
+                                _startDate = startPicker.getDate(),
+                                _endDate = endPicker.getDate();
+                            </script>
+
                         </div>
                     </div>
+
 
                     <div>
                         <input wire:model="status" name="status" type="radio" value="1" /> Borrador

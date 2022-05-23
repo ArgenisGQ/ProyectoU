@@ -371,7 +371,7 @@
                             </div>
 
                             <div style="display: inline-block">
-                                <label for="end">EFinal de actividad:</label>
+                                <label for="end">Final de actividad:</label>
                                 {{-- <br> --}}
                                 <input type="text" id="datepickerOutP"
                                 wire:model="lapse_out">

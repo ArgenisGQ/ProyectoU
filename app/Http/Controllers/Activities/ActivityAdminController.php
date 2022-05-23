@@ -132,6 +132,11 @@ class ActivityAdminController extends Controller
         /* $academic_start = now()->format('d/m/Y'); */
 
 
+        $academic_start =  $period_status->academic_start;
+        $academic_finish = $period_status->academic_finish;
+
+        /* return $academic_start->format('m'); */
+
 
         /* --------------relacion de usuarios con materias---------------- */
         /* $user_courses = User_course::all(); */
@@ -167,6 +172,11 @@ class ActivityAdminController extends Controller
         /* return $userActive; */
         /* return $coursesForUser; */
         /* --------------------------------------------------------------- */
+
+        /* ---------------- transformar fecha para pasar a js --------------------- */
+
+
+        /* ------------------------------------------------------------------------ */
 
 
         return view('admin.activities.create', compact('faculties', 'courses',
