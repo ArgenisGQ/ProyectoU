@@ -8,16 +8,12 @@
 
         @if ($currentStep == 1)
 
-
-
-
-
         <div class="step-one">
             <div class="card">
                 <div class="card-header bg-secondary text-white">Paso 1/3 - Seleccionar Materias</div>
                 <div class="card-body">
 
-                    <div class="d-flex flex-column align-items-left mt-2">
+                    <div class="w-screen flex-col align-items-left mt-2">
 
                         {{-- @foreach ( $coursesForUser as $curso ) --}}
                         @foreach ( $courses as $curso )

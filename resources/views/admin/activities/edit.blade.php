@@ -30,7 +30,8 @@
 
         <div class="container">
             <div class="row" style="margin-top:50px">
-                  <div class="col-md-6 offset-md-3">
+                  {{-- <div class="col-md-6 offset-md-3"> --}}
+                  <div class="col-md-10 max-w-sm w-full lg:max-w-full lg:flex offset-md-1">
                       {{-- <h1>Creacion de Actividades</h1><hr> --}}
                       @livewire('admin.activities-edit', compact('courses', 'userActiveName',
                                                                     'evaluations', 'userActiveId', 'lapse_in', 'lapse_out',
@@ -240,7 +241,7 @@
                 <script>
                     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
-                    / 
+                    /
                         .create( document.querySelector('body'))
                         .catch(error => {
                             console.error (error);
