@@ -1,33 +1,4 @@
-@foreach ($activities as $activity )
-                            @php
-                                $cursoId = App\Models\Activity_course::where('id_activity',$activity->id)->first();
-                                /* dd($cursoId); */
-                                if ($cursoId) {
-                                    $cursoData = App\Models\User_course::where('id', $cursoId->id_course)->first();
-                                }   else {
-                                    $cursoData = 0;
-                                };
-
-                                /* $cursoData = App\Models\User_course::where('id', $cursoId->id_course)->first(); */
-                                /* dd($cursoData->course); */
-                            @endphp
-                            <tr>
-                            {{--  <td><a href={{route('activities.show', $activity)}}>{{$activity->id}}</a></td> --}}
-                                <td><a href={{route('activities.pdf.down', $activity)}}>{{$activity->id}}</a></td>
-                                <td>{{$activity->name}}</td>
-                                @if ($cursoData != 0)
-                                    <td>{{$cursoData->course}}</td>
-                                @else
-                                    <td>--</td>
-                                @endif
-                                @if ($activity->status == 2)
-                                    <td><span class="badge badge-success">Terminada</span></td>
-                                @else
-                                    <td><span class="badge badge-warning">Borrador</span></td>
-                                @endif
-
-                            </tr>
-                        @endforeach
+@extends('adminlte::page')
 
 @section('title', 'Proyecto U')
 
@@ -357,7 +328,7 @@
                                 if ($cursoId) {
                                     $cursoData = App\Models\User_course::where('id', $cursoId->id_course)->first();
                                 }   else {
-                                    $cursoData = 0;
+                                    $cursoData = 'no';
                                 };
 
                                 /* $cursoData = App\Models\User_course::where('id', $cursoId->id_course)->first(); */
@@ -367,7 +338,7 @@
                             {{--  <td><a href={{route('activities.show', $activity)}}>{{$activity->id}}</a></td> --}}
                                 <td><a href={{route('activities.pdf.down', $activity)}}>{{$activity->id}}</a></td>
                                 <td>{{$activity->name}}</td>
-                                @if ($cursoData != 0)
+                                @if ($cursoData != 'no')
                                     <td>{{$cursoData->course}}</td>
                                 @else
                                     <td>--</td>

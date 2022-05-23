@@ -19,9 +19,11 @@ use App\Http\Controllers\Activities\FacultyAdminController;
 
 
 
+
+
 Route::get('', [HomeController::class, 'index'])->middleware('can:admin.home')->name('admin.home');
 
-Route::get('root', [HomeController::class, 'root'])->middleware('can:admin.home')->name('admin.root'); //colocar el CAN 
+Route::get('root', [HomeController::class, 'root'])->middleware('can:admin.home')->name('admin.root'); //colocar el CAN
 
 Route::resource('users', UserController::class)->only(['index', 'create', 'edit', 'store', 'show', 'update', 'destroy'])->names('admin.users');
 
@@ -50,6 +52,8 @@ Route::get('analisys', [ExcelUserCourseController::class, 'alls'])->name('admin.
 Route::get('analisyscourses', [ExcelUserCourseController::class, 'courses'])->name('admin.usercourses.analisyscourses' );
 
 Route::get('analisysusers', [ExcelUserCourseController::class, 'users'])->name('admin.usercourses.analisysusers' );
+
+Route::get('logout', [LoginController::class, 'logout'])->name('admin.logout');
 
 /* Route::get('activities/selectcourse', [ActivityAdminController::class, 'selectCourse'])->name('admin.activities.selectcourse' ); */
 

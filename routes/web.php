@@ -8,6 +8,7 @@ use App\Http\Controllers\PdfActiController;
 use App\Http\Controllers\Activities\ActivityController;
 use CKSource\CKFinder\CKFinder;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,3 +80,8 @@ Route::any('/ckfinder/connector', '\CKSource\CKFinderBridge\Controller\CKFinderC
 
 Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderController@browserAction')
     ->name('ckfinder_browser');
+
+/* LOG OUT DE SISTEMA */
+
+/* Route::get('/logout', 'LogoutController@perform')->name('logout.perform'); */
+Route::get('logout', [LogoutController::class, 'perform'])->name('logout.perform');

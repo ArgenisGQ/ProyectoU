@@ -330,7 +330,7 @@
                                 if ($cursoId) {
                                     $cursoData = App\Models\User_course::where('id', $cursoId->id_course)->first();
                                 }   else {
-                                    $cursoData = 0;
+                                    $cursoData = 'no';
                                 };
 
                                 /* $cursoData = App\Models\User_course::where('id', $cursoId->id_course)->first(); */
@@ -340,7 +340,7 @@
                             {{--  <td><a href={{route('activities.show', $activity)}}>{{$activity->id}}</a></td> --}}
                                 <td><a href={{route('activities.pdf.down', $activity)}}>{{$activity->id}}</a></td>
                                 <td>{{$activity->name}}</td>
-                                @if ($cursoData != 0)
+                                @if ($cursoData != 'no')
                                     <td>{{$cursoData->course}}</td>
                                 @else
                                     <td>--</td>
