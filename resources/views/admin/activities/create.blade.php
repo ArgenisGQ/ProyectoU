@@ -216,6 +216,7 @@
 
     {{-- <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script> --}}
     {{-- <script>src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"</script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"> </script>
     <script src="https://rawgit.com/dbushell/Pikaday/master/pikaday.js"></script>
 
     {{-- --DATEPICKER-- --}}
@@ -235,6 +236,13 @@
 
         });
     </script> --}}
+
+
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script> --}}
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"> </script> --}}
+    <script src="{{ asset('dataPicker/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('dataPicker/locales/bootstrap-datepicker.es.min.js') }}"></script>
+
 
     <script>
             /* var picker = new Pikaday({

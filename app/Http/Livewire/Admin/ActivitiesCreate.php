@@ -292,8 +292,11 @@ class ActivitiesCreate extends Component
             $periodName = $period->name; */
 
             /* $this->lapse_in = Carbon::parse($this->lapse_in)->format('d/m/Y'); */
-            $this->lapse_in =Carbon::createFromFormat('Y-m-d', $this->lapse_in);
-            $this->lapse_out =Carbon::createFromFormat('Y-m-d', $this->lapse_out);
+            /* $this->lapse_in =Carbon::createFromFormat('Y-m-d', $this->lapse_in);
+            $this->lapse_out =Carbon::createFromFormat('Y-m-d', $this->lapse_out); */
+
+            $this->lapse_in = Carbon::parse($this->lapse_in);
+            $this->lapse_out = Carbon::parse($this->lapse_out);
             /* $this->lapse_out =Carbon::createFromFormat('Y-m-d', $this->lapse_out)->toDateTimeString(); */
             /* dd($this->lapse_in); */
             /* dd($this->coursess); */

@@ -287,6 +287,7 @@
 
                             </div>
 
+
                             <script>
                                 var startDate,endDate,
                                 updateStartDate = function() {
@@ -313,9 +314,20 @@
                                     maxDate: new Date(2022, 12, 31),
                                     onSelect: function() {
                                         startDate = this.getDate();
+
+                                        /* day = `${(startDate .getDate())}`.padStart(2,'0');
+                                        month = `${(startDate .getMonth()+1)}`.padStart(2,'0');
+                                        year = startDate .getFullYear();
+
+                                        allDay = `${day}-${month}-${year}`, */
+
                                         updateStartDate();
+                                        /* @this.set('lapse_in', startDate); */
                                         @this.set('lapse_in', this.toString());
-                                        /* @this.set('lapse_in'); */
+                                        /* @this.set('lapse_in', startDate.toLocaleString()); */
+                                        /* console.log(this.getMoment().format('Do MMMM YYYY')); */
+                                        /* @this.set('lapse_in', startDate); */
+                                        /* console.log(lapse_in); */
                                     }
                                 }),
                                 endPicker = new Pikaday({
@@ -332,14 +344,20 @@
                                     maxDate: new Date(2022, 12, 31),
                                     onSelect: function() {
                                         endDate = this.getDate();
+
                                         updateEndDate();
+                                        /* @this.set('lapse_out', endDate); */
                                         @this.set('lapse_out', this.toString());
-                                        /* @this.set('lapse_out'); */
+
                                     }
                                 }),
                                 _startDate = startPicker.getDate(),
                                 _endDate = endPicker.getDate();
                             </script>
+
+                            {{-- @php
+                                dd($lapse_in);
+                            @endphp --}}
 
                         </div>
                     </div>
