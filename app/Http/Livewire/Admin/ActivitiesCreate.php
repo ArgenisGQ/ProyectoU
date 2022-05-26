@@ -30,8 +30,8 @@ class ActivitiesCreate extends Component
     public $userActiveId;
     public $userActive = [];
     public $name;
-    public $body, $extract, $extract01;
-    public $status, $evaluation;
+    public $body, $extract, $extract01, $extract02;
+    public $status, $evaluation, $stake, $eval, $unit;
     public $lapse_in, $lapse_out;
     public $id_activityLast;
 
@@ -134,6 +134,7 @@ class ActivitiesCreate extends Component
                 'body' => 'required',
                 'extract' => 'required',
                 'extract01' => 'required',
+                'extract02' => 'required'
               ]);
         }
         elseif($this->currentStep == 3){
@@ -332,14 +333,18 @@ class ActivitiesCreate extends Component
             $activity = Activity::create([
                 /* 'courses'           => $this->coursess, */
                 'name'              => $this->name,
+                'unit'              => $this->unit,
                 'slug'              => $this->name,
                 'body'              => $this->body,
                 'extract'           => $this->extract,
                 'extract01'         => $this->extract01,
+                'extract02'         => $this->extract02,
                 'activity_type'     => $this->evaluation,
+                'type'              => $this->stake,
                 'lapse_in'          => $this->lapse_in,
                 'lapse_out'         => $this->lapse_out,
                 'status'            => $this->status,
+                'evaluation'        => $this->eval,
                 'user_id'           => $this->userActiveId,
                 'faculty_id'        => '1',
 

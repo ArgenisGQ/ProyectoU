@@ -91,11 +91,11 @@
 
 
             <div class="card">
-                <div class="card-header bg-secondary text-white">Descripcion de Actividad</div>
+                <div class="card-header bg-secondary text-white">Proposito de la Actividad</div>
                 <div class="card-body">
                     <div class = "form-group my-4"  wire:ignore>
                         <label for="body" class="p-r-mute">   </label>
-                        <textarea id="body" wire:model="body" class="form-control w-full" placeholder="Indique de manera especifica como realizar la actividad" rows="6" required></textarea>
+                        <textarea id="body" wire:model="body" class="form-control w-full" placeholder="Indique de manera especifica el proposito de la actividad" rows="6" required></textarea>
                     </div>
                     {{-- <div class="frameworks d-flex flex-column align-items-left mt-2">
                         <label for="laravel">
@@ -116,11 +116,11 @@
             </div>
 
             <div class="card">
-                <div class="card-header bg-secondary text-white">Proposito de la Actividad</div>
+                <div class="card-header bg-secondary text-white">Competencia de la Actividad</div>
                 <div class="card-body">
                     <div class = "form-group my-4"  wire:ignore>
                         <label for="extract" class="p-r-mute">   </label>
-                        <textarea id="extract" wire:model="extract" class="form-control" placeholder="Indique de manera especifica el proposito de la actividad" rows="6" required></textarea>
+                        <textarea id="extract" wire:model="extract" class="form-control" placeholder="Indique de manera especifica la competencia de la actividad" rows="6" required></textarea>
                     </div>
 
 
@@ -137,6 +137,18 @@
                     </div>
 
                     <span class="text-danger">@error('extract01'){{ $message }}@enderror</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header bg-secondary text-white">Instrucciones de la Actividad</div>
+                <div class="card-body">
+                    <div class = "form-group my-4"  wire:ignore>
+                        <label for="extract02" class="p-r-mute">   </label>
+                        <textarea id="extract02" wire:model="extract02" class="form-control" placeholder="Indique de manera especifica las instrucciones de la actividad" rows="6" required></textarea>
+                    </div>
+
+                    <span class="text-danger">@error('extract02'){{ $message }}@enderror</span>
                 </div>
             </div>
 
@@ -206,6 +218,22 @@
                         console.error( error )
                 } );
 
+                ClassicEditor
+                    .create( document.querySelector( '#extract02' ) )
+
+                    .then(editor => {
+                        editor.model.document.on('change:data', () => {
+                            editor.model.document.on('change:data', () => {
+                                @this.set('extract02', editor.getData());
+                            })
+                            /* console.log(editor.getData()) */
+                            /* document.querySelector("#bodyy").value = editor.getData() */
+                        });
+                    })
+                    .catch( error => {
+                        console.error( error )
+                } );
+
 
 
                 /* new Pikaday({ field: $extract.input, 'format': 'MM/DD/YYYY', firstDay: 1, minDate: new Date(), }); */
@@ -252,6 +280,47 @@
                                         @endforeach
                                     </select>
                                 @endif
+                                {{-- <span class="text-danger">@error('country'){{ $message }}@enderror</span> --}}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Unidad</h4>
+                            <div class="form-group">
+                               {{-- @if(count($evaluations) > 0) --}}
+                                <label for="unit"></label>
+                                    <select names="unit" wire:model="unit"
+                                    class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
+                                        <option value="" selected>Seleccione la Unidad</option>
+                                        {{-- @foreach ($evaluations as $evaluation) --}}
+                                            <option value="1"> Unidad I</option>
+                                            <option value="2"> Unidad II</option>
+                                            <option value="3"> Unidad III</option>
+                                            <option value="4"> Unidad IV</option>
+                                            {{-- <option value="{{ $evaluation->id }}">{{ $evaluation->name }}</option> --}}
+                                            {{-- <option value="Bangladesh">Bangladesh</option> --}}
+                                        {{-- @endforeach --}}
+                                    </select>
+                                {{-- @endif --}}
+                                {{-- <span class="text-danger">@error('country'){{ $message }}@enderror</span> --}}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Tipo de Participacion</h4>
+                            <div class="form-group">
+                               {{-- @if(count($evaluations) > 0) --}}
+                                <label for="stake"></label>
+                                    <select names="stake" wire:model="stake"
+                                    class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
+                                        <option value="" selected>Seleccione tipo de Participacion</option>
+                                       {{--  @foreach ($evaluations as $evaluation) --}}
+                                            <option value="1">Individual</option>
+                                            <option value="2">Grupal</option>
+                                            <option value="3">Combinada</option>
+                                            {{-- <option value="{{ $evaluation->id }}">{{ $evaluation->name }}</option> --}}
+                                            {{-- <option value="Bangladesh">Bangladesh</option> --}}
+                                        {{-- @endforeach --}}
+                                    </select>
+                                {{-- @endif --}}
                                 {{-- <span class="text-danger">@error('country'){{ $message }}@enderror</span> --}}
                             </div>
                         </div>

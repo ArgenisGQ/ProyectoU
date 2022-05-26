@@ -49,8 +49,8 @@ class ActivitiesEdit extends Component
     public $userActiveId;
     public $userActive = [];
     public $name;
-    public $body, $extract, $extract01;
-    public $status, $evaluation;
+    public $body, $extract, $extract01,$extract02;
+    public $status, $evaluation,$stake,$unit;
     public $lapse_in, $lapse_out;
     public $id_activityLast;
 
@@ -62,10 +62,13 @@ class ActivitiesEdit extends Component
         'activity.name' => 'required',
         'activity.extract' => 'required',
         'activity.extract01' => 'required',
+        'activity.extract02' => 'required',
         'activity.body' => 'required',
         'activity.lapse_in' => 'required',
         'activity.lapse_out' => 'required',
         'activity.type' => 'required',
+        'activity.unit' => 'required',
+        'activity.stake' => 'required',
         /* 'activity.evaluation' => 'required', */
         'activity.status' => 'required',
         /* 'activity.courses' => 'required', */
