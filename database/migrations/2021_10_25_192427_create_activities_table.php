@@ -18,22 +18,27 @@ class CreateActivitiesTable extends Migration
 
             $table->string('name');
             $table->string('slug');
-            $table->text('activity_type')->nullable();
+            $table->enum('unit',[1,2,3,4])->default(1);  //unidad de materia
+            /* $table->text('activity_type')->nullable(); //tipo de actividad */
+            $table->enum('activity_type',[1,2,3])->default(1);  //unidad de materia
             $table->text('extract')->nullable();
             $table->text('extract01')->nullable();
+            $table->text('extract02')->nullable();
             $table->longText('body')->nullable();
             $table->dateTime('academic_start')->nullable();
             $table->dateTime('academic_finish')->nullable();
             $table->dateTime('lapse_in')->nullable();
             $table->dateTime('lapse_out')->nullable();
             /* $table->enum('type',[1,2])->default(1); */ //tip de evaluacion
-            $table->unsignedBigInteger('type')->default(1); //tip de evaluacion
+            $table->unsignedBigInteger('type')->default(1); //tipo de participacion
             $table->enum('status',[1,2,3])->default(1); //status para imprimir o no pdf
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('faculty_id');
+            /* $table->unsignedBigInteger('period_id'); */
             /* $table->unsignedBigInteger('course_id'); */
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); /* opcion 'cascade' borra todos los posts del usuario si se va de baja*/
             $table->foreign('faculty_id')->references('id')->on('faculties')->onDelete('cascade'); /* opcion 'cascade' borra todos los posts del usuario si se va de baja*/
+           /*  $table->foreign('period_id')->nullable()->references('id')->on('periods'); */ /* relacion con el periodo correspondiente que fue creada*/
             /* $table->foreign('course_id')->nullable()->references('id')->on('courses'); */ /* opcion 'cascade' borra todos los posts del usuario si se va de baja*/
             /* $table->foreignId('course_id')->nullable()->constrained('courses')->cascadeOnUpdate()->nullOnDelete(); */
             /* $table->foreignId('course_id')->nullable()->constrained('courses'); */
