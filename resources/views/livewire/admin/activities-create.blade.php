@@ -283,6 +283,25 @@
                                 {{-- <span class="text-danger">@error('country'){{ $message }}@enderror</span> --}}
                             </div>
                         </div>
+
+                        <div class="col-md-6">
+                            <h4>Unidad</h4>
+                            <div class="form-group">
+                                <label for="unit"></label>
+
+                                <input type="number" id="tentacles" name="tentacles"
+                                    min="10" max="100">
+                                    {{-- <select names="unit" wire:model="unit"
+                                    class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
+                                        <option value="" selected>Seleccione la Unidad</option>
+                                            <option value="1"> Unidad I</option>
+                                            <option value="2"> Unidad II</option>
+                                            <option value="3"> Unidad III</option>
+                                            <option value="4"> Unidad IV</option>
+                                    </select> --}}
+                            </div>
+                        </div>
+
                         <div class="col-md-6">
                             <h4>Unidad</h4>
                             <div class="form-group">
@@ -308,8 +327,8 @@
                             <h4>Tipo de Participacion</h4>
                             <div class="form-group">
                                {{-- @if(count($evaluations) > 0) --}}
-                                <label for="stake"></label>
-                                    <select names="stake" wire:model="stake"
+                                <label for="type"></label>
+                                    <select names="type" wire:model="type"
                                     class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
                                         <option value="" selected>Seleccione tipo de Participacion</option>
                                        {{--  @foreach ($evaluations as $evaluation) --}}

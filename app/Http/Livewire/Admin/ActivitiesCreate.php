@@ -31,7 +31,7 @@ class ActivitiesCreate extends Component
     public $userActive = [];
     public $name;
     public $body, $extract, $extract01, $extract02;
-    public $status, $evaluation, $stake, $eval, $unit;
+    public $status, $evaluation, $type, $eval, $unit;
     public $lapse_in, $lapse_out;
     public $id_activityLast;
 
@@ -340,7 +340,7 @@ class ActivitiesCreate extends Component
                 'extract01'         => $this->extract01,
                 'extract02'         => $this->extract02,
                 'activity_type'     => $this->evaluation,
-                'type'              => $this->stake,
+                'type'              => $this->type,
                 'lapse_in'          => $this->lapse_in,
                 'lapse_out'         => $this->lapse_out,
                 'status'            => $this->status,

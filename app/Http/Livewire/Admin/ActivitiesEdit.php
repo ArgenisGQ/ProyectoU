@@ -68,7 +68,7 @@ class ActivitiesEdit extends Component
         'activity.lapse_out' => 'required',
         'activity.type' => 'required',
         'activity.unit' => 'required',
-        'activity.stake' => 'required',
+        'activity.activity_type' => 'required',
         /* 'activity.evaluation' => 'required', */
         'activity.status' => 'required',
         /* 'activity.courses' => 'required', */

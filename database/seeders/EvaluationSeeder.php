@@ -14,6 +14,18 @@ class EvaluationSeeder extends Seeder
      */
     public function run()
     {
-        Evaluation::factory(25)->create();
+        Evaluation::create([
+            'name' => 'Formativa'
+        ]);
+
+        Evaluation::create([
+            'name' => 'Diagnostico'
+        ]);
+
+        Evaluation::create([
+            'name' => 'Sumativa'
+        ]);
+
+        /* Evaluation::factory(25)->create(); */
     }
 }

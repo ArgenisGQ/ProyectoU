@@ -20,7 +20,7 @@ class CreateActivitiesTable extends Migration
             $table->string('slug');
             $table->enum('unit',[1,2,3,4])->default(1);  //unidad de materia
             /* $table->text('activity_type')->nullable(); //tipo de actividad */
-            $table->enum('activity_type',[1,2,3])->default(1);  //unidad de materia
+            $table->enum('activity_type',[1,2,3])->default(1);  //tipo de ACTIVIDAD
             $table->text('extract')->nullable();
             $table->text('extract01')->nullable();
             $table->text('extract02')->nullable();
@@ -30,9 +30,9 @@ class CreateActivitiesTable extends Migration
             $table->dateTime('lapse_in')->nullable();
             $table->dateTime('lapse_out')->nullable();
             /* $table->enum('type',[1,2])->default(1); */ //tip de evaluacion
-            $table->unsignedBigInteger('type')->default(1); //tipo de participacion
-            $table->enum('status',[1,2,3])->default(1); //status para imprimir o no pdf
-            $table->unsignedBigInteger('evaluation')->nullable(); //valor de las notas de la actividad
+            $table->unsignedBigInteger('type')->default(1); //tipo de PARTICIPACION
+            $table->enum('status',[1,2,3])->default(1); //status para imprimir o no PDF
+            $table->unsignedBigInteger('evaluation')->nullable(); //valor de las NOTAS de la actividad
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('faculty_id');
             /* $table->unsignedBigInteger('period_id'); */
