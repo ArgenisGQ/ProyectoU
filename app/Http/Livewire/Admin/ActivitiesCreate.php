@@ -140,6 +140,9 @@ class ActivitiesCreate extends Component
         elseif($this->currentStep == 3){
               $this->validate([
                 'activity_type' => 'required',
+                'type' => 'required',
+                'status' => 'required',
+                'eval' => 'required',
                 'lapse_in' => 'date|after_or_equal:academic_start',
                 'lapse_out' => 'date|before_or_equal:academic_finish'
               ]);

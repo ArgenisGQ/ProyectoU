@@ -152,8 +152,8 @@
                         <h4>Tipo de Participacion</h4>
                         <div class="form-group">
 
-                            <label for="stake"></label>
-                                <select names="stake" wire:model="activity.type"
+                            <label for="type"></label>
+                                <select names="type" wire:model="activity.type"
                                 class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
                                     <option value="" selected>Seleccione tipo de Participacion</option>
 

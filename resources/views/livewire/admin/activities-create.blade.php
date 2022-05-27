@@ -290,7 +290,7 @@
                                 <label for="unit"></label>
 
                                 <input type="number" id="tentacles" name="tentacles"
-                                    min="10" max="100">
+                                    placeholder="0.00" step="0.01" min="0" max="100" wire:model="eval">
                                     {{-- <select names="unit" wire:model="unit"
                                     class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
                                         <option value="" selected>Seleccione la Unidad</option>
@@ -348,7 +348,7 @@
                         <h4>Periodo de la Actividad</h4>
                         <div class="dates-wrapper group">
 
-                            <div class="field clearfix date-range-start date-wrapper">
+                            <div class="field clearfix date-range- rt date-wrapper">
                                 <div class="label">
                                 <label for="lapse_in">Inicio de actividad:</label>
                                 </div>
