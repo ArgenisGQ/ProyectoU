@@ -285,7 +285,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            <h4>Unidad</h4>
+                            <h4>Ponderacion</h4>
                             <div class="form-group">
                                 <label for="unit"></label>
 

@@ -32,7 +32,7 @@ class CreateActivitiesTable extends Migration
             /* $table->enum('type',[1,2])->default(1); */ //tip de evaluacion
             $table->unsignedBigInteger('type')->default(1); //tipo de PARTICIPACION
             $table->enum('status',[1,2,3])->default(1); //status para imprimir o no PDF
-            $table->unsignedBigInteger('evaluation')->nullable(); //valor de las NOTAS de la actividad
+            $table->decimal('evaluation',3,2)->nullable(); //valor de las NOTAS de la actividad
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('faculty_id');
             /* $table->unsignedBigInteger('period_id'); */
