@@ -349,6 +349,14 @@ return [
                         'active' => ['admin/courses*'],
                         'can'    => 'admin.courses.index'
                         ],
+                        [
+                        'text' => 'Unidades',
+                        /* 'route'  => 'admin.activities.unit', */
+                        'route'  => 'admin.courses.index',
+                        'icon' => 'far fa-fw fa-bookmark',
+                        'active' => ['admin/courses*'],
+                        /* 'can'    => 'admin.courses.index' */
+                        ],
 
                     ],
                 ],
@@ -364,6 +372,14 @@ return [
                     'route'  => 'admin.activities.create',
                     'icon' => 'fas fa-fw fa-file',
                     'can'    => 'admin.activities.create',
+
+                ],
+
+                [
+                    'text' => 'Unidades',
+                    'route'  => 'admin.activities.unit',
+                    'icon' => 'fas fa-fw fa-file',
+                    /* 'can'    => 'admin.activities.create', */
 
                 ],
             ],

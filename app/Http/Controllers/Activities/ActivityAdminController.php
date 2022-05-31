@@ -477,4 +477,18 @@ class ActivityAdminController extends Controller
         return redirect()->route('admin.activities.index', $activity)->with('info', 'La actividad se elimino con exito');
     }
 
+    public function unit()
+    {
+        /* return $activity->all(); */
+
+        /* return "unidad"; */
+
+
+
+
+
+
+        return view('admin.activities.units');
+    }
+
 }
