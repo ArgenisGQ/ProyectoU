@@ -377,7 +377,7 @@ return [
 
                 [
                     'text' => 'Unidades',
-                    'route'  => 'admin.activities.unit',
+                    /* 'route'  => 'admin.activities.unit', */
                     'icon' => 'fas fa-fw fa-file',
                     /* 'can'    => 'admin.activities.create', */
 

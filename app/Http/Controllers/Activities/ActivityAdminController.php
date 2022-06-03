@@ -483,12 +483,21 @@ class ActivityAdminController extends Controller
 
         /* return "unidad"; */
 
+        $userActive = auth()->user();
+        $coursesForUser =  User_course::where('ced', $userActive->ced)
+                            ->get();
+        $coursess = $coursesForUser->unique('code')->toArray();
+
+        $courses = (object) $coursess;
+
+        /* return $courses; */
 
 
 
 
 
-        return view('admin.activities.units');
+
+        return view('admin.activities.units', compact('courses'));
     }
 
 }

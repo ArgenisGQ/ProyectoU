@@ -16,6 +16,7 @@ use App\Http\Controllers\Activities\IndexController;
 use App\Http\Controllers\Activities\ActivityAdminController;
 use App\Http\Controllers\Activities\CourseAdminController;
 use App\Http\Controllers\Activities\FacultyAdminController;
+use App\Http\Controllers\Activities\UnitController;
 
 
 
@@ -74,7 +75,9 @@ Route::resource('faculties', FacultyAdminController::class)->except('show')->nam
 
 Route::resource('courses', CourseAdminController::class)->except('show')->names('admin.courses');
 
-Route::get('activities/units', [ActivityAdminController::class, 'unit'])->name('admin.activities.unit');
+/* Route::get('activities/units', [ActivityAdminController::class, 'unit'])->name('admin.activities.unit'); */
+
+Route::resource('units', UnitController::class)->only(['index', 'create', 'edit', 'store', 'show', 'update', 'destroy'])->names('admin.units');
 
 Route::resource('activities', ActivityAdminController::class)->only(['index', 'create', 'edit', 'store', 'show', 'update', 'destroy'])->names('admin.activities');
 
