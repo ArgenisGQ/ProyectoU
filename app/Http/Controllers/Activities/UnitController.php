@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Activities;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Course;
+use App\Models\Period;
+use App\Models\User_course;
 
 class UnitController extends Controller
 {
@@ -15,8 +18,8 @@ class UnitController extends Controller
     public function index()
     {
         //
-        /* return "index"; */
-        return view('admin.units.create');
+        return "index";
+        /* return view('admin.units.create'); */
     }
 
     /**
@@ -27,7 +30,50 @@ class UnitController extends Controller
     public function create()
     {
         //
-        return "create";
+        /* return "create"; */
+
+
+
+        /* --------------relacion de usuarios con materias---------------- */
+        /* $user_courses = User_course::all(); */
+        $userActiveName = auth()->user()->name;
+
+        $author = auth()->user();
+        $userActiveId = auth()->user()->id;
+        $userActiveCed = auth()->user()->ced;
+        /* return $userActiveCed; */
+        /* return $author; */
+
+        $userActive = auth()->user();
+        $coursesForUser =  User_course::where('ced', $userActive->ced)
+                            ->get();
+        $courses = $coursesForUser->unique('code')->toArray();
+
+        /* return $courses; */
+        /* return $coursesForUser; */
+
+        $cursox = User_course::where('ced',$userActiveCed)
+                                        ->where('code', 'TIF-0374')
+                                        ->get();
+        /* return $cursox; */
+
+        /* ----- */
+
+        $courses_full = Course::all();
+
+        return $courses_full;
+
+        /* $courses_fullId= Course::where('code', 'TIF-0374' )
+                                ->where('section', 'ED01D1V' )
+                                ->get(); */
+
+        $courses_fullId= Course::whereCodeAndSection('TIF-0374', 'ED01D0V' )
+                                /* ->where('section', 'ED01D1V' ) */
+                                ->get();
+
+        return $courses_fullId;
+
+        /* return view('admin.units.create'); */
 
     }
 
