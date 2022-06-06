@@ -17,7 +17,8 @@ class UnitsCreate extends Component
     use WithFileUploads;
 
 
-    public $courses = [];
+    public $courses_full = [];
+    /* public $courses = [];
     public $coursesForUser = [];
     public $coursess = [];
     public $faculties = [];
@@ -26,12 +27,12 @@ class UnitsCreate extends Component
     public $userActiveName, $userActiveCed;
     public $userActiveId;
     public $userActive = [];
-    public $unit01,$unit02,$unit03,$unit04; //unidades
+    public $unit01,$unit02,$unit03,$unit04;
     public $name;
     public $body, $extract, $extract01, $extract02;
     public $status, $evaluation, $type, $eval, $unit;
     public $lapse_in, $lapse_out;
-    public $id_activityLast;
+    public $id_activityLast; */
 
     /* public $activity; */
 
@@ -208,29 +209,18 @@ class UnitsCreate extends Component
             /* dd($data); */
 
 
-
+/*
             $course = Course::create([
-                /* 'courses'           => $this->coursess, */
-                /* 'name'              => $this->name, */
+
                 'unit01'              => $this->unit01,
                 'unit02'              => $this->unit02,
                 'unit03'              => $this->unit03,
                 'unit04'              => $this->unit04,
-                /* 'slug'              => $this->name,
-                'body'              => $this->body,
-                'extract'           => $this->extract,
-                'extract01'         => $this->extract01,
-                'extract02'         => $this->extract02,
-                'activity_type'     => $this->evaluation,
-                'type'              => $this->type,
-                'lapse_in'          => $this->lapse_in,
-                'lapse_out'         => $this->lapse_out,
-                'status'            => $this->status,
-                'evaluation'        => $this->eval,
-                'user_id'           => $this->userActiveId,
-                'faculty_id'        => '1', */
 
-            ]);
+
+            ]); */
+
+
 
             /* $this->id_activityLast = Activity::where('user_id', $this->userActiveId)
                                     ->latest('id')
@@ -251,7 +241,7 @@ class UnitsCreate extends Component
                 ]);
             }; */
 
-            
+
 
             /* $activity_courses = Activity_course::create([
                 'id_activity'        => $this->id_activityLast,

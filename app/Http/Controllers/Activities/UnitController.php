@@ -61,19 +61,18 @@ class UnitController extends Controller
 
         $courses_full = Course::all();
 
-        return $courses_full;
+        /* return $courses_full; */
 
         /* $courses_fullId= Course::where('code', 'TIF-0374' )
                                 ->where('section', 'ED01D1V' )
                                 ->get(); */
 
-        $courses_fullId= Course::whereCodeAndSection('TIF-0374', 'ED01D0V' )
-                                /* ->where('section', 'ED01D1V' ) */
+        $courses_fullId= Course::whereCodeAndSection('TIF-0374', 'ED01D1V' )
                                 ->get();
 
-        return $courses_fullId;
+        /* return $courses_fullId; */
 
-        /* return view('admin.units.create'); */
+        return view('admin.units.create', compact('courses_full'));
 
     }
 
