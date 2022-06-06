@@ -195,8 +195,8 @@ class ExcelUserCourseController extends Controller
     public function courses()
     {
         $courses = User_course::all();
-        $total_courses = $courses->unique('code');
-        /* $total_courses = $courses; */
+        /* $total_courses = $courses->unique('code'); */
+        $total_courses = $courses;
 
         try {
             foreach ($total_courses as $total_course) {
@@ -206,7 +206,8 @@ class ExcelUserCourseController extends Controller
                     'code' => $total_course->code,
                     'section' => $total_course->section,
                     'turma' => $total_course->code.' '.$total_course->section,
-                    'slug' => Str::slug($total_course->code),
+                    'slug' => Str::slug($total_course->code.'--'.$total_course->section),
+                    /* 'slug' => Str::slug($total_course->code), */
 
                 ]);
 
