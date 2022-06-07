@@ -32,7 +32,7 @@
               {{-- <div class="col-md-6 offset-md-3"> --}}
               <div class="col-md-10 max-w-sm w-full lg:max-w-full lg:flex offset-md-1">
                   {{-- <h1>Creacion de Unidades</h1><hr> --}}
-                  @livewire('admin.units-create', compact('courses_full') )
+                  @livewire('admin.units-create', compact('courses_full','courses','userActiveName','courses_full') )
               </div>
         </div>
     </div>

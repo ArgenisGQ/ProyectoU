@@ -40,6 +40,9 @@ class CreateUserCoursesTable extends Migration
             /* $table->unsignedBigInteger('id_course')->nullable();
             $table->foreign('id_course')->references('id')->on('courses'); */
 
+            $table->unsignedBigInteger('period_id')->nullable();
+            $table->foreign('period_id')->references('id')->on('periods');
+
             $table->timestamps();
         });
     }

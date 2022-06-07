@@ -10,11 +10,16 @@
         @if ($currentStep == 1)
 
         {{-- <div class="step-one">
+            <p>PRIMERA PARTE</p>
+        </div> --}}
+
+        <div class="step-one">
             <div class="card">
                 <div class="card-header bg-secondary text-white">Paso 1/3 - Seleccionar Materias</div>
                 <div class="card-body">
 
                     <div class="w-screen flex-col align-items-left mt-2">
+
 
 
                         @foreach ( $courses as $curso )
@@ -26,30 +31,79 @@
                                                                     ->where('code',$curso['code'])
                                                                     ->get();
 
+                                    /* dd($cursox); */
+
+                                    /* $cursox = App\Models\Course::where('name',$userActiveName)
+                                                                    ->where('code',$curso['code'])
+                                                                    ->get(); */
+
+                                    /* $courses_full = App\Models\Course::where('code',$cursox->code)
+                                                                    ->where('section',$cursox['section'])
+                                                                    ->get(); */
+
+                                    /* $courses_full = App\Models\Course::find($cursox['id']); */
+
+                                    /* $courses_full = App\Models\Course::all(); */
+
+                                    /* dd($courses_full); */
+
+
                             @endphp
 
                             <h4> {{ $curso['code'].' '.$curso['course'] }} </h4>
                             <div class="content-start">
                                 @foreach ($cursox as $cursoy )
                                         <label for="{{ $cursoy['id'] }}">
-                                        {{ $cursoy['section'] }}
 
-                                        <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="coursess">
-                                        </label>
+                                        @php
+                                        $courses_full = App\Models\Course::find($cursoy['id']);
+                                        /* dd($courses_full); */
+                                        @endphp
+
+
+
+                                        {{ $$courses_full['section'] }}
+
+                                        {{-- <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="coursess">
+                                        </label> --}}
+
+                                        {{-- <label for="unit"></label>
+                                        <select names="unit" wire:model="unitTotalS"
+                                        class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
+                                            <option value="" selected>Unidades</option>
+
+                                            <option value="4"> 4</option>
+                                            <option value="5"> 5</option>
+                                            <option value="6"> 6</option>
+                                            <option value="7"> 7</option>
+                                            <option value="8"> 8</option>
+                                            </select> --}}
+
+
+                                            <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
+                                                placeholder="4" step="1" min="4" max="8" wire:model= "coursee.">
+                                            </label>
+
+                                            {{-- @php
+                                                dd($unitTotalS);
+                                            @endphp --}}
+
+
                                 @endforeach
                             </div>
                         @endforeach
 
                     </div>
 
+
+
+
                     <span class="text-danger">@error('coursess'){{ $message }}@enderror</span>
                 </div>
             </div>
-        </div> --}}
-
-        <div class="step-one">
-            <p>PRIMERA PARTE</p>
         </div>
+
+
 
 
         @endif

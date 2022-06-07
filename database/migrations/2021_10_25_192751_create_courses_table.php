@@ -35,11 +35,15 @@ class CreateCoursesTable extends Migration
             $table->decimal('unit14',2,2)->nullable(); //ponderacion total de la unidad
             $table->decimal('unit15',2,2)->nullable(); //ponderacion total de la unidad
             $table->decimal('unit16',2,2)->nullable(); //ponderacion total de la unidad
+            $table->integer('unitTotal')->nullable(); //
             $table->string('slug')->nullable();
             $table->string('color')->nullable();
             $table->string('turma')->unique()->nullable();
             $table->string('id_dpto')->unique()->nullable();
             $table->string('id_faculty')->unique()->nullable();
+
+            /* $table->unsignedBigInteger('period_id')->nullable();
+            $table->foreign('period_id')->references('id')->on('periods'); */
 
             $table->timestamps();
         });

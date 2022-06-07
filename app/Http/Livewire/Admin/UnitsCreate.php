@@ -17,9 +17,14 @@ class UnitsCreate extends Component
     use WithFileUploads;
 
 
+    /* public $courses_full = []; */
+    public $courses = [];
+    public $userActiveName, $userActiveCed;
+    public $unitTotalS = [];
+    public $coursess = [];
+    public $coursee = []; //
     public $courses_full = [];
-    /* public $courses = [];
-    public $coursesForUser = [];
+    /* public $coursesForUser = [];
     public $coursess = [];
     public $faculties = [];
     public $evaluations = [];
@@ -39,10 +44,32 @@ class UnitsCreate extends Component
     public $totalSteps = 3;
     public $currentStep = 1;
 
+    protected $rules = [
+       /*  'activity.name' => 'required',
+        'activity.extract' => 'required',
+        'activity.extract01' => 'required',
+        'activity.extract02' => 'required',
+        'activity.body' => 'required',
+        'activity.lapse_in' => 'required',
+        'activity.lapse_out' => 'required',
+        'activity.type' => 'required',
+        'activity.unit' => 'required',
+        'activity.activity_type' => 'required', */
+        /* 'activity.evaluation' => 'required', */
+        /* 'activity.status' => 'required', */
+        /* 'activity.courses' => 'required', */
+        /* 'cours' => 'required|array', */
 
-    public function mount(){
+
+    ];
+
+
+    public function mount( Course $coursee){
         $this->currentStep = 1;
         /* $this->courses = $courses; */
+        $this->coursee = $coursee;
+        /* dd($this->courses_full); */
+
 
     }
 
@@ -58,7 +85,7 @@ class UnitsCreate extends Component
         /* $userActive = auth()->user()->ced;
         $coursesForUser =  User_course::where('ced', $userActive)
                             ->get();
-        $courses = $coursesForUser->unique('code') */;
+        $courses = $coursesForUser->unique('code'); */
         /* ------------------------------------------------------------------ */
 
         /* return view('livewire.admin.activities-create'); */
@@ -122,29 +149,29 @@ class UnitsCreate extends Component
         /* ---------------- */
 
         if($this->currentStep == 1){
-            $this->validate([
+            /* $this->validate([ */
 
                 /* 'coursess' => 'required', */
-            ]);
+            /* ]); */
         }
         elseif($this->currentStep == 2){
-              $this->validate([
+              /* $this->validate([ */
                 /* 'name' => 'required',
                 'body' => 'required',
                 'extract' => 'required',
                 'extract01' => 'required',
                 'extract02' => 'required' */
-              ]);
+              /* ]); */
         }
         elseif($this->currentStep == 3){
-              $this->validate([
+              /* $this->validate([ */
                 /* 'activity_type' => 'required',
                 'type' => 'required',
                 'status' => 'required',
                 'eval' => 'required',
                 'lapse_in' => 'date|after_or_equal:academic_start',
                 'lapse_out' => 'date|before_or_equal:academic_finish' */
-              ]);
+              /* ]); */
         }
     }
 
@@ -153,36 +180,41 @@ class UnitsCreate extends Component
 
 
     public function register(){
-          $this->resetErrorBag();
+        $this->resetErrorBag();
+
+        /* ------------------------ */
+
+        /* dd($this->coursess); */
+        dd($this->unitTotalS);
 
 
 
 
+        /* ------------------------ */
 
-
-            /* $cours = User_course::where('ced',$userActiveName)->get(); */
-
-
-
-            /* $period = Period::all();
-            $periodName = $period->name; */
-
-            /* $this->lapse_in = Carbon::parse($this->lapse_in)->format('d/m/Y'); */
-            /* $this->lapse_in =Carbon::createFromFormat('Y-m-d', $this->lapse_in);
-            $this->lapse_out =Carbon::createFromFormat('Y-m-d', $this->lapse_out); */
+        /* $cours = User_course::where('ced',$userActiveName)->get(); */
 
 
 
-            /* $this->lapse_in = Carbon::parse($this->lapse_in);
-            $this->lapse_out = Carbon::parse($this->lapse_out); */
+        /* $period = Period::all();
+        $periodName = $period->name; */
+
+        /* $this->lapse_in = Carbon::parse($this->lapse_in)->format('d/m/Y'); */
+        /* $this->lapse_in =Carbon::createFromFormat('Y-m-d', $this->lapse_in);
+        $this->lapse_out =Carbon::createFromFormat('Y-m-d', $this->lapse_out); */
 
 
 
-            /* $this->lapse_out =Carbon::createFromFormat('Y-m-d', $this->lapse_out)->toDateTimeString(); */
-            /* dd($this->lapse_in); */
-            /* dd($this->coursess); */
+        /* $this->lapse_in = Carbon::parse($this->lapse_in);
+        $this->lapse_out = Carbon::parse($this->lapse_out); */
 
-            $data = [
+
+
+        /* $this->lapse_out =Carbon::createFromFormat('Y-m-d', $this->lapse_out)->toDateTimeString(); */
+        /* dd($this->lapse_in); */
+        /* dd($this->coursess); */
+
+        $data = [
                 /* 'courses'           => $this->coursess, */
                 /* 'name'              => $this->name, */
                 /* 'slug'              => $this->name, */
@@ -197,66 +229,67 @@ class UnitsCreate extends Component
                 /* 'user_id'           => $this->userActiveId, */
             ];
 
-            /* if($data){
-                            $data['slug'] = 'required|unique:activities,slug,' . $activity->id;
-            } */
+        /* if($data){
+                        $data['slug'] = 'required|unique:activities,slug,' . $activity->id;
+        } */
 
-            /* $acti = Activity::all(); */
+        /* $acti = Activity::all(); */
 
-            /* dd($data); */
-
-
-            /* dd($data); */
+        /* dd($data); */
 
 
-/*
-            $course = Course::create([
-
-                'unit01'              => $this->unit01,
-                'unit02'              => $this->unit02,
-                'unit03'              => $this->unit03,
-                'unit04'              => $this->unit04,
+        /* dd($data); */
 
 
-            ]); */
+        /*
+                    $course = Course::create([
+
+                        'unit01'              => $this->unit01,
+                        'unit02'              => $this->unit02,
+                        'unit03'              => $this->unit03,
+                        'unit04'              => $this->unit04,
 
 
-
-            /* $this->id_activityLast = Activity::where('user_id', $this->userActiveId)
-                                    ->latest('id')
-                                    ->first('id'); */
-            /* dd($this->id_activityLast->id); */
-            /* dd($this->coursess[0]); */
-            /* dd($this->coursess); */
+                    ]); */
 
 
 
-            /* $this->c = count($this->coursess);
-
-            for( $this->i=0;$this->i<$this->c;$this->i++ )
-            {
-                $activity_courses = Activity_course::create([
-                    'id_activity'        => $this->id_activityLast->id,
-                    'id_course'          => $this->coursess[$this->i],
-                ]);
-            }; */
+        /* $this->id_activityLast = Activity::where('user_id', $this->userActiveId)
+                                ->latest('id')
+                                ->first('id'); */
+        /* dd($this->id_activityLast->id); */
+        /* dd($this->coursess[0]); */
+        /* dd($this->coursess); */
 
 
 
-            /* $activity_courses = Activity_course::create([
-                'id_activity'        => $this->id_activityLast,
-                'id_course'          => $this->coursess,
-            ]); */
+        /* $this->c = count($this->coursess);
+
+        for( $this->i=0;$this->i<$this->c;$this->i++ )
+        {
+            $activity_courses = Activity_course::create([
+                'id_activity'        => $this->id_activityLast->id,
+                'id_course'          => $this->coursess[$this->i],
+            ]);
+        }; */
 
 
-            /* $activity = Activity::create($data->all());
-            $activity->courses()->attach($courses); */
 
-            /* Student::insert($values);
-            //   $this->reset();
-            //   $this->currentStep = 1;
-            $data = ['name'=>$this->first_name.' '.$this->last_name,'email'=>$this->email]; */
-            /* dd($data); */
-            /* return redirect()->route('admin.activities.index')->with('info', 'La actividad se creo con exito'); */
-            return redirect()->route('admin.units.index');
+        /* $activity_courses = Activity_course::create([
+            'id_activity'        => $this->id_activityLast,
+            'id_course'          => $this->coursess,
+        ]); */
+
+
+        /* $activity = Activity::create($data->all());
+        $activity->courses()->attach($courses); */
+
+        /* Student::insert($values);
+        //   $this->reset();
+        //   $this->currentStep = 1;
+        $data = ['name'=>$this->first_name.' '.$this->last_name,'email'=>$this->email]; */
+        /* dd($data); */
+        /* return redirect()->route('admin.activities.index')->with('info', 'La actividad se creo con exito'); */
+        return redirect()->route('admin.units.index');
+    }
 }
