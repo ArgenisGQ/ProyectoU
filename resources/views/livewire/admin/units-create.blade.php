@@ -15,7 +15,7 @@
 
         <div class="step-one">
             <div class="card">
-                <div class="card-header bg-secondary text-white">Paso 1/3 - Seleccionar Materias</div>
+                <div class="card-header bg-secondary text-white">Paso 1/3 - Seleccionar cantidad de Unidades</div>
                 <div class="card-body">
 
                     <div class="w-screen flex-col align-items-left mt-2">
@@ -116,14 +116,75 @@
         @if ($currentStep == 2)
 
 
-        {{-- <div class="step-two">
+        <div class="step-two">
             <div class="card">
 
 
             <div class="card">
-                <div class="card-header bg-secondary text-white">Paso 2/3 - Datos</div>
+                <div class="card-header bg-secondary text-white">Paso 2/3 - Valor de las unidades</div>
                 <div class="card-body">
-                    <div class="row">
+
+                    <div class="w-screen flex-col align-items-left mt-2">
+
+
+
+                        @foreach ( $courses as $curso )
+
+                            @php
+
+
+                                    $cursox = App\Models\User_course::where('name',$userActiveName)
+                                                                    ->where('code',$curso['code'])
+                                                                    ->get();
+
+                                    /* dd($cursox); */
+
+                                    /* $cursox = App\Models\Course::where('name',$userActiveName)
+                                                                    ->where('code',$curso['code'])
+                                                                    ->get(); */
+
+                                    /* $courses_full = App\Models\Course::where('code',$cursox->code)
+                                                                    ->where('section',$cursox['section'])
+                                                                    ->get(); */
+
+                                    /* $courses_full = App\Models\Course::find($cursox['id']); */
+
+                                    /* $courses_full = App\Models\Course::all(); */
+
+                                    /* dd($courses_full); */
+                                    /* coursesForUser */
+
+
+                            @endphp
+
+                            <h4> {{ $curso['code'].' '.$curso['course'] }} </h4>
+                            <div class="content-start">
+                                @foreach ($cursox as $cursoy)
+                                        <label for="{{ $cursoy['id'] }}">
+
+                                        @php
+                                        $courses_full = App\Models\Course::find($cursoy['id']);                                        
+                                        @endphp
+
+                                        {{ $courses_full['section'] }} 
+
+                                            <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
+                                                placeholder="4" step="1" min="4" max="8"
+                                                wire:model="coursesTotal.{{ $courses_full['id'] }}">                                          
+
+                                            </label>                                           
+
+
+                                @endforeach
+                            </div>
+                        @endforeach
+
+                    </div>
+
+
+
+
+                    {{-- <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Nombre de Actividad</label>
@@ -145,12 +206,12 @@
                             <label for="">Nombre del Profesor: {{ $userActiveName }}</label>
 
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 
 
-            <div class="card">
+            {{-- <div class="card">
                 <div class="card-header bg-secondary text-white">Proposito de la Actividad</div>
                 <div class="card-body">
                     <div class = "form-group my-4"  wire:ignore>
@@ -197,9 +258,9 @@
 
                     <span class="text-danger">@error('extract02'){{ $message }}@enderror</span>
                 </div>
-            </div>
+            </div> --}}
 
-            <script>
+            {{-- <script>
 
 
 
@@ -267,14 +328,12 @@
 
 
 
-            </script>
+            </script> --}}
 
 
-        </div> --}}
-
-        <div class="step-one">
-            <p>SEGUNDA PARTE</p>
         </div>
+
+        
 
         @endif
 

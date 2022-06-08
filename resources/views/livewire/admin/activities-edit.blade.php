@@ -30,7 +30,6 @@
                                                                     ->where('code',$curso['code'])
                                                                     ->get();
 
-
                             @endphp
 
                             <h4> {{ $curso['code'].' '.$curso['course'] }} </h4>

@@ -35,7 +35,7 @@ class CreateCoursesTable extends Migration
             $table->decimal('unit14',2,2)->nullable(); //ponderacion total de la unidad
             $table->decimal('unit15',2,2)->nullable(); //ponderacion total de la unidad
             $table->decimal('unit16',2,2)->nullable(); //ponderacion total de la unidad
-            $table->integer('unitTotal')->nullable(); //
+            $table->integer('unitTotal')->nullable(); //total de unidades activas a usar
             $table->string('slug')->nullable();
             $table->string('color')->nullable();
             $table->string('turma')->unique()->nullable();
