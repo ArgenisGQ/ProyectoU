@@ -3,7 +3,7 @@
 @section('title', 'Proyecto U')
 
 @section('content_header')
-    <h1>Crear nueva Actividad</h1>
+    <h1>Unidades de Asignatura</h1>
 @stop
 
 @section('content')
@@ -32,7 +32,8 @@
               {{-- <div class="col-md-6 offset-md-3"> --}}
               <div class="col-md-10 max-w-sm w-full lg:max-w-full lg:flex offset-md-1">
                   {{-- <h1>Creacion de Unidades</h1><hr> --}}
-                  @livewire('admin.units-create', compact('courses_full','courses','userActiveName','courses_full') )
+                  @livewire('admin.units-create', compact('courses_full','courses','userActiveName','courses_full'
+                                                ,'coursesForUser','userActive') )
               </div>
         </div>
     </div>

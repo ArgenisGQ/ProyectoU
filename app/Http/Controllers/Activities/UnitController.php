@@ -72,7 +72,7 @@ class UnitController extends Controller
 
         /* return $courses_fullId; */
 
-        return view('admin.units.create', compact('courses_full','courses','userActiveName','courses_full'));
+        return view('admin.units.create', compact('courses_full','courses','userActiveName','courses_full','coursesForUser','userActive'));
 
     }
 

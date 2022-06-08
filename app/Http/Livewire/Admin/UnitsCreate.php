@@ -24,6 +24,10 @@ class UnitsCreate extends Component
     public $coursess = [];
     public $coursee = []; //
     public $courses_full = [];
+    public $coursesForUser = [];
+    public $userActive = [];
+    public $cour = [];
+    public $coursesTotal = [];
     /* public $coursesForUser = [];
     public $coursess = [];
     public $faculties = [];
@@ -45,6 +49,7 @@ class UnitsCreate extends Component
     public $currentStep = 1;
 
     protected $rules = [
+        /* 'coursee.unitTotal' => 'required', */
        /*  'activity.name' => 'required',
         'activity.extract' => 'required',
         'activity.extract01' => 'required',
@@ -64,12 +69,54 @@ class UnitsCreate extends Component
     ];
 
 
-    public function mount( Course $coursee){
+    public function mount( Course $coursee, User_course $user_course ){
         $this->currentStep = 1;
-        /* $this->courses = $courses; */
-        $this->coursee = $coursee;
-        /* dd($this->courses_full); */
+        $user_course = User_course::all();
+        /* dd($user_course['0']); */
+        /* dd($this->userActive->ced); */
+        /* $coursesForUser = $this->coursesForUser; */
+        /* $coursesForUser = (object)$coursesForUser; */
 
+
+        /* $coursesForUser =  User_course::where('ced', $this->userActive->ced)
+                            ->get(); */
+
+        /* dd($coursesForUser['3']); */
+
+        /* $this->courses = $courses; */
+        /* $this->courses_full = $coursee; */
+        /* dd($this->courses_full); */
+        $courses_ids= $this->coursesForUser->pluck('id')->toArray();
+        /* $courses_ids= $coursee->unitTotal->pluck('id')->toArray(); */
+        /* $courses_ids= $activity->courses->pluck('id_course')->toArray(); */
+        /* dd($courses_ids); */
+
+        $c= count ($courses_ids);
+        /* dd($c);  */      
+        /* $cursos = []; */
+        
+        for( $i=0;$i<$c;$i++ )
+        {
+            $idd = Course::where ('id',$courses_ids[$i] )
+                            ->get();           
+            /* dd($idd[$i]->id); */
+            /* $this->cour = array_fill_keys($idd[$i]->id, $idd[$i]->unitTotal); */
+            /* $this->cour = array_fill_keys($idd[$i]->id, true); */
+            /* $ids = array($idd[$i]->id); */
+            /* $cursos = []; */
+            /* array_push($cursos, $idd[$i]->id ); */
+            /* array_push($cursos, $i ); */
+            $id_cursos[$i] = $idd[0]->id;            
+            $unitT[$i] = $idd[0]->unitTotal;
+
+            
+        };
+        
+        /* dd($unitT);      */   
+        /* dd($id_cursos); */
+        
+        $this->coursesTotal = array_combine($id_cursos, $unitT);
+        /* dd($this->coursesTotal); */
 
     }
 

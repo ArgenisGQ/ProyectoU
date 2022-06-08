@@ -46,13 +46,14 @@
                                     /* $courses_full = App\Models\Course::all(); */
 
                                     /* dd($courses_full); */
+                                    /* coursesForUser */
 
 
                             @endphp
 
                             <h4> {{ $curso['code'].' '.$curso['course'] }} </h4>
                             <div class="content-start">
-                                @foreach ($cursox as $cursoy )
+                                @foreach ($cursox as $cursoy)
                                         <label for="{{ $cursoy['id'] }}">
 
                                         @php
@@ -62,7 +63,7 @@
 
 
 
-                                        {{ $$courses_full['section'] }}
+                                        {{ $courses_full['section'] }}
 
                                         {{-- <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="coursess">
                                         </label> --}}
@@ -81,7 +82,9 @@
 
 
                                             <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
-                                                placeholder="4" step="1" min="4" max="8" wire:model= "coursee.">
+                                                placeholder="4" step="1" min="4" max="8"
+                                                wire:model="coursesTotal.{{ $courses_full['id'] }}">                                          
+
                                             </label>
 
                                             {{-- @php
