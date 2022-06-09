@@ -28,6 +28,10 @@ class UnitsCreate extends Component
     public $userActive = [];
     public $cour = [];
     public $coursesTotal = [];
+    public $Unit01s,$Unit02s,$Unit03s,$Unit04s,
+           $Unit05s,$Unit06s,$Unit07s,$Unit08s,
+           $Unit09s,$Unit10s,$Unit11s,$Unit12s,
+           $Unit13s,$Unit14s,$Unit15s,$Unit16s = [];
     /* public $coursesForUser = [];
     public $coursess = [];
     public $faculties = [];
@@ -92,13 +96,13 @@ class UnitsCreate extends Component
         /* dd($courses_ids); */
 
         $c= count ($courses_ids);
-        /* dd($c);  */      
+        /* dd($c);  */
         /* $cursos = []; */
-        
+
         for( $i=0;$i<$c;$i++ )
         {
             $idd = Course::where ('id',$courses_ids[$i] )
-                            ->get();           
+                            ->get();
             /* dd($idd[$i]->id); */
             /* $this->cour = array_fill_keys($idd[$i]->id, $idd[$i]->unitTotal); */
             /* $this->cour = array_fill_keys($idd[$i]->id, true); */
@@ -106,17 +110,76 @@ class UnitsCreate extends Component
             /* $cursos = []; */
             /* array_push($cursos, $idd[$i]->id ); */
             /* array_push($cursos, $i ); */
-            $id_cursos[$i] = $idd[0]->id;            
+            $id_cursos[$i] = $idd[0]->id;
             $unitT[$i] = $idd[0]->unitTotal;
 
-            
+
         };
-        
-        /* dd($unitT);      */   
+
+        /* dd($unitT);      */
         /* dd($id_cursos); */
-        
+
         $this->coursesTotal = array_combine($id_cursos, $unitT);
         /* dd($this->coursesTotal); */
+
+        /* -----------para las unidades------------- */
+
+        /* $c = count ($courses_ids); */
+        /* $u = 16; */ //unidades maxima por asignatura
+        /* dd($c);  */
+        /* $cursos = []; */
+        /* $unit = ['unit01','unit02','unit03','unit014',
+                'unit05','unit0','unit07','unit08',
+                'unit09','unit10','unit11','unit12',
+                'unit13','unit14','unit15','unit16']; */
+
+
+        for( $i=0;$i<$c;$i++ )
+        {
+            $idd = Course::where ('id', $courses_ids[$i] )
+                            ->get();
+            $id_cursos[$i] = $idd[0]->id;
+
+            $unit01[$i] = $idd[0]->unit01;
+            $unit02[$i] = $idd[0]->unit02;
+            $unit03[$i] = $idd[0]->unit03;
+            $unit04[$i] = $idd[0]->unit04;
+            $unit05[$i] = $idd[0]->unit05;
+            $unit06[$i] = $idd[0]->unit06;
+            $unit07[$i] = $idd[0]->unit07;
+            $unit08[$i] = $idd[0]->unit08;
+            $unit09[$i] = $idd[0]->unit09;
+            $unit10[$i] = $idd[0]->unit10;
+            $unit11[$i] = $idd[0]->unit11;
+            $unit12[$i] = $idd[0]->unit12;
+            $unit13[$i] = $idd[0]->unit13;
+            $unit14[$i] = $idd[0]->unit14;
+            $unit15[$i] = $idd[0]->unit15;
+            $unit16[$i] = $idd[0]->unit16;
+
+        };
+
+        /* dd($unitT);      */
+        /* dd($id_cursos); */
+
+        $this->Unit01s = array_combine($id_cursos, $unit01);
+        $this->Unit02s = array_combine($id_cursos, $unit02);
+        $this->Unit03s = array_combine($id_cursos, $unit03);
+        $this->Unit04s = array_combine($id_cursos, $unit04);
+        $this->Unit05s = array_combine($id_cursos, $unit05);
+        $this->Unit06s = array_combine($id_cursos, $unit06);
+        $this->Unit07s = array_combine($id_cursos, $unit07);
+        $this->Unit08s = array_combine($id_cursos, $unit08);
+        $this->Unit09s = array_combine($id_cursos, $unit09);
+        $this->Unit10s = array_combine($id_cursos, $unit10);
+        $this->Unit11s = array_combine($id_cursos, $unit11);
+        $this->Unit12s = array_combine($id_cursos, $unit12);
+        $this->Unit13s = array_combine($id_cursos, $unit13);
+        $this->Unit14s = array_combine($id_cursos, $unit14);
+        $this->Unit15s = array_combine($id_cursos, $unit15);
+        $this->Unit16s = array_combine($id_cursos, $unit16);
+
+        /* dd($this->Unit16s); */
 
     }
 

@@ -83,7 +83,7 @@
 
                                             <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
                                                 placeholder="4" step="1" min="4" max="8"
-                                                wire:model="coursesTotal.{{ $courses_full['id'] }}">                                          
+                                                wire:model="coursesTotal.{{ $courses_full['id'] }}">
 
                                             </label>
 
@@ -156,27 +156,48 @@
 
 
                             @endphp
-
+                            <ul>
                             <h4> {{ $curso['code'].' '.$curso['course'] }} </h4>
+
                             <div class="content-start">
                                 @foreach ($cursox as $cursoy)
                                         <label for="{{ $cursoy['id'] }}">
-
+                                        <li>
                                         @php
-                                        $courses_full = App\Models\Course::find($cursoy['id']);                                        
+                                            $courses_full = App\Models\Course::find($cursoy['id']);
                                         @endphp
 
-                                        {{ $courses_full['section'] }} 
+                                        {{ $courses_full['section'] }}
 
                                             <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
                                                 placeholder="4" step="1" min="4" max="8"
-                                                wire:model="coursesTotal.{{ $courses_full['id'] }}">                                          
+                                                wire:model="Unit01s.{{ $courses_full['id'] }}">
 
-                                            </label>                                           
+                                            </label>
 
+                                            <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
+                                                placeholder="4" step="1" min="4" max="8"
+                                                wire:model="Unit02s.{{ $courses_full['id'] }}">
+
+                                            </label>
+
+                                            <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
+                                                placeholder="4" step="1" min="4" max="8"
+                                                wire:model="Unit03s.{{ $courses_full['id'] }}">
+
+                                            </label>
+
+                                            <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
+                                                placeholder="4" step="1" min="4" max="8"
+                                                wire:model="Unit04s.{{ $courses_full['id'] }}">
+
+                                            </label>
+                                        </li>
 
                                 @endforeach
                             </div>
+
+                            </ul>
                         @endforeach
 
                     </div>
@@ -333,7 +354,7 @@
 
         </div>
 
-        
+
 
         @endif
 
