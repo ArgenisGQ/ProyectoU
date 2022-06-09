@@ -165,11 +165,12 @@
                                         <li>
                                         @php
                                             $courses_full = App\Models\Course::find($cursoy['id']);
+                                            dd($courses_full);
                                         @endphp
 
                                         {{ $courses_full['section'] }}
 
-                                            <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
+                                            {{-- <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
                                                 placeholder="4" step="1" min="4" max="8"
                                                 wire:model="Unit01s.{{ $courses_full['id'] }}">
 
@@ -191,7 +192,28 @@
                                                 placeholder="4" step="1" min="4" max="8"
                                                 wire:model="Unit04s.{{ $courses_full['id'] }}">
 
-                                            </label>
+                                            </label> --}}
+
+                                            <p>unidades totales {{ $courses_full['unitTotal'] }}</p>
+
+                                            @for ($i = 1; $i <= 9; $i++)
+
+                                                <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
+                                                    placeholder="4" step="1" min="4" max="8"
+                                                    wire:model="Unit0{{ $i }}s.{{ $courses_full['id'] }}">
+
+                                            @endfor
+
+
+
+                                           {{--  @for ($i = 1; $i <= 9; $i++)
+
+                                                <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
+                                                    placeholder="4" step="1" min="4" max="8"
+                                                    wire:model="Unit0{{ $i }}s.{{ $courses_full['id'] }}">
+
+                                            @endfor --}}
+
                                         </li>
 
                                 @endforeach
