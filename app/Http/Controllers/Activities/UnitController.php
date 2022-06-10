@@ -95,7 +95,7 @@ class UnitController extends Controller
      */
     public function show($id)
     {
-        //
+        return "show";
     }
 
     /**
@@ -107,6 +107,50 @@ class UnitController extends Controller
     public function edit($id)
     {
         //
+        //
+        return "editar";
+
+
+
+        /* --------------relacion de usuarios con materias---------------- */
+        /* $user_courses = User_course::all(); */
+        $userActiveName = auth()->user()->name;
+
+        $author = auth()->user();
+        $userActiveId = auth()->user()->id;
+        $userActiveCed = auth()->user()->ced;
+        /* return $userActiveCed; */
+        /* return $author; */
+
+        $userActive = auth()->user();
+        $coursesForUser =  User_course::where('ced', $userActive->ced)
+                            ->get();
+        $courses = $coursesForUser->unique('code')->toArray();
+
+        /* return $courses; */
+        /* return $coursesForUser; */
+
+        $cursox = User_course::where('ced',$userActiveCed)
+                                        ->where('code', 'TIF-0374')
+                                        ->get();
+        /* return $cursox; */
+
+        /* ----- */
+
+        $courses_full = Course::all();
+
+        /* return $courses_full; */
+
+        /* $courses_fullId= Course::where('code', 'TIF-0374' )
+                                ->where('section', 'ED01D1V' )
+                                ->get(); */
+
+        $courses_fullId= Course::whereCodeAndSection('TIF-0374', 'ED01D1V' )
+                                ->get();
+
+        /* return $courses_fullId; */
+
+        return view('admin.units.edit', compact('courses_full','courses','userActiveName','courses_full','coursesForUser','userActive'));
     }
 
     /**
@@ -118,7 +162,7 @@ class UnitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return "update";
     }
 
     /**
@@ -129,6 +173,6 @@ class UnitController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return "destroy";
     }
 }
