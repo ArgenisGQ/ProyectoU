@@ -263,6 +263,26 @@ class UnitsCreate extends Component
 
                 /* 'coursess' => 'required', */
             /* ]); */
+
+            /* $this->c = count($this->courses);
+            dd($this->c); */
+
+
+            /* $courses_ids= $this->coursesForUser->pluck('id')->toArray();
+            $c= count ($courses_ids);
+
+            for( $i=0;$i<$c;$i++ )
+                {
+                    $idd = Course::where ('id',$courses_ids[$i] )
+                                    ->get();
+
+                    $id_cursos[$i] = $idd[0]->id;
+                    $unitT[$i] = $idd[0]->unitTotal;
+                };
+            $this->coursesTotal = array_combine($id_cursos, $unitT); */
+
+            /* dd($this->coursesTotal['1052']); */
+
         }
         elseif($this->currentStep == 2){
               /* $this->validate([ */
@@ -272,6 +292,7 @@ class UnitsCreate extends Component
                 'extract01' => 'required',
                 'extract02' => 'required' */
               /* ]); */
+
         }
         elseif($this->currentStep == 3){
               /* $this->validate([ */
@@ -295,7 +316,7 @@ class UnitsCreate extends Component
         /* ------------------------ */
 
         /* dd($this->coursess); */
-        dd($this->unitTotalS);
+        /* dd($this->unitTotalS); */
 
 
 

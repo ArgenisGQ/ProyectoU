@@ -84,7 +84,6 @@
                                             <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
                                                 placeholder="4" step="1" min="4" max="8"
                                                 wire:model="coursesTotal.{{ $courses_full['id'] }}">
-
                                             </label>
 
                                             {{-- @php
@@ -122,6 +121,7 @@
 
             <div class="card">
                 <div class="card-header bg-secondary text-white">Paso 2/3 - Valor de las unidades</div>
+
                 <div class="card-body">
 
                     <div class="w-screen flex-col align-items-left mt-2">
@@ -165,7 +165,7 @@
                                         <li>
                                         @php
                                             $courses_full = App\Models\Course::find($cursoy['id']);
-                                            dd($courses_full);
+                                            /* dd($courses_full['unitTotal']); */
                                         @endphp
 
                                         {{ $courses_full['section'] }}
@@ -194,9 +194,16 @@
 
                                             </label> --}}
 
-                                            <p>unidades totales {{ $courses_full['unitTotal'] }}</p>
+                                            {{-- <p>{{$coursesTotal[$cursoy['id']]}}</p> --}}
 
-                                            @for ($i = 1; $i <= 9; $i++)
+                                            @php
+                                                $unidades = $coursesTotal[$cursoy['id']];
+                                            @endphp
+
+                                            {{-- <p>{{$unidades}}</p> --}}
+
+
+                                            @for ($i = 1; $i <= $unidades; $i++)
 
                                                 <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
                                                     placeholder="4" step="1" min="4" max="8"
@@ -206,13 +213,7 @@
 
 
 
-                                           {{--  @for ($i = 1; $i <= 9; $i++)
 
-                                                <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
-                                                    placeholder="4" step="1" min="4" max="8"
-                                                    wire:model="Unit0{{ $i }}s.{{ $courses_full['id'] }}">
-
-                                            @endfor --}}
 
                                         </li>
 
