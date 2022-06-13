@@ -85,36 +85,23 @@ class UnitController extends Controller
     public function store(Request $request)
     {
         //
+        return "store";
     }
 
     /**
-     * Display the specified resource.
+     * Store a newly created resource in storage.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        return "show";
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function unitstotal()
     {
         //
-        //
-        return "editar";
+        /* return "unidades"; */
 
-
-
-        /* --------------relacion de usuarios con materias---------------- */
+         /* --------------relacion de usuarios con materias---------------- */
         /* $user_courses = User_course::all(); */
-        $userActiveName = auth()->user()->name;
+        $userActiveName = auth()->user()->name;//cambiar para usuario a buscar las materias
 
         $author = auth()->user();
         $userActiveId = auth()->user()->id;
@@ -151,6 +138,31 @@ class UnitController extends Controller
         /* return $courses_fullId; */
 
         return view('admin.units.edit', compact('courses_full','courses','userActiveName','courses_full','coursesForUser','userActive'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        return "show";
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+        //
+        return "editar";
+
     }
 
     /**

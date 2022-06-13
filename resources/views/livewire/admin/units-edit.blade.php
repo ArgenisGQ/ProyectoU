@@ -13,7 +13,7 @@
 
         <div class="step-one">
             <div class="card">
-                <div class="card-header bg-secondary text-white">Paso 1/3 - Seleccionar cantidad de Unidades</div>
+                <div class="card-header bg-secondary text-white">Paso 1/3 - Seleccionar Usuario</div>
                 <div class="card-body">
 
                     <div class="w-screen flex-col align-items-left mt-2">
@@ -114,12 +114,84 @@
 
 
         <div class="step-two">
-            <div class="card">
+            {{-- <div class="card">
 
 
             <div class="card">
                 <div class="card-header bg-secondary text-white">Paso 2/3 - Valor de las unidades</div>
 
+                <div class="card-body">
+
+                    <div class="w-screen flex-col align-items-left mt-2">
+
+
+
+                        @foreach ( $courses as $curso )
+
+                            @php
+
+
+                                    $cursox = App\Models\User_course::where('name',$userActiveName)
+                                                                    ->where('code',$curso['code'])
+                                                                    ->get();
+
+
+
+
+                            @endphp
+                            <ul>
+                            <h4> {{ $curso['code'].' '.$curso['course'] }} </h4>
+
+                            <div class="content-start">
+                                @foreach ($cursox as $cursoy)
+                                        <label for="{{ $cursoy['id'] }}">
+                                        <li>
+                                        @php
+                                            $courses_full = App\Models\Course::find($cursoy['id']);
+
+                                        @endphp
+
+                                        {{ $courses_full['section'] }}
+
+
+
+                                            @php
+                                                $unidades = $coursesTotal[$cursoy['id']];
+                                            @endphp
+
+
+
+
+                                            @for ($i = 1; $i <= $unidades; $i++)
+
+                                                <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
+                                                    placeholder="4" step="1" min="4" max="8"
+                                                    wire:model="Unit0{{ $i }}s.{{ $courses_full['id'] }}">
+
+                                            @endfor
+
+
+
+
+
+                                        </li>
+
+                                @endforeach
+                            </div>
+
+                            </ul>
+                        @endforeach
+
+                    </div>
+
+
+                </div>
+
+
+            </div> --}}
+
+
+            <div class="card-header bg-secondary text-white">Paso 2/3 - Seleccion de cantidad de unidades</div>
                 <div class="card-body">
 
                     <div class="w-screen flex-col align-items-left mt-2">
@@ -154,71 +226,49 @@
 
 
                             @endphp
-                            <ul>
-                            <h4> {{ $curso['code'].' '.$curso['course'] }} </h4>
 
+                            <h4> {{ $curso['code'].' '.$curso['course'] }} </h4>
                             <div class="content-start">
                                 @foreach ($cursox as $cursoy)
                                         <label for="{{ $cursoy['id'] }}">
-                                        <li>
+
                                         @php
-                                            $courses_full = App\Models\Course::find($cursoy['id']);
-                                            /* dd($courses_full['unitTotal']); */
+                                        $courses_full = App\Models\Course::find($cursoy['id']);
+                                        /* dd($courses_full); */
                                         @endphp
+
+
 
                                         {{ $courses_full['section'] }}
 
-                                            {{-- <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
-                                                placeholder="4" step="1" min="4" max="8"
-                                                wire:model="Unit01s.{{ $courses_full['id'] }}">
+                                        {{-- <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="coursess">
+                                        </label> --}}
 
-                                            </label>
+                                        {{-- <label for="unit"></label>
+                                        <select names="unit" wire:model="unitTotalS"
+                                        class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
+                                            <option value="" selected>Unidades</option>
+
+                                            <option value="4"> 4</option>
+                                            <option value="5"> 5</option>
+                                            <option value="6"> 6</option>
+                                            <option value="7"> 7</option>
+                                            <option value="8"> 8</option>
+                                            </select> --}}
+
 
                                             <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
                                                 placeholder="4" step="1" min="4" max="8"
-                                                wire:model="Unit02s.{{ $courses_full['id'] }}">
-
+                                                wire:model="coursesTotal.{{ $courses_full['id'] }}">
                                             </label>
 
-                                            <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
-                                                placeholder="4" step="1" min="4" max="8"
-                                                wire:model="Unit03s.{{ $courses_full['id'] }}">
+                                            {{-- @php
+                                                dd($unitTotalS);
+                                            @endphp --}}
 
-                                            </label>
-
-                                            <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
-                                                placeholder="4" step="1" min="4" max="8"
-                                                wire:model="Unit04s.{{ $courses_full['id'] }}">
-
-                                            </label> --}}
-
-                                            {{-- <p>{{$coursesTotal[$cursoy['id']]}}</p> --}}
-
-                                            @php
-                                                $unidades = $coursesTotal[$cursoy['id']];
-                                            @endphp
-
-                                            {{-- <p>{{$unidades}}</p> --}}
-
-
-                                            @for ($i = 1; $i <= $unidades; $i++)
-
-                                                <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
-                                                    placeholder="4" step="1" min="4" max="8"
-                                                    wire:model="Unit0{{ $i }}s.{{ $courses_full['id'] }}">
-
-                                            @endfor
-
-
-
-
-
-                                        </li>
 
                                 @endforeach
                             </div>
-
-                            </ul>
                         @endforeach
 
                     </div>
@@ -226,151 +276,11 @@
 
 
 
-                    {{-- <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="">Nombre de Actividad</label>
-                                <input type="text" class="form-control" placeholder="Ingrese el nombre de la actividad" wire:model.defer="name">
-                                <span class="text-danger">@error('name'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="">Factultad de la materia:</label>
-
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group w-full">
-                            <label for="">Nombre del Profesor: {{ $userActiveName }}</label>
-
-                        </div>
-                    </div> --}}
+                    <span class="text-danger">@error('coursess'){{ $message }}@enderror</span>
                 </div>
-            </div>
-
-
-            {{-- <div class="card">
-                <div class="card-header bg-secondary text-white">Proposito de la Actividad</div>
-                <div class="card-body">
-                    <div class = "form-group my-4"  wire:ignore>
-                        <label for="body" class="p-r-mute">   </label>
-                        <textarea id="body" wire:model="body" class="form-control w-full" placeholder="Indique de manera especifica el proposito de la actividad" rows="6" required></textarea>
-                    </div>
-
-                    <span class="text-danger">@error('body'){{ $message }}@enderror</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header bg-secondary text-white">Competencia de la Actividad</div>
-                <div class="card-body">
-                    <div class = "form-group my-4"  wire:ignore>
-                        <label for="extract" class="p-r-mute">   </label>
-                        <textarea id="extract" wire:model="extract" class="form-control" placeholder="Indique de manera especifica la competencia de la actividad" rows="6" required></textarea>
-                    </div>
-
-
-                    <span class="text-danger">@error('extract'){{ $message }}@enderror</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header bg-secondary text-white">Criterios de la Evaluacion</div>
-                <div class="card-body">
-                    <div class = "form-group my-4"  wire:ignore>
-                        <label for="extract01" class="p-r-mute">   </label>
-                        <textarea id="extract01" wire:model="extract01" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
-                    </div>
-
-                    <span class="text-danger">@error('extract01'){{ $message }}@enderror</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header bg-secondary text-white">Instrucciones de la Actividad</div>
-                <div class="card-body">
-                    <div class = "form-group my-4"  wire:ignore>
-                        <label for="extract02" class="p-r-mute">   </label>
-                        <textarea id="extract02" wire:model="extract02" class="form-control" placeholder="Indique de manera especifica las instrucciones de la actividad" rows="6" required></textarea>
-                    </div>
-
-                    <span class="text-danger">@error('extract02'){{ $message }}@enderror</span>
-                </div>
-            </div> --}}
-
-            {{-- <script>
 
 
 
-                ClassicEditor
-                    .create( document.querySelector( '#body' ) )
-
-                    .then(editor => {
-                        editor.model.document.on('change:data', () => {
-                            editor.model.document.on('change:data', () => {
-                                @this.set('body', editor.getData());
-                            })
-
-                        });
-                    })
-                    .catch( error => {
-                        console.error( error )
-                } );
-
-                ClassicEditor
-                    .create( document.querySelector( '#extract' ) )
-
-                    .then(editor => {
-                        editor.model.document.on('change:data', () => {
-                            editor.model.document.on('change:data', () => {
-                                @this.set('extract', editor.getData());
-                            })
-
-                        });
-                    })
-                    .catch( error => {
-                        console.error( error )
-                } );
-
-                ClassicEditor
-                    .create( document.querySelector( '#extract01' ) )
-
-                    .then(editor => {
-                        editor.model.document.on('change:data', () => {
-                            editor.model.document.on('change:data', () => {
-                                @this.set('extract01', editor.getData());
-                            })
-
-                        });
-                    })
-                    .catch( error => {
-                        console.error( error )
-                } );
-
-                ClassicEditor
-                    .create( document.querySelector( '#extract02' ) )
-
-                    .then(editor => {
-                        editor.model.document.on('change:data', () => {
-                            editor.model.document.on('change:data', () => {
-                                @this.set('extract02', editor.getData());
-                            })
-
-                        });
-                    })
-                    .catch( error => {
-                        console.error( error )
-                } );
-
-
-
-
-
-            </script> --}}
 
 
         </div>

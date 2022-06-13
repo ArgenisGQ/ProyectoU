@@ -79,6 +79,8 @@ Route::resource('courses', CourseAdminController::class)->except('show')->names(
 
 Route::resource('units', UnitController::class)->only(['index', 'create', 'edit', 'store', 'show', 'update', 'destroy'])->names('admin.units');
 
+Route::get('unitss/unitstotal', [UnitController::class, 'unitstotal'])->name('admin.units.unitstotal');
+
 /* Route::resource('units', UnitController::class)->names('admin.units'); */
 
 Route::resource('activities', ActivityAdminController::class)->only(['index', 'create', 'edit', 'store', 'show', 'update', 'destroy'])->names('admin.activities');
