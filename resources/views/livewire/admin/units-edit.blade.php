@@ -12,7 +12,85 @@
         </div> --}}
 
         <div class="step-one">
+
+
+
             <div class="card">
+                <div class="card-header">
+                    <input {{-- wire:model="search"  --}}class="form-control" placeholder="Ingrese el nombre o el email del usuario">
+                </div>
+
+                @if ($users->count())
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Usuario</th>
+                                    <th>Nombre</th>
+                                    {{-- <th>Apellido</th> --}}
+                                    <th>Documento</th>
+                                    <th>Email</th>
+                                    {{-- <th>Id_sima</th> --}}
+                                    {{-- <th>Id_continua</th> --}}
+                                    <th>Rol</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <td>{{$user->id}}</td>
+                                        {{-- <td>{{$user->name}}</td> --}}
+                                        {{-- <td><a href="{{route('profile.show', $user)}}">
+                                            {{$user->name}}
+                                        </a></td> --}}
+                                        <td><a href="{{route('admin.users.show', $user)}}">
+                                            {{$user->userName}}
+                                        </a></td>
+                                        <td>{{$user->name}}</td>
+                                        {{-- <td>{{$user->lastName}}</td> --}}
+                                        <td>{{$user->ced}}</td>
+                                        <td>{{$user->email}}</td>
+                                        {{-- <td>{{$user->id_sima}}</td> --}}
+                                        {{-- <td>{{$user->id_continua}}</td> --}}
+                                        <td>
+                                            @if(!empty($user->getRoleNames()))
+                                                @foreach ($user->getRoleNames() as $rolName )
+                                                <h5><span class="badge badge-dark">{{$rolName}}</span></h5>
+                                                @endforeach
+                                            @endif
+                                        </td>
+                                        <td width="10px">
+                                            <a href="{{route('admin.users.edit', $user)}}" class="btn btn-primary  btn-sm">Editar</a>
+                                        </td>
+                                        <td class="10px">
+                                            <form action="{{route('admin.users.destroy', $user)}}" method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="card-footer">
+                        {{$users->links()}}
+                    </div>
+                @else
+                    <div class="card-body">
+                        <strong>No hay registros</strong>
+                    </div>
+                @endif
+
+            </div>
+
+
+
+            {{-- <div class="card">
                 <div class="card-header bg-secondary text-white">Paso 1/3 - Seleccionar Usuario</div>
                 <div class="card-body">
 
@@ -29,22 +107,7 @@
                                                                     ->where('code',$curso['code'])
                                                                     ->get();
 
-                                    /* dd($cursox); */
 
-                                    /* $cursox = App\Models\Course::where('name',$userActiveName)
-                                                                    ->where('code',$curso['code'])
-                                                                    ->get(); */
-
-                                    /* $courses_full = App\Models\Course::where('code',$cursox->code)
-                                                                    ->where('section',$cursox['section'])
-                                                                    ->get(); */
-
-                                    /* $courses_full = App\Models\Course::find($cursox['id']); */
-
-                                    /* $courses_full = App\Models\Course::all(); */
-
-                                    /* dd($courses_full); */
-                                    /* coursesForUser */
 
 
                             @endphp
@@ -56,27 +119,14 @@
 
                                         @php
                                         $courses_full = App\Models\Course::find($cursoy['id']);
-                                        /* dd($courses_full); */
+
                                         @endphp
 
 
 
                                         {{ $courses_full['section'] }}
 
-                                        {{-- <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="coursess">
-                                        </label> --}}
 
-                                        {{-- <label for="unit"></label>
-                                        <select names="unit" wire:model="unitTotalS"
-                                        class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
-                                            <option value="" selected>Unidades</option>
-
-                                            <option value="4"> 4</option>
-                                            <option value="5"> 5</option>
-                                            <option value="6"> 6</option>
-                                            <option value="7"> 7</option>
-                                            <option value="8"> 8</option>
-                                            </select> --}}
 
 
                                             <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
@@ -84,9 +134,6 @@
                                                 wire:model="coursesTotal.{{ $courses_full['id'] }}">
                                             </label>
 
-                                            {{-- @php
-                                                dd($unitTotalS);
-                                            @endphp --}}
 
 
                                 @endforeach
@@ -100,7 +147,7 @@
 
                     <span class="text-danger">@error('coursess'){{ $message }}@enderror</span>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
 
