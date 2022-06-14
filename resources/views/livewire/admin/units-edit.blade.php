@@ -17,7 +17,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <input {{-- wire:model="search"  --}}class="form-control" placeholder="Ingrese el nombre o el email del usuario">
+                    <input wire:model="search" class="form-control" placeholder="Ingrese el nombre o el email del usuario">
                 </div>
 
                 @if ($users->count())
@@ -30,10 +30,11 @@
                                     <th>Nombre</th>
                                     {{-- <th>Apellido</th> --}}
                                     <th>Documento</th>
-                                    <th>Email</th>
+                                    {{-- <th>Email</th> --}}
                                     {{-- <th>Id_sima</th> --}}
                                     {{-- <th>Id_continua</th> --}}
-                                    <th>Rol</th>
+                                    {{-- <th>Rol</th> --}}
+                                    <th>Seleccion</th>
                                 </tr>
                             </thead>
 
@@ -51,26 +52,30 @@
                                         <td>{{$user->name}}</td>
                                         {{-- <td>{{$user->lastName}}</td> --}}
                                         <td>{{$user->ced}}</td>
-                                        <td>{{$user->email}}</td>
+                                        {{-- <td>{{$user->email}}</td> --}}
                                         {{-- <td>{{$user->id_sima}}</td> --}}
                                         {{-- <td>{{$user->id_continua}}</td> --}}
-                                        <td>
+                                        {{-- <td>
                                             @if(!empty($user->getRoleNames()))
                                                 @foreach ($user->getRoleNames() as $rolName )
                                                 <h5><span class="badge badge-dark">{{$rolName}}</span></h5>
                                                 @endforeach
                                             @endif
-                                        </td>
-                                        <td width="10px">
+                                        </td> --}}
+                                        {{-- <td width="10px">
                                             <a href="{{route('admin.users.edit', $user)}}" class="btn btn-primary  btn-sm">Editar</a>
-                                        </td>
-                                        <td class="10px">
+                                        </td> --}}
+                                        {{-- <td class="10px">
                                             <form action="{{route('admin.users.destroy', $user)}}" method="POST">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                             </form>
+                                        </td> --}}
+                                        <td>
+                                           <input wire:model="usuario" name="usuario" type="radio" value="{{$user->name}}" />
                                         </td>
+
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -237,20 +242,69 @@
 
             </div> --}}
 
+            {{-- <p>{{$user->userName}}</p> --}}
+            <p>{{$this->usuario}}</p>
+            {{-- <p>{{$userActiveName}}</p> --}}
+
 
             <div class="card-header bg-secondary text-white">Paso 2/3 - Seleccion de cantidad de unidades</div>
                 <div class="card-body">
 
                     <div class="w-screen flex-col align-items-left mt-2">
 
+                        @php
+                            $coursesForUserx =  App\Models\User_course::where('name', $this->usuario)
+                                                            ->get();
+                            $coursesx = $coursesForUserx->unique('code')->toArray();
+
+                            /* ------------------------------------------------------------------------ */
+
+                            $coursesForUser =  App\Models\User_course::where('name', $userActive->ced)
+                            ->get();
+
+                            $courses_ids= $this->coursesForUser->pluck('id')->toArray();
+                            /* $courses_ids= $coursee->unitTotal->pluck('id')->toArray(); */
+                            /* $courses_ids= $activity->courses->pluck('id_course')->toArray(); */
+                            /* dd($courses_ids); */
+
+                            $c= count ($courses_ids);
+                            /* dd($c);  */
+                            /* $cursos = []; */
+
+                            for( $i=0;$i<$c;$i++ )
+                            {
+                                $idd = App\Models\Course::where ('id',$courses_ids[$i] )
+                                                ->get();
+                                /* dd($idd[$i]->id); */
+                                /* $this->cour = array_fill_keys($idd[$i]->id, $idd[$i]->unitTotal); */
+                                /* $this->cour = array_fill_keys($idd[$i]->id, true); */
+                                /* $ids = array($idd[$i]->id); */
+                                /* $cursos = []; */
+                                /* array_push($cursos, $idd[$i]->id ); */
+                                /* array_push($cursos, $i ); */
+                                $id_cursos[$i] = $idd[0]->id;
+                                $unitT[$i] = $idd[0]->unitTotal;
 
 
-                        @foreach ( $courses as $curso )
+                            };
+
+                            /* dd($unitT);      */
+                            /* dd($id_cursos); */
+
+                            $this->coursesTotal = array_combine($id_cursos, $unitT);
+                            /* dd($this->coursesTotal); */
+
+
+                        @endphp
+
+
+
+                        @foreach ( $coursesx as $curso )
 
                             @php
 
 
-                                    $cursox = App\Models\User_course::where('name',$userActiveName)
+                                    $cursox = App\Models\User_course::where('name',$this->usuario)
                                                                     ->where('code',$curso['code'])
                                                                     ->get();
 
@@ -305,7 +359,7 @@
 
 
                                             <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
-                                                placeholder="4" step="1" min="4" max="8"
+                                                placeholder="4" step="1" min="1" max="8"
                                                 wire:model="coursesTotal.{{ $courses_full['id'] }}">
                                             </label>
 
@@ -525,6 +579,7 @@
 
         <div class="step-one">
             <p>TERCERA PARTE</p>
+            <p>{{$this->coursesForUser}}</p>
         </div>
 
         @endif

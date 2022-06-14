@@ -11,11 +11,35 @@ use App\Models\Evaluation;
 use App\Models\Period;
 use Carbon\Carbon;
 use App\Models\Activity_course;
+use App\Models\User;
+use Livewire\WithPagination;
 
 class UnitsEdit extends Component
 {
     use WithFileUploads;
 
+    /* ------------------------- */
+
+    use WithPagination;
+
+    /* public $search; */
+
+    /* protected $paginationTheme = "bootstrap"; */
+
+    /* public function updatingSearch(){
+        $this->resetPage();
+    } */
+
+    /* public function render()
+    {
+        $users = User::where('name', 'LIKE', '%' . $this->search. '%')
+                        ->orWhere('email', 'LIKE', '%' . $this->search. '%')
+                        ->paginate();
+
+        return view('livewire.admin.usersindex', compact('users'));
+    } */
+
+    /* ------------------------- */
 
     /* public $courses_full = []; */
     public $courses = [];
@@ -28,10 +52,13 @@ class UnitsEdit extends Component
     public $userActive = [];
     public $cour = [];
     public $coursesTotal = [];
+    public $coursesTotall = [];
     public $Unit01s,$Unit02s,$Unit03s,$Unit04s,
            $Unit05s,$Unit06s,$Unit07s,$Unit08s,
            $Unit09s,$Unit10s,$Unit11s,$Unit12s,
            $Unit13s,$Unit14s,$Unit15s,$Unit16s = [];
+    public $search;
+    public $usuario;
     /* public $coursesForUser = [];
     public $coursess = [];
     public $faculties = [];
@@ -72,6 +99,8 @@ class UnitsEdit extends Component
 
     ];
 
+    protected $paginationTheme = "bootstrap";
+
 
     public function mount( Course $coursee, User_course $user_course ){
         $this->currentStep = 1;
@@ -90,37 +119,26 @@ class UnitsEdit extends Component
         /* $this->courses = $courses; */
         /* $this->courses_full = $coursee; */
         /* dd($this->courses_full); */
-        $courses_ids= $this->coursesForUser->pluck('id')->toArray();
-        /* $courses_ids= $coursee->unitTotal->pluck('id')->toArray(); */
-        /* $courses_ids= $activity->courses->pluck('id_course')->toArray(); */
-        /* dd($courses_ids); */
+
+
+        /* ------------------------------------------------------------------- *//* para unidades */
+        /* $courses_ids= $this->coursesForUser->pluck('id')->toArray();
 
         $c= count ($courses_ids);
-        /* dd($c);  */
-        /* $cursos = []; */
 
         for( $i=0;$i<$c;$i++ )
         {
             $idd = Course::where ('id',$courses_ids[$i] )
                             ->get();
-            /* dd($idd[$i]->id); */
-            /* $this->cour = array_fill_keys($idd[$i]->id, $idd[$i]->unitTotal); */
-            /* $this->cour = array_fill_keys($idd[$i]->id, true); */
-            /* $ids = array($idd[$i]->id); */
-            /* $cursos = []; */
-            /* array_push($cursos, $idd[$i]->id ); */
-            /* array_push($cursos, $i ); */
+
             $id_cursos[$i] = $idd[0]->id;
             $unitT[$i] = $idd[0]->unitTotal;
-
-
         };
+        $this->coursesTotal = array_combine($id_cursos, $unitT); */
 
-        /* dd($unitT);      */
-        /* dd($id_cursos); */
-
-        $this->coursesTotal = array_combine($id_cursos, $unitT);
         /* dd($this->coursesTotal); */
+
+        /* ------------------------------------------------------------------- *//* para unidades */
 
         /* -----------para las unidades------------- */
 
@@ -133,8 +151,8 @@ class UnitsEdit extends Component
                 'unit09','unit10','unit11','unit12',
                 'unit13','unit14','unit15','unit16']; */
 
-
-        for( $i=0;$i<$c;$i++ )
+        /* ---------------------------------------------- */
+        /* for( $i=0;$i<$c;$i++ )
         {
             $idd = Course::where ('id', $courses_ids[$i] )
                             ->get();
@@ -157,12 +175,12 @@ class UnitsEdit extends Component
             $unit15[$i] = $idd[0]->unit15;
             $unit16[$i] = $idd[0]->unit16;
 
-        };
+        }; */
 
         /* dd($unitT);      */
         /* dd($id_cursos); */
 
-        $this->Unit01s = array_combine($id_cursos, $unit01);
+        /* $this->Unit01s = array_combine($id_cursos, $unit01);
         $this->Unit02s = array_combine($id_cursos, $unit02);
         $this->Unit03s = array_combine($id_cursos, $unit03);
         $this->Unit04s = array_combine($id_cursos, $unit04);
@@ -177,10 +195,14 @@ class UnitsEdit extends Component
         $this->Unit13s = array_combine($id_cursos, $unit13);
         $this->Unit14s = array_combine($id_cursos, $unit14);
         $this->Unit15s = array_combine($id_cursos, $unit15);
-        $this->Unit16s = array_combine($id_cursos, $unit16);
+        $this->Unit16s = array_combine($id_cursos, $unit16); */
 
         /* dd($this->Unit16s); */
 
+    }
+
+    public function updatingSearch(){
+        $this->resetPage();
     }
 
 
@@ -199,7 +221,18 @@ class UnitsEdit extends Component
         /* ------------------------------------------------------------------ */
 
         /* return view('livewire.admin.activities-create'); */
-        return view('livewire.admin.units-edit');
+
+        /* --------------------------------------------------------------------- */
+
+        $users = User::where('name', 'LIKE', '%' . $this->search. '%')
+        ->orWhere('email', 'LIKE', '%' . $this->search. '%')
+        ->orWhere('ced', 'LIKE', '%' . $this->search. '%')
+        ->orWhere('userName', 'LIKE', '%' . $this->search. '%')
+        ->paginate();
+
+        /* --------------------------------------------------------------------- */
+
+        return view('livewire.admin.units-edit', compact('users'));
     }
 
 
@@ -313,6 +346,34 @@ class UnitsEdit extends Component
 
     public function register(){
         $this->resetErrorBag();
+
+        /* dd($this->usuario); */
+
+        /* $coursesForUsery =  User_course::where('name', $this->usuario)
+                                                            ->get(); */
+
+        /* dd($coursesForUsery[0]->id); */
+
+        $this->c = count($this->coursesForUser);
+
+        dd($this->coursesForUser);
+
+        /* dd($this->c); */
+
+        for( $this->i=0;$this->i<$this->c;$this->i++ )
+            {
+                $up_courses = Course::find($coursesForUser[$this->i]->id)
+                                    ->update(['unitTotal' => 4]);
+
+                /* $activity_courses = Activity_course::create([
+                    'id_activity'        => $this->id_activityLast->id,
+                    'id_course'          => $this->coursess[$this->i],
+                ]); */
+            };
+
+        dd("listo");
+
+
 
         /* ------------------------ */
 
