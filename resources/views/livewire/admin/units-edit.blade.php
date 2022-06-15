@@ -340,16 +340,8 @@
 
                     </div>
 
-
-
-
                     <span class="text-danger">@error('coursess'){{ $message }}@enderror</span>
                 </div>
-
-
-
-
-
         </div>
 
 
@@ -545,25 +537,20 @@
 
         <div class="step-one">
             <p>TERCERA PARTE</p>
-            {{-- <p>{{$coursesForUser}}</p> --}}
         </div>
 
         @endif
 
 
-        <div class="action-buttons d-flex justify-content-between bg-white pt-2 pb-2">
+        {{-- <div class="action-buttons d-flex justify-content-between bg-white pt-2 pb-2">
 
            @if ($currentStep == 1)
                <div></div>
            @endif
 
-
-
            @if ($currentStep == 2 || $currentStep == 3 )
                <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseStep()">Atras</button>
            @endif
-
-
 
            @if ($currentStep == 1 || $currentStep == 2)
                <button type="button" class="btn btn-md btn-success" wire:click="increaseStep()">Siguiente</button>
@@ -573,8 +560,28 @@
                 <button type="submit" class="btn btn-md btn-primary">Crear</button>
            @endif
 
+        </div> --}}
 
-        </div>
+        <div class="action-buttons d-flex justify-content-between bg-white pt-2 pb-2">
+
+            @if ($currentStep == 1)
+                <div></div>
+            @endif
+
+            @if ($currentStep == 2 /* || $currentStep == 3 */ )
+                <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseStep()">Atras</button>
+            @endif
+
+            @if ($currentStep == 1 /* || $currentStep == 2 */)
+                <button type="button" class="btn btn-md btn-success" wire:click="increaseStep()">Siguiente</button>
+            @endif
+
+            @if ($currentStep == 2)
+                 <button type="submit" class="btn btn-md btn-primary">Crear</button>
+            @endif
+
+         </div>
+
 
     </form>
 
