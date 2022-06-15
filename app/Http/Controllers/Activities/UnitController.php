@@ -110,9 +110,9 @@ class UnitController extends Controller
         /* return $author; */
 
         $userActive = auth()->user();
-        $coursesForUser =  User_course::where('ced', $userActive->ced)
+        $coursesForUserx =  User_course::where('ced', $userActive->ced)  //ABC
                             ->get();
-        $courses = $coursesForUser->unique('code')->toArray();
+        $courses = $coursesForUserx->unique('code')->toArray();
 
         /* return $courses; */
         /* return $coursesForUser; */
@@ -137,7 +137,7 @@ class UnitController extends Controller
 
         /* return $courses_fullId; */
 
-        return view('admin.units.edit', compact('courses_full','courses','userActiveName','courses_full','coursesForUser','userActive'));
+        return view('admin.units.edit', compact('courses_full','courses','userActiveName','courses_full','coursesForUserx','userActive'));
     }
 
     /**

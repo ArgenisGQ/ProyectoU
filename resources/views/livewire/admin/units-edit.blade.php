@@ -253,47 +253,13 @@
                     <div class="w-screen flex-col align-items-left mt-2">
 
                         @php
-                            $coursesForUserx =  App\Models\User_course::where('name', $this->usuario)
+                            $coursesForUser =  App\Models\User_course::where('name', $this->usuario)
                                                             ->get();
-                            $coursesx = $coursesForUserx->unique('code')->toArray();
+                            $coursesx = $coursesForUser->unique('code')->toArray();
 
-                            /* ------------------------------------------------------------------------ */
+                            /* dd($coursesForUser); */
 
-                            $coursesForUser =  App\Models\User_course::where('name', $userActive->ced)
-                            ->get();
-
-                            $courses_ids= $this->coursesForUser->pluck('id')->toArray();
-                            /* $courses_ids= $coursee->unitTotal->pluck('id')->toArray(); */
-                            /* $courses_ids= $activity->courses->pluck('id_course')->toArray(); */
-                            /* dd($courses_ids); */
-
-                            $c= count ($courses_ids);
-                            /* dd($c);  */
-                            /* $cursos = []; */
-
-                            for( $i=0;$i<$c;$i++ )
-                            {
-                                $idd = App\Models\Course::where ('id',$courses_ids[$i] )
-                                                ->get();
-                                /* dd($idd[$i]->id); */
-                                /* $this->cour = array_fill_keys($idd[$i]->id, $idd[$i]->unitTotal); */
-                                /* $this->cour = array_fill_keys($idd[$i]->id, true); */
-                                /* $ids = array($idd[$i]->id); */
-                                /* $cursos = []; */
-                                /* array_push($cursos, $idd[$i]->id ); */
-                                /* array_push($cursos, $i ); */
-                                $id_cursos[$i] = $idd[0]->id;
-                                $unitT[$i] = $idd[0]->unitTotal;
-
-
-                            };
-
-                            /* dd($unitT);      */
-                            /* dd($id_cursos); */
-
-                            $this->coursesTotal = array_combine($id_cursos, $unitT);
-                            /* dd($this->coursesTotal); */
-
+                            $this->usuariox = $this->usuario;
 
                         @endphp
 
@@ -359,7 +325,7 @@
 
 
                                             <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
-                                                placeholder="4" step="1" min="1" max="8"
+                                                placeholder="2" step="1" min="1" max="8"
                                                 wire:model="coursesTotal.{{ $courses_full['id'] }}">
                                             </label>
 
@@ -579,7 +545,7 @@
 
         <div class="step-one">
             <p>TERCERA PARTE</p>
-            <p>{{$this->coursesForUser}}</p>
+            {{-- <p>{{$coursesForUser}}</p> --}}
         </div>
 
         @endif

@@ -34,7 +34,7 @@
                   <div class="col-md-10 max-w-sm w-full lg:max-w-full lg:flex offset-md-1">
                       {{-- <h1>Creacion de Actividades</h1><hr> --}}
                       @livewire('admin.units-edit', compact('courses_full','courses','userActiveName','courses_full'
-                                                                ,'coursesForUser','userActive') )
+                                                                ,'coursesForUserx','userActive') )
                   </div>
             </div>
         </div>

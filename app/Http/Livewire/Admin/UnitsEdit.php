@@ -58,7 +58,7 @@ class UnitsEdit extends Component
            $Unit09s,$Unit10s,$Unit11s,$Unit12s,
            $Unit13s,$Unit14s,$Unit15s,$Unit16s = [];
     public $search;
-    public $usuario;
+    public $usuario, $usuariox;
     /* public $coursesForUser = [];
     public $coursess = [];
     public $faculties = [];
@@ -231,6 +231,71 @@ class UnitsEdit extends Component
         ->paginate();
 
         /* --------------------------------------------------------------------- */
+
+        if ($this->usuario) {
+
+                            /* dd("test"); */
+
+                            /* $usuariox = $this->usuario; */
+
+                            if ($this->usuario !== $this->usuariox) {
+                                /* dd("usuario"); */
+                                $coursesForUser =  User_course::where('name', $this->usuario)
+                                                                ->get();
+                                $this->coursesForUser = $coursesForUser;
+                                /* $coursesx = $coursesForUser->unique('code')->toArray(); */
+
+                                /* dd($coursesForUser); */
+
+                                /* ------------------------------------------------------------------------ */
+
+                                /* $coursesForUser =  App\Models\User_course::where('name', $userActive->name)
+                                ->get(); */
+
+                                $courses_ids= $coursesForUser->pluck('id')->toArray();
+                                /* $courses_ids= $coursee->unitTotal->pluck('id')->toArray(); */
+                                /* $courses_ids= $activity->courses->pluck('id_course')->toArray(); */
+                                /* dd($courses_ids); */
+
+                                $c= count ($courses_ids);
+                                /* dd($c);  */
+                                /* $cursos = []; */
+
+                                for( $i=0;$i<$c;$i++ )
+                                {
+                                    $idd = Course::where ('id',$courses_ids[$i] )
+                                                    ->get();
+                                    /* dd($idd[$i]->id); */
+                                    /* $this->cour = array_fill_keys($idd[$i]->id, $idd[$i]->unitTotal); */
+                                    /* $this->cour = array_fill_keys($idd[$i]->id, true); */
+                                    /* $ids = array($idd[$i]->id); */
+                                    /* $cursos = []; */
+                                    /* array_push($cursos, $idd[$i]->id ); */
+                                    /* array_push($cursos, $i ); */
+                                    $id_cursos[$i] = $idd[0]->id;
+                                    $unitT[$i] = $idd[0]->unitTotal;
+
+
+                                };
+
+                                /* dd($unitT);      */
+                                /* dd($id_cursos); */
+
+                                $this->coursesTotal = array_combine($id_cursos, $unitT);
+                                /* dd($this->coursesTotal); */
+                                /* $this->usuario = false; */
+
+
+                            };
+
+
+
+
+        }
+
+
+
+        /* ------------------------------------------------------------------------ */
 
         return view('livewire.admin.units-edit', compact('users'));
     }
