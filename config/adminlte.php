@@ -350,11 +350,19 @@ return [
                         'can'    => 'admin.courses.index'
                         ],
                         [
-                        'text' => 'Unidades',
-                        /* 'route'  => 'admin.activities.unit', */
-                        'route'  => 'admin.courses.index',
+                        'text' => 'Unidades Total',
+                        'route'  => 'admin.units.unitstotal',
+                        /* 'route'  => 'admin.courses.index', */
                         'icon' => 'far fa-fw fa-bookmark',
                         'active' => ['admin/courses*'],
+                        /* 'can'    => 'admin.courses.index' */
+                        ],
+                        [
+                        /* 'text' => 'Unidades', */
+                        /* 'route'  => 'admin.activities.unit', */
+                        /* 'route'  => 'admin.courses.index', */
+                        /* 'icon' => 'far fa-fw fa-bookmark', */
+                        /* 'active' => ['admin/courses*'], */
                         /* 'can'    => 'admin.courses.index' */
                         ],
 
@@ -374,10 +382,9 @@ return [
                     'can'    => 'admin.activities.create',
 
                 ],
-
                 [
                     'text' => 'Unidades',
-                    /* 'route'  => 'admin.activities.unit', */
+                    'route'  => 'admin.units.create',
                     'icon' => 'fas fa-fw fa-file',
                     /* 'can'    => 'admin.activities.create', */
 

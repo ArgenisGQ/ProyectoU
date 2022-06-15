@@ -442,7 +442,7 @@ class UnitsEdit extends Component
                 ]); */
             };
 
-        dd("listo");
+        /* dd("listo"); */
 
 
 
@@ -554,7 +554,7 @@ class UnitsEdit extends Component
         $data = ['name'=>$this->first_name.' '.$this->last_name,'email'=>$this->email]; */
         /* dd($data); */
         /* return redirect()->route('admin.activities.index')->with('info', 'La actividad se creo con exito'); */
-        return redirect()->route('admin.units.index');
+        return redirect()->route('admin.units.unitstotal');
     }
 
 
