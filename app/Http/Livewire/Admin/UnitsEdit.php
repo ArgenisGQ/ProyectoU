@@ -421,14 +421,20 @@ class UnitsEdit extends Component
 
         $this->c = count($this->coursesForUser);
 
-        dd($this->coursesForUser);
+        /* dd($this->coursesForUser); */
 
         /* dd($this->c); */
 
+        /* dd($this->coursesForUser[0]->id); */
+
+        /* dd($this->courses_full[0]->unitTotal); */
+
+        /* dd($this->coursesTotal[4]); */
+
         for( $this->i=0;$this->i<$this->c;$this->i++ )
             {
-                $up_courses = Course::find($coursesForUser[$this->i]->id)
-                                    ->update(['unitTotal' => 4]);
+                $up_courses = Course::find($this->coursesForUser[$this->i]->id)
+                                    ->update(['unitTotal' =>$this->coursesTotal[$this->coursesForUser[$this->i]->id]]);
 
                 /* $activity_courses = Activity_course::create([
                     'id_activity'        => $this->id_activityLast->id,
