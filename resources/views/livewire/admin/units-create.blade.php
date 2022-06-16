@@ -163,68 +163,84 @@
                                 @foreach ($cursox as $cursoy)
                                         <label for="{{ $cursoy['id'] }}">
                                         <li>
-                                        @php
-                                            $courses_full = App\Models\Course::find($cursoy['id']);
-                                            /* dd($courses_full['unitTotal']); */
-                                        @endphp
-
-                                        {{ $courses_full['section'] }}
-
-                                            {{-- <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
-                                                placeholder="4" step="1" min="4" max="8"
-                                                wire:model="Unit01s.{{ $courses_full['id'] }}">
-
-                                            </label>
-
-                                            <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
-                                                placeholder="4" step="1" min="4" max="8"
-                                                wire:model="Unit02s.{{ $courses_full['id'] }}">
-
-                                            </label>
-
-                                            <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
-                                                placeholder="4" step="1" min="4" max="8"
-                                                wire:model="Unit03s.{{ $courses_full['id'] }}">
-
-                                            </label>
-
-                                            <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
-                                                placeholder="4" step="1" min="4" max="8"
-                                                wire:model="Unit04s.{{ $courses_full['id'] }}">
-
-                                            </label> --}}
-
-                                            {{-- <p>{{$coursesTotal[$cursoy['id']]}}</p> --}}
-
                                             @php
-                                                $unidades = $coursesTotal[$cursoy['id']];
+                                                $courses_full = App\Models\Course::find($cursoy['id']);
+                                                /* dd($courses_full['unitTotal']); */
                                             @endphp
 
-                                            {{-- <p>{{$unidades}}</p> --}}
+                                            {{ $courses_full['section'] }}
 
+                                                {{-- <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
+                                                    placeholder="4" step="1" min="4" max="8"
+                                                    wire:model="Unit01s.{{ $courses_full['id'] }}">
 
-                                            {{-- @for ($i = 1; $i <= $unidades; $i++)
-
-                                                <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
-                                                    placeholder="0" step="0.1" min="0" max="30"
-                                                    wire:model="Unit0{{ $i }}s.{{ $courses_full['id'] }}">
-
-                                            @endfor --}}
-
-                                            @for ($i = 1; $i <= $unidades; $i++)
+                                                </label>
 
                                                 <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
-                                                    {{-- placeholder="0" --}} step="0.1" min="0" max="30" required="required" pattern="^[0-9]+"
-                                                    wire:model="Unit0{{ $i }}s.{{ $courses_full['id'] }}">
-                                            @endfor
+                                                    placeholder="4" step="1" min="4" max="8"
+                                                    wire:model="Unit02s.{{ $courses_full['id'] }}">
+
+                                                </label>
+
+                                                <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
+                                                    placeholder="4" step="1" min="4" max="8"
+                                                    wire:model="Unit03s.{{ $courses_full['id'] }}">
+
+                                                </label>
+
+                                                <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
+                                                    placeholder="4" step="1" min="4" max="8"
+                                                    wire:model="Unit04s.{{ $courses_full['id'] }}">
+
+                                                </label> --}}
+
+                                                {{-- <p>{{$coursesTotal[$cursoy['id']]}}</p> --}}
+
+                                                @php
+                                                    $unidades = $coursesTotal[$cursoy['id']];
+                                                @endphp
+
+                                                {{-- <p>{{$unidades}}</p> --}}
 
 
+                                                {{-- @for ($i = 1; $i <= $unidades; $i++)
 
+                                                    <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
+                                                        placeholder="0" step="0.1" min="0" max="30"
+                                                        wire:model="Unit0{{ $i }}s.{{ $courses_full['id'] }}">
 
+                                                @endfor --}}
 
+                                                @for ($i = 1; $i <= $unidades; $i++)
+
+                                                    <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
+                                                        {{-- placeholder="0" --}} step="0.1" min="0" max="30" required="required" pattern="^[0-9]+"
+                                                        wire:model="Unit0{{ $i }}s.{{ $courses_full['id'] }}">
+                                                    {{-- <p>{{$Unit01s[$courses_full['id']]}}</p> --}}
+
+                                                @endfor
+
+                                                @php
+                                                    /* $totalUnidad = $Unit01s[$courses_full['id']]+ */
+
+                                                    $totalUnidad = $Unit01s[$courses_full['id']]+$Unit02s[$courses_full['id']]+
+                                                                   $Unit03s[$courses_full['id']]+$Unit04s[$courses_full['id']]+
+                                                                   $Unit05s[$courses_full['id']]+$Unit06s[$courses_full['id']]+
+                                                                   $Unit07s[$courses_full['id']]+$Unit08s[$courses_full['id']]+
+                                                                   $Unit09s[$courses_full['id']]+$Unit10s[$courses_full['id']]+
+                                                                   $Unit11s[$courses_full['id']]+$Unit12s[$courses_full['id']]+
+                                                                   $Unit13s[$courses_full['id']]+$Unit14s[$courses_full['id']]+
+                                                                   $Unit15s[$courses_full['id']]+$Unit16s[$courses_full['id']];
+                                                    /* dd($this->Unit01S); */
+                                                @endphp
+
+                                                <p>TOTAL %: {{$totalUnidad}}</p>
                                         </li>
 
                                 @endforeach
+
+
+
                             </div>
 
                             </ul>

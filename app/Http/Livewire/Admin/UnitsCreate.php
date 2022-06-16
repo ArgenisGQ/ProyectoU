@@ -51,6 +51,7 @@ class UnitsCreate extends Component
 
     public $totalSteps = 3;
     public $currentStep = 1;
+    public $c;
 
     protected $rules = [
         /* 'coursee.unitTotal' => 'required', */
@@ -98,6 +99,7 @@ class UnitsCreate extends Component
         /* dd($courses_ids); */
 
         $c= count ($courses_ids);
+        $this->c= count ($courses_ids);
         /* dd($c);  */
         /* $cursos = []; */
 
@@ -296,6 +298,16 @@ class UnitsCreate extends Component
                 'extract01' => 'required',
                 'extract02' => 'required' */
               /* ]); */
+
+              dd($this->c);
+
+              $this->validate([
+                /* 'name' => 'required',
+                'body' => 'required',
+                'extract' => 'required',
+                'extract01' => 'required',
+                'extract02' => 'required' */
+              ]);
 
         }
         elseif($this->currentStep == 3){
