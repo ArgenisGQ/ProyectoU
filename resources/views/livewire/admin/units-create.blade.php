@@ -15,7 +15,7 @@
 
         <div class="step-one">
             <div class="card">
-                <div class="card-header bg-secondary text-white">Paso 1/3 - Seleccionar cantidad de Unidades</div>
+                <div class="card-header bg-secondary text-white">Paso 1/3 - Cantidad de Unidades</div>
                 <div class="card-body">
 
                     <div class="w-screen flex-col align-items-left mt-2">
@@ -82,7 +82,7 @@
 
 
                                             <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
-                                                placeholder="4" step="1" min="4" max="8"
+                                                placeholder="4" step="1" min="4" max="8" {{-- readonly --}} disabled
                                                 wire:model="coursesTotal.{{ $courses_full['id'] }}">
                                             </label>
 
@@ -203,10 +203,18 @@
                                             {{-- <p>{{$unidades}}</p> --}}
 
 
+                                            {{-- @for ($i = 1; $i <= $unidades; $i++)
+
+                                                <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
+                                                    placeholder="0" step="0.1" min="0" max="30"
+                                                    wire:model="Unit0{{ $i }}s.{{ $courses_full['id'] }}">
+
+                                            @endfor --}}
+
                                             @for ($i = 1; $i <= $unidades; $i++)
 
                                                 <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
-                                                    placeholder="4" step="1" min="4" max="8"
+                                                    placeholder="0"  min="0" max="30" required="required" pattern="^[0-9]+"
                                                     wire:model="Unit0{{ $i }}s.{{ $courses_full['id'] }}">
 
                                             @endfor

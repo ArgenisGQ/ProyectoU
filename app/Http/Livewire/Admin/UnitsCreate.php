@@ -78,19 +78,19 @@ class UnitsCreate extends Component
         $user_course = User_course::all();
         /* dd($user_course['0']); */
         /* dd($this->userActive->ced); */
-        /* $coursesForUser = $this->coursesForUser; */
-        /* $coursesForUser = (object)$coursesForUser; */
+        $coursesForUser = $this->coursesForUser;
+        $coursesForUser = (object)$coursesForUser;
 
 
         /* $coursesForUser =  User_course::where('ced', $this->userActive->ced)
                             ->get(); */
 
-        /* dd($coursesForUser['3']); */
+        /* dd($coursesForUser); */
 
         /* $this->courses = $courses; */
         /* $this->courses_full = $coursee; */
         /* dd($this->courses_full); */
-        $courses_ids= $this->coursesForUser->pluck('id')->toArray();
+        $courses_ids= $coursesForUser->pluck('id')->toArray();
         /* $courses_ids= $coursee->unitTotal->pluck('id')->toArray(); */
         /* $courses_ids= $activity->courses->pluck('id_course')->toArray(); */
         /* dd($courses_ids); */
@@ -319,6 +319,85 @@ class UnitsCreate extends Component
         /* dd($this->unitTotalS); */
 
 
+        $coursesForUser = $this->coursesForUser;
+        $coursesForUser = (object)$coursesForUser;
+
+        $courses_ids= $coursesForUser->pluck('id')->toArray();
+
+        /* dd($courses_ids); */
+        /* dd($courses_ids[0]); */
+        /* dd($this->coursesTotal[1052]); */
+
+        $this->c= count ($courses_ids);
+
+        /* dd($this->Unit01s); */
+
+        /* $this->Unit01s = array_combine($id_cursos, $unit01);
+        $this->Unit02s = array_combine($id_cursos, $unit02);
+        $this->Unit03s = array_combine($id_cursos, $unit03);
+        $this->Unit04s = array_combine($id_cursos, $unit04);
+        $this->Unit05s = array_combine($id_cursos, $unit05);
+        $this->Unit06s = array_combine($id_cursos, $unit06);
+        $this->Unit07s = array_combine($id_cursos, $unit07);
+        $this->Unit08s = array_combine($id_cursos, $unit08);
+        $this->Unit09s = array_combine($id_cursos, $unit09);
+        $this->Unit10s = array_combine($id_cursos, $unit10);
+        $this->Unit11s = array_combine($id_cursos, $unit11);
+        $this->Unit12s = array_combine($id_cursos, $unit12);
+        $this->Unit13s = array_combine($id_cursos, $unit13);
+        $this->Unit14s = array_combine($id_cursos, $unit14);
+        $this->Unit15s = array_combine($id_cursos, $unit15);
+        $this->Unit16s = array_combine($id_cursos, $unit16); */
+
+
+
+
+
+        /* $this->c = count($this->coursesForUser);
+        dd($this->c); */
+
+
+        for( $this->i=0;$this->i<$this->c;$this->i++ )
+            {
+                /* $coursess_id =  $courses_ids[$this->i]; */ //
+                /* $unidadess = $this->coursesTotal[$courses_ids[$this->i]]; */ //
+
+                /* for( $this->j=1;$this->j<$unidadess;$this->j++ )
+                    { */
+
+                        $unitss = Course::find($courses_ids[$this->i])
+                                    ->update(['unit01' =>$this->Unit01s[$courses_ids[$this->i]],
+                                              'unit02' =>$this->Unit02s[$courses_ids[$this->i]],
+                                              'unit03' =>$this->Unit03s[$courses_ids[$this->i]],
+                                              'unit04' =>$this->Unit04s[$courses_ids[$this->i]],
+                                              'unit05' =>$this->Unit05s[$courses_ids[$this->i]],
+                                              'unit06' =>$this->Unit06s[$courses_ids[$this->i]],
+                                              'unit07' =>$this->Unit07s[$courses_ids[$this->i]],
+                                              'unit08' =>$this->Unit08s[$courses_ids[$this->i]],
+                                              'unit09' =>$this->Unit09s[$courses_ids[$this->i]],
+                                              'unit10' =>$this->Unit10s[$courses_ids[$this->i]],
+                                              'unit11' =>$this->Unit11s[$courses_ids[$this->i]],
+                                              'unit12' =>$this->Unit12s[$courses_ids[$this->i]],
+                                              'unit13' =>$this->Unit13s[$courses_ids[$this->i]],
+                                              'unit14' =>$this->Unit14s[$courses_ids[$this->i]],
+                                              'unit15' =>$this->Unit15s[$courses_ids[$this->i]],
+                                              'unit16' =>$this->Unit16s[$courses_ids[$this->i]]
+                                ]);
+
+                   /*  } */
+
+
+                /* $up_courses = Course::find($this->coursesForUser[$this->i]->id)
+                                    ->update(['unitTotal' =>$this->coursesTotal[$this->coursesForUser[$this->i]->id]]); */
+
+                /* $activity_courses = Activity_course::create([
+                    'id_activity'        => $this->id_activityLast->id,
+                    'id_course'          => $this->coursess[$this->i],
+                ]); */
+            };
+
+
+        /* dd("listo"); */
 
 
         /* ------------------------ */
