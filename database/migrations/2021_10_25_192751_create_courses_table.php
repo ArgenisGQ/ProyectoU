@@ -19,23 +19,23 @@ class CreateCoursesTable extends Migration
             $table->string('name');
             $table->string('code');
             $table->string('section')->nullable();
-            $table->Integer('unit01')->nullable(); //ponderacion total de la unidad
-            $table->Integer('unit02')->nullable(); //ponderacion total de la unidad
-            $table->Integer('unit03')->nullable(); //ponderacion total de la unidad
-            $table->Integer('unit04')->nullable(); //ponderacion total de la unidad
-            $table->Integer('unit05')->nullable(); //ponderacion total de la unidad
-            $table->Integer('unit06')->nullable(); //ponderacion total de la unidad
-            $table->Integer('unit07')->nullable(); //ponderacion total de la unidad
-            $table->Integer('unit08')->nullable(); //ponderacion total de la unidad
-            $table->Integer('unit09')->nullable(); //ponderacion total de la unidad
-            $table->Integer('unit10')->nullable(); //ponderacion total de la unidad
-            $table->Integer('unit11')->nullable(); //ponderacion total de la unidad
-            $table->Integer('unit12')->nullable(); //ponderacion total de la unidad
-            $table->Integer('unit13')->nullable(); //ponderacion total de la unidad
-            $table->Integer('unit14')->nullable(); //ponderacion total de la unidad
-            $table->Integer('unit15')->nullable(); //ponderacion total de la unidad
-            $table->Integer('unit16')->nullable(); //ponderacion total de la unidad
-            $table->integer('unitTotal')->nullable(); //total de unidades activas a usar
+            $table->Integer('unit01')->default(0)->nullable(); //ponderacion total de la unidad
+            $table->Integer('unit02')->default(0)->nullable(); //ponderacion total de la unidad
+            $table->Integer('unit03')->default(0)->nullable(); //ponderacion total de la unidad
+            $table->Integer('unit04')->default(0)->nullable(); //ponderacion total de la unidad
+            $table->Integer('unit05')->default(0)->nullable(); //ponderacion total de la unidad
+            $table->Integer('unit06')->default(0)->nullable(); //ponderacion total de la unidad
+            $table->Integer('unit07')->default(0)->nullable(); //ponderacion total de la unidad
+            $table->Integer('unit08')->default(0)->nullable(); //ponderacion total de la unidad
+            $table->Integer('unit09')->default(0)->nullable(); //ponderacion total de la unidad
+            $table->Integer('unit10')->default(0)->nullable(); //ponderacion total de la unidad
+            $table->Integer('unit11')->default(0)->nullable(); //ponderacion total de la unidad
+            $table->Integer('unit12')->default(0)->nullable(); //ponderacion total de la unidad
+            $table->Integer('unit13')->default(0)->nullable(); //ponderacion total de la unidad
+            $table->Integer('unit14')->default(0)->nullable(); //ponderacion total de la unidad
+            $table->Integer('unit15')->default(0)->nullable(); //ponderacion total de la unidad
+            $table->Integer('unit16')->default(0)->nullable(); //ponderacion total de la unidad
+            $table->integer('unitTotal')->default(4)->nullable(); //total de unidades activas a usar
             $table->string('slug')->nullable();
             $table->string('color')->nullable();
             $table->string('turma')->unique()->nullable();

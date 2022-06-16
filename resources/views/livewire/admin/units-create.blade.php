@@ -214,9 +214,8 @@
                                             @for ($i = 1; $i <= $unidades; $i++)
 
                                                 <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
-                                                    placeholder="0"  min="0" max="30" required="required" pattern="^[0-9]+"
+                                                    {{-- placeholder="0" --}} step="0.1" min="0" max="30" required="required" pattern="^[0-9]+"
                                                     wire:model="Unit0{{ $i }}s.{{ $courses_full['id'] }}">
-
                                             @endfor
 
 

@@ -76,6 +76,8 @@ class UnitsCreate extends Component
     public function mount( Course $coursee, User_course $user_course ){
         $this->currentStep = 1;
         $user_course = User_course::all();
+        $coursee = Course::all();
+        /* dd($coursee[1050]->unit01); */
         /* dd($user_course['0']); */
         /* dd($this->userActive->ced); */
         $coursesForUser = $this->coursesForUser;
@@ -116,7 +118,7 @@ class UnitsCreate extends Component
 
         };
 
-        /* dd($unitT);      */
+        /* dd($unitT); */
         /* dd($id_cursos); */
 
         $this->coursesTotal = array_combine($id_cursos, $unitT);
@@ -161,6 +163,7 @@ class UnitsCreate extends Component
 
         /* dd($unitT);      */
         /* dd($id_cursos); */
+        /* dd($unit01); */
 
         $this->Unit01s = array_combine($id_cursos, $unit01);
         $this->Unit02s = array_combine($id_cursos, $unit02);
@@ -179,8 +182,9 @@ class UnitsCreate extends Component
         $this->Unit15s = array_combine($id_cursos, $unit15);
         $this->Unit16s = array_combine($id_cursos, $unit16);
 
-        /* dd($this->Unit16s); */
+        /* dd($this->Unit01s); */
 
+        /* dd($coursee[1050]->unit01); */
     }
 
 
