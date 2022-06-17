@@ -32,6 +32,7 @@ class UnitsCreate extends Component
            $Unit05s,$Unit06s,$Unit07s,$Unit08s,
            $Unit09s,$Unit10s,$Unit11s,$Unit12s,
            $Unit13s,$Unit14s,$Unit15s,$Unit16s = [];
+    public $id_cursoss;
     /* public $coursesForUser = [];
     public $coursess = [];
     public $faculties = [];
@@ -122,6 +123,10 @@ class UnitsCreate extends Component
 
         /* dd($unitT); */
         /* dd($id_cursos); */
+
+        $this->id_cursoss = $id_cursos;
+
+        /* dd($this->id_cursoss); */
 
         $this->coursesTotal = array_combine($id_cursos, $unitT);
         /* dd($this->coursesTotal); */
@@ -299,15 +304,72 @@ class UnitsCreate extends Component
                 'extract02' => 'required' */
               /* ]); */
 
-              dd($this->c);
 
-              $this->validate([
-                /* 'name' => 'required',
-                'body' => 'required',
-                'extract' => 'required',
-                'extract01' => 'required',
-                'extract02' => 'required' */
-              ]);
+
+              /* dd($this->c); */
+
+              if ($this->c == 4) {
+
+
+
+                /* dd($this->id_cursoss); */
+
+                /* $count = count($this->id_cursoss); */
+
+                /* dd($count); */
+
+                foreach ($this->id_cursoss as $idd) {
+
+                    /* dd($idd); */
+                    $unidad01 = $this->courses_full[$idd]->unit01;
+                    $unidad02 = $this->courses_full[$idd]->unit02;
+                    $unidad03 = $this->courses_full[$idd]->unit03;
+                    $unidad04 = $this->courses_full[$idd]->unit04;
+                    /* dd($unidad01); */
+
+
+
+                    for ($i=1; $i < $this->c+1 ; $i++) {
+
+                         $this->validate([
+                        'Unit0'.$i.'s.'.$idd =>  'required|integer|between:20,30',
+                        /* 'unit02s.'.$idd =>  'required|integer|between:20,30',
+                        'unit03s.'.$idd =>  'required|integer|between:20,30',
+                        'unit04s.'.$idd =>  'required|integer|between:20,30' */
+
+                        /* 'Unit01s.'.$idd =>  'required',
+                        'unit02s.'.$idd =>  'required',
+                        'unit03s.'.$idd =>  'required',
+                        'unit04s.'.$idd =>  'required' */
+                    ]);
+                    }
+
+
+
+                };
+
+
+              };
+
+              if ($this->c > 4) {
+                $this->validate([
+                    /* 'name' => 'required',
+                    'body' => 'required',
+                    'extract' => 'required',
+                    'extract01' => 'required',
+                    'extract02' => 'required' */
+                  ]);
+              };
+
+              if ($this->c < 4) {
+                $this->validate([
+                    /* 'name' => 'required',
+                    'body' => 'required',
+                    'extract' => 'required',
+                    'extract01' => 'required',
+                    'extract02' => 'required' */
+                  ]);
+              };
 
         }
         elseif($this->currentStep == 3){

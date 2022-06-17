@@ -213,10 +213,17 @@
 
                                                 @for ($i = 1; $i <= $unidades; $i++)
 
+                                                    {{-- <p>{{ $courses_full['id'] }}</p> --}}
+
                                                     <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
                                                         {{-- placeholder="0" --}} step="0.1" min="0" max="30" required="required" pattern="^[0-9]+"
                                                         wire:model="Unit0{{ $i }}s.{{ $courses_full['id'] }}">
                                                     {{-- <p>{{$Unit01s[$courses_full['id']]}}</p> --}}
+                                                    @php
+                                                        $cf = $courses_full['id'];
+                                                    @endphp
+                                                    <span class="text-danger">@error( '"Unit0".{{ $i }}."s.".{{ $courses_full["id"] }}' ) {{ $message }} @enderror</span>
+                                                    {{-- <span class="text-danger">@error('name'){{ $message }}@enderror</span> --}}
 
                                                 @endfor
 
