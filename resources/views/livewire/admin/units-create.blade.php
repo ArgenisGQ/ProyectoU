@@ -257,16 +257,17 @@
                                                 @php
                                                     /* $totalUnidad = $Unit01s[$courses_full['id']]+ */
                                                     $totalUnidad = 0;
-                                                    $unidades01  = 10;
-                                                    $unidades11  = 10;
-                                                    $unittss = [$Units01[$courses_full['id']],$Units02[$courses_full['id']]
-                                                            ,$Units03[$courses_full['id']],$Units04[$courses_full['id']]
-                                                            ,$Units05[$courses_full['id']],$Units06[$courses_full['id']]
-                                                            ,$Units07[$courses_full['id']],$Units08[$courses_full['id']]
-                                                            ,$Units09[$courses_full['id']],$Units10[$courses_full['id']]
-                                                            ,$Units11[$courses_full['id']],$Units12[$courses_full['id']]
-                                                            ,$Units13[$courses_full['id']],$Units14[$courses_full['id']]
-                                                            ,$Units15[$courses_full['id']],$Units16[$courses_full['id']]];
+                                                    /* $unidades01  = 10;
+                                                    $unidades11  = 10; */
+                                                    /* $nofull = "si"; */
+                                                    $unittss =  [$Units01[$courses_full['id']],$Units02[$courses_full['id']]
+                                                                ,$Units03[$courses_full['id']],$Units04[$courses_full['id']]
+                                                                ,$Units05[$courses_full['id']],$Units06[$courses_full['id']]
+                                                                ,$Units07[$courses_full['id']],$Units08[$courses_full['id']]
+                                                                ,$Units09[$courses_full['id']],$Units10[$courses_full['id']]
+                                                                ,$Units11[$courses_full['id']],$Units12[$courses_full['id']]
+                                                                ,$Units13[$courses_full['id']],$Units14[$courses_full['id']]
+                                                                ,$Units15[$courses_full['id']],$Units16[$courses_full['id']]];
 
                                                     /* dd($unidades); */
 
@@ -276,6 +277,8 @@
                                                             $totalUnidad = $totalUnidad + $unittss[$i];
                                                             }
                                                         };
+
+                                                    /* $this->totalUnidad = $totalUnidad; */
 
                                                     /* dd($totalUnidad); */
 
@@ -305,7 +308,16 @@
                                                 </div>
                                                 @endif --}}
 
-                                                <p>TOTAL %: {{$totalUnidad}}</p>
+                                                <p>TOTAL %: {{$totalUnidad}} </p>
+
+                                                @error ($totalUnidad)
+                                                        @php
+                                                            $nofull = "NO";
+                                                            /* dd($nofull); */
+                                                        @endphp
+                                                        <P>{{$nofull}}</P>
+                                                @enderror
+
                                         </li>
 
                                 @endforeach

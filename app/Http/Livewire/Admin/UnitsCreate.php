@@ -32,6 +32,7 @@ class UnitsCreate extends Component
            $Units05,$Units06,$Units07,$Units08,
            $Units09,$Units10,$Units11,$Units12,
            $Units13,$Units14,$Units15,$Units16 = [];
+    public $totalUnidad;
     public $id_cursoss;
     /* public $coursesForUser = [];
     public $coursess = [];
@@ -332,7 +333,8 @@ class UnitsCreate extends Component
                     for ($i=1; $i < $this->c+1 ; $i++) {
 
                          $this->validate([
-                        'Units0'.$i.'.'.$idd =>  'required|integer|between:20,30'
+                        'Units0'.$i.'.'.$idd =>  'required|integer|between:20,30',
+                        'totalUnidad'        =>  'digits:100',
                         /* 'Unit0'.$i.'s.'.$idd =>  'min:20,max:30', */
                         /* 'unit02s.'.$idd =>  'required|integer|between:20,30',
                         'unit03s.'.$idd =>  'required|integer|between:20,30',
@@ -342,7 +344,7 @@ class UnitsCreate extends Component
                         'unit02s.'.$idd =>  'required',
                         'unit03s.'.$idd =>  'required',
                         'unit04s.'.$idd =>  'required' */
-                    ]);
+                        ]);
                     }
 
 
