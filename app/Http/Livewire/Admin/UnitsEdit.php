@@ -203,7 +203,7 @@ class UnitsEdit extends Component
 
     public function updatingSearch(){
         $this->resetPage();
-    }
+    }²
 
 
     /* public function render()

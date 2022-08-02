@@ -219,6 +219,7 @@
                                                         {{-- placeholder="0" --}} step="0.1" min="0" max="30" required="required" pattern="^[0-9]+"
                                                         wire:model="Unit0{{ $i }}s.{{ $courses_full['id'] }}">
                                                     {{-- <p>{{$Unit01s[$courses_full['id']]}}</p> --}}
+                                                    {{-- <p>"Unit0{{ $i }}s.{{ $courses_full['id'] }}"</p> --}}
                                                     @php
                                                         $cf = $courses_full['id'];
                                                     @endphp
