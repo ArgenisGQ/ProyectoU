@@ -215,34 +215,117 @@
 
                                                     {{-- <p>{{ $courses_full['id'] }}</p> --}}
 
+<<<<<<< HEAD
                                                     <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
                                                         {{-- placeholder="0" --}} step="0.1" min="0" max="30" required="required" pattern="^[0-9]+"
                                                         wire:model="Unit0{{ $i }}s.{{ $courses_full['id'] }}">
                                                     {{-- <p>{{$Unit01s[$courses_full['id']]}}</p> --}}
                                                     {{-- <p>"Unit0{{ $i }}s.{{ $courses_full['id'] }}"</p> --}}
+=======
+>>>>>>> b5a5fb027cf8bc0babb9e88e24a498975430656f
                                                     @php
                                                         $cf = $courses_full['id'];
+                                                        $Unidadd = "Units0$i.$cf";
+                                                       /*  dd($Unidadd); */
+                                                       $clase = "";
                                                     @endphp
-                                                    <span class="text-danger">@error( '"Unit0".{{ $i }}."s.".{{ $courses_full["id"] }}' ) {{ $message }} @enderror</span>
+
+                                                    @error ($Unidadd)
+                                                        @php
+                                                            $clase = "text-danger"
+                                                        @endphp
+                                                    @enderror
+
+
+
+                                                    <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
+                                                        {{-- class="text-danger" --}} class = {{$clase}}
+                                                        {{-- placeholder="0" --}} step="0.1" min="0" max="45" required="required" {{-- pattern="^[0-9]+" --}}
+                                                        wire:model="Units0{{ $i }}.{{ $courses_full['id'] }}">
+                                                    {{-- <p>{{$Unit01s[$courses_full['id']]}}</p> --}}
+
+                                                    {{-- @php
+                                                        $cf = $courses_full['id'];
+                                                        $Unidadd = "Units0$i.$cf";
+                                                       /*  dd($Unidadd); */
+                                                    @endphp --}}
+
+                                                    {{-- <span class="text-danger">@error( '"Units0".{{ $i }}".".{{ $courses_full["id"] }}' ) {{ $message }} @enderror</span> --}}
+                                                    {{-- <span class="text-danger">@error ('Units0{{ $i }}.{{ $cf }}') {{ $message }} @enderror</span> --}}
+                                                    {{-- <span class="text-danger">
+                                                        @error ($Unidadd) ERROR @enderror
+                                                    </span> --}}
+
+
+
                                                     {{-- <span class="text-danger">@error('name'){{ $message }}@enderror</span> --}}
 
                                                 @endfor
 
                                                 @php
                                                     /* $totalUnidad = $Unit01s[$courses_full['id']]+ */
+                                                    $totalUnidad = 0;
+                                                    /* $unidades01  = 10;
+                                                    $unidades11  = 10; */
+                                                    /* $nofull = "si"; */
+                                                    $unittss =  [$Units01[$courses_full['id']],$Units02[$courses_full['id']]
+                                                                ,$Units03[$courses_full['id']],$Units04[$courses_full['id']]
+                                                                ,$Units05[$courses_full['id']],$Units06[$courses_full['id']]
+                                                                ,$Units07[$courses_full['id']],$Units08[$courses_full['id']]
+                                                                ,$Units09[$courses_full['id']],$Units10[$courses_full['id']]
+                                                                ,$Units11[$courses_full['id']],$Units12[$courses_full['id']]
+                                                                ,$Units13[$courses_full['id']],$Units14[$courses_full['id']]
+                                                                ,$Units15[$courses_full['id']],$Units16[$courses_full['id']]];
 
-                                                    $totalUnidad = $Unit01s[$courses_full['id']]+$Unit02s[$courses_full['id']]+
-                                                                   $Unit03s[$courses_full['id']]+$Unit04s[$courses_full['id']]+
-                                                                   $Unit05s[$courses_full['id']]+$Unit06s[$courses_full['id']]+
-                                                                   $Unit07s[$courses_full['id']]+$Unit08s[$courses_full['id']]+
-                                                                   $Unit09s[$courses_full['id']]+$Unit10s[$courses_full['id']]+
-                                                                   $Unit11s[$courses_full['id']]+$Unit12s[$courses_full['id']]+
-                                                                   $Unit13s[$courses_full['id']]+$Unit14s[$courses_full['id']]+
-                                                                   $Unit15s[$courses_full['id']]+$Unit16s[$courses_full['id']];
+                                                    /* dd($unidades); */
+
+
+                                                    for ($i=0; $i < $unidades+1 ; $i++) {
+                                                        if ($unittss[$i]) {
+                                                            $totalUnidad = $totalUnidad + $unittss[$i];
+                                                            }
+                                                        };
+
+                                                    /* $this->totalUnidad = $totalUnidad; */
+
+                                                    /* dd($totalUnidad); */
+
+
+
+                                                    /* $totalUnidad = $Units01[$courses_full['id']]+$Units02[$courses_full['id']]+
+                                                                   $Units03[$courses_full['id']]+$Units04[$courses_full['id']]+
+                                                                   $Units05[$courses_full['id']]+$Units06[$courses_full['id']]+
+                                                                   $Units07[$courses_full['id']]+$Units08[$courses_full['id']]+
+                                                                   $Units09[$courses_full['id']]+$Units10[$courses_full['id']]+
+                                                                   $Units11[$courses_full['id']]+$Units12[$courses_full['id']]+
+                                                                   $Units13[$courses_full['id']]+$Units14[$courses_full['id']]+
+                                                                   $Units15[$courses_full['id']]+$Units16[$courses_full['id']]; */
+
+
                                                     /* dd($this->Unit01S); */
                                                 @endphp
 
-                                                <p>TOTAL %: {{$totalUnidad}}</p>
+                                                {{-- @if ($errors->any())
+
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        @foreach ($errors->all() as $message)
+                                                            <li>{{ $message }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                                @endif --}}
+
+                                                <p>TOTAL %: {{$totalUnidad}} </p>
+
+                                                @error ($totalUnidad)
+                                                        @php
+                                                            $nofull = "NO";
+                                                            /* dd($nofull); */
+                                                        @endphp
+                                                        <P>{{$nofull}}</P>
+                                                @enderror
+
                                         </li>
 
                                 @endforeach

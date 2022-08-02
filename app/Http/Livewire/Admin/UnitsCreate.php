@@ -28,10 +28,11 @@ class UnitsCreate extends Component
     public $userActive = [];
     public $cour = [];
     public $coursesTotal = [];
-    public $Unit01s,$Unit02s,$Unit03s,$Unit04s,
-           $Unit05s,$Unit06s,$Unit07s,$Unit08s,
-           $Unit09s,$Unit10s,$Unit11s,$Unit12s,
-           $Unit13s,$Unit14s,$Unit15s,$Unit16s = [];
+    public $Units01,$Units02,$Units03,$Units04,
+           $Units05,$Units06,$Units07,$Units08,
+           $Units09,$Units10,$Units11,$Units12,
+           $Units13,$Units14,$Units15,$Units16 = [];
+    public $totalUnidad;
     public $id_cursoss;
     /* public $coursesForUser = [];
     public $coursess = [];
@@ -172,24 +173,24 @@ class UnitsCreate extends Component
         /* dd($id_cursos); */
         /* dd($unit01); */
 
-        $this->Unit01s = array_combine($id_cursos, $unit01);
-        $this->Unit02s = array_combine($id_cursos, $unit02);
-        $this->Unit03s = array_combine($id_cursos, $unit03);
-        $this->Unit04s = array_combine($id_cursos, $unit04);
-        $this->Unit05s = array_combine($id_cursos, $unit05);
-        $this->Unit06s = array_combine($id_cursos, $unit06);
-        $this->Unit07s = array_combine($id_cursos, $unit07);
-        $this->Unit08s = array_combine($id_cursos, $unit08);
-        $this->Unit09s = array_combine($id_cursos, $unit09);
-        $this->Unit10s = array_combine($id_cursos, $unit10);
-        $this->Unit11s = array_combine($id_cursos, $unit11);
-        $this->Unit12s = array_combine($id_cursos, $unit12);
-        $this->Unit13s = array_combine($id_cursos, $unit13);
-        $this->Unit14s = array_combine($id_cursos, $unit14);
-        $this->Unit15s = array_combine($id_cursos, $unit15);
-        $this->Unit16s = array_combine($id_cursos, $unit16);
+        $this->Units01 = array_combine($id_cursos, $unit01);
+        $this->Units03 = array_combine($id_cursos, $unit03);
+        $this->Units02 = array_combine($id_cursos, $unit02);
+        $this->Units04 = array_combine($id_cursos, $unit04);
+        $this->Units05 = array_combine($id_cursos, $unit05);
+        $this->Units06 = array_combine($id_cursos, $unit06);
+        $this->Units07 = array_combine($id_cursos, $unit07);
+        $this->Units08 = array_combine($id_cursos, $unit08);
+        $this->Units09 = array_combine($id_cursos, $unit09);
+        $this->Units10 = array_combine($id_cursos, $unit10);
+        $this->Units11 = array_combine($id_cursos, $unit11);
+        $this->Units12 = array_combine($id_cursos, $unit12);
+        $this->Units13 = array_combine($id_cursos, $unit13);
+        $this->Units14 = array_combine($id_cursos, $unit14);
+        $this->Units15 = array_combine($id_cursos, $unit15);
+        $this->Units16 = array_combine($id_cursos, $unit16);
 
-        /* dd($this->Unit01s); */
+        /* dd($this->Units01); */
 
         /* dd($coursee[1050]->unit01); */
     }
@@ -332,7 +333,9 @@ class UnitsCreate extends Component
                     for ($i=1; $i < $this->c+1 ; $i++) {
 
                          $this->validate([
-                        'Unit0'.$i.'s.'.$idd =>  'required|integer|between:20,30',
+                        'Units0'.$i.'.'.$idd =>  'required|integer|between:20,30',
+                        'totalUnidad'        =>  'digits:100',
+                        /* 'Unit0'.$i.'s.'.$idd =>  'min:20,max:30', */
                         /* 'unit02s.'.$idd =>  'required|integer|between:20,30',
                         'unit03s.'.$idd =>  'required|integer|between:20,30',
                         'unit04s.'.$idd =>  'required|integer|between:20,30' */
@@ -341,7 +344,7 @@ class UnitsCreate extends Component
                         'unit02s.'.$idd =>  'required',
                         'unit03s.'.$idd =>  'required',
                         'unit04s.'.$idd =>  'required' */
-                    ]);
+                        ]);
                     }
 
 
