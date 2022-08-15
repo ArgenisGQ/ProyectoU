@@ -215,14 +215,14 @@
 
                                                     {{-- <p>{{ $courses_full['id'] }}</p> --}}
 
-<<<<<<< HEAD
-                                                    <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
-                                                        {{-- placeholder="0" --}} step="0.1" min="0" max="30" required="required" pattern="^[0-9]+"
-                                                        wire:model="Unit0{{ $i }}s.{{ $courses_full['id'] }}">
+{{-- <<<<<<< HEAD --}}
+                                                    {{-- <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
+                                                        step="0.1" min="0" max="30" required="required" pattern="^[0-9]+"
+                                                        wire:model="Unit0{{ $i }}s.{{ $courses_full['id'] }}"> --}}
                                                     {{-- <p>{{$Unit01s[$courses_full['id']]}}</p> --}}
                                                     {{-- <p>"Unit0{{ $i }}s.{{ $courses_full['id'] }}"</p> --}}
-=======
->>>>>>> b5a5fb027cf8bc0babb9e88e24a498975430656f
+{{-- =======
+>>>>>>> b5a5fb027cf8bc0babb9e88e24a498975430656f --}}
                                                     @php
                                                         $cf = $courses_full['id'];
                                                         $Unidadd = "Units0$i.$cf";
@@ -240,9 +240,11 @@
 
                                                     <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
                                                         {{-- class="text-danger" --}} class = {{$clase}}
-                                                        {{-- placeholder="0" --}} step="0.1" min="0" max="45" required="required" {{-- pattern="^[0-9]+" --}}
+                                                        {{-- placeholder="0" --}} step="0.1" min="0" max="45" required="requir  ed" {{-- pattern="^[0-9]+" --}}
                                                         wire:model="Units0{{ $i }}.{{ $courses_full['id'] }}">
                                                     {{-- <p>{{$Unit01s[$courses_full['id']]}}</p> --}}
+                                                    {{-- <p>Units0{{ $i }}.{{ $courses_full['id'] }}</p> --}}
+
 
                                                     {{-- @php
                                                         $cf = $courses_full['id'];

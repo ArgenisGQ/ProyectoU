@@ -321,11 +321,11 @@ class UnitsCreate extends Component
 
                 foreach ($this->id_cursoss as $idd) {
 
-                    /* dd($idd); */
-                    $unidad01 = $this->courses_full[$idd]->unit01;
+                    /* dd($idd); */   /* REVISANDO */
+                    /* $unidad01 = $this->courses_full[$idd]->unit01;
                     $unidad02 = $this->courses_full[$idd]->unit02;
                     $unidad03 = $this->courses_full[$idd]->unit03;
-                    $unidad04 = $this->courses_full[$idd]->unit04;
+                    $unidad04 = $this->courses_full[$idd]->unit04; */
                     /* dd($unidad01); */
 
 
@@ -334,7 +334,7 @@ class UnitsCreate extends Component
 
                          $this->validate([
                         'Units0'.$i.'.'.$idd =>  'required|integer|between:20,30',
-                        'totalUnidad'        =>  'digits:100',
+                        /* 'totalUnidad'        =>  'digits:100', */
                         /* 'Unit0'.$i.'s.'.$idd =>  'min:20,max:30', */
                         /* 'unit02s.'.$idd =>  'required|integer|between:20,30',
                         'unit03s.'.$idd =>  'required|integer|between:20,30',
@@ -402,6 +402,8 @@ class UnitsCreate extends Component
 
         $coursesForUser = $this->coursesForUser;
         $coursesForUser = (object)$coursesForUser;
+
+        /* dd($coursesForUser); */
 
         $courses_ids= $coursesForUser->pluck('id')->toArray();
 
