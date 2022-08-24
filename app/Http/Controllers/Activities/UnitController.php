@@ -18,8 +18,9 @@ class UnitController extends Controller
     public function index()
     {
         //
-        return "index";
+        /* return "index"; */
         /* return view('admin.units.create'); */
+        return view('admin.activities.index');
     }
 
     /**

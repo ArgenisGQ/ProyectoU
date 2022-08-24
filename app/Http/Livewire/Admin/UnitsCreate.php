@@ -32,7 +32,10 @@ class UnitsCreate extends Component
            $Units05,$Units06,$Units07,$Units08,
            $Units09,$Units10,$Units11,$Units12,
            $Units13,$Units14,$Units15,$Units16 = [];
-    public $totalUnidad;
+    public $totalUnidad = [];
+    public $totalUnidadd;
+    public $totalUnidaddd;
+    public $acumulador;
     public $id_cursoss;
     /* public $coursesForUser = [];
     public $coursess = [];
@@ -71,6 +74,7 @@ class UnitsCreate extends Component
         /* 'activity.status' => 'required', */
         /* 'activity.courses' => 'required', */
         /* 'cours' => 'required|array', */
+        'totalUnidaddd;' => 'required'
 
 
     ];
@@ -78,6 +82,7 @@ class UnitsCreate extends Component
 
     public function mount( Course $coursee, User_course $user_course ){
         $this->currentStep = 1;
+        /* $this->totalUnidaddd = $this->totalUnidadd; */
         $user_course = User_course::all();
         $coursee = Course::all();
         /* dd($coursee[1050]->unit01); */
@@ -166,7 +171,7 @@ class UnitsCreate extends Component
             $unit14[$i] = $idd[0]->unit14;
             $unit15[$i] = $idd[0]->unit15;
             $unit16[$i] = $idd[0]->unit16;
-
+            $totalUnidad[$i] = $idd[0]->totalUnidad;
         };
 
         /* dd($unitT);      */
@@ -189,6 +194,7 @@ class UnitsCreate extends Component
         $this->Units14 = array_combine($id_cursos, $unit14);
         $this->Units15 = array_combine($id_cursos, $unit15);
         $this->Units16 = array_combine($id_cursos, $unit16);
+        $this->totalUnidad = array_combine($id_cursos, $totalUnidad);
 
         /* dd($this->Units01); */
 
@@ -200,6 +206,8 @@ class UnitsCreate extends Component
     {
         return view('livewire.multi-step-form');
     } */
+
+
 
     public function render()
     {
@@ -216,7 +224,6 @@ class UnitsCreate extends Component
 
     public function increaseStep(){
         $this->resetErrorBag();
-
         $this->validateData();
         $this->currentStep++;
         if($this->currentStep > $this->totalSteps){
@@ -334,7 +341,9 @@ class UnitsCreate extends Component
 
                          $this->validate([
                         'Units0'.$i.'.'.$idd =>  'required|integer|between:20,30',
-                        /* 'totalUnidad'        =>  'digits:100', */
+                        /* 'totalUnidad'        =>  'numeric|size:100', */
+                        /* 'totalUnidadd'        =>  'numeric|min:100,max:101', */
+                        /* 'totalUnidad'        =>  'numeric|digits:100', */
                         /* 'Unit0'.$i.'s.'.$idd =>  'min:20,max:30', */
                         /* 'unit02s.'.$idd =>  'required|integer|between:20,30',
                         'unit03s.'.$idd =>  'required|integer|between:20,30',
@@ -409,9 +418,15 @@ class UnitsCreate extends Component
 
         /* dd($courses_ids); */
         /* dd($courses_ids[0]); */
-        /* dd($this->coursesTotal[1052]); */
+        /* dd($this->coursesTotal[1051]); */
 
         $this->c= count ($courses_ids);
+
+        /* dd($this->Units01); */
+
+        /* dd($this->courses_full); */
+
+        /* dd($this->Units01[$this->courses_full[1051]]); */
 
         /* dd($this->Unit01s); */
 
@@ -433,15 +448,13 @@ class UnitsCreate extends Component
         $this->Unit16s = array_combine($id_cursos, $unit16); */
 
 
-
-
-
         /* $this->c = count($this->coursesForUser);
         dd($this->c); */
 
 
         for( $this->i=0;$this->i<$this->c;$this->i++ )
             {
+
                 /* $coursess_id =  $courses_ids[$this->i]; */ //
                 /* $unidadess = $this->coursesTotal[$courses_ids[$this->i]]; */ //
 
@@ -449,24 +462,25 @@ class UnitsCreate extends Component
                     { */
 
                         $unitss = Course::find($courses_ids[$this->i])
-                                    ->update(['unit01' =>$this->Unit01s[$courses_ids[$this->i]],
-                                              'unit02' =>$this->Unit02s[$courses_ids[$this->i]],
-                                              'unit03' =>$this->Unit03s[$courses_ids[$this->i]],
-                                              'unit04' =>$this->Unit04s[$courses_ids[$this->i]],
-                                              'unit05' =>$this->Unit05s[$courses_ids[$this->i]],
-                                              'unit06' =>$this->Unit06s[$courses_ids[$this->i]],
-                                              'unit07' =>$this->Unit07s[$courses_ids[$this->i]],
-                                              'unit08' =>$this->Unit08s[$courses_ids[$this->i]],
-                                              'unit09' =>$this->Unit09s[$courses_ids[$this->i]],
-                                              'unit10' =>$this->Unit10s[$courses_ids[$this->i]],
-                                              'unit11' =>$this->Unit11s[$courses_ids[$this->i]],
-                                              'unit12' =>$this->Unit12s[$courses_ids[$this->i]],
-                                              'unit13' =>$this->Unit13s[$courses_ids[$this->i]],
-                                              'unit14' =>$this->Unit14s[$courses_ids[$this->i]],
-                                              'unit15' =>$this->Unit15s[$courses_ids[$this->i]],
-                                              'unit16' =>$this->Unit16s[$courses_ids[$this->i]]
+                                    ->update(['unit01' =>$this->Units01[$courses_ids[$this->i]],
+                                              'unit02' =>$this->Units02[$courses_ids[$this->i]],
+                                              'unit03' =>$this->Units03[$courses_ids[$this->i]],
+                                              'unit04' =>$this->Units04[$courses_ids[$this->i]],
+                                              'unit05' =>$this->Units05[$courses_ids[$this->i]],
+                                              'unit06' =>$this->Units06[$courses_ids[$this->i]],
+                                              'unit07' =>$this->Units07[$courses_ids[$this->i]],
+                                              'unit08' =>$this->Units08[$courses_ids[$this->i]],
+                                              'unit09' =>$this->Units09[$courses_ids[$this->i]],
+                                              'unit10' =>$this->Units10[$courses_ids[$this->i]],
+                                              'unit11' =>$this->Units11[$courses_ids[$this->i]],
+                                              'unit12' =>$this->Units12[$courses_ids[$this->i]],
+                                              'unit13' =>$this->Units13[$courses_ids[$this->i]],
+                                              'unit14' =>$this->Units14[$courses_ids[$this->i]],
+                                              'unit15' =>$this->Units15[$courses_ids[$this->i]],
+                                              'unit16' =>$this->Units16[$courses_ids[$this->i]]
                                 ]);
 
+                        
                    /*  } */
 
 

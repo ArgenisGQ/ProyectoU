@@ -203,7 +203,7 @@ class UnitsEdit extends Component
 
     public function updatingSearch(){
         $this->resetPage();
-    }²
+    }
 
 
     /* public function render()
@@ -274,8 +274,6 @@ class UnitsEdit extends Component
                                     /* array_push($cursos, $i ); */
                                     $id_cursos[$i] = $idd[0]->id;
                                     $unitT[$i] = $idd[0]->unitTotal;
-
-
                                 };
 
                                 /* dd($unitT);      */
