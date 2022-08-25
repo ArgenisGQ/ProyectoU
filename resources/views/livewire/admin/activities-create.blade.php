@@ -13,6 +13,13 @@
                 <div class="card-header bg-secondary text-white">Paso 1/3 - Seleccionar Materias</div>
                 <div class="card-body">
 
+                                @php
+                                    $coursesFull = App\Models\course::all();
+
+                                    /* dd($coursesFull); */
+                                @endphp
+                                <p>UNIDADES:{{$coursesFull[1051]->unitTotal}}</p>
+
                     <div class="w-screen flex-col align-items-left mt-2">
 
                         {{-- @foreach ( $coursesForUser as $curso ) --}}
@@ -58,6 +65,10 @@
 
         <div class="step-two">
             <div class="card">
+
+                {{-- @php
+                    dd($this->coursess);
+                @endphp --}}
 
 
             <div class="card">
@@ -261,6 +272,17 @@
                 <div class="card-header bg-secondary text-white">Paso 3/3 - Infomacion Final</div>
                 <div class="card-body">
 
+                    @php
+                        $coursesFull = App\Models\course::all();
+                        /* dd($coursesFull); */
+
+                        /* dd($this->coursess); */
+                    @endphp
+                        {{-- @foreach ($this->coursess as $cur)
+
+                            <p>UNIDADES de {{$cur}}:{{$coursesFull[$cur]->unitTotal}}</p>
+
+                        @endforeach --}}
 
 
                     <div class="row">
@@ -305,19 +327,47 @@
                         <div class="col-md-6">
                             <h4>Unidad</h4>
                             <div class="form-group">
+
+
+
+                                @foreach ($this->coursess as $cur)
+
+                                    {{-- <p>UNIDADES de {{$cur}}:{{$coursesFull[$cur]->unitTotal}}</p> --}}
+
+                                    @if ($coursesFull[$cur]->unitTotal != 4)
+                                        <p>ADVERTENCIA: el curso {{$cur}} tiene {{$coursesFull[$cur]->unitTotal}} de unidades.</p>
+                                    @endif
+
+
+                                @endforeach
+
+                                @php
+                                    foreach ($this->coursess as $cur){
+                                        $unidadess[] = $coursesFull[$cur]->unitTotal;
+                                    }
+                                    /* dd($unidadess); */
+                                    $maximo = max($unidadess);
+                                    /* dd($maximo); */
+                                @endphp
+
+
                                {{-- @if(count($evaluations) > 0) --}}
                                 <label for="unit"></label>
                                     <select names="unit" wire:model="unit"
                                     class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
                                         <option value="" selected>Seleccione la Unidad</option>
                                         {{-- @foreach ($evaluations as $evaluation) --}}
-                                            <option value="1"> Unidad I</option>
+                                            {{-- <option value="1"> Unidad I</option>
                                             <option value="2"> Unidad II</option>
                                             <option value="3"> Unidad III</option>
-                                            <option value="4"> Unidad IV</option>
+                                            <option value="4"> Unidad IV</option> --}}
                                             {{-- <option value="{{ $evaluation->id }}">{{ $evaluation->name }}</option> --}}
                                             {{-- <option value="Bangladesh">Bangladesh</option> --}}
                                         {{-- @endforeach --}}
+
+                                        @for ($a = 1; $a <= $maximo; $a++)
+                                            <option value = $a> Unidad {{$a}}</option>
+                                        @endfor
                                     </select>
                                 {{-- @endif --}}
                                 {{-- <span class="text-danger">@error('country'){{ $message }}@enderror</span> --}}

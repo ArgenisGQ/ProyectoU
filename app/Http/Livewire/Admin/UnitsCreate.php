@@ -74,7 +74,7 @@ class UnitsCreate extends Component
         /* 'activity.status' => 'required', */
         /* 'activity.courses' => 'required', */
         /* 'cours' => 'required|array', */
-        'totalUnidaddd;' => 'required'
+        /* 'totalUnidaddd;' => 'required' */
 
 
     ];
@@ -480,7 +480,7 @@ class UnitsCreate extends Component
                                               'unit16' =>$this->Units16[$courses_ids[$this->i]]
                                 ]);
 
-                        
+
                    /*  } */
 
 

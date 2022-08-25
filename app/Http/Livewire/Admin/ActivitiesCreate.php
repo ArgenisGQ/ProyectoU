@@ -21,6 +21,7 @@ class ActivitiesCreate extends Component
 
 
     public $courses = [];
+    /* public $coursesFull = []; */
     public $coursesForUser = [];
     public $coursess = [];
     public $faculties = [];
@@ -44,8 +45,8 @@ class ActivitiesCreate extends Component
     public function mount(){
         $this->currentStep = 1;
         /* $this->courses = $courses; */
-        $this->courses = Course::all();
-        /* dd($this->courses[1051]); */
+        /* $coursesFull = Course::all(); */
+        /* dd($coursesFull); */
 
     }
 
