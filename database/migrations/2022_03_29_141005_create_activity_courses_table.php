@@ -17,6 +17,8 @@ class CreateActivityCoursesTable extends Migration
             $table->id();
             /* $table->string('id_activity')->nullable(); */
             $table->string('id_period')->nullable();
+            $table->enum('unit',[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])->nullable();  //unidad de materia
+            $table->integer('evaluation')->nullable(); //valor de las NOTAS de la actividad
             $table->unsignedBigInteger('id_course');
             $table->foreign('id_course')->references('id')->on('user_courses');
             $table->unsignedBigInteger('id_activity');

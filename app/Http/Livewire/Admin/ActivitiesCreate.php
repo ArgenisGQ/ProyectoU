@@ -334,6 +334,9 @@ class ActivitiesCreate extends Component
 
             /* dd($data); */
 
+            /* dd($this->unit); */
+            /* dd($this->eval); */
+
 
 
             $activity = Activity::create([
@@ -363,11 +366,16 @@ class ActivitiesCreate extends Component
             /* dd($this->coursess[0]); */
             /* dd($this->coursess); */
 
+            /* dd($this->unit); */
+            /* dd($this->eval); */
+
             $this->c = count($this->coursess);
 
             for( $this->i=0;$this->i<$this->c;$this->i++ )
             {
                 $activity_courses = Activity_course::create([
+                    'unit'               => $this->unit,
+                    'evaluation'         => $this->eval,
                     'id_activity'        => $this->id_activityLast->id,
                     'id_course'          => $this->coursess[$this->i],
                 ]);

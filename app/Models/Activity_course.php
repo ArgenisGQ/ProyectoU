@@ -11,6 +11,8 @@ class Activity_course extends Model
 
     protected $fillable = [
         'id_activity',
+        'unit',
+        'evaluation',
         'id_course',
         'id_period',
     ];

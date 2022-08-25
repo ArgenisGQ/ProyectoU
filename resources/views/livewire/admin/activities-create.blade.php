@@ -18,7 +18,7 @@
 
                                     /* dd($coursesFull); */
                                 @endphp
-                                <p>UNIDADES:{{$coursesFull[1051]->unitTotal}}</p>
+                                {{-- <p>UNIDADES:{{$coursesFull[1051]->unitTotal}}</p> --}}
 
                     <div class="w-screen flex-col align-items-left mt-2">
 
@@ -329,7 +329,6 @@
                             <div class="form-group">
 
 
-
                                 @foreach ($this->coursess as $cur)
 
                                     {{-- <p>UNIDADES de {{$cur}}:{{$coursesFull[$cur]->unitTotal}}</p> --}}
@@ -366,13 +365,14 @@
                                         {{-- @endforeach --}}
 
                                         @for ($a = 1; $a <= $maximo; $a++)
-                                            <option value = $a> Unidad {{$a}}</option>
+                                            <option value = {{$a}}> Unidad {{$a}}</option>
                                         @endfor
                                     </select>
                                 {{-- @endif --}}
                                 {{-- <span class="text-danger">@error('country'){{ $message }}@enderror</span> --}}
                             </div>
                         </div>
+                        
                         <div class="col-md-6">
                             <h4>Tipo de Participacion</h4>
                             <div class="form-group">
