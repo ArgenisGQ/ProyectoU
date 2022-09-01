@@ -12,7 +12,7 @@
 
         <div class="step-one">
             <div class="card">
-                <div class="card-header bg-secondary text-white">Paso 1/3 - Seleccionar Materias</div>
+                <div class="card-header bg-secondary text-white">Paso 1/4 - Seleccionar Materias</div>
                 <div class="card-body">
 
                     <div class="d-flex flex-column align-items-left mt-2">
@@ -114,7 +114,7 @@
 
 
             <div class="card">
-                <div class="card-header bg-secondary text-white">Paso 2/3 - Datos</div>
+                <div class="card-header bg-secondary text-white">Paso 2/4 - Datos</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
@@ -356,7 +356,7 @@
 
         <div class="step-three">
             <div class="card">
-                <div class="card-header bg-secondary text-white">Paso 3/3 - Infomacion Final</div>
+                <div class="card-header bg-secondary text-white">Paso 3/4 - Infomacion Final</div>
                 <div class="card-body">
 
                     @php
@@ -398,6 +398,8 @@
                         <h4>Ponderacion</h4>
                         <div class="form-group">
                             <label for="unit"></label>
+
+                            {{-- {{$this->activity}}; --}}
 
                             <input type="number" id="tentacles" name="tentacles"
                                 placeholder="0.00" step="0.01" min="0" max="100" wire:model="activity.evaluation">
@@ -726,6 +728,53 @@
         </div>
         @endif
 
+        {{-- STEP 4 --}}
+
+        @if ($currentStep == 4)
+
+            <div class="step-four">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">Paso 4/4 - Infomacion Final</div>
+                    <div class="card-body">
+
+                        @php
+                            /* $coursesFull = App\Models\course::all(); */
+
+                        @endphp
+
+
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <h4>-----------------------------------------------</h4>
+                                <div class="form-group">
+
+                                    @if ($nota_mensaje == 1)
+                                        <P>SOBRE PASA EL TOTAL DE NOTAS POR UNIDAD LAS SIQUIENTES MATERIAS</P>
+                                        @for ( $this->i = 0 ;$this->i < $this->c ; $this->i++)
+                                            <p>nota: {{$nota_curso[$this->i]->name}} {{$nota_curso[$this->i]->code}} {{$nota_curso[$this->i]->section}}</p>
+                                        @endfor
+                                    @else
+                                        <p>LISTO PARA CREAR LA ACTIVIDAD</p>
+                                    @endif
+
+
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        @endif
+
+
 
 
 
@@ -739,7 +788,7 @@
                <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseStep()">Back</button>
            @endif --}}
 
-           @if ($currentStep == 2 || $currentStep == 3 )
+           @if ($currentStep == 2 || $currentStep == 3 || $currentStep == 4 )
                <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseStep()">Atras</button>
            @endif
 
@@ -752,11 +801,11 @@
 
            @endif --}}
 
-           @if ($currentStep == 1 || $currentStep == 2)
+           @if ($currentStep == 1 || $currentStep == 2 || $currentStep == 3)
                <button type="button" class="btn btn-md btn-success" wire:click="increaseStep()">Siguiente</button>
            @endif
 
-           @if ($currentStep == 3)
+           @if ($currentStep == 4 && $nota_mensaje == 0)
                 <button type="submit" class="btn btn-md btn-primary">Editar</button>
            @endif
 
