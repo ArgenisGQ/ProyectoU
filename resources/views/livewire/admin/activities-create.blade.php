@@ -541,9 +541,12 @@
                                 <h4>-----------------------------------------------</h4>
                                 <div class="form-group">
 
-                                    @if ($nota_mensaje == 1)
+                                    {{-- <p>{{$this->nota_mensaje}}</p> --}}
+
+
+                                    @if ($this->nota_mensaje == 1)
                                         <P>SOBRE PASA EL TOTAL DE NOTAS POR UNIDAD LAS SIQUIENTES MATERIAS</P>
-                                        @for ( $this->i = 0 ;$this->i < $this->c ; $this->i++)
+                                        @for ( $this->i = 0 ;$this->i < $this->cc ; $this->i++)
                                             <p>nota: {{$nota_curso[$this->i]->name}} {{$nota_curso[$this->i]->code}} {{$nota_curso[$this->i]->section}}</p>
                                         @endfor
                                     @else

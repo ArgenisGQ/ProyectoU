@@ -369,6 +369,8 @@ class ActivitiesCreate extends Component
 
             /* $activity_courses */
 
+            $this->nota_mensaje = 0;
+            $this->nota_curso = null;
 
             for( $this->i=0;$this->i<$this->c;$this->i++ )
             {
@@ -378,10 +380,16 @@ class ActivitiesCreate extends Component
                     ->get();
                 $c_eval = count($activity_courses); //cantidad de notas por curso y unidad
                 /* dd($activity_courses); */
+                /* dd($c_eval); */
                 $nota = 0;
+                /* $this->nota_mensaje = 0; */
+                /* $this->nota_curso = null; */
+                /* dd($activity_courses[1]->evaluation); */
                 for ($i=0; $i < $c_eval ; $i++) {
                     $nota = $activity_courses[$i]->evaluation + $nota;
                 }
+                /* dd($nota);
+ */
 
                 switch ($unidad) {
                     case '1':
@@ -438,17 +446,41 @@ class ActivitiesCreate extends Component
                         break;
                 }
 
-                if ($nota >= $totalUnidad) {
-                    $this->nota_mensaje = 1;
+                if ($nota > $totalUnidad) {
+                    /* $this->nota_mensaje = 1; */
                     $this->nota_curso[$this->i] = $coursessx[$this->coursess[$this->i]-1];
-                } else {
-                    $this->nota_mensaje = 0;
                 }
                 /* dd($this->nota_curso); */
+                /* dd($this->nota_mensaje); */
+
 
             };
 
+            /* dd($nota); */
             /* dd($this->nota_curso); */
+
+            /* if ( true === ( ($this->nota_curso ?? null ) ) {
+                $this->nota_mensaje = 1
+            } */
+
+            /* if ( true === ( isset( $this->nota_curso ) ? $this->nota_curso : null ) ) {
+                $this->nota_mensaje = 1;
+                $this->cc = count ($this->nota_curso);
+            }
+ */
+            if (isset($this->nota_curso)) {
+                    $this->nota_mensaje = 1;
+                    $this->cc = count ($this->nota_curso);
+            }
+
+
+
+            /* dd($this->cc); */
+            /* dd($nota); */
+            /* dd($this->c); */
+
+            /* dd($this->nota_curso); */
+            /* dd($this->nota_mensaje); */
 
 
     }
