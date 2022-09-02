@@ -153,6 +153,8 @@ class ActivitiesCreate extends Component
                 /* 'lapse_in' => 'date|after_or_equal:academic_start',
                 'lapse_out' => 'date|before_or_equal:academic_finish' */
               ]);
+              /* $this->nota_curso = null; */
+              /* dd('here!!'); */
               $this->evaluationUnit($this->eval,$this->unit,$this->courses,4);
         }
         elseif($this->currentStep == 4){
@@ -293,6 +295,7 @@ class ActivitiesCreate extends Component
     }
 
     public function evaluationUnit($nota, $unidad, $id_curso, $id_periodo){
+            /* dd($this->eval); */
             /* dd($id_curso); */
             /* dd($this->coursess); */
             $this->c = count($this->coursess); //cantidad de cursos del usuario
@@ -381,15 +384,14 @@ class ActivitiesCreate extends Component
                 $c_eval = count($activity_courses); //cantidad de notas por curso y unidad
                 /* dd($activity_courses); */
                 /* dd($c_eval); */
-                $nota = 0;
+                $nota = $this->eval;
                 /* $this->nota_mensaje = 0; */
                 /* $this->nota_curso = null; */
                 /* dd($activity_courses[1]->evaluation); */
                 for ($i=0; $i < $c_eval ; $i++) {
                     $nota = $activity_courses[$i]->evaluation + $nota;
                 }
-                /* dd($nota);
- */
+                /* dd($nota); */
 
                 switch ($unidad) {
                     case '1':
@@ -446,9 +448,12 @@ class ActivitiesCreate extends Component
                         break;
                 }
 
+                /* dd($totalUnidad); */
+
                 if ($nota > $totalUnidad) {
                     /* $this->nota_mensaje = 1; */
                     $this->nota_curso[$this->i] = $coursessx[$this->coursess[$this->i]-1];
+                    /* dd('here!! dont work right'); */
                 }
                 /* dd($this->nota_curso); */
                 /* dd($this->nota_mensaje); */
@@ -466,8 +471,7 @@ class ActivitiesCreate extends Component
             /* if ( true === ( isset( $this->nota_curso ) ? $this->nota_curso : null ) ) {
                 $this->nota_mensaje = 1;
                 $this->cc = count ($this->nota_curso);
-            }
- */
+            } */
             if (isset($this->nota_curso)) {
                     $this->nota_mensaje = 1;
                     $this->cc = count ($this->nota_curso);

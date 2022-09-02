@@ -549,6 +549,9 @@
                                         @for ( $this->i = 0 ;$this->i < $this->cc ; $this->i++)
                                             <p>nota: {{$nota_curso[$this->i]->name}} {{$nota_curso[$this->i]->code}} {{$nota_curso[$this->i]->section}}</p>
                                         @endfor
+                                        @php
+                                            $nota_curso = null;
+                                        @endphp
                                     @else
                                         <p>LISTO PARA CREAR LA ACTIVIDAD</p>
                                     @endif
