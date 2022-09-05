@@ -35,7 +35,8 @@ class ActivitiesCreate extends Component
     public $status, $evaluation, $type, $eval, $unit;
     public $lapse_in, $lapse_out;
     public $id_activityLast;
-    public $nota_curso = [];
+    public $nota_curso, $nota_cursox, $datos_curso = [];
+    public $notax = [];
     public $nota_mensaje;
 
     /* public $activity; */
@@ -313,67 +314,13 @@ class ActivitiesCreate extends Component
             /* dd($activity_courses); */
             /* dd($activity_courses[0]->unit); */
 
-            /* switch ($unidad) {
-                case '1':
-                    $totalUnidad = $coursessx[$this->coursess[0]-1]->unit01;
-                    break;
-                case '2':
-                    $totalUnidad = $coursessx[$this->coursess[0]-1]->unit02;
-                    break;
-                case '3':
-                    $totalUnidad = $coursessx[$this->coursess[0]-1]->unit03;
-                    break;
-                case '4':
-                    $totalUnidad = $coursessx[$this->coursess[0]-1]->unit04;
-                    break;
-                case '5':
-                    $totalUnidad = $coursessx[$this->coursess[0]-1]->unit05;
-                    break;
-                case '6':
-                    $totalUnidad = $coursessx[$this->coursess[0]-1]->unit06;
-                    break;
-                case '7':
-                    $totalUnidad = $coursessx[$this->coursess[0]-1]->unit07;
-                    break;
-                case '8':
-                    $totalUnidad = $coursessx[$this->coursess[0]-1]->unit08;
-                    break;
-                case '9':
-                    $totalUnidad = $coursessx[$this->coursess[0]-1]->unit09;
-                    break;
-                case '10':
-                    $totalUnidad = $coursessx[$this->coursess[0]-1]->unit10;
-                    break;
-                case '11':
-                    $totalUnidad = $coursessx[$this->coursess[0]-1]->unit11;
-                    break;
-                case '12':
-                    $totalUnidad = $coursessx[$this->coursess[0]-1]->unit12;
-                    break;
-                case '13':
-                    $totalUnidad = $coursessx[$this->coursess[0]-1]->unit13;
-                    break;
-                case '14':
-                    $totalUnidad = $coursessx[$this->coursess[0]-1]->unit14;
-                    break;
-                case '15':
-                    $totalUnidad = $coursessx[$this->coursess[0]-1]->unit15;
-                    break;
-                case '16':
-                    $totalUnidad = $coursessx[$this->coursess[0]-1]->unit16;
-                    break;
-
-                default:
-                    # code...
-                    break;
-            } */
-
             /* dd($totalUnidad); */
 
             /* $activity_courses */
 
             $this->nota_mensaje = 0;
             $this->nota_curso = null;
+            $this->nota_cursox = null;
 
             for( $this->i=0;$this->i<$this->c;$this->i++ )
             {
@@ -387,7 +334,8 @@ class ActivitiesCreate extends Component
                 $nota = $this->eval;
                 /* $this->nota_mensaje = 0; */
                 /* $this->nota_curso = null; */
-                /* dd($activity_courses[1]->evaluation); */
+                /* dd($activity_courses[0]->evaluation); */
+                /* dd($nota); */
                 for ($i=0; $i < $c_eval ; $i++) {
                     $nota = $activity_courses[$i]->evaluation + $nota;
                 }
@@ -450,11 +398,16 @@ class ActivitiesCreate extends Component
 
                 /* dd($totalUnidad); */
 
-                if ($nota > $totalUnidad) {
+                if ($nota > $totalUnidad) { //ACUMULADOR DE CURSOS QUE SOBRE PASAN LA NOTA MAXimA DE LA UNIDAD
                     /* $this->nota_mensaje = 1; */
                     $this->nota_curso[$this->i] = $coursessx[$this->coursess[$this->i]-1];
+                    $this->notax[$this->i] = $totalUnidad - ($nota - $this->eval);
                     /* dd('here!! dont work right'); */
+                } else { //ACUMULADOR DE PUNTOS QUE FALTAN POR EVALUAR DE CADA MATERIA
+                    $this->nota_cursox[$this->i] = $coursessx[$this->coursess[$this->i]-1];
+                    $this->datos_curso[$this->i] = $totalUnidad - $nota;
                 }
+                /* dd($this->datos_curso); */
                 /* dd($this->nota_curso); */
                 /* dd($this->nota_mensaje); */
 
@@ -473,10 +426,14 @@ class ActivitiesCreate extends Component
                 $this->cc = count ($this->nota_curso);
             } */
             if (isset($this->nota_curso)) {
-                    $this->nota_mensaje = 1;
-                    $this->cc = count ($this->nota_curso);
+                $this->nota_mensaje = 1;
+                $this->cc = count($this->nota_curso);
             }
 
+            if (isset($this->nota_cursox)) {
+                /* $this->nota_mensaje = 1; */
+                $this->ccx = count($this->nota_cursox);
+            }
 
 
             /* dd($this->cc); */
@@ -485,6 +442,11 @@ class ActivitiesCreate extends Component
 
             /* dd($this->nota_curso); */
             /* dd($this->nota_mensaje); */
+
+            /* dd($this->ccx); */
+            /* dd($this->nota_cursox); */
+            /* dd($this->datos_curso); */
+            /* dd($this->notax); */
 
 
     }

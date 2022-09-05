@@ -51,9 +51,10 @@ class ActivitiesEdit extends Component
     public $name;
     public $body, $extract, $extract01,$extract02;
     public $status, $evaluation,$stake,$eval ,$unit ;
+    public $notax = [];
     public $lapse_in, $lapse_out;
     public $id_activityLast;
-    public $nota_curso = [];
+    public $nota_curso, $nota_cursox, $datos_curso = [];
     public $nota_mensaje;
 
 
@@ -189,7 +190,7 @@ class ActivitiesEdit extends Component
                 /* 'activity.lapse_out' => 'date|before_or_equal:academic_finish', */
                 /* 'evaluation' => 'required', */
               ]);
-              $this->evaluationUnit($this->eval,$this->unit,$this->courses,4);
+              $this->evaluationUnit($this->activity->evaluation,$this->activity->unit,$this->courses,4);
         }
     }
 
@@ -453,7 +454,7 @@ class ActivitiesEdit extends Component
 
     }
 
-    public function evaluationUnit($nota, $unidad, $id_curso, $id_periodo){
+    public function evaluationUnit2($nota, $unidad, $id_curso, $id_periodo){
         /* dd($id_curso); */
         /* dd($this->coursess); */
         $this->c = count($this->coursess); //cantidad de cursos del usuario
@@ -471,60 +472,6 @@ class ActivitiesEdit extends Component
         /* dd($activity_courses); */
         /* dd($activity_courses[0]->unit); */
 
-        /* switch ($unidad) {
-            case '1':
-                $totalUnidad = $coursessx[$this->coursess[0]-1]->unit01;
-                break;
-            case '2':
-                $totalUnidad = $coursessx[$this->coursess[0]-1]->unit02;
-                break;
-            case '3':
-                $totalUnidad = $coursessx[$this->coursess[0]-1]->unit03;
-                break;
-            case '4':
-                $totalUnidad = $coursessx[$this->coursess[0]-1]->unit04;
-                break;
-            case '5':
-                $totalUnidad = $coursessx[$this->coursess[0]-1]->unit05;
-                break;
-            case '6':
-                $totalUnidad = $coursessx[$this->coursess[0]-1]->unit06;
-                break;
-            case '7':
-                $totalUnidad = $coursessx[$this->coursess[0]-1]->unit07;
-                break;
-            case '8':
-                $totalUnidad = $coursessx[$this->coursess[0]-1]->unit08;
-                break;
-            case '9':
-                $totalUnidad = $coursessx[$this->coursess[0]-1]->unit09;
-                break;
-            case '10':
-                $totalUnidad = $coursessx[$this->coursess[0]-1]->unit10;
-                break;
-            case '11':
-                $totalUnidad = $coursessx[$this->coursess[0]-1]->unit11;
-                break;
-            case '12':
-                $totalUnidad = $coursessx[$this->coursess[0]-1]->unit12;
-                break;
-            case '13':
-                $totalUnidad = $coursessx[$this->coursess[0]-1]->unit13;
-                break;
-            case '14':
-                $totalUnidad = $coursessx[$this->coursess[0]-1]->unit14;
-                break;
-            case '15':
-                $totalUnidad = $coursessx[$this->coursess[0]-1]->unit15;
-                break;
-            case '16':
-                $totalUnidad = $coursessx[$this->coursess[0]-1]->unit16;
-                break;
-
-            default:
-                # code...
-                break;
-        } */
 
         /* dd($totalUnidad); */
 
@@ -614,6 +561,192 @@ class ActivitiesEdit extends Component
 
 }
 
+    public function evaluationUnit($nota, $unidad, $id_curso, $id_periodo){
+        /* dd($this->eval); */
+        /* dd($id_curso); */
+        /* dd($this->coursess); */
+        /* dd($this->cour); */
+        $this->c = count($this->cour); //cantidad de cursos del usuario
+        /* dd($this->c); */
+        /* $activity_courses = Activity_course::where([
+                            ['id_course', 1051],
+                            ['unit', 1] ])
+                            ->get(); */
+        $coursessx = Course::all();
+        /* dd($coursessx[1051]); */
+        /* dd($coursessx[$this->coursess[0]-1]->id); */
+        /* dd($coursessx[$this->coursess[0]-1]); */
+        /* $c_eval = count($activity_courses);  *///cantidad de notas por curso y unidad
+        /* dd($c_eval); */
+        /* dd($activity_courses); */
+        /* dd($activity_courses[0]->unit); */
+
+        /* dd($nota); */
+
+        /* dd($this->activity->unit); */ /* estilo para tomar las variables cuando es edicion */
+        /* dd($this->activity->evaluation); */
+
+        /* dd($totalUnidad); */
+
+        /* $activity_courses */
+
+        $courx = array_keys($this->cour);
+
+        /* dd($courx); */
+
+        $this->nota_mensaje = 0;
+        $this->nota_curso = null;
+        $this->nota_cursox = null;
+
+        /* dd($this->id_activity); */
+
+        /* $id_activity_note = Activity_course::all(); */
+        $id_activity_note = Activity_course::where([
+            ['id_activity', $this->id_activity],
+            ['unit', $unidad],
+            ['id_course', $courx[0]] ])
+            ->get();
+        /* dd($id_activity_note[0]->evaluation); */
+
+        for( $this->i=0;$this->i<$this->c;$this->i++ )
+        {
+            $activity_courses = Activity_course::where([
+                ['id_course', $coursessx[$courx[$this->i]-1]->id],
+                ['unit', $unidad] ])
+                ->get();
+
+
+            $c_eval = count($activity_courses); //cantidad de notas por curso y unidad
+            /* dd($activity_courses); */
+            /* dd($c_eval); */
+            /* $nota = $this->eval; */ /* ---- */
+
+            /* $this->nota_mensaje = 0; */
+            /* $this->nota_curso = null; */
+            /* dd($activity_courses[1]->evaluation); */
+            /* dd($nota); */
+
+            $nota = $nota - $id_activity_note[0]->evaluation;
+
+            /* dd($nota); */
+
+            for ($i=0; $i < $c_eval ; $i++) {
+                $nota = $activity_courses[$i]->evaluation + $nota;
+            }
+
+            /* dd($nota); */
+
+            switch ($unidad) {
+                case '1':
+                    $totalUnidad = $coursessx[$courx[$this->i]-1]->unit01;
+                    break;
+                case '2':
+                    $totalUnidad = $coursessx[$courx[$this->i]-1]->unit02;
+                    break;
+                case '3':
+                    $totalUnidad = $coursessx[$courx[$this->i]-1]->unit03;
+                    break;
+                case '4':
+                    $totalUnidad = $coursessx[$courx[$this->i]-1]->unit04;
+                    break;
+                case '5':
+                    $totalUnidad = $coursessx[$courx[$this->i]-1]->unit05;
+                    break;
+                case '6':
+                    $totalUnidad = $coursessx[$courx[$this->i]-1]->unit06;
+                    break;
+                case '7':
+                    $totalUnidad = $coursessx[$courx[$this->i]-1]->unit07;
+                    break;
+                case '8':
+                    $totalUnidad = $coursessx[$courx[$this->i]-1]->unit08;
+                    break;
+                case '9':
+                    $totalUnidad = $coursessx[$courx[$this->i]-1]->unit09;
+                    break;
+                case '10':
+                    $totalUnidad = $coursessx[$courx[$this->i]-1]->unit10;
+                    break;
+                case '11':
+                    $totalUnidad = $coursessx[$courx[$this->i]-1]->unit11;
+                    break;
+                case '12':
+                    $totalUnidad = $coursessx[$courx[$this->i]-1]->unit12;
+                    break;
+                case '13':
+                    $totalUnidad = $coursessx[$courx[$this->i]-1]->unit13;
+                    break;
+                case '14':
+                    $totalUnidad = $coursessx[$courx[$this->i]-1]->unit14;
+                    break;
+                case '15':
+                    $totalUnidad = $coursessx[$courx[$this->i]-1]->unit15;
+                    break;
+                case '16':
+                    $totalUnidad = $coursessx[$courx[$this->i]-1]->unit16;
+                    break;
+
+                default:
+                    # code...
+                    break;
+            }
+
+            /* dd($totalUnidad); */
+            /* dd($nota); */
+
+            if ($nota > $totalUnidad) { //ACUMULADOR DE CURSOS QUE SOBRE PASAN LA NOTA MAXimA DE LA UNIDAD
+                $this->nota_mensaje = 1;
+                $this->nota_curso[$this->i] = $coursessx[$courx[$this->i]-1];
+                $this->notax[$this->i] = $totalUnidad - ($nota - $this->activity->evaluation);
+                /* dd('here!! dont work right'); */
+            } else { //ACUMULADOR DE PUNTOS QUE FALTAN POR EVALUAR DE CADA MATERIA
+                $this->nota_cursox[$this->i] = $coursessx[$courx[$this->i]-1];
+                $this->datos_curso[$this->i] = $totalUnidad - $nota;
+            }
+            /* dd($this->datos_curso); */
+            /* dd($this->nota_curso); */
+            /* dd() */
+            /* dd($this->nota_mensaje); */
+
+
+    };
+
+        /* dd($nota); */
+        /* dd($this->nota_curso); */
+
+        /* if ( true === ( ($this->nota_curso ?? null ) ) {
+            $this->nota_mensaje = 1
+        } */
+
+        /* if ( true === ( isset( $this->nota_curso ) ? $this->nota_curso : null ) ) {
+            $this->nota_mensaje = 1;
+            $this->cc = count ($this->nota_curso);
+        } */
+        if (isset($this->nota_curso)) {
+            $this->nota_mensaje = 1;
+            $this->cc = count($this->nota_curso);
+        }
+
+        if (isset($this->nota_cursox)) {
+            /* $this->nota_mensaje = 1; */
+            $this->ccx = count($this->nota_cursox);
+        }
+
+
+        /* dd($this->cc); */
+        /* dd($nota); */
+        /* dd($this->c); */
+
+        /* dd($this->nota_curso); */
+        /* dd($this->nota_mensaje); */
+
+        /* dd($this->ccx); */
+        /* dd($this->nota_cursox); */
+        /* dd($this->datos_curso); */
+        /* dd($this->notax); */
+
+
+    }
 
 
     public function register(){

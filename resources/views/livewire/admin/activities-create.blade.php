@@ -547,12 +547,19 @@
                                     @if ($this->nota_mensaje == 1)
                                         <P>SOBRE PASA EL TOTAL DE NOTAS POR UNIDAD LAS SIQUIENTES MATERIAS</P>
                                         @for ( $this->i = 0 ;$this->i < $this->cc ; $this->i++)
-                                            <p>nota: {{$nota_curso[$this->i]->name}} {{$nota_curso[$this->i]->code}} {{$nota_curso[$this->i]->section}}</p>
+                                            <p>El curso: {{$nota_curso[$this->i]->name}} {{$nota_curso[$this->i]->code}} {{$nota_curso[$this->i]->section}} le queda solo {{$this->notax[$this->i]}} puntos</p>
                                         @endfor
-                                        @php
+                                        {{-- @php
                                             $nota_curso = null;
-                                        @endphp
+                                        @endphp --}}
                                     @else
+                                        @for ($this->i = 0;$this->i < $this->ccx ; $this->i++)
+                                            <p>El curso: {{$nota_cursox[$this->i]->name}} {{$nota_cursox[$this->i]->code}} {{$nota_cursox[$this->i]->section}} le queda {{$this->datos_curso[$this->i]}} puntos</p>
+                                            {{-- <p>abc {{$this->datos_curso}}</p> --}}
+
+                                        @endfor
+
+                                        {{-- <p>abc {{$this->ccx}}</p> --}}
                                         <p>LISTO PARA CREAR LA ACTIVIDAD</p>
                                     @endif
 
