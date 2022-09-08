@@ -130,6 +130,7 @@ class ActivitiesCreate extends Component
         /* ---------------- */
 
         if($this->currentStep == 1){
+            $this->status = 1;
             $this->validate([
 
                 'coursess' => 'required',
