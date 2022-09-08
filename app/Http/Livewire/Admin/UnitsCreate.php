@@ -320,64 +320,24 @@ class UnitsCreate extends Component
             $this->cursoBase[$courses_ids[$kk]] = (Object)$this->cursoBase[$courses_ids[$kk]];
         }
 
-        /* $this->cursoBase[$courses_ids[0]] =
-                        [   'unit01' => $this->Units01[$courses_ids[0]],
-                            'unit02' => $this->Units02[$courses_ids[0]],
-                            'unit03' => $this->Units03[$courses_ids[0]],
-                            'unit04' => $this->Units04[$courses_ids[0]],
-                            'unit05' => $this->Units05[$courses_ids[0]],
-                            'unit06' => $this->Units06[$courses_ids[0]],
-                            'unit07' => $this->Units07[$courses_ids[0]],
-                            'unit08' => $this->Units08[$courses_ids[0]],
-                            'unit09' => $this->Units09[$courses_ids[0]],
-                            'unit10' => $this->Units10[$courses_ids[0]],
-                            'unit11' => $this->Units11[$courses_ids[0]],
-                            'unit12' => $this->Units12[$courses_ids[0]],
-                            'unit13' => $this->Units13[$courses_ids[0]],
-                            'unit14' => $this->Units14[$courses_ids[0]],
-                            'unit15' => $this->Units15[$courses_ids[0]],
-                            'unit16' => $this->Units16[$courses_ids[0]],
-                        ];
 
-        $this->cursoBase[$courses_ids[0]] = (Object)$this->cursoBase[$courses_ids[0]]; */
 
-        /* dd($this->cursoBase[]); */
-
-        /* for ($k=0; $k < $this->c; $k++) {
-            for ($i=1; $i < 16; $i++) {
-                switch ($i) {
-                case '1':
-                    $this->cursoBase[$courses_ids[$k]]->unit01 = $this->Units01[$courses_ids[$k]];
-                    break;
-
-                default:
-
-                    break;
-                }
-            }
-
-        }
-
-        dd($this->cursoBase); */
+        /* dd($this->cursoBase); */
         /* ------------------------------------------------------------------------------------ */
 
         /* dd($id_actividades01[$courses_ids[0]]); */
 
 
-        for ($j=1; $j < 17 ; $j++) {
+        /* for ($j=1; $j < 17 ; $j++) {
             switch ($j) {
             case '1':
                 for ($this->i=0; $this->i < $this->c; $this->i++) {
-                    if ($unitssx[$this->i]->unit01 != $this->cursoBase[$courses_ids[$this->i]]->unit01) { //corregir aqui
-                        /* dd('--here works!--'); */
-                        /* dd($unitssx[$this->i]->id); */
+                    if ($unitssx[$this->i]->unit01 != $this->cursoBase[$courses_ids[$this->i]]->unit01) {
                         $this->id_actividades01[$courses_ids[$this->i]]= Activity_course::where([
                             ['id_course', $unitssx[$this->i]->id ],
                             ['unit', $j] ])
                             ->pluck('id_activity');
-                            /* ->get(['id_activity'])
-                            ->toArray(); */
-                        /* dd($id_actividades); */
+
                     }
                 }
                 break;
@@ -537,43 +497,39 @@ class UnitsCreate extends Component
                 # code...
                 break;
             }
-        }
-
+        }  */
         /* dd($id_actividades04[$courses_ids[1]]); */
 
+        /* ----------------------------modulo simplificado--------------------------------- */
 
+
+        for ($j=1; $j < 10 ; $j++) {
+            for ($this->i=0; $this->i < $this->c; $this->i++) {
+                if ($unitssx[$this->i]->{"unit0$j"} != $this->cursoBase[$courses_ids[$this->i]]->{"unit0$j"}) {
+                    $this->{"id_actividades0$j"}[$courses_ids[$this->i]]= Activity_course::where([
+                        ['id_course', $unitssx[$this->i]->id ],
+                        ['unit', $j] ])
+                        ->pluck('id_activity');
+                                    }
+                /* dd($this->{"id_actividades0$j"}[1051]); */
+            }
+        }
+
+        for ($j=10; $j < 17 ; $j++) {
+            for ($this->i=0; $this->i < $this->c; $this->i++) {
+                if ($unitssx[$this->i]->{"unit$j"} != $this->cursoBase[$courses_ids[$this->i]]->{"unit$j"}) {
+                    $this->{"id_actividades$j"}[$courses_ids[$this->i]]= Activity_course::where([
+                        ['id_course', $unitssx[$this->i]->id ],
+                        ['unit', $j] ])
+                        ->pluck('id_activity');
+                                    }
+                /* dd($this->{"id_actividades1$j"}[1051]); */
+            }
+        }
 
 
 
         /* ------------------------------------------------------------------------------- */
-
-        /* for ($this->i=0; $this->i < $this->c; $this->i++) {
-            for ($j=1; $j < 10; $j++) {
-
-                if ($unitssx[$this->i]->unit01 != $this->cursoBase[$courses_ids[$this->i]]->unit0.$j) {
-                    dd('--here works!--');
-
-                    $id_actividades= Activity_course::where([
-                        ['id_course', $unitssx[$this->i]->id ],
-                        ['unit', $j] ])
-                        ->pluck('id_activity');
-
-                    dd($id_actividades);
-                } else {
-                    dd('no change');
-                }
-
-            }
-
-            for ($j=10; $j < 17; $j++) {
-                if ($unitssx[$this->i]->unit.$j != 0) {
-
-                }
-
-            }
-
-        }
- */
 
 
 
@@ -581,46 +537,6 @@ class UnitsCreate extends Component
 
         /* dd('----brake----'); */
 
-       /*  for( $this->i=0;$this->i<$this->c;$this->i++ )
-            { */
-
-                /* $coursess_id =  $courses_ids[$this->i]; */ //
-                /* $unidadess = $this->coursesTotal[$courses_ids[$this->i]]; */ //
-
-                /* for( $this->j=1;$this->j<$unidadess;$this->j++ )
-                    { */
-
-                        /* $unitss = Course::find($courses_ids[$this->i])
-                                    ->update(['unit01' =>$this->Units01[$courses_ids[$this->i]],
-                                              'unit02' =>$this->Units02[$courses_ids[$this->i]],
-                                              'unit03' =>$this->Units03[$courses_ids[$this->i]],
-                                              'unit04' =>$this->Units04[$courses_ids[$this->i]],
-                                              'unit05' =>$this->Units05[$courses_ids[$this->i]],
-                                              'unit06' =>$this->Units06[$courses_ids[$this->i]],
-                                              'unit07' =>$this->Units07[$courses_ids[$this->i]],
-                                              'unit08' =>$this->Units08[$courses_ids[$this->i]],
-                                              'unit09' =>$this->Units09[$courses_ids[$this->i]],
-                                              'unit10' =>$this->Units10[$courses_ids[$this->i]],
-                                              'unit11' =>$this->Units11[$courses_ids[$this->i]],
-                                              'unit12' =>$this->Units12[$courses_ids[$this->i]],
-                                              'unit13' =>$this->Units13[$courses_ids[$this->i]],
-                                              'unit14' =>$this->Units14[$courses_ids[$this->i]],
-                                              'unit15' =>$this->Units15[$courses_ids[$this->i]],
-                                              'unit16' =>$this->Units16[$courses_ids[$this->i]]
-                                ]); */
-
-
-                   /*  } */
-
-
-                /* $up_courses = Course::find($this->coursesForUser[$this->i]->id)
-                                    ->update(['unitTotal' =>$this->coursesTotal[$this->coursesForUser[$this->i]->id]]); */
-
-                /* $activity_courses = Activity_course::create([
-                    'id_activity'        => $this->id_activityLast->id,
-                    'id_course'          => $this->coursess[$this->i],
-                ]); */
-            /* }; */
 
     }
 
@@ -692,7 +608,7 @@ class UnitsCreate extends Component
             $this->cursoBase[$courses_ids[$kk]] = (Object)$this->cursoBase[$courses_ids[$kk]];
         }
 
-    
+
         /* ------------------------------------------------------------------------------------ */
 
         /* dd($id_actividades01[$courses_ids[0]]); */
@@ -944,11 +860,11 @@ class UnitsCreate extends Component
 
 
 
-        for ($i=1; $i < 17 ; $i++) {
+        /* for ($i=1; $i < 17 ; $i++) {
 
             $test = $this->{"id_actividades0$i"}[1051];
-            /* dd($test); */
-        }
+
+        } */
 
         /* dd($id_actividades04[$courses_ids[1]]); */
 
@@ -1171,7 +1087,7 @@ class UnitsCreate extends Component
 
         $this->changeUnitsUp(); //Reinicia a cero las notas de las unidades cambiadas en sus totales.
 
-
+        /* dd("--here--"); */
         for( $this->i=0;$this->i<$this->c;$this->i++ )
             {
 
