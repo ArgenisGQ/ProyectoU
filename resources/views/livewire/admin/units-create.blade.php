@@ -418,6 +418,180 @@
 
                     <div class="row">
 
+                        @foreach ($unitssy as $unitssyy )
+
+                            @php
+                                /* dd($id_actividades01[1051]) */
+                                $acumuladores = 0;
+                            @endphp
+                            @if (isset($id_actividades01[$unitssyy->id]) || isset($id_actividades02[$unitssyy->id]) || isset($id_actividades03[$unitssyy->id]) || isset($id_actividades04[$unitssyy->id]) ||
+                                 isset($id_actividades05[$unitssyy->id]) || isset($id_actividades06[$unitssyy->id]) || isset($id_actividades07[$unitssyy->id]) || isset($id_actividades08[$unitssyy->id]) ||
+                                 isset($id_actividades09[$unitssyy->id]) || isset($id_actividades10[$unitssyy->id]) || isset($id_actividades11[$unitssyy->id]) || isset($id_actividades12[$unitssyy->id]) ||
+                                 isset($id_actividades13[$unitssyy->id]) || isset($id_actividades14[$unitssyy->id]) || isset($id_actividades15[$unitssyy->id]) || isset($id_actividades16[$unitssyy->id]))
+
+                                <div class="col-md-12">
+                                    <h4>El curso {{$unitssyy->name}} {{$unitssyy->code}} {{$unitssyy->section}}</h4>
+                                        <div class="form-group">
+                                            @if (isset($id_actividades01[$unitssyy->id]))
+                                                @php
+                                                    $cantidad = count($id_actividades01[$unitssyy->id]);
+                                                    $acumuladores = $cantidad + $acumuladores;
+                                                @endphp
+                                                @if ($cantidad != 0 )
+                                                    <p>Afectara {{$cantidad}} actividades de la Unidad 1.</p>
+                                                @endif
+                                            @endif
+                                            @if (isset($id_actividades02[$unitssyy->id]))
+                                                @php
+                                                    $cantidad = count($id_actividades01[$unitssyy->id]);
+                                                    $acumuladores = $acumuladores + $cantidad;
+                                                @endphp
+                                                @if ($cantidad != 0 )
+                                                    <p>Afectara {{$cantidad}} actividades de la Unidad 2.</p>
+                                                @endif
+                                            @endif
+                                            @if (isset($id_actividades03[$unitssyy->id]))
+                                                @php
+                                                    $cantidad = count($id_actividades01[$unitssyy->id]);
+                                                    $acumuladores = $acumuladores + $cantidad;
+                                                @endphp
+                                                @if ($cantidad != 0 )
+                                                    <p>Afectara {{$cantidad}} actividades de la Unidad 3.</p>
+                                                @endif
+                                            @endif
+                                            @if (isset($id_actividades04[$unitssyy->id]))
+                                                @php
+                                                    $cantidad = count($id_actividades01[$unitssyy->id]);
+                                                    $acumuladores = $acumuladores + $cantidad;
+                                                @endphp
+                                                @if ($cantidad != 0 )
+                                                    <p>Afectara {{$cantidad}} actividades de la Unidad 4.</p>
+                                                @endif
+                                            @endif
+
+                                            @if (isset($id_actividades05[$unitssyy->id]))
+                                                @php
+                                                    $cantidad = count($id_actividades05[$unitssyy->id]);
+                                                    $acumuladores = $cantidad + $acumuladores;
+                                                @endphp
+                                                @if ($cantidad != 0 )
+                                                    <p>Afectara {{$cantidad}} actividades de la Unidad 5.</p>
+                                                @endif
+                                            @endif
+                                            @if (isset($id_actividades06[$unitssyy->id]))
+                                                @php
+                                                    $cantidad = count($id_actividades06[$unitssyy->id]);
+                                                    $acumuladores = $acumuladores + $cantidad;
+                                                @endphp
+                                                @if ($cantidad != 0 )
+                                                    <p>Afectara {{$cantidad}} actividades de la Unidad 6.</p>
+                                                @endif
+                                            @endif
+                                            @if (isset($id_actividades07[$unitssyy->id]))
+                                                @php
+                                                    $cantidad = count($id_actividades07[$unitssyy->id]);
+                                                    $acumuladores = $acumuladores + $cantidad;
+                                                @endphp
+                                                @if ($cantidad != 0 )
+                                                    <p>Afectara {{$cantidad}} actividades de la Unidad 7.</p>
+                                                @endif
+                                            @endif
+                                            @if (isset($id_actividades08[$unitssyy->id]))
+                                                @php
+                                                    $cantidad = count($id_actividades08[$unitssyy->id]);
+                                                    $acumuladores = $acumuladores + $cantidad;
+                                                @endphp
+                                                @if ($cantidad != 0 )
+                                                    <p>Afectara {{$cantidad}} actividades de la Unidad 8.</p>
+                                                @endif
+                                            @endif
+
+                                            @if (isset($id_actividades09[$unitssyy->id]))
+                                                @php
+                                                    $cantidad = count($id_actividades09[$unitssyy->id]);
+                                                    $acumuladores = $cantidad + $acumuladores;
+                                                @endphp
+                                                @if ($cantidad != 0 )
+                                                    <p>Afectara {{$cantidad}} actividades de la Unidad 9.</p>
+                                                @endif
+                                            @endif
+                                            @if (isset($id_actividades10[$unitssyy->id]))
+                                                @php
+                                                    $cantidad = count($id_actividades10[$unitssyy->id]);
+                                                    $acumuladores = $acumuladores + $cantidad;
+                                                @endphp
+                                                @if ($cantidad != 0 )
+                                                    <p>Afectara {{$cantidad}} actividades de la Unidad 10.</p>
+                                                @endif
+                                            @endif
+                                            @if (isset($id_actividades11[$unitssyy->id]))
+                                                @php
+                                                    $cantidad = count($id_actividades11[$unitssyy->id]);
+                                                    $acumuladores = $acumuladores + $cantidad;
+                                                @endphp
+                                                @if ($cantidad != 0 )
+                                                    <p>Afectara {{$cantidad}} actividades de la Unidad11.</p>
+                                                @endif
+                                            @endif
+                                            @if (isset($id_actividades12[$unitssyy->id]))
+                                                @php
+                                                    $cantidad = count($id_actividades12[$unitssyy->id]);
+                                                    $acumuladores = $acumuladores + $cantidad;
+                                                @endphp
+                                                @if ($cantidad != 0 )
+                                                    <p>Afectara {{$cantidad}} actividades de la Unidad 12.</p>
+                                                @endif
+                                            @endif
+
+                                            @if (isset($id_actividades13[$unitssyy->id]))
+                                                @php
+                                                    $cantidad = count($id_actividades13[$unitssyy->id]);
+                                                    $acumuladores = $cantidad + $acumuladores;
+                                                @endphp
+                                                @if ($cantidad != 0 )
+                                                    <p>Afectara {{$cantidad}} actividades de la Unidad13.</p>
+                                                @endif
+                                            @endif
+                                            @if (isset($id_actividades14[$unitssyy->id]))
+                                                @php
+                                                    $cantidad = count($id_actividades14[$unitssyy->id]);
+                                                    $acumuladores = $acumuladores + $cantidad;
+                                                @endphp
+                                                @if ($cantidad != 0 )
+                                                    <p>Afectara {{$cantidad}} actividades de la Unidad 14.</p>
+                                                @endif
+                                            @endif
+                                            @if (isset($id_actividades15[$unitssyy->id]))
+                                                @php
+                                                    $cantidad = count($id_actividades15[$unitssyy->id]);
+                                                    $acumuladores = $acumuladores + $cantidad;
+                                                @endphp
+                                                @if ($cantidad != 0 )
+                                                    <p>Afectara {{$cantidad}} actividades de la Unidad 15.</p>
+                                                @endif
+                                            @endif
+                                            @if (isset($id_actividades16[$unitssyy->id]))
+                                                @php
+                                                    $cantidad = count($id_actividades16[$unitssyy->id]);
+                                                    $acumuladores = $acumuladores + $cantidad;
+                                                @endphp
+                                                @if ($cantidad != 0 )
+                                                    <p>Afectara {{$cantidad}} actividades de la Unidad 16.</p>
+                                                @endif
+                                            @endif
+
+                                            @if ($acumuladores == 0)
+                                                    <p>Sin cambios</p>
+                                            @endif
+                                        </div>
+                                </div>
+
+                            @endif
+
+                        @endforeach
+
+                        {{-- ----------------------------------------------------------------------------------------------- --}}
+
                         @if ($acumulador == 0)
 
                             <div class="col-md-6">
@@ -440,6 +614,8 @@
                             </div>
 
                         @endif
+
+                        </ul>
 
                     </div>
 

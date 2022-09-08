@@ -11,6 +11,7 @@ use App\Models\Evaluation;
 use App\Models\Period;
 use Carbon\Carbon;
 use App\Models\Activity_course;
+use SebastianBergmann\Type\ObjectType;
 
 class UnitsCreate extends Component
 {
@@ -32,11 +33,22 @@ class UnitsCreate extends Component
            $Units05,$Units06,$Units07,$Units08,
            $Units09,$Units10,$Units11,$Units12,
            $Units13,$Units14,$Units15,$Units16 = [];
-    public $totalUnidad = [];
+    public $totalUnidad, $cursoBase = [];
     public $totalUnidadd;
     public $totalUnidaddd;
     public $acumulador;
     public $id_cursoss;
+    public $id_actividades01,$id_actividades02,
+           $id_actividades03,$id_actividades04,
+           $id_actividades05,$id_actividades06,
+           $id_actividades07,$id_actividades08,
+           $id_actividades09,$id_actividades10,
+           $id_actividades11,$id_actividades12,
+           $id_actividades13,$id_actividades14,
+           $id_actividades15,$id_actividades16= [];
+    public $courses_idsx = [];
+    public $unitssy = [];
+
     /* public $coursesForUser = [];
     public $coursess = [];
     public $faculties = [];
@@ -244,6 +256,710 @@ class UnitsCreate extends Component
         /* $this->emitUp('courses');//nose */
     }
 
+    public function changeUnits()
+    {
+        $coursesForUser = $this->coursesForUser;
+        $coursesForUser = (object)$coursesForUser;
+
+        $courses_ids= $coursesForUser->pluck('id')->toArray();
+        $this->courses_idsx = $courses_ids;
+
+        /* dd($courses_ids); */
+        /* dd($courses_ids[0]); */
+        /* dd($this->coursesTotal[1051]); */
+
+        $this->c= count ($courses_ids);
+        /* dd($this->c); */
+
+        /* $unitssxy = Course::find($courses_ids[0]);
+
+        dd($unitssxy->unit01); */
+
+        for ($this->i=0; $this->i < $this->c; $this->i++) {
+            $unitssx[$this->i] = Course::find($courses_ids[$this->i]);
+            /* $unitssx[$this->i] = Course::where([
+                ['id', $courses_ids[$this->i]],
+                ['unit01', 25], //colocar el valor de las unidades a explorar
+            ])
+            ->get(); */
+        }
+
+        $this->unitssy = $unitssx;
+
+        /* dd($unitssx); */
+        /* coursesTotal.{{ $courses_full['id'] }} */
+
+
+        /* $unitssx = (object)$unitssx; */
+        /* dd($this->Units01[$courses_ids[0]]); */
+        /* dd($unitssx[0]->unit01 ); */
+        /* dd($courses_ids[0]); */
+
+        /* $place = ['city' => 'Pokhara', 'country' =>'Nepal'];
+        $obj = (object) $place; */
+
+        for ($kk=0; $kk < $this->c; $kk++) {
+            $this->cursoBase[$courses_ids[$kk]] =
+            [   'unit01' => $this->Units01[$courses_ids[$kk]],
+                'unit02' => $this->Units02[$courses_ids[$kk]],
+                'unit03' => $this->Units03[$courses_ids[$kk]],
+                'unit04' => $this->Units04[$courses_ids[$kk]],
+                'unit05' => $this->Units05[$courses_ids[$kk]],
+                'unit06' => $this->Units06[$courses_ids[$kk]],
+                'unit07' => $this->Units07[$courses_ids[$kk]],
+                'unit08' => $this->Units08[$courses_ids[$kk]],
+                'unit09' => $this->Units09[$courses_ids[$kk]],
+                'unit10' => $this->Units10[$courses_ids[$kk]],
+                'unit11' => $this->Units11[$courses_ids[$kk]],
+                'unit12' => $this->Units12[$courses_ids[$kk]],
+                'unit13' => $this->Units13[$courses_ids[$kk]],
+                'unit14' => $this->Units14[$courses_ids[$kk]],
+                'unit15' => $this->Units15[$courses_ids[$kk]],
+                'unit16' => $this->Units16[$courses_ids[$kk]],
+            ];
+            $this->cursoBase[$courses_ids[$kk]] = (Object)$this->cursoBase[$courses_ids[$kk]];
+        }
+
+        /* $this->cursoBase[$courses_ids[0]] =
+                        [   'unit01' => $this->Units01[$courses_ids[0]],
+                            'unit02' => $this->Units02[$courses_ids[0]],
+                            'unit03' => $this->Units03[$courses_ids[0]],
+                            'unit04' => $this->Units04[$courses_ids[0]],
+                            'unit05' => $this->Units05[$courses_ids[0]],
+                            'unit06' => $this->Units06[$courses_ids[0]],
+                            'unit07' => $this->Units07[$courses_ids[0]],
+                            'unit08' => $this->Units08[$courses_ids[0]],
+                            'unit09' => $this->Units09[$courses_ids[0]],
+                            'unit10' => $this->Units10[$courses_ids[0]],
+                            'unit11' => $this->Units11[$courses_ids[0]],
+                            'unit12' => $this->Units12[$courses_ids[0]],
+                            'unit13' => $this->Units13[$courses_ids[0]],
+                            'unit14' => $this->Units14[$courses_ids[0]],
+                            'unit15' => $this->Units15[$courses_ids[0]],
+                            'unit16' => $this->Units16[$courses_ids[0]],
+                        ];
+
+        $this->cursoBase[$courses_ids[0]] = (Object)$this->cursoBase[$courses_ids[0]]; */
+
+        /* dd($this->cursoBase[]); */
+
+        /* for ($k=0; $k < $this->c; $k++) {
+            for ($i=1; $i < 16; $i++) {
+                switch ($i) {
+                case '1':
+                    $this->cursoBase[$courses_ids[$k]]->unit01 = $this->Units01[$courses_ids[$k]];
+                    break;
+
+                default:
+
+                    break;
+                }
+            }
+
+        }
+
+        dd($this->cursoBase); */
+        /* ------------------------------------------------------------------------------------ */
+
+        /* dd($id_actividades01[$courses_ids[0]]); */
+
+
+        for ($j=1; $j < 17 ; $j++) {
+            switch ($j) {
+            case '1':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit01 != $this->cursoBase[$courses_ids[$this->i]]->unit01) { //corregir aqui
+                        /* dd('--here works!--'); */
+                        /* dd($unitssx[$this->i]->id); */
+                        $this->id_actividades01[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                            /* ->get(['id_activity'])
+                            ->toArray(); */
+                        /* dd($id_actividades); */
+                    }
+                }
+                break;
+            case '2':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit02 != $this->cursoBase[$courses_ids[$this->i]]->unit02) {
+                        $this->id_actividades02[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '3':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit03 != $this->cursoBase[$courses_ids[$this->i]]->unit03) {
+                        $this->id_actividades03[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '4':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit04 != $this->cursoBase[$courses_ids[$this->i]]->unit04) {
+                        $this->id_actividades04[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '5':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit05 != $this->cursoBase[$courses_ids[$this->i]]->unit05) {
+                        $this->id_actividades05[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+               break;
+            case '6':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit06 != $this->cursoBase[$courses_ids[$this->i]]->unit06) {
+                        $this->id_actividades06[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '7':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit07 != $this->cursoBase[$courses_ids[$this->i]]->unit07) {
+                        $this->id_actividades07[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '8':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit08 != $this->cursoBase[$courses_ids[$this->i]]->unit08) {
+                        $this->id_actividades08[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '9':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit09 != $this->cursoBase[$courses_ids[$this->i]]->unit09) {
+                        $this->id_actividades09[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '10':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit10 != $this->cursoBase[$courses_ids[$this->i]]->unit10) {
+                        $this->id_actividades10[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '11':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit11 != $this->cursoBase[$courses_ids[$this->i]]->unit11) {
+                        $this->id_actividades11[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '12':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit12 != $this->cursoBase[$courses_ids[$this->i]]->unit12) {
+                        $this->id_actividades12[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '13':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit13 != $this->cursoBase[$courses_ids[$this->i]]->unit13) {
+                        $this->id_actividades13[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '14':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit14 != $this->cursoBase[$courses_ids[$this->i]]->unit14) {
+                        $this->id_actividades14[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '15':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit15 != $this->cursoBase[$courses_ids[$this->i]]->unit15) {
+                        $this->id_actividades15[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '16':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit16 != $this->cursoBase[$courses_ids[$this->i]]->unit16) {
+                        $this->id_actividades16[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+
+
+            default:
+                # code...
+                break;
+            }
+        }
+
+        /* dd($id_actividades04[$courses_ids[1]]); */
+
+
+
+
+
+        /* ------------------------------------------------------------------------------- */
+
+        /* for ($this->i=0; $this->i < $this->c; $this->i++) {
+            for ($j=1; $j < 10; $j++) {
+
+                if ($unitssx[$this->i]->unit01 != $this->cursoBase[$courses_ids[$this->i]]->unit0.$j) {
+                    dd('--here works!--');
+
+                    $id_actividades= Activity_course::where([
+                        ['id_course', $unitssx[$this->i]->id ],
+                        ['unit', $j] ])
+                        ->pluck('id_activity');
+
+                    dd($id_actividades);
+                } else {
+                    dd('no change');
+                }
+
+            }
+
+            for ($j=10; $j < 17; $j++) {
+                if ($unitssx[$this->i]->unit.$j != 0) {
+
+                }
+
+            }
+
+        }
+ */
+
+
+
+
+
+        /* dd('----brake----'); */
+
+       /*  for( $this->i=0;$this->i<$this->c;$this->i++ )
+            { */
+
+                /* $coursess_id =  $courses_ids[$this->i]; */ //
+                /* $unidadess = $this->coursesTotal[$courses_ids[$this->i]]; */ //
+
+                /* for( $this->j=1;$this->j<$unidadess;$this->j++ )
+                    { */
+
+                        /* $unitss = Course::find($courses_ids[$this->i])
+                                    ->update(['unit01' =>$this->Units01[$courses_ids[$this->i]],
+                                              'unit02' =>$this->Units02[$courses_ids[$this->i]],
+                                              'unit03' =>$this->Units03[$courses_ids[$this->i]],
+                                              'unit04' =>$this->Units04[$courses_ids[$this->i]],
+                                              'unit05' =>$this->Units05[$courses_ids[$this->i]],
+                                              'unit06' =>$this->Units06[$courses_ids[$this->i]],
+                                              'unit07' =>$this->Units07[$courses_ids[$this->i]],
+                                              'unit08' =>$this->Units08[$courses_ids[$this->i]],
+                                              'unit09' =>$this->Units09[$courses_ids[$this->i]],
+                                              'unit10' =>$this->Units10[$courses_ids[$this->i]],
+                                              'unit11' =>$this->Units11[$courses_ids[$this->i]],
+                                              'unit12' =>$this->Units12[$courses_ids[$this->i]],
+                                              'unit13' =>$this->Units13[$courses_ids[$this->i]],
+                                              'unit14' =>$this->Units14[$courses_ids[$this->i]],
+                                              'unit15' =>$this->Units15[$courses_ids[$this->i]],
+                                              'unit16' =>$this->Units16[$courses_ids[$this->i]]
+                                ]); */
+
+
+                   /*  } */
+
+
+                /* $up_courses = Course::find($this->coursesForUser[$this->i]->id)
+                                    ->update(['unitTotal' =>$this->coursesTotal[$this->coursesForUser[$this->i]->id]]); */
+
+                /* $activity_courses = Activity_course::create([
+                    'id_activity'        => $this->id_activityLast->id,
+                    'id_course'          => $this->coursess[$this->i],
+                ]); */
+            /* }; */
+
+    }
+
+    public function changeUnitsUp()
+    {
+        $coursesForUser = $this->coursesForUser;
+        $coursesForUser = (object)$coursesForUser;
+
+        $courses_ids= $coursesForUser->pluck('id')->toArray();
+        $this->courses_idsx = $courses_ids;
+
+
+
+        /* dd($activity_full); */
+
+        /* dd($courses_ids); */
+        /* dd($courses_ids[0]); */
+        /* dd($this->coursesTotal[1051]); */
+
+        $this->c= count ($courses_ids);
+        /* dd($this->c); */
+
+        /* $unitssxy = Course::find($courses_ids[0]);
+
+        dd($unitssxy->unit01); */
+
+        for ($this->i=0; $this->i < $this->c; $this->i++) {
+            $unitssx[$this->i] = Course::find($courses_ids[$this->i]);
+            /* $unitssx[$this->i] = Course::where([
+                ['id', $courses_ids[$this->i]],
+                ['unit01', 25], //colocar el valor de las unidades a explorar
+            ])
+            ->get(); */
+        }
+
+        $this->unitssy = $unitssx;
+
+        /* dd($unitssx); */
+        /* coursesTotal.{{ $courses_full['id'] }} */
+
+
+        /* $unitssx = (object)$unitssx; */
+        /* dd($this->Units01[$courses_ids[0]]); */
+        /* dd($unitssx[0]->unit01 ); */
+        /* dd($courses_ids[0]); */
+
+        /* $place = ['city' => 'Pokhara', 'country' =>'Nepal'];
+        $obj = (object) $place; */
+
+        for ($kk=0; $kk < $this->c; $kk++) {
+            $this->cursoBase[$courses_ids[$kk]] =
+            [   'unit01' => $this->Units01[$courses_ids[$kk]],
+                'unit02' => $this->Units02[$courses_ids[$kk]],
+                'unit03' => $this->Units03[$courses_ids[$kk]],
+                'unit04' => $this->Units04[$courses_ids[$kk]],
+                'unit05' => $this->Units05[$courses_ids[$kk]],
+                'unit06' => $this->Units06[$courses_ids[$kk]],
+                'unit07' => $this->Units07[$courses_ids[$kk]],
+                'unit08' => $this->Units08[$courses_ids[$kk]],
+                'unit09' => $this->Units09[$courses_ids[$kk]],
+                'unit10' => $this->Units10[$courses_ids[$kk]],
+                'unit11' => $this->Units11[$courses_ids[$kk]],
+                'unit12' => $this->Units12[$courses_ids[$kk]],
+                'unit13' => $this->Units13[$courses_ids[$kk]],
+                'unit14' => $this->Units14[$courses_ids[$kk]],
+                'unit15' => $this->Units15[$courses_ids[$kk]],
+                'unit16' => $this->Units16[$courses_ids[$kk]],
+            ];
+            $this->cursoBase[$courses_ids[$kk]] = (Object)$this->cursoBase[$courses_ids[$kk]];
+        }
+
+    
+        /* ------------------------------------------------------------------------------------ */
+
+        /* dd($id_actividades01[$courses_ids[0]]); */
+
+
+        /* for ($j=1; $j < 17 ; $j++) {
+            switch ($j) {
+            case '1':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit01 != $this->cursoBase[$courses_ids[$this->i]]->unit01) {
+
+                        $this->id_actividades01[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+
+                    }
+                }
+                break;
+            case '2':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit02 != $this->cursoBase[$courses_ids[$this->i]]->unit02) {
+                        $this->id_actividades02[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '3':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit03 != $this->cursoBase[$courses_ids[$this->i]]->unit03) {
+                        $this->id_actividades03[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '4':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit04 != $this->cursoBase[$courses_ids[$this->i]]->unit04) {
+                        $this->id_actividades04[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '5':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit05 != $this->cursoBase[$courses_ids[$this->i]]->unit05) {
+                        $this->id_actividades05[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+               break;
+            case '6':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit06 != $this->cursoBase[$courses_ids[$this->i]]->unit06) {
+                        $this->id_actividades06[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '7':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit07 != $this->cursoBase[$courses_ids[$this->i]]->unit07) {
+                        $this->id_actividades07[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '8':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit08 != $this->cursoBase[$courses_ids[$this->i]]->unit08) {
+                        $this->id_actividades08[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '9':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit09 != $this->cursoBase[$courses_ids[$this->i]]->unit09) {
+                        $this->id_actividades09[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '10':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit10 != $this->cursoBase[$courses_ids[$this->i]]->unit10) {
+                        $this->id_actividades10[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '11':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit11 != $this->cursoBase[$courses_ids[$this->i]]->unit11) {
+                        $this->id_actividades11[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '12':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit12 != $this->cursoBase[$courses_ids[$this->i]]->unit12) {
+                        $this->id_actividades12[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '13':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit13 != $this->cursoBase[$courses_ids[$this->i]]->unit13) {
+                        $this->id_actividades13[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '14':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit14 != $this->cursoBase[$courses_ids[$this->i]]->unit14) {
+                        $this->id_actividades14[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '15':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit15 != $this->cursoBase[$courses_ids[$this->i]]->unit15) {
+                        $this->id_actividades15[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+            case '16':
+                for ($this->i=0; $this->i < $this->c; $this->i++) {
+                    if ($unitssx[$this->i]->unit16 != $this->cursoBase[$courses_ids[$this->i]]->unit16) {
+                        $this->id_actividades16[$courses_ids[$this->i]]= Activity_course::where([
+                            ['id_course', $unitssx[$this->i]->id ],
+                            ['unit', $j] ])
+                            ->pluck('id_activity');
+                    }
+                }
+                break;
+
+
+            default:
+                # code...
+                break;
+            }
+        } */
+
+        for ($j=1; $j < 10 ; $j++) {
+            for ($this->i=0; $this->i < $this->c; $this->i++) {
+                if ($unitssx[$this->i]->{"unit0$j"} != $this->cursoBase[$courses_ids[$this->i]]->{"unit0$j"}) {
+                    $this->{"id_actividades0$j"}[$courses_ids[$this->i]]= Activity_course::where([
+                        ['id_course', $unitssx[$this->i]->id ],
+                        ['unit', $j] ])
+                        ->pluck('id_activity');
+                                    }
+                /* dd($this->{"id_actividades0$j"}[1051]); */
+            }
+        }
+
+        for ($j=10; $j < 17 ; $j++) {
+            for ($this->i=0; $this->i < $this->c; $this->i++) {
+                if ($unitssx[$this->i]->{"unit$j"} != $this->cursoBase[$courses_ids[$this->i]]->{"unit$j"}) {
+                    $this->{"id_actividades$j"}[$courses_ids[$this->i]]= Activity_course::where([
+                        ['id_course', $unitssx[$this->i]->id ],
+                        ['unit', $j] ])
+                        ->pluck('id_activity');
+                                    }
+                /* dd($this->{"id_actividades1$j"}[1051]); */
+            }
+        }
+
+        /* $activity_full */
+        for ($j=1; $j < 10 ; $j++) {
+            for ($this->i=0; $this->i < $this->c; $this->i++) {
+                if (isset($this->{"id_actividades0$j"}[$courses_ids[$this->i]])) {
+
+                    $cuantos = count($this->{"id_actividades0$j"}[$courses_ids[$this->i]]);
+                    /* dd($cuantos); */
+                    /* $inter = {"id_actividades0$j"}[$courses_ids[$this->i]]; */
+                    $inter= $this->{"id_actividades0$j"}[$courses_ids[$this->i]];
+                    /* dd($inter); */
+
+                    for ($k=0; $k < $cuantos; $k++) {
+                        /* dd($inter[$k]); */
+                        $activity_eval = Activity::where([
+                           ['id'  ,$inter[$k]],
+                           ['unit',  $j]
+                        ])->update(['evaluation' => 0]);
+                    }
+
+                /* dd('--stoped--'); */
+                }
+            }
+        }
+
+        for ($j=10; $j < 17 ; $j++) {
+            for ($this->i=0; $this->i < $this->c; $this->i++) {
+                if (isset($this->{"id_actividades$j"}[$courses_ids[$this->i]])) {
+
+                    $cuantos = count($this->{"id_actividades$j"}[$courses_ids[$this->i]]);
+                    /* dd($cuantos); */
+                    /* $inter = {"id_actividades0$j"}[$courses_ids[$this->i]]; */
+                    $inter= $this->{"id_actividades$j"}[$courses_ids[$this->i]];
+                    /* dd($inter); */
+
+                    for ($k=0; $k < $cuantos; $k++) {
+                        /* dd($inter[$k]); */
+                        $activity_eval = Activity::where([
+                           ['id'  ,$inter[$k]],
+                           ['unit',  $j]
+                        ])->update(['evaluation' => 0]);
+                    }
+
+                /* dd('--stoped--'); */
+                }
+            }
+        }
+
+
+
+
+        for ($i=1; $i < 17 ; $i++) {
+
+            $test = $this->{"id_actividades0$i"}[1051];
+            /* dd($test); */
+        }
+
+        /* dd($id_actividades04[$courses_ids[1]]); */
+
+
+
+        /* dd('-------BRAKE------'); */
+
+        /* ------------------------------------------------------------------------------- */
+
+
+    }
 
     public function validateData(){
 
@@ -383,6 +1099,8 @@ class UnitsCreate extends Component
                   ]);
               };
 
+              $this->changeUnits(); //testing para validacion de cambio de valor en las notas de las unidades
+
         }
         elseif($this->currentStep == 3){
               /* $this->validate([ */
@@ -450,6 +1168,8 @@ class UnitsCreate extends Component
 
         /* $this->c = count($this->coursesForUser);
         dd($this->c); */
+
+        $this->changeUnitsUp(); //Reinicia a cero las notas de las unidades cambiadas en sus totales.
 
 
         for( $this->i=0;$this->i<$this->c;$this->i++ )
