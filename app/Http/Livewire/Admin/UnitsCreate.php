@@ -825,7 +825,8 @@ class UnitsCreate extends Component
                         /* dd($inter[$k]); */
                         $activity_eval = Activity::where([
                            ['id'  ,$inter[$k]],
-                           ['unit',  $j]
+                           ['unit',  $j],
+                           ['status', 1]
                         ])->update(['evaluation' => 0]);
                     }
 
@@ -848,7 +849,8 @@ class UnitsCreate extends Component
                         /* dd($inter[$k]); */
                         $activity_eval = Activity::where([
                            ['id'  ,$inter[$k]],
-                           ['unit',  $j]
+                           ['unit',  $j],
+                           ['status', 1] 
                         ])->update(['evaluation' => 0]);
                     }
 
