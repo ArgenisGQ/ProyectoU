@@ -472,6 +472,13 @@ class ActivityAdminController extends Controller
     {
         $this->authorize('author', $activity);
 
+        if ($activity->status == 2) {
+            /* dd('borrar'); */
+            return redirect()->route('admin.activities.index', $activity)->with('info', 'La actividad NO puede ser eliminada');
+        }
+
+        /* dd($activity->status); */
+
         $activity->delete();
 
         return redirect()->route('admin.activities.index', $activity)->with('info', 'La actividad se elimino con exito');

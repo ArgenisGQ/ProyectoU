@@ -24,17 +24,20 @@
                             <td><a href="{{route('activities.pdf.down', $activity)}}">
                                 {{$activity->name}}
                             </a></td>
-                            <td with="10px">
-                                <a href="{{route('admin.activities.edit', $activity)}}" class="btn btn-primary btn-sm">Editar</a>
-                            </td>
-                            <td with="10px">
-                                <form action="{{route('admin.activities.destroy', $activity)}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
+                            @if ($activity->status != 2)
+                                <td with="10px">
+                                    <a href="{{route('admin.activities.edit', $activity)}}" class="btn btn-primary btn-sm">Editar</a>
+                                </td>
 
-                                    <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
-                                </form>
-                            </td>
+                                 <td with="10px">
+                                    <form action="{{route('admin.activities.destroy', $activity)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                                    </form>
+                                </td>
+                            @endif
                         </tr>
                     @endforeach
                 </Tbody>

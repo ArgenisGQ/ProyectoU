@@ -269,6 +269,12 @@ class ActivitiesEdit extends Component
 
         public function updateb(){
 
+            /* dd($this->activity->status); */
+
+            if ($this->activity->status == 2) {
+                return redirect()->route('admin.activities.index')/* ->with('info', 'La actividad NO se puede actualizar') */; //no se puede editar
+            }
+
 
 
             $this->activity->save();
