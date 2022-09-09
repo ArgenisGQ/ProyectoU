@@ -583,8 +583,7 @@ class UnitsCreate extends Component
         /* dd($unitssx[0]->unit01 ); */
         /* dd($courses_ids[0]); */
 
-        /* $place = ['city' => 'Pokhara', 'country' =>'Nepal'];
-        $obj = (object) $place; */
+
 
         for ($kk=0; $kk < $this->c; $kk++) {
             $this->cursoBase[$courses_ids[$kk]] =
@@ -608,6 +607,7 @@ class UnitsCreate extends Component
             $this->cursoBase[$courses_ids[$kk]] = (Object)$this->cursoBase[$courses_ids[$kk]];
         }
 
+        dd($this->cursoBase[$courses_ids[0]]);
 
         /* ------------------------------------------------------------------------------------ */
 
@@ -786,6 +786,8 @@ class UnitsCreate extends Component
             }
         } */
 
+
+
         for ($j=1; $j < 10 ; $j++) {
             for ($this->i=0; $this->i < $this->c; $this->i++) {
                 if ($unitssx[$this->i]->{"unit0$j"} != $this->cursoBase[$courses_ids[$this->i]]->{"unit0$j"}) {
@@ -806,7 +808,7 @@ class UnitsCreate extends Component
                         ['unit', $j] ])
                         ->pluck('id_activity');
                                     }
-                /* dd($this->{"id_actividades1$j"}[1051]); */
+                /* dd($this->{"id_actividades$j"}[1051]); */
             }
         }
 
@@ -850,7 +852,7 @@ class UnitsCreate extends Component
                         $activity_eval = Activity::where([
                            ['id'  ,$inter[$k]],
                            ['unit',  $j],
-                           ['status', 1] 
+                           ['status', 1]
                         ])->update(['evaluation' => 0]);
                     }
 

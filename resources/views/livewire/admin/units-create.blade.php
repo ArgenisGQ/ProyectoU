@@ -133,12 +133,48 @@
 
                             @php
 
-
                                     $cursox = App\Models\User_course::where('name',$userActiveName)
                                                                     ->where('code',$curso['code'])
                                                                     ->get();
 
-                                    /* dd($cursox); */
+
+
+                                    /* $actividades_curso = App\Models\Activity_course::where([
+                                                                    ['id_course', $curso['id'] ],
+                                                                    ['unit', 1],
+                                                                    ])
+                                                                    ->get();
+
+                                    $cuantas = count($actividades_curso);
+
+
+                                    $actividadesx =  App\Models\Activity::where([
+                                                                    ['id', $actividades_curso[0]->id_activity],
+                                                                    ['status', 3],
+                                                                    ])
+                                                                    ->get(); */
+
+
+
+                                    /* $actividadesx =  App\Models\Activity::all(); */
+
+                                    /* $actividades_curso = App\Models\Activity_course::all(); */
+
+                                    /* dd($actividades_curso[0]->id_activity); */
+
+                                    /* dd($actividades_curso); */
+
+                                    /* if (isset($actividadesx[0])) {
+                                        dd("--existe!--");
+                                    }
+
+                                    dd('stop'); */
+
+                                    /* dd($actividadesx[0]->unit); */
+
+                                    /* dd($cursox[0]->id); */
+
+                                    /* dd($curso['id']); */
 
                                     /* $cursox = App\Models\Course::where('name',$userActiveName)
                                                                     ->where('code',$curso['code'])
@@ -215,6 +251,8 @@
 
                                                 @for ($i = 1; $i <= $unidades; $i++)
 
+
+
                                                     {{-- <p>{{ $courses_full['id'] }}</p> --}}
 
                                                     {{-- <<<<<<< HEAD --}}
@@ -226,6 +264,36 @@
                                                     {{-- <p>"Unit0{{ $i }}s.{{ $courses_full['id'] }}"</p> --}}
 
                                                     {{-- ======= >>>>>>> b5a5fb027cf8bc0babb9e88e24a498975430656f --}}
+                                                    @php
+                                                        /* dd( $courses_full); */
+                                                        $actividades_curso = App\Models\Activity_course::where([
+                                                                    ['id_course', $curso['id'] ],
+                                                                    ['unit', $i],
+                                                                    ])
+                                                                    ->get();
+
+                                                        $cuantas = count($actividades_curso);
+
+                                                        for ($j=0; $j < $cuantas; $j++) {
+
+                                                                $actividadesx =  App\Models\Activity::where([
+                                                                    ['id', $actividades_curso[$j]->id_activity],
+                                                                    ['status', 2],
+                                                                    ])
+                                                                    ->get();
+
+                                                        }
+
+                                                        if (count($actividadesx) > 0) {
+
+                                                            $desabilitado = "disabled";
+                                                        } else {
+                                                            $desabilitado = "";
+                                                        }
+
+                                                    @endphp
+
+
                                                     @php
                                                         $cf = $courses_full['id'];
                                                         $Unidadd = "Units0$i.$cf";
@@ -242,8 +310,9 @@
 
 
                                                     <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
-                                                        {{-- class="text-danger" --}} class = {{$clase}}
-                                                        {{-- placeholder="0" --}} step="0.1" min="0" max="45" required="required" {{-- pattern="^[0-9]+" --}}
+                                                        {{-- class="text-danger"  --}}class = {{$clase}}
+                                                        {{-- placeholder="0" --}} step="0.1" min="0" max="45" required="required"
+                                                        {{-- pattern="^[0-9]+" --}} {{$desabilitado}}
                                                         wire:model="Units0{{ $i }}.{{ $courses_full['id'] }}">
 
                                                     {{-- <p>{{$Unit01s[$courses_full['id']]}}</p> --}}
