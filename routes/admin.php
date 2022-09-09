@@ -83,8 +83,7 @@ Route::get('unitss/unitstotal', [UnitController::class, 'unitstotal'])->name('ad
 
 /* Route::resource('units', UnitController::class)->names('admin.units'); */
 
-Route::resource('activities', ActivityAdminController::class)->only(['index', 'create', 'edit', 'store', 'show', 'update', 'destroy'])
-        ->names('admin.activities');
+Route::resource('activities', ActivityAdminController::class)->only(['index', 'create', 'edit', 'store', 'show', 'update', 'destroy'])->names('admin.activities');
 
 Route::resource('periods', PeriodController::class)->only(['index', 'create', 'edit', 'store', 'show', 'update', 'destroy'])->names('admin.periods');
 /* ======= */
