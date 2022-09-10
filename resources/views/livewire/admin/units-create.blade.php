@@ -266,26 +266,77 @@
                                                     {{-- ======= >>>>>>> b5a5fb027cf8bc0babb9e88e24a498975430656f --}}
                                                     @php
                                                         /* dd( $courses_full); */
+
+                                                        /* dd($curso['id']); */
+
                                                         $actividades_curso = App\Models\Activity_course::where([
-                                                                    ['id_course', $curso['id'] ],
+                                                                    ['id_course', $cursoy['id'] ],
                                                                     ['unit', $i],
                                                                     ])
                                                                     ->get();
 
-                                                        $cuantas = count($actividades_curso);
+                                                        /* dd($actividades_curso); */
 
-                                                        for ($j=0; $j < $cuantas; $j++) {
+                                                        $cuantasy = 0;
 
-                                                                $actividadesx =  App\Models\Activity::where([
-                                                                    ['id', $actividades_curso[$j]->id_activity],
+                                                        if (isset($actividades_curso)) {
+                                                            $cuantas = count($actividades_curso);
+                                                            /* $cuantas = 0; */
+                                                            $acum = 0;
+                                                            for ($jk=0; $jk < $cuantas; $jk++) {
+
+                                                                /* $actividadesx =  App\Models\Activity::all();
+
+                                                                dd($actividadesx); */
+
+                                                                $actividadesx[$jk] =  App\Models\Activity::where([
+                                                                    ['id', $actividades_curso[$jk]->id_activity],
                                                                     ['status', 2],
+                                                                    ['unit', $i],
                                                                     ])
                                                                     ->get();
 
+                                                                /* dd($actividadesx); */
+
+                                                                if (isset($actividadesx[$jk])) {
+                                                                    $acum = $acum + 1;
+                                                                }
+
+                                                            }
+
                                                         }
 
-                                                        if (count($actividadesx) > 0) {
+                                                        /* dd($acum); */
 
+                                                        $cuantasy = count($actividadesx);
+                                                        /* $cuantasy = $i; */
+
+                                                        /* $cuantas = 1; */
+
+                                                        /* dd($cuantas); */
+
+                                                        /* if ($cuantas == 0) {
+                                                            $cuantas = 1;
+                                                        } */
+
+
+
+                                                        /* dd($actividadesx); */
+
+                                                        /* dd(count($actividadesx)); */
+
+                                                        $cuantasx = 0;
+                                                        if (isset($actividadesx)) {
+                                                            $cuantasx = count($actividadesx);
+                                                            $desabilitado = "disabled";
+                                                            $actividadesy = $actividadesx;
+                                                        } else {
+                                                            $cuantasx = 0;
+                                                            $desabilitado = "";
+                                                            $actividadesy = 0;
+                                                        }
+
+                                                        if ($acum > 0) {
                                                             $desabilitado = "disabled";
                                                         } else {
                                                             $desabilitado = "";
@@ -297,8 +348,8 @@
                                                     @php
                                                         $cf = $courses_full['id'];
                                                         $Unidadd = "Units0$i.$cf";
-                                                       /*  dd($Unidadd); */
-                                                       $clase = "";
+                                                        /*  dd($Unidadd); */
+                                                        $clase = "";
                                                     @endphp
 
                                                     @error ($Unidadd)
@@ -308,7 +359,7 @@
                                                     @enderror
 
 
-
+                                                    {{-- <p>{{$acum}}</p> --}}
                                                     <input type="number" id="{{ $courses_full['id']}}" name="{{ $courses_full['id'] }}"
                                                         {{-- class="text-danger"  --}}class = {{$clase}}
                                                         {{-- placeholder="0" --}} step="0.1" min="0" max="45" required="required"
