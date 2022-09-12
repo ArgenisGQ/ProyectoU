@@ -568,7 +568,9 @@
                                             @endif
                                             @if (isset($id_actividades02[$unitssyy->id]))
                                                 @php
-                                                    $cantidad = count($id_actividades01[$unitssyy->id]);
+                                                    /* dd(); */
+                                                    $cantidad = count($id_actividades02[$unitssyy->id]);
+                                                    /* dd($cantidad); */
                                                     $acumuladores = $acumuladores + $cantidad;
                                                 @endphp
                                                 @if ($cantidad != 0 )
@@ -577,7 +579,7 @@
                                             @endif
                                             @if (isset($id_actividades03[$unitssyy->id]))
                                                 @php
-                                                    $cantidad = count($id_actividades01[$unitssyy->id]);
+                                                    $cantidad = count($id_actividades03[$unitssyy->id]);
                                                     $acumuladores = $acumuladores + $cantidad;
                                                 @endphp
                                                 @if ($cantidad != 0 )
@@ -586,7 +588,7 @@
                                             @endif
                                             @if (isset($id_actividades04[$unitssyy->id]))
                                                 @php
-                                                    $cantidad = count($id_actividades01[$unitssyy->id]);
+                                                    $cantidad = count($id_actividades04[$unitssyy->id]);
                                                     $acumuladores = $acumuladores + $cantidad;
                                                 @endphp
                                                 @if ($cantidad != 0 )

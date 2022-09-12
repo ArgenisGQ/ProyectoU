@@ -607,7 +607,7 @@ class UnitsCreate extends Component
             $this->cursoBase[$courses_ids[$kk]] = (Object)$this->cursoBase[$courses_ids[$kk]];
         }
 
-        dd($this->cursoBase[$courses_ids[0]]);
+        /* dd($this->cursoBase[$courses_ids[0]]); */
 
         /* ------------------------------------------------------------------------------------ */
 
