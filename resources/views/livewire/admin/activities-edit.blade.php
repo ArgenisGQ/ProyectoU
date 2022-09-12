@@ -474,6 +474,27 @@
                         </div>
                     </div>
 
+                    <div class="col-md-6">
+                        <h4>Tipo de Participacion</h4>
+                        <div class="form-group">
+                        {{-- @if(count($evaluations) > 0) --}}
+                            <label for="type"></label>
+                                <select names="type" wire:model="activity.type"
+                                class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
+                                    <option value="" selected>Seleccione tipo de Participacion</option>
+                                {{--  @foreach ($evaluations as $evaluation) --}}
+                                        <option value="1">Individual</option>
+                                        <option value="2">Grupal</option>
+                                        <option value="3">Combinada</option>
+                                        {{-- <option value="{{ $evaluation->id }}">{{ $evaluation->name }}</option> --}}
+                                        {{-- <option value="Bangladesh">Bangladesh</option> --}}
+                                    {{-- @endforeach --}}
+                                </select>
+                            {{-- @endif --}}
+                            {{-- <span class="text-danger">@error('country'){{ $message }}@enderror</span> --}}
+                        </div>
+                    </div>
+
 
                     {{-- </div> --}}
                     <div>
