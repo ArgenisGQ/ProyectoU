@@ -394,6 +394,14 @@
                         </div>
                     </div>
 
+                            @php
+                                $desabilitado = "";
+                                if ($activity->type == 1 || $activity->type == 2) {
+                                    $desabilitado = "disabled";
+                                    $activity->evaluation = 0;
+                                }
+                            @endphp
+
                     <div class="col-md-6">
                         <h4>Ponderacion</h4>
                         <div class="form-group">
@@ -401,7 +409,7 @@
 
                             {{-- {{$this->activity}}; --}}
 
-                            <input type="number" id="tentacles" name="tentacles"
+                            <input type="number" id="tentacles" name="tentacles" {{$desabilitado}}
                                 placeholder="0.00" step="0.01" min="0" max="100" wire:model="activity.evaluation">
                                 {{-- <select names="unit" wire:model="unit"
                                 class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">

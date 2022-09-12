@@ -301,16 +301,27 @@
                                             @endforeach
                                         </select>
                                     @endif
+
+                                    {{-- <p>{{$this->evaluation}}</p> --}}
+
                                     {{-- <span class="text-danger">@error('country'){{ $message }}@enderror</span> --}}
                                 </div>
                             </div>
+
+                            @php
+                                $desabilitado = "";
+                                if ($this->evaluation == 1 || $this->evaluation == 2) {
+                                    $desabilitado = "disabled";
+                                    $this->eval = 0;
+                                }
+                            @endphp
 
                             <div class="col-md-6">
                                 <h4>Ponderacion</h4>
                                 <div class="form-group">
                                     <label for="unit"></label>
 
-                                    <input type="number" id="tentacles" name="tentacles"
+                                    <input type="number" id="tentacles" name="tentacles" {{$desabilitado}}
                                         placeholder="0.00" step="0.01" min="0" max="100" wire:model="eval">
                                         {{-- <select names="unit" wire:model="unit"
                                         class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
