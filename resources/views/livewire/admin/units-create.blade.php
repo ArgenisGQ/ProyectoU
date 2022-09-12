@@ -278,11 +278,12 @@
                                                         /* dd($actividades_curso); */
 
                                                         $cuantasy = 0;
+                                                        $acum = 0;
 
                                                         if (isset($actividades_curso)) {
                                                             $cuantas = count($actividades_curso);
                                                             /* $cuantas = 0; */
-                                                            $acum = 0;
+                                                            /* $acum = 0; */
                                                             for ($jk=0; $jk < $cuantas; $jk++) {
 
                                                                 /* $actividadesx =  App\Models\Activity::all();
@@ -298,7 +299,11 @@
 
                                                                 /* dd($actividadesx); */
 
-                                                                if (isset($actividadesx[$jk])) {
+                                                                $acumm = count($actividadesx[$jk]);
+
+                                                                /* dd($acumm); */
+
+                                                                if ($acumm > 0) {
                                                                     $acum = $acum + 1;
                                                                 }
 
