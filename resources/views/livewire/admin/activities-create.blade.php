@@ -143,6 +143,18 @@
                 <div class="card-header bg-secondary text-white">Criterios de la Evaluacion</div>
                 <div class="card-body">
                     <div class = "form-group my-4"  wire:ignore>
+                        <label for="" class="p-r-mute">   </label>
+                        <textarea id="" wire:model="" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
+                    </div>
+
+                    <span class="text-danger">@error(''){{ $message }}@enderror</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header bg-secondary text-white">Extrategia(s) de la Evaluacion</div>
+                <div class="card-body">
+                    <div class = "form-group my-4"  wire:ignore>
                         <label for="extract01" class="p-r-mute">   </label>
                         <textarea id="extract01" wire:model="extract01" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
                     </div>
@@ -152,14 +164,62 @@
             </div>
 
             <div class="card">
-                <div class="card-header bg-secondary text-white">Instrucciones de la Actividad</div>
+                <div class="card-header bg-secondary text-white">Tecnica(s) de la Evaluacion</div>
                 <div class="card-body">
                     <div class = "form-group my-4"  wire:ignore>
                         <label for="extract02" class="p-r-mute">   </label>
-                        <textarea id="extract02" wire:model="extract02" class="form-control" placeholder="Indique de manera especifica las instrucciones de la actividad" rows="6" required></textarea>
+                        <textarea id="extract02" wire:model="extract02" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
                     </div>
 
                     <span class="text-danger">@error('extract02'){{ $message }}@enderror</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header bg-secondary text-white">Herramienta(s) Digitales de la Evaluacion</div>
+                <div class="card-body">
+                    <div class = "form-group my-4"  wire:ignore>
+                        <label for="extract03" class="p-r-mute">   </label>
+                        <textarea id="extract03" wire:model="extract03" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
+                    </div>
+
+                    <span class="text-danger">@error('extract03'){{ $message }}@enderror</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header bg-secondary text-white">Recursos Digitales de la Evaluacion</div>
+                <div class="card-body">
+                    <div class = "form-group my-4"  wire:ignore>
+                        <label for="extract04" class="p-r-mute">   </label>
+                        <textarea id="extract04" wire:model="extract04" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
+                    </div>
+
+                    <span class="text-danger">@error('extract04'){{ $message }}@enderror</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header bg-secondary text-white">Referencias bibliograficas</div>
+                <div class="card-body">
+                    <div class = "form-group my-4"  wire:ignore>
+                        <label for="" class="p-r-mute">   </label>
+                        <textarea id="" wire:model="" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
+                    </div>
+
+                    <span class="text-danger">@error(''){{ $message }}@enderror</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header bg-secondary text-white">Instrucciones de la Actividad</div>
+                <div class="card-body">
+                    <div class = "form-group my-4"  wire:ignore>
+                        <label for="instruction" class="p-r-mute">   </label>
+                        <textarea id="instruction" wire:model="instruction" class="form-control" placeholder="Indique de manera especifica las instrucciones de la actividad" rows="6" required></textarea>
+                    </div>
+
+                    <span class="text-danger">@error('instruction'){{ $message }}@enderror</span>
                 </div>
             </div>
 
@@ -245,6 +305,53 @@
                         console.error( error )
                 } );
 
+                ClassicEditor
+                    .create( document.querySelector( '#extract03' ) )
+
+                    .then(editor => {
+                        editor.model.document.on('change:data', () => {
+                            editor.model.document.on('change:data', () => {
+                                @this.set('extract03', editor.getData());
+                            })
+                            /* console.log(editor.getData()) */
+                            /* document.querySelector("#bodyy").value = editor.getData() */
+                        });
+                    })
+                    .catch( error => {
+                        console.error( error )
+                } );
+
+                ClassicEditor
+                    .create( document.querySelector( '#extract04' ) )
+
+                    .then(editor => {
+                        editor.model.document.on('change:data', () => {
+                            editor.model.document.on('change:data', () => {
+                                @this.set('extract04', editor.getData());
+                            })
+                            /* console.log(editor.getData()) */
+                            /* document.querySelector("#bodyy").value = editor.getData() */
+                        });
+                    })
+                    .catch( error => {
+                        console.error( error )
+                } );
+
+                ClassicEditor
+                    .create( document.querySelector( '#instruction' ) )
+
+                    .then(editor => {
+                        editor.model.document.on('change:data', () => {
+                            editor.model.document.on('change:data', () => {
+                                @this.set('instruction', editor.getData());
+                            })
+                            /* console.log(editor.getData()) */
+                            /* document.querySelector("#bodyy").value = editor.getData() */
+                        });
+                    })
+                    .catch( error => {
+                        console.error( error )
+                } );
 
 
                 /* new Pikaday({ field: $extract.input, 'format': 'MM/DD/YYYY', firstDay: 1, minDate: new Date(), }); */

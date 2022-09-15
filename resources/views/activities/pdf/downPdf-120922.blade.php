@@ -354,12 +354,12 @@
             <h3 class="text-center">Redaccion de Actividades de Aprendizaje</h3>
             <div class="">
                 <div class="">
-                    {{-- <div class="">
+                    <div class="">
 
                         <table class="table table-sm colapsado" border="2">
                             <tbody class="text-center">
                                 <tr>
-                                    <th scope="row" class="ancho-1de4 bg-gris">Docente diseñador(es) de la actividad:</th>
+                                    <th scope="row" class="ancho-1de4 bg-gris">Docente - PDF - down</th>
                                     <td class="ancho-3de4">{!! auth()->user()->name !!}</td>
 
                                 </tr>
@@ -369,20 +369,26 @@
                                 <tr>
                                     <th class="bg-gris" scope="row">Asignatura</th>
                                     <td class="">
+                                        {{-- @foreach ($activity->courses as $course)
 
+                                                    <span class="">{{$course->code}}</span>
+                                                    <span class="">{{$course->code}} /</span>
+                                        @endforeach --}}
 
                                         @foreach ($coursesThisActivity as $course)
 
-                                            @php
+                                        @php
 
-                                                $cursox = App\Models\User_course::where('id',$course->id_course)
-                                                                        ->get()
-                                                                        ->first();
-                                            @endphp
+                                            $cursox = App\Models\User_course::where('id',$course->id_course)
+                                                                    ->get()
+                                                                    ->first();
+                                        @endphp
 
-                                            <span>{{$cursox->code.' '.$cursox->section}}/</span>
 
-                                        @endforeach
+                                        <span>{{$cursox->code.' '.$cursox->section}}/</span>
+
+
+                                    @endforeach
                                     </td>
                                 </tr>
                             </tbody>
@@ -392,7 +398,14 @@
                                     <th class="bg-gris" scope="row">Facultad</th>
                                     <td class="">
                                         @foreach ($facultad as $facultadd)
+
+                                                {{-- <a href="{{route('activities.faculty', $facultadd)}}">
                                                     <span class="ml-2 text-gray-600">{{$facultadd->name}}</span>
+                                                </a> --}}
+
+                                                    <span class="ml-2 text-gray-600">{{$facultadd->name}}</span>
+
+
                                         @endforeach
                                     </td>
                                 </tr>
@@ -412,83 +425,10 @@
                                 </tr>
                             </tbody>
                         </table>
+
                     </div>
- --}}
-                    <div>
-                        <table class="table table-sm colapsado" border="2">
-                            <tbody class="text-center">
-                                <tr>
-                                    {{-- <th scope="row" class="ancho-2de4 bg-gris">Docente diseñador(es) de la actividad</th>
-                                    <th scope="row" class="ancho-1de4 bg-gris">Cedula(s)</th>
-                                    <th scope="row" class="ancho-2de4 bg-gris">correo Electronico</th>
-                                    <th scope="row" class="ancho-1de4 bg-gris">Facultad</th> --}}
-
-                                    <td scope="row" class="ancho-2de4 bg-gris">Docente diseñador(es) de la actividad</td>
-                                    <td scope="row" class="ancho-1de4 bg-gris">Cedula(s)</td>
-                                    <td scope="row" class="ancho-2de4 bg-gris">Correo Electronico</td>
-                                    <td scope="row" class="ancho-1de4 bg-gris">Facultad</td>
-                                    {{-- <td class="ancho-3de4">{!! auth()->user()->name !!}</td> --}}
-                                </tr>
-                                <tr>
-                                    {{-- <th scope="row" class="ancho-1de4 bg-gris">Docente diseñador(es) de la actividad:</th> --}}
-                                    <td class="ancho-2de4">{!! auth()->user()->name !!}</td>
-                                    <td class="ancho-1de4">{!! auth()->user()->ced !!}</td>
-                                    <td class="ancho-2de4">--</td>
-                                    <td class="ancho-1de4">--</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <table class="table table-sm colapsado" border="2">
-                            <tbody class="text-center">
-                                <tr>
-                                    <th scope="row" class="ancho-2de4 bg-gris">Asignatura</th>
-                                    <th scope="row" class="ancho-1de4 bg-gris">Seccion</th>
-                                    <th scope="row" class="ancho-2de4 bg-gris">Unidad</th>
-                                    <th scope="row" class="ancho-1de4 bg-gris">Nombre de la Actividad</th>
-                                    <th scope="row" class="ancho-1de4 bg-gris">Tipo de Participacion</th>
-                                    {{-- <td class="ancho-3de4">{!! auth()->user()->name !!}</td> --}}
-                                </tr>
-                                <tr>
-                                    {{-- <th scope="row" class="ancho-1de4 bg-gris">Docente diseñador(es) de la actividad:</th> --}}
-                                    <td class="ancho-2de4">
-                                        @foreach ($coursesThisActivity as $course)
-
-                                            @php
-                                                $cursox = App\Models\User_course::where('id',$course->id_course)
-                                                                        ->get()
-                                                                        ->first();
-                                            @endphp
-
-                                            <span>{{$cursox->code}}/</span>
-
-                                        @endforeach
-                                    </td>
-                                    <td class="ancho-1de4">
-                                        @foreach ($coursesThisActivity as $course)
-
-                                            @php
-                                                $cursox = App\Models\User_course::where('id',$course->id_course)
-                                                                        ->get()
-                                                                        ->first();
-                                            @endphp
-
-                                            <span>{{$cursox->section}}/</span>
-
-                                        @endforeach
-                                    </td>
-                                    <td class="ancho-2de4">{{$activity->unit}}</td>
-                                    <td class="ancho-1de4">{{$activity->name}}</td>
-                                    <td class="ancho-1de4">{{$activity->activity_type}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-
 
                     <div class="">
-                        <h5 class="text-center">Descripcion de la Actividad</h5>
                     {{-- <div class="tablet"> --}}
                         {{-- <table class="colapsado" border="1">
                             <thead class="">
@@ -554,9 +494,9 @@
 
                             <div class="">
 
-                                <div>
-                                    <div>
-                                        <h5 class="p-1 text-center bg-gris">Proposito</h5>
+                                <div class="">
+                                    <div class="p-1 text-center bg-gris">
+                                        <div>Proposito de la actividad</div>
                                     </div>
                                 </div>
                                 <div class="">
@@ -576,9 +516,7 @@
 
                     {{-- <div class="page-break"></div> --}}
 
-
-
-                    {{-- <div class="page-break-inside">
+                    <div class="page-break-inside">
 
                         <table class="colapsado" border="1" width="100%">
 
@@ -590,14 +528,30 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div> --}}
+                    </div>
 
 
                     <div class="page-break-inside">
 
+                        {{-- <table class="colapsado" border="1" >
+                            <thead>
+                                <tr>
+                                    <th class="p-1 text-center bg-gris" >Logros de la actividad</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td class="">{!!$activity->extract!!}</td>
+                                </tr>
+                            </tbody>
+                        </table> --}}
+
+
+
                             <div>
                                 <div>
-                                    <h5 class="p-1 text-center bg-gris">Competencias</h5>
+                                    <h5 class="p-1 text-center bg-gris">Logros de la actividad</h5>
                                 </div>
                             </div>
 
@@ -612,7 +566,20 @@
 
 
 
+                    <div class="page-break-inside" >
 
+                        <table class="colapsado" border="1" width="100%">
+
+                            <tbody>
+                                <tr>
+
+                                    <th class="p-1 text-center bg-gris" >Tipo de evaluacion</th>
+                                    <td class="ancho-3de4 text-left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{!! $evaluacion->first()->name !!}</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
 
 
@@ -633,9 +600,10 @@
                         </table> --}}
 
 
-                            <div>
+
+                        <div>
                                 <div>
-                                    <h5 class="p-1 text-center bg-gris">Criterios de Evaluacion</h5>
+                                    <h5 class="p-1 text-center bg-gris">Puntuacion en la actividad</h5>
                                 </div>
                             </div>
 
@@ -643,136 +611,15 @@
                                 <div>
                                     <div class="" >{!!$activity->extract01!!}</div>
                                 </div>
-                            </div>
-                    </div>
-
-                    <div class="page-break-inside">
-                            <div>
-                                <div>
-                                    <h5 class="p-1 text-center bg-gris">Estrategia(s) de Evaluacion</h5>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div>
-                                    <div class="" >{!!$activity->extract01!!}</div>
-                                </div>
-                            </div>
-                    </div>
-
-                    <div class="page-break-inside">
-                        <div>
-                            <div>
-                                <h5 class="p-1 text-center bg-gris">Tecnica(s) de Evaluacion</h5>
-                            </div>
                         </div>
 
-                        <div>
-                            <div>
-                                <div class="" >{!!$activity->extract01!!}</div>
-                            </div>
-                        </div>
+
                     </div>
-
-                    <div class="page-break-inside">
-                        <div>
-                            <div>
-                                <h5 class="p-1 text-center bg-gris">Herramienta(s) Digitales educativas</h5>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div>
-                                <div class="" >{!!$activity->extract01!!}</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="page-break-inside">
-                        <div>
-                            <div>
-                                <h5 class="p-1 text-center bg-gris">Recursos Digitales Educativos</h5>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div>
-                                <div class="" >{!!$activity->extract01!!}</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="page-break-inside">
-                        <div>
-                            <div>
-                                <h5 class="p-1 text-center bg-gris">Referencias bilbiograficas</h5>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div>
-                                <div class="" >{!!$activity->extract01!!}</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="page-break-inside">
-                        <div>
-                            <div>
-                                <h5 class="p-1 text-center bg-gris">Instrucciones</h5>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div>
-                                <div class="" >{!!$activity->extract01!!}</div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="page-break-inside">
-                        <table class="colapsado" border="1" width="100%">
-                            <tbody>
-                                <tr>
-                                    <th scope="row" class="ancho-1de4 p-1 text-center bg-gris">Lapso de entrega</th>
-                                    <td class="ancho-3de4 text-left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{!!$lapse_in!!} al {!!$lapse_out!!}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="page-break-inside" >
-                        <table class="colapsado" border="1" width="100%">
-                            <tbody>
-                                <tr>
-                                    <th class="p-1 text-center bg-gris" >Tipo de evaluacion</th>
-                                    <td class="ancho-3de4 text-left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{!! $evaluacion->first()->name !!}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="page-break-inside" >
-                        <table class="colapsado" border="1" width="100%">
-                            <tbody>
-                                <tr>
-                                    <th class="p-1 text-center bg-gris" >Ponderacion</th>
-                                    <td class="ancho-3de4 text-left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{!!$activity->evaluation!!}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
                 </div>
             </div>
 
     {{-- ------------------------------------------------------------------------------ --}}
         </div>
-
-
-
     </main>
 
     <footer class="">

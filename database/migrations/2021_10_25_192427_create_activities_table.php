@@ -24,6 +24,9 @@ class CreateActivitiesTable extends Migration
             $table->text('extract')->nullable();
             $table->text('extract01')->nullable();
             $table->text('extract02')->nullable();
+            $table->text('extract03')->nullable();
+            $table->text('extract04')->nullable();
+            $table->text('instruction')->nullable();
             $table->longText('body')->nullable();
             $table->dateTime('academic_start')->nullable();
             $table->dateTime('academic_finish')->nullable();
