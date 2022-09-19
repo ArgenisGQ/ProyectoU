@@ -267,7 +267,7 @@
                                                     @php
                                                         /* dd( $courses_full); */
 
-                                                        /* dd($curso['id']); */
+                                                       /*  dd($curso['id']); */
 
                                                         $actividades_curso = App\Models\Activity_course::where([
                                                                     ['id_course', $cursoy['id'] ],
@@ -277,7 +277,7 @@
 
                                                         /* dd($actividades_curso); */
 
-                                                        $cuantasy = 0;
+                                                        /* $cuantasy = 0; */  ////////////
                                                         $acum = 0;
 
                                                         if (isset($actividades_curso)) {
@@ -313,7 +313,7 @@
 
                                                         /* dd($acum); */
 
-                                                        $cuantasy = count($actividadesx);
+                                                        /* $cuantasy = count($actividadesx); */ ///////////
                                                         /* $cuantasy = $i; */
 
                                                         /* $cuantas = 1; */
