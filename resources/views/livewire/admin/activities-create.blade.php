@@ -156,7 +156,7 @@
                 <div class="card-body">
                     <div class = "form-group my-4"  wire:ignore>
                         <label for="extract01" class="p-r-mute">   </label>
-                        <textarea id="extract01" wire:model="extract01" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
+                        <textarea id="extract01" wire:model="extract01" class="form-control" placeholder="Indique de manera especifica las estrategias de evaluacion de la actividad" rows="6" required></textarea>
                     </div>
 
                     <span class="text-danger">@error('extract01'){{ $message }}@enderror</span>
@@ -168,7 +168,7 @@
                 <div class="card-body">
                     <div class = "form-group my-4"  wire:ignore>
                         <label for="extract02" class="p-r-mute">   </label>
-                        <textarea id="extract02" wire:model="extract02" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
+                        <textarea id="extract02" wire:model="extract02" class="form-control" placeholder="Indique de manera especifica las tecnicas de evaluacion de la actividad" rows="6" required></textarea>
                     </div>
 
                     <span class="text-danger">@error('extract02'){{ $message }}@enderror</span>
@@ -180,7 +180,7 @@
                 <div class="card-body">
                     <div class = "form-group my-4"  wire:ignore>
                         <label for="extract03" class="p-r-mute">   </label>
-                        <textarea id="extract03" wire:model="extract03" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
+                        <textarea id="extract03" wire:model="extract03" class="form-control" placeholder="Indique de manera especifica herramientas digitales de evaluacion de la actividad" rows="6" required></textarea>
                     </div>
 
                     <span class="text-danger">@error('extract03'){{ $message }}@enderror</span>
@@ -192,7 +192,7 @@
                 <div class="card-body">
                     <div class = "form-group my-4"  wire:ignore>
                         <label for="extract04" class="p-r-mute">   </label>
-                        <textarea id="extract04" wire:model="extract04" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
+                        <textarea id="extract04" wire:model="extract04" class="form-control" placeholder="Indique de manera especifica los recursos digitales de evaluacion de la actividad" rows="6" required></textarea>
                     </div>
 
                     <span class="text-danger">@error('extract04'){{ $message }}@enderror</span>
@@ -204,7 +204,7 @@
                 <div class="card-body">
                     <div class = "form-group my-4"  wire:ignore>
                         <label for="" class="p-r-mute">   </label>
-                        <textarea id="" wire:model="" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
+                        <textarea id="" wire:model="" class="form-control" placeholder="Indique de manera especifica las referencias bibliograficas de la actividad" rows="6" required></textarea>
                     </div>
 
                     <span class="text-danger">@error(''){{ $message }}@enderror</span>
