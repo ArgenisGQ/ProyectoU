@@ -43,6 +43,8 @@ class ActivitiesCreate extends Component
 
     public $totalSteps = 4;
     public $currentStep = 1;
+    public $currentCritery = 1;
+    public $totalCritery = 20;
 
 
 
@@ -88,6 +90,28 @@ class ActivitiesCreate extends Component
         $this->currentStep--;
         if($this->currentStep < 1){
             $this->currentStep = 1;
+        }
+    }
+
+    public function increaseCritery(){
+        /* $this->resetErrorBag(); */
+
+        /* $this->validateData(); */
+        $this->currentCritery++;
+
+        if($this->currentCritery > $this->totalCritery){
+             $this->currentCritery = $this->totalCritery;
+        }
+    }
+
+    public function decreaseCritery(){
+        /* $this->resetErrorBag(); */
+
+        /* $this->validateData(); */
+        $this->currentCritery--;
+
+        if($this->currentCritery < 1){
+             $this->currentCritery = 1;
         }
     }
 

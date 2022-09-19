@@ -142,10 +142,77 @@
             <div class="card">
                 <div class="card-header bg-secondary text-white">Criterios de la Evaluacion</div>
                 <div class="card-body">
-                    <div class = "form-group my-4"  wire:ignore>
+                    {{-- <div class = "form-group my-4"  wire:ignore>
                         <label for="" class="p-r-mute">   </label>
                         <textarea id="" wire:model="" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
+                    </div> --}}
+
+
+
+                    <div class = "form-group my-4" >
+                        <button type="button" class="btn btn-md btn-secondary" wire:click="increaseCritery()">+</button>
+                        <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseCritery()">-</button>
                     </div>
+                    <div class = "form-group my-4">
+                        <p>{{$currentCritery}}</p>
+                    </div>
+                    {{-- <div class="col-md-8 grid grid-cols-4 gap-4">
+                        <div class="col-md-8">
+                            <label for="">Nombre del Criterio</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el nombre del criterio" wire:model.defer="">
+                            <span class="text-danger">@error(''){{ $message }}@enderror</span>
+
+
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="">Puntos</label>
+                            <input type="text" class="form-control" placeholder="Porcentual" wire:model.defer="">
+                            <span class="text-danger">@error(''){{ $message }}@enderror</span>
+                        </div>
+                    </div> --}}
+
+                    <table class="table-auto w-full">
+                        <thead>
+                            <tr>
+                                <th>
+
+                                </th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            @for ($ii = 0 ; $ii < $currentCritery ; $ii++)
+
+                                <tr>
+                                    <td class="col-md-7">
+                                        <label for="">Nombre del Criterio</label>
+                                        <input type="text" class="form-control" placeholder="Ingrese el nombre del criterio" wire:model.defer="">
+                                        <span class="text-danger">@error(''){{ $message }}@enderror</span>
+                                    </td>
+                                    <td class="col-md-3">
+                                        <label for="">Puntos</label>
+                                        <input type="text" class="form-control" placeholder="Porcentual" wire:model.defer="">
+                                        <span class="text-danger">@error(''){{ $message }}@enderror</span>
+                                    </td>
+                                </tr>
+
+                            @endfor
+
+
+
+                        </tbody>
+
+                    </table>
+
+
+
+
+
+
+
+
+
 
                     <span class="text-danger">@error(''){{ $message }}@enderror</span>
                 </div>
