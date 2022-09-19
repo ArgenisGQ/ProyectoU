@@ -11,6 +11,7 @@ use App\Models\Evaluation;
 use App\Models\Period;
 use Carbon\Carbon;
 use App\Models\Activity_course;
+use App\Models\Critery;
 
 
 class ActivitiesCreate extends Component
@@ -37,7 +38,9 @@ class ActivitiesCreate extends Component
     public $id_activityLast;
     public $nota_curso, $nota_cursox, $datos_curso = [];
     public $notax = [];
-    public $nota_mensaje;
+    public $nota_mensaje, $totalPoints;
+    public $extract03, $extract04, $instruction;
+    public $criteries, $biblio = [];
 
     /* public $activity; */
 
@@ -45,11 +48,14 @@ class ActivitiesCreate extends Component
     public $currentStep = 1;
     public $currentCritery = 1;
     public $totalCritery = 20;
+    public $currentBiblio = 1;
+    public $totalBiblio = 20;
 
 
 
     public function mount(){
         $this->currentStep = 1;
+        /* $this->currentCritery = 1; */
         /* $this->courses = $courses; */
         /* $coursesFull = Course::all(); */
         /* dd($coursesFull); */
@@ -95,8 +101,8 @@ class ActivitiesCreate extends Component
 
     public function increaseCritery(){
         /* $this->resetErrorBag(); */
-
         /* $this->validateData(); */
+
         $this->currentCritery++;
 
         if($this->currentCritery > $this->totalCritery){
@@ -106,12 +112,34 @@ class ActivitiesCreate extends Component
 
     public function decreaseCritery(){
         /* $this->resetErrorBag(); */
-
         /* $this->validateData(); */
+
         $this->currentCritery--;
 
         if($this->currentCritery < 1){
              $this->currentCritery = 1;
+        }
+    }
+
+    public function increaseBiblio(){
+        /* $this->resetErrorBag(); */
+        /* $this->validateData(); */
+
+        $this->currentBiblio++;
+
+        if($this->currentBiblio > $this->totalBiblio){
+             $this->currentBiblio = $this->totalBiblio;
+        }
+    }
+
+    public function decreaseBiblio(){
+        /* $this->resetErrorBag(); */
+        /* $this->validateData(); */
+
+        $this->currentBiblio--;
+
+        if($this->currentBiblio < 1){
+             $this->currentBiblio = 1;
         }
     }
 
@@ -169,6 +197,7 @@ class ActivitiesCreate extends Component
                 'extract01' => 'required',
                 'extract02' => 'required'
               ]);
+              $this->preValidatePoint($this->criteries,$this->currentCritery);
         }
         elseif($this->currentStep == 3){
               $this->validate([
@@ -318,6 +347,18 @@ class ActivitiesCreate extends Component
 
             return redirect()->route('admin.activities.index')->with('info', 'La actividad se edito con exito');
 
+    }
+
+    public function preValidatePoint($criteries,$currentCritery){
+            /* dd($criteries['nota']); */
+            $this->totalPoints = 0;
+            for ($k=0; $k < $currentCritery; $k++) {
+                $this->totalPoints = $this->totalPoints + $criteries['nota'][$k];
+            }
+
+            /* dd($this->totalPoints); */
+
+            $this->eval = $this->totalPoints;
     }
 
     public function evaluationUnit($nota, $unidad, $id_curso, $id_periodo){
@@ -541,6 +582,9 @@ class ActivitiesCreate extends Component
                 'extract'           => $this->extract,
                 'extract01'         => $this->extract01,
                 'extract02'         => $this->extract02,
+                'extract03'         => $this->extract03,
+                'extract04'         => $this->extract04,
+                'instruction'       => $this->instruction,
                 'activity_type'     => $this->evaluation,
                 'type'              => $this->type,
                 'lapse_in'          => $this->lapse_in,

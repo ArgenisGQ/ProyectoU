@@ -141,7 +141,7 @@
 
             <div class="card">
                 <div class="card-header bg-secondary text-white">Criterios de la Evaluacion</div>
-                <div class="card-body">
+                <div class="card-body" >
                     {{-- <div class = "form-group my-4"  wire:ignore>
                         <label for="" class="p-r-mute">   </label>
                         <textarea id="" wire:model="" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
@@ -153,9 +153,9 @@
                         <button type="button" class="btn btn-md btn-secondary" wire:click="increaseCritery()">+</button>
                         <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseCritery()">-</button>
                     </div>
-                    <div class = "form-group my-4">
+                    {{-- <div class = "form-group my-4">
                         <p>{{$currentCritery}}</p>
-                    </div>
+                    </div> --}}
                     {{-- <div class="col-md-8 grid grid-cols-4 gap-4">
                         <div class="col-md-8">
                             <label for="">Nombre del Criterio</label>
@@ -175,8 +175,11 @@
                     <table class="table-auto w-full">
                         <thead>
                             <tr>
-                                <th>
-
+                                <th class="col-md-12">
+                                    <label for="">Nombre del Criterio</label>
+                                </th>
+                                <th class="col-md-6">
+                                    <label for="">Puntacion %</label>
                                 </th>
                             </tr>
 
@@ -185,15 +188,16 @@
                             @for ($ii = 0 ; $ii < $currentCritery ; $ii++)
 
                                 <tr>
-                                    <td class="col-md-7">
-                                        <label for="">Nombre del Criterio</label>
-                                        <input type="text" class="form-control" placeholder="Ingrese el nombre del criterio" wire:model.defer="">
-                                        <span class="text-danger">@error(''){{ $message }}@enderror</span>
+                                    <td class="col-md-12" wire:ignore>
+                                        {{-- <label for="">Nombre del Criterio</label> --}}
+                                        <input type="text" class="form-control" placeholder="Ingrese el nombre del criterio" wire:model="criteries.{{$ii}}">
+                                        {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
                                     </td>
-                                    <td class="col-md-3">
-                                        <label for="">Puntos</label>
-                                        <input type="text" class="form-control" placeholder="Porcentual" wire:model.defer="">
-                                        <span class="text-danger">@error(''){{ $message }}@enderror</span>
+                                    <td class="col-md-6" wire:ignore>
+                                        {{-- <label for="">Puntos</label> --}}
+                                        <input type="number" step="1" min="0" max="30" required="required"
+                                                class="form-control" placeholder="%" wire:model="criteries.nota.{{$ii}}">
+                                        {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
                                     </td>
                                 </tr>
 
@@ -205,16 +209,7 @@
 
                     </table>
 
-
-
-
-
-
-
-
-
-
-                    <span class="text-danger">@error(''){{ $message }}@enderror</span>
+                    {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
                 </div>
             </div>
 
@@ -269,12 +264,66 @@
             <div class="card">
                 <div class="card-header bg-secondary text-white">Referencias bibliograficas</div>
                 <div class="card-body">
-                    <div class = "form-group my-4"  wire:ignore>
+                    {{-- <div class = "form-group my-4"  wire:ignore>
                         <label for="" class="p-r-mute">   </label>
                         <textarea id="" wire:model="" class="form-control" placeholder="Indique de manera especifica las referencias bibliograficas de la actividad" rows="6" required></textarea>
                     </div>
 
-                    <span class="text-danger">@error(''){{ $message }}@enderror</span>
+                    <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+
+                    <div class = "form-group my-4" >
+                        <button type="button" class="btn btn-md btn-secondary" wire:click="increaseBiblio()">+</button>
+                        <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseBiblio()">-</button>
+                    </div>
+
+
+                    <table class="table-auto w-full">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <label for="" class="col-md-5">Titulo</label>
+                                </th>
+                                <th>
+                                    <label for="" class="col-md-4">Autor</label>
+                                </th>
+                                <th>
+                                    <label for="" class="col-md-4">Año</label>
+                                </th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            @for ($jj = 0 ; $jj < $currentBiblio ; $jj++)
+
+                                <tr>
+                                    <td class="col-md-5" wire:ignore>
+                                        {{-- <label for="">Nombre del Criterio</label> --}}
+                                        <input type="text" class="form-control" placeholder="Titulo" wire:model="biblio.{{$jj}}">
+                                        {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                    </td>
+                                    <td class="col-md-3" wire:ignore>
+                                        {{-- <label for="">Puntos</label> --}}
+                                        <input type="text" class="form-control" placeholder="Autor" wire:model="biblio.autor.{{$jj}}">
+                                        {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                    </td>
+                                    <td class="col-md-2" wire:ignore>
+                                        {{-- <label for="">Puntos</label> --}}
+                                        <input type="number" step="1" min="0" max="2999" required="required"
+                                            class="form-control" placeholder="Año de publicacion" wire:model="biblio.anno.{{$jj}}">
+                                        {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                    </td>
+                                </tr>
+
+                            @endfor
+
+
+
+                        </tbody>
+
+                    </table>
+
+
+
                 </div>
             </div>
 
@@ -449,7 +498,10 @@
                             $coursesFull = App\Models\course::all();
                             /* dd($coursesFull); */
 
-                            /* dd($this->coursess); */
+                           /*  dd($this->coursess); */
+
+
+                            /* dd($this->criteries); */
                         @endphp
                             {{-- @foreach ($this->coursess as $cur)
 
@@ -495,7 +547,7 @@
                                 <div class="form-group">
                                     <label for="unit"></label>
 
-                                    <input type="number" id="tentacles" name="tentacles" {{$desabilitado}}
+                                    <input type="number" id="tentacles" name="tentacles" {{$desabilitado}} disabled
                                         placeholder="0.00" step="0.01" min="0" max="100" wire:model="eval">
                                         {{-- <select names="unit" wire:model="unit"
                                         class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">

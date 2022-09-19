@@ -48,4 +48,8 @@ class Activity extends Model
         return $this->belongsTo(Evaluation::class);
     } */
 
+    public function criteries(){
+        return $this->hasMany(Critery::class);
+    }
+
 }
