@@ -218,12 +218,59 @@
             <div class="card">
                 <div class="card-header bg-secondary text-white">Criterios de la Evaluacion</div>
                 <div class="card-body">
-                    <div class = "form-group my-4"  wire:ignore>
+                    {{-- <div class = "form-group my-4"  wire:ignore>
                         <label for="" class="p-r-mute">   </label>
                         <textarea id="" wire:model="" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
                     </div>
 
-                    <span class="text-danger">@error(''){{ $message }}@enderror</span>
+                    <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+
+
+
+                    <div class = "form-group my-4" >
+                        <button type="button" class="btn btn-md btn-secondary" wire:click="increaseCritery()">+</button>
+                        <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseCritery()">-</button>
+                    </div>
+
+
+                    <table class="table-auto w-full">
+                        <thead>
+                            <tr>
+                                <th class="col-md-12">
+                                    <label for="">Nombre del Criterio</label>
+                                </th>
+                                <th class="col-md-6">
+                                    <label for="">Puntacion %</label>
+                                </th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            @for ($ii = 0 ; $ii < $currentCritery ; $ii++)
+
+                                <tr>
+                                    <td class="col-md-12" wire:ignore>
+                                        {{-- <label for="">Nombre del Criterio</label> --}}
+                                        <input type="text" class="form-control" placeholder="Ingrese el nombre del criterio" wire:model="{{-- criteries.{{$ii}} --}}">
+                                        {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                    </td>
+                                    <td class="col-md-6" wire:ignore>
+                                        {{-- <label for="">Puntos</label> --}}
+                                        <input type="number" step="1" min="0" max="30" required="required"
+                                                class="form-control" placeholder="%" wire:model="{{-- criteries.nota.{{$ii}} --}}">
+                                        {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                    </td>
+                                </tr>
+
+                            @endfor
+
+
+
+                        </tbody>
+
+                    </table>
+
+
                 </div>
             </div>
 
@@ -416,6 +463,54 @@
                         editor.model.document.on('change:data', () => {
                             editor.model.document.on('change:data', () => {
                                 @this.set('activity.extract02', editor.getData());
+                            })
+                            /* console.log(editor.getData()) */
+                            /* document.querySelector("#bodyy").value = editor.getData() */
+                        });
+                    })
+                    .catch( error => {
+                        console.error( error )
+                } );
+
+                ClassicEditor
+                    .create( document.querySelector( '#extract03' ) )
+
+                    .then(editor => {
+                        editor.model.document.on('change:data', () => {
+                            editor.model.document.on('change:data', () => {
+                                @this.set('activity.extract03', editor.getData());
+                            })
+                            /* console.log(editor.getData()) */
+                            /* document.querySelector("#bodyy").value = editor.getData() */
+                        });
+                    })
+                    .catch( error => {
+                        console.error( error )
+                } );
+
+                ClassicEditor
+                    .create( document.querySelector( '#extract04' ) )
+
+                    .then(editor => {
+                        editor.model.document.on('change:data', () => {
+                            editor.model.document.on('change:data', () => {
+                                @this.set('activity.extract04', editor.getData());
+                            })
+                            /* console.log(editor.getData()) */
+                            /* document.querySelector("#bodyy").value = editor.getData() */
+                        });
+                    })
+                    .catch( error => {
+                        console.error( error )
+                } );
+
+                ClassicEditor
+                    .create( document.querySelector( '#instruction' ) )
+
+                    .then(editor => {
+                        editor.model.document.on('change:data', () => {
+                            editor.model.document.on('change:data', () => {
+                                @this.set('activity.instruction', editor.getData());
                             })
                             /* console.log(editor.getData()) */
                             /* document.querySelector("#bodyy").value = editor.getData() */

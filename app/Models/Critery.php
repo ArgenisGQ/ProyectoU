@@ -9,6 +9,18 @@ class Critery extends Model
 {
     use HasFactory;
 
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'userName',
+        'critery',
+        'evaluation'
+    ];
+
     //relacion de uno a muchos inversa
 
     public function activities(){
