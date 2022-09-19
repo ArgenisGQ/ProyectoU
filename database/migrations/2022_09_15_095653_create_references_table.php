@@ -15,7 +15,9 @@ class CreateReferencesTable extends Migration
     {
         Schema::create('references', function (Blueprint $table) {
             $table->id();
-            $table->string('book');
+            $table->string('title')->nullable();
+            $table->string('autor')->nullable();
+            $table->string('year')->nullable();
             $table->unsignedBigInteger('activity_id');
             $table->timestamps();
         });
