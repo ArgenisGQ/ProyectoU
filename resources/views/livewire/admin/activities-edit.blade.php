@@ -324,14 +324,69 @@
 
             <div class="card">
                 <div class="card-header bg-secondary text-white">Referencias bibliograficas</div>
-                <div class="card-body">
+                {{-- <div class="card-body">
                     <div class = "form-group my-4"  wire:ignore>
                         <label for="" class="p-r-mute">   </label>
                         <textarea id="" wire:model="" class="form-control" placeholder="Indique de manera especifica las referencias bibliograficas de la actividad" rows="6" required></textarea>
                     </div>
 
                     <span class="text-danger">@error(''){{ $message }}@enderror</span>
+                </div> --}}
+
+                <div class = "form-group my-4" >
+                    <button type="button" class="btn btn-md btn-secondary" wire:click="increaseBiblio()">+</button>
+                    <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseBiblio()">-</button>
                 </div>
+
+
+                <table class="table-auto w-full">
+                    <thead>
+                        <tr>
+                            <th>
+                                <label for="" class="col-md-5">Titulo</label>
+                            </th>
+                            <th>
+                                <label for="" class="col-md-4">Autor</label>
+                            </th>
+                            <th>
+                                <label for="" class="col-md-4">Año</label>
+                            </th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        @for ($jj = 0 ; $jj < $currentBiblio ; $jj++)
+
+                            <tr>
+                                <td class="col-md-5" wire:ignore>
+                                    {{-- <label for="">Nombre del Criterio</label> --}}
+                                    <input type="text" class="form-control" placeholder="Titulo" wire:model="biblio.{{$jj}}">
+                                    {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                </td>
+                                <td class="col-md-3" wire:ignore>
+                                    {{-- <label for="">Puntos</label> --}}
+                                    <input type="text" class="form-control" placeholder="Autor" wire:model="biblio.autor.{{$jj}}">
+                                    {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                </td>
+                                <td class="col-md-2" wire:ignore>
+                                    {{-- <label for="">Puntos</label> --}}
+                                    <input type="number" step="1" min="0" max="2999" required="required"
+                                        class="form-control" placeholder="Año de publicacion" wire:model="biblio.anno.{{$jj}}">
+                                    {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                </td>
+                            </tr>
+
+                        @endfor
+
+
+
+                    </tbody>
+
+                </table>
+
+
+
+
             </div>
 
             <div class="card">

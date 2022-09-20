@@ -94,6 +94,17 @@ class ActivitiesEdit extends Component
     public function mount(Activity $activity/* , Activity_course $activity_course */){
         $this->currentStep = 1;
         $this->activity = $activity;
+
+
+        /* dd('hereeee!'); */
+        $criteries = Critery::all();
+        dd($criteries);
+
+
+
+
+
+        
         /* $this->activity_course = $activity_course;
         dd($activity_course); */
         /* dd($activity); */

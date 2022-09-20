@@ -16,7 +16,7 @@ class Critery extends Model
      * @var array
      */
     protected $fillable = [
-        'userName',
+        'activity_id',
         'critery',
         'evaluation'
     ];

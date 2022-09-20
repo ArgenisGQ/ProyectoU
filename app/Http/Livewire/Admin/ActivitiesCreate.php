@@ -557,6 +557,13 @@ class ActivitiesCreate extends Component
                 'user_id'           => $this->userActiveId,
             ];
 
+            /* $criteries['nota'][$k]; */
+            /* dd($this->criteries); */
+            /* $this->cc = count($this->criteries['nota']);
+            dd($this->cc); */
+
+
+
             /* if($data){
                             $data['slug'] = 'required|unique:activities,slug,' . $activity->id;
             } */
@@ -632,6 +639,23 @@ class ActivitiesCreate extends Component
             //   $this->currentStep = 1;
             $data = ['name'=>$this->first_name.' '.$this->last_name,'email'=>$this->email]; */
             /* dd($data); */
+
+            $this->cc = count($this->criteries['nota']);
+
+            for ($j=0; $j < $this->cc; $j++) {
+                $critery = Critery::create([
+                    'activity_id'                  => $this->id_activityLast->id ,
+                    'critery'                      => $this->criteries[$j] ,
+                    'evaluation'                   => $this->criteries['nota'][$j] ,
+                ]);
+            }
+
+
+            $critery = Critery::all();
+            dd($critery);
+
+
+
             /* return redirect()->route('admin.activities.index')->with('info', 'La actividad se creo con exito'); */
             return redirect()->route('admin.activities.index');
 
