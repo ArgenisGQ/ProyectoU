@@ -59,11 +59,13 @@ class ActivitiesEdit extends Component
     public $nota_mensaje, $totalPoints;
     public $extract03, $extract04, $instruction;
     public $criteries, $biblio = [];
+    public $activityCriteries, $activitiyCrit = [];
+    public $cx;
 
 
     public $totalSteps = 4;
     public $currentStep = 1;
-    public $currentCritery = 1;
+    public $currentCritery;
     public $totalCritery = 20;
     public $currentBiblio = 1;
     public $totalBiblio = 20;
@@ -73,6 +75,9 @@ class ActivitiesEdit extends Component
         'activity.extract' => 'required',
         'activity.extract01' => 'required',
         'activity.extract02' => 'required',
+        'activity.extract03' => 'required',
+        'activity.extract04' => 'required',
+        'activity.instruction' => 'required',
         'activity.body' => 'required',
         'activity.lapse_in' => 'required',
         'activity.lapse_out' => 'required',
@@ -83,6 +88,8 @@ class ActivitiesEdit extends Component
         'activity.status' => 'required',
         /* 'activity.courses' => 'required', */
         'cours' => 'required|array',
+        'activityCriteries.*.critery' => 'required',
+        'activityCriteries.*.evaluation' => 'required',
 
 
     ];
@@ -91,20 +98,36 @@ class ActivitiesEdit extends Component
 
     /* public function mount($activityx){ */
     /* public function mount(){ */
-    public function mount(Activity $activity/* , Activity_course $activity_course */){
+    public function mount(Activity $activity/* , Critery $criteries */){
         $this->currentStep = 1;
+        /* $this->currentCritery = $this->cx; */
         $this->activity = $activity;
 
+        /* dd($this->activity); */
+        /* dd($this->id_activity); */
+        /* $criteries = Critery::all(); */
+        /* dd($criteries); */
+        /* dd($critery); */
+        /* $this->criteries = $criteries->activity_id; */
+        /* dd($this->criteries); */
 
-        /* dd('hereeee!'); */
-        $criteries = Critery::all();
-        dd($criteries);
+
+
+        $this->activityCriteries = Critery::where(
+                                     'activity_id', $this->id_activity
+                                    )->get();
+        /* dd($this->activityCriteries); */
+        /* $this->activitiyCrit = (array)$this->activityCriteries; */
+        /* dd($this->activitiyCrit); */
+        $this->cx = count($this->activityCriteries);
+        $this->currentCritery = $this->cx;
+        /* dd($this->cx); */
 
 
 
 
 
-        
+
         /* $this->activity_course = $activity_course;
         dd($activity_course); */
         /* dd($activity); */
@@ -334,7 +357,7 @@ class ActivitiesEdit extends Component
             /* dd($this->activity->status); */
 
             if ($this->activity->status == 2) {
-                return redirect()->route('admin.activities.index'); //validacion para evitar que las activiades con PUBLICACION activos no puedad editar.
+                return redirect()->route('admin.activities.index'); //validacion para evitar que las activiades con PUBLICACION activos no puedan editar.
             }
 
 

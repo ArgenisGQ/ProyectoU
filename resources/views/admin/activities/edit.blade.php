@@ -35,7 +35,7 @@
                       {{-- <h1>Creacion de Actividades</h1><hr> --}}
                       @livewire('admin.activities-edit', compact('courses', 'userActiveName',
                                                                     'evaluations', 'userActiveId', 'lapse_in', 'lapse_out',
-                                                                    'activity', 'id_activity', 'activity_course', 'coursesForUser'))
+                                                                    'activity', 'id_activity', 'activity_course', 'coursesForUser'/* , 'critery' */))
                   </div>
             </div>
         </div>

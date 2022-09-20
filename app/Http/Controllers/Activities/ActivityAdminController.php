@@ -249,6 +249,8 @@ class ActivityAdminController extends Controller
     {
         $this->authorize('author', $activity);
 
+        /* dd($activity); */
+
         $faculties = Faculty::pluck('name', 'id');
 
         $courses_all = Course::all();

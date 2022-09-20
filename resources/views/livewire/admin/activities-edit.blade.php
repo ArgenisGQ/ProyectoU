@@ -246,21 +246,61 @@
 
                         </thead>
                         <tbody>
+                            @php
+                                /* dd($this->activityCriteries[0]['id'] ); */
+                                /* dd($this->activityCriteries[0]['evaluation']); */
+                                /* $currentCritery = $currentCritery + $this->cx - 1; */
+                                /* dd($this->criteries); */
+                            @endphp
+
                             @for ($ii = 0 ; $ii < $currentCritery ; $ii++)
 
-                                <tr>
-                                    <td class="col-md-12" wire:ignore>
-                                        {{-- <label for="">Nombre del Criterio</label> --}}
-                                        <input type="text" class="form-control" placeholder="Ingrese el nombre del criterio" wire:model="{{-- criteries.{{$ii}} --}}">
-                                        {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
-                                    </td>
-                                    <td class="col-md-6" wire:ignore>
-                                        {{-- <label for="">Puntos</label> --}}
-                                        <input type="number" step="1" min="0" max="30" required="required"
-                                                class="form-control" placeholder="%" wire:model="{{-- criteries.nota.{{$ii}} --}}">
-                                        {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
-                                    </td>
-                                </tr>
+                                {{-- @php
+                                    if (!isset($activityCriteries[$ii]['critery'])) {
+                                        $activityCriteries[$ii]['critery'] = '--';
+                                        $activityCriteries[$ii]['evaluation'] = 0;
+                                    }
+                                @endphp --}}
+
+                                @if (isset($activityCriteries[$ii]['critery']))
+
+                                    <tr>
+                                        <td class="col-md-12" wire:ignore>
+                                            {{-- <label for="">Nombre del Criterio</label> --}}
+                                            <input type="text" class="form-control" placeholder="Ingrese el nombre del criterio" wire:model="activityCriteries.{{$ii}}.critery">
+                                            {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                            {{-- <p>{{$activityCriteries[$ii]['critery']}}</p> --}}
+                                        </td>
+                                        <td class="col-md-6" wire:ignore>
+                                            {{-- <label for="">Puntos</label> --}}
+                                            <input type="number" step="1" min="0" max="30" required="required"
+                                                    class="form-control" placeholder="%" wire:model="activityCriteries.{{$ii}}.evaluation">
+                                            {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                            {{-- <p>{{$activityCriteries[$ii]['evaluation']}}</p> --}}
+                                        </td>
+                                    </tr>
+
+                                @else
+
+                                    <tr>
+                                        <td class="col-md-12" wire:ignore>
+                                            {{-- <label for="">Nombre del Criterio</label> --}}
+                                            <input type="text" class="form-control" placeholder="Ingrese el nombre del criterio" wire:model="criteries.{{$ii}}">
+                                            {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                            {{-- <p>{{$activityCriteries[$ii]['critery']}}</p> --}}
+                                        </td>
+                                        <td class="col-md-6" wire:ignore>
+                                            {{-- <label for="">Puntos</label> --}}
+                                            <input type="number" step="1" min="0" max="30" required="required"
+                                                    class="form-control" placeholder="%" wire:model="criteries.nota.{{$ii}}">
+                                            {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                            {{-- <p>{{$activityCriteries[$ii]['evaluation']}}</p> --}}
+                                        </td>
+                                    </tr>
+
+                                @endif
+
+
 
                             @endfor
 
