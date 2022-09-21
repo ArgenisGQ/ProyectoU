@@ -262,7 +262,7 @@
                                     }
                                 @endphp --}}
 
-                                @if (isset($activityCriteries[$ii]['critery']))
+                                @if (isset($activityCriteries[$ii]['critery']))  {{-- Campos originales de la base de datos --}}
 
                                     <tr>
                                         <td class="col-md-12" wire:ignore>
@@ -280,7 +280,7 @@
                                         </td>
                                     </tr>
 
-                                @else
+                                @else  {{-- Campos nuevos creados cuando se editan --}}
 
                                     <tr>
                                         <td class="col-md-12" wire:ignore>
@@ -700,6 +700,7 @@
                                         <option value="3"> Unidad III</option>
                                         <option value="4"> Unidad IV</option>
                                 </select> --}}
+                            <p>{{$activity->evaluation}}</p>
                         </div>
                     </div>
 

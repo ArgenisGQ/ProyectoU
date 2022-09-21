@@ -60,7 +60,7 @@ class ActivitiesEdit extends Component
     public $extract03, $extract04, $instruction;
     public $criteries, $biblio = [];
     public $activityCriteries, $activitiyCrit = [];
-    public $cx;
+    public $cx, $cc;
 
 
     public $totalSteps = 4;
@@ -98,10 +98,11 @@ class ActivitiesEdit extends Component
 
     /* public function mount($activityx){ */
     /* public function mount(){ */
-    public function mount(Activity $activity/* , Critery $criteries */){
+    public function mount(Activity $activity, /* Critery $criteries */){
         $this->currentStep = 1;
         /* $this->currentCritery = $this->cx; */
         $this->activity = $activity;
+        /* $this->activityCriteries = $criteries; */
 
         /* dd($this->activity); */
         /* dd($this->id_activity); */
@@ -111,7 +112,7 @@ class ActivitiesEdit extends Component
         /* $this->criteries = $criteries->activity_id; */
         /* dd($this->criteries); */
 
-
+        $this->activityCriteries = new Critery;
 
         $this->activityCriteries = Critery::where(
                                      'activity_id', $this->id_activity
@@ -360,9 +361,12 @@ class ActivitiesEdit extends Component
                 return redirect()->route('admin.activities.index'); //validacion para evitar que las activiades con PUBLICACION activos no puedan editar.
             }
 
-
+            /* dd($this->activityCriteries); */
 
             $this->activity->save();
+            /* $this->activityCriteries->save(); */
+
+
 
             /* $this->id_activityLast = Activity::where('user_id', $this->userActiveId)
                                     ->latest('id')
@@ -535,8 +539,100 @@ class ActivitiesEdit extends Component
                 ]);
             }; */
 
-            /* $this->reset();
 
+
+
+
+            if (isset($this->activityCriteries)) {
+
+                /* dd($this->activityCriteries[1]->id); */
+
+                /* dd($this->currentCritery); */
+
+                $this->cc = count($this->activityCriteries);
+
+                /* dd($this->cc); */
+
+                if ($this->currentCritery == $this->cc) {
+                    for ($j=0; $j < $this->cc; $j++) {
+
+                        $critery = Critery::find($this->activityCriteries[$j]->id);
+                        $critery->update([
+                            /* 'activity_id'                  => $this->id_activityLast->id , */
+                            'critery'                      => $this->activityCriteries[$j]->critery ,
+                            'evaluation'                   => $this->activityCriteries[$j]->evaluation ,
+                        ]);
+                        /* $critery = Critery::update([
+                            'activity_id'                  => $this->id_activityLast->id ,
+                            'critery'                      => $this->criteries[$j] ,
+                            'evaluation'                   => $this->criteries['nota'][$j] ,
+                        ]); */
+                    }
+                }
+
+                if ($this->currentCritery < $this->cc) {
+
+                    /* dd('here!!!'); */
+
+                    /* if (isset()) {
+
+                    } */
+
+                    for ($j=0; $j < $this->cc - $this->currentCritery; $j++) {
+
+
+
+                        $critery = Critery::find($this->activityCriteries[$j]->id);
+                        $critery->update([
+                            /* 'activity_id'                  => $this->id_activityLast->id , */
+                            'critery'                      => $this->activityCriteries[$j]->critery ,
+                            'evaluation'                   => $this->activityCriteries[$j]->evaluation ,
+                        ]);
+                        /* $critery = Critery::update([
+                            'activity_id'                  => $this->id_activityLast->id ,
+                            'critery'                      => $this->criteries[$j] ,
+                            'evaluation'                   => $this->criteries['nota'][$j] ,
+                        ]); */
+                    }
+
+                    for ($i= $this->currentCritery; $i < $this->cc; $i++) {
+
+                        /* dd($this->currentCritery); */
+
+                        /* dd($this->cc - $this->currentCritery); */
+                        $critery = Critery::find($this->activityCriteries[$i]->id);
+                        $critery->delete();
+                    }
+                }
+
+
+            }
+
+
+            if (isset($this->criteries['nota'])) {
+
+                /* dd('here new!!!'); */
+
+                /* dd($this->criteries); */
+                /* dd($this->id_activityLast); */
+                /* dd($this->criteries[$j]); */
+
+                $this->ccx = count($this->criteries['nota']);
+
+                /* dd($this->ccx); */
+
+                for ($j=$this->cc; $j < $this->cc + $this->ccx; $j++) {
+                    $critery = Critery::create([
+                        'activity_id'                  => $this->id_activityLast ,
+                        'critery'                      => $this->criteries[$j] ,
+                        'evaluation'                   => $this->criteries['nota'][$j] ,
+                    ]);
+                }
+            }
+
+
+
+            /* $this->reset();
 
 
             /* return redirect()->route('admin.activities.index')->with('info', 'La actividad se edito con exito'); */

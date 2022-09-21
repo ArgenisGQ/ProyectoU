@@ -41,6 +41,7 @@ class ActivitiesCreate extends Component
     public $nota_mensaje, $totalPoints;
     public $extract03, $extract04, $instruction;
     public $criteries, $biblio = [];
+    
 
     /* public $activity; */
 
@@ -651,9 +652,9 @@ class ActivitiesCreate extends Component
             }
 
 
-            $critery = Critery::all();
-            dd($critery);
-
+            /* $critery = Critery::all(); */
+           /*  dd($critery);
+ */
 
 
             /* return redirect()->route('admin.activities.index')->with('info', 'La actividad se creo con exito'); */
