@@ -41,7 +41,7 @@ class ActivitiesCreate extends Component
     public $nota_mensaje, $totalPoints;
     public $extract03, $extract04, $instruction;
     public $criteries, $biblio = [];
-    
+
 
     /* public $activity; */
 
@@ -643,7 +643,7 @@ class ActivitiesCreate extends Component
 
             $this->cc = count($this->criteries['nota']);
 
-            for ($j=0; $j < $this->cc; $j++) {
+            for ($j=0; $j < $this->currentCritery; $j++) {
                 $critery = Critery::create([
                     'activity_id'                  => $this->id_activityLast->id ,
                     'critery'                      => $this->criteries[$j] ,
