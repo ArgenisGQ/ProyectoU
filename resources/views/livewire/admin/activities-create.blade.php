@@ -179,7 +179,7 @@
                                     <label for="">Nombre del Criterio</label>
                                 </th>
                                 <th class="col-md-6">
-                                    <label for="">Puntacion %</label>
+                                    <label for="">Puntuacion %</label>
                                 </th>
                             </tr>
 
