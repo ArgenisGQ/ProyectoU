@@ -104,7 +104,7 @@ class ActivitiesEdit extends Component
         $this->activity = $activity;
         /* $this->activityCriteries = $criteries; */
 
-        /* dd($this->activity); */
+        /* dd($this->activity->evaluation); */
         /* dd($this->id_activity); */
         /* $criteries = Critery::all(); */
         /* dd($criteries); */
@@ -267,6 +267,7 @@ class ActivitiesEdit extends Component
                 'activity.extract' => 'required',
                 'activity.extract01' => 'required',
               ]);
+              $this->preValidatePoint($this->criteries,$this->activityCriteries,$this->currentCritery);
 
         }
         elseif($this->currentStep == 3){
@@ -933,6 +934,41 @@ class ActivitiesEdit extends Component
         /* dd($this->notax); */
 
 
+    }
+
+    public function preValidatePoint($criteries,$activityCriteries,$currentCritery){
+            /* dd($criteries['nota']); */
+            $this->totalPointsA = 0;
+            $this->totalPointsC = 0;
+
+            if (isset($activityCriteries)) {
+                $aaa = count($activityCriteries);
+                for ($j=0; $j < $aaa; $j++) {
+                    $this->totalPointsA = $this->totalPointsA + $activityCriteries[$j]['evaluation'];
+                }
+            }
+
+            if (isset($criteries)) {
+                $ccc = count($criteries);
+                for ($k=0; $k < $ccc; $k++) {
+                    $this->totalPointsC = $this->totalPointsC + $criteries['nota'][$k];
+                }
+            }
+
+
+            /* for ($k=0; $k < $currentCritery; $k++) {
+                $this->totalPoints = $this->totalPoints + $criteries['nota'][$k];
+            } */
+
+            $this->totalPoints = $this->totalPointsA + $this->totalPointsC;
+
+            /* dd($this->totalPointsA); */
+
+            /* dd($this->totalPoints); */
+
+            /* dd($this->activity->evaluation); */
+
+            $this->activity->evaluation = $this->totalPoints;
     }
 
 

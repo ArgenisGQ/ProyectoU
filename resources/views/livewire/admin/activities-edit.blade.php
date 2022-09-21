@@ -15,6 +15,10 @@
                 <div class="card-header bg-secondary text-white">Paso 1/4 - Seleccionar Materias</div>
                 <div class="card-body">
 
+                    {{-- @php
+                        dd($activity);
+                    @endphp --}}
+
                     <div class="d-flex flex-column align-items-left mt-2">
                         {{-- {{$id_activity}} --}}
 
@@ -660,9 +664,9 @@
                                             @endforeach
                                         </select> --}}
 
-                                        <select names="evaluation" wire:model="activity.type"
+                                        <select names="evaluation" wire:model="activity.activity_type"
                                         class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
-                                            <option value="{{ $activity->type }}" selected>{{ $activity->type }}</option>
+                                            <option value="{{-- {{ $activity->type }} --}}" selected>{{ $activity->type }}</option>
                                             @foreach ($evaluations as $evaluation)
                                                 {{-- <option value="{{ $evaluation['id'] }}">{{ $evaluation['name'] }}</option> --}}
                                                 <option value="{{ $evaluation->id }}">{{ $evaluation->name }}</option>
@@ -671,6 +675,19 @@
                                 @endif
                                 {{-- <p>{{$activity->type}}</p> --}}
                                 {{-- <span class="text-danger">@error('evaluation'){{ $message }}@enderror</span> --}}
+
+
+                                {{-- @if(count($evaluations) > 0)
+                                    <label for="evaluation"></label>
+                                        <select names="evaluation" wire:model="evaluation"
+                                        class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
+                                            <option value="" selected>Seleccione tipo de Evaluacion</option>
+                                            @foreach ($evaluations as $evaluation)
+                                                <option value="{{ $evaluation['id'] }}">{{ $evaluation['name'] }}</option>
+
+                                            @endforeach
+                                        </select>
+                                @endif --}}
                             </div>
                         </div>
                     </div>
@@ -690,8 +707,8 @@
 
                             {{-- {{$this->activity}}; --}}
 
-                            <input type="number" id="tentacles" name="tentacles" {{$desabilitado}}
-                                placeholder="0.00" step="0.01" min="0" max="100" wire:model="activity.evaluation">
+                            <input type="number" id="tentacles" name="tentacles" {{$desabilitado}} disabled
+                                placeholder="0.00" step="0.01" min="0" max="100" wire:model="totalPoints">
                                 {{-- <select names="unit" wire:model="unit"
                                 class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
                                     <option value="" selected>Seleccione la Unidad</option>
@@ -700,7 +717,7 @@
                                         <option value="3"> Unidad III</option>
                                         <option value="4"> Unidad IV</option>
                                 </select> --}}
-                            <p>{{$activity->evaluation}}</p>
+                            {{-- <p>{{$this->activity->evaluation}}</p> --}}
                         </div>
                     </div>
 
