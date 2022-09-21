@@ -52,4 +52,8 @@ class Activity extends Model
         return $this->hasMany(Critery::class);
     }
 
+    public function references(){
+        return $this->hasMany(Reference::class);
+    }
+
 }

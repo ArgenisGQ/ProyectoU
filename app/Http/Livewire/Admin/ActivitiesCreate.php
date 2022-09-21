@@ -12,6 +12,7 @@ use App\Models\Period;
 use Carbon\Carbon;
 use App\Models\Activity_course;
 use App\Models\Critery;
+use App\Models\Reference;
 
 
 class ActivitiesCreate extends Component
@@ -641,6 +642,9 @@ class ActivitiesCreate extends Component
             $data = ['name'=>$this->first_name.' '.$this->last_name,'email'=>$this->email]; */
             /* dd($data); */
 
+
+            /* proceso para los criterios */
+
             $this->cc = count($this->criteries['nota']);
 
             for ($j=0; $j < $this->currentCritery; $j++) {
@@ -650,12 +654,26 @@ class ActivitiesCreate extends Component
                     'evaluation'                   => $this->criteries['nota'][$j] ,
                 ]);
             }
-
-
             /* $critery = Critery::all(); */
-           /*  dd($critery);
- */
+           /*  dd($critery); */
 
+
+
+            /* proceso para las referencias bibliograficas */
+
+            $this->cc = count($this->biblio['autor']);
+
+            for ($j=0; $j < $this->currentBiblio; $j++) {
+                $critery = Reference::create([
+                    'activity_id'                  => $this->id_activityLast->id ,
+                    'title'                        => $this->biblio[$j] ,
+                    'autor'                        => $this->biblio['autor'][$j] ,
+                    'year'                         => $this->biblio['anno'][$j] ,
+                ]);
+            }
+
+            /* $biblio = Reference::all(); */
+            /* dd($biblio); */
 
             /* return redirect()->route('admin.activities.index')->with('info', 'La actividad se creo con exito'); */
             return redirect()->route('admin.activities.index');
