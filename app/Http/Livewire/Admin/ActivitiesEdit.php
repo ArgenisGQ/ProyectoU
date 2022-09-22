@@ -12,6 +12,7 @@ use App\Models\Period;
 use Carbon\Carbon;
 use App\Models\Activity_course;
 use App\Models\Critery;
+use App\Models\Reference;
 
 
 class ActivitiesEdit extends Component
@@ -61,7 +62,8 @@ class ActivitiesEdit extends Component
     public $criteries, $biblio = [];
     public $activityCriteries, $activitiyCrit = [];
     public $cx, $cc;
-
+    public $references = [];
+    /* public $biblio = []; */
 
     public $totalSteps = 4;
     public $currentStep = 1;
@@ -90,8 +92,9 @@ class ActivitiesEdit extends Component
         'cours' => 'required|array',
         'activityCriteries.*.critery' => 'required',
         'activityCriteries.*.evaluation' => 'required',
-
-
+        'references.*.title' => 'required',
+        'references.*.autor' => 'required',
+        'references.*.year' => 'required',
     ];
 
 
@@ -117,11 +120,21 @@ class ActivitiesEdit extends Component
         $this->activityCriteries = Critery::where(
                                      'activity_id', $this->id_activity
                                     )->get();
+
+        $this->references = new Reference;
+
+        $this->references = Reference::where(
+                                     'activity_id', $this->id_activity
+                                    )->get();
+
         /* dd($this->activityCriteries); */
         /* $this->activitiyCrit = (array)$this->activityCriteries; */
         /* dd($this->activitiyCrit); */
         $this->cx = count($this->activityCriteries);
         $this->currentCritery = $this->cx;
+
+        $this->cy = count($this->references);
+        $this->currentBiblio = $this->cy;
         /* dd($this->cx); */
 
 
@@ -540,6 +553,10 @@ class ActivitiesEdit extends Component
                 ]);
             }; */
 
+
+
+            /* proceso para los criterios */
+
             if ($activity->activity_type == 1 || $activity->activity_type == 2) {
                 /* dd('hereee!!'); */
 
@@ -677,6 +694,85 @@ class ActivitiesEdit extends Component
 
 
 
+            /* proceso para las referencias bibliograficas */
+
+            if (isset($this->references)) {
+
+                /* dd($this->activityCriteries[1]->id); */
+
+                /* dd($this->currentCritery); */
+
+                $this->cc = count($this->references);
+
+                /* dd($this->cc); */
+
+                if ($this->currentBiblio == $this->cc) {
+                    for ($j=0; $j < $this->cc; $j++) {
+
+                        $referenceUp = Reference::find($this->references[$j]->id);
+                        $referenceUp->update([
+                            /* 'activity_id'                  => $this->id_activityLast->id , */
+                            'title'                         => $this->references[$j]->title ,
+                            'autor'                         => $this->references[$j]->autor ,
+                            'year'                          => $this->references[$j]->year ,
+                        ]);
+
+                    }
+                }
+
+                if ($this->currentBiblio < $this->cc) {
+
+                    /* dd('here!!!'); */
+
+                    /* if (isset()) {
+
+                    } */
+
+                    for ($j=0; $j < $this->cc - $this->currentBiblio; $j++) {
+
+                        $biblioUp = Reference::find($this->references[$j]->id);
+                        $biblioUp->update([
+                            'title'                         => $this->references[$j]->title ,
+                            'autor'                         => $this->references[$j]->autor ,
+                            'year'                          => $this->references[$j]->year ,
+                        ]);
+
+                    }
+
+                    for ($i= $this->currentBiblio; $i < $this->cc; $i++) {
+
+                        /* dd($this->currentCritery); */
+
+                        /* dd($this->cc - $this->currentCritery); */
+                        $biblioUp = Reference::find($this->references[$i]->id);
+                        $biblioUp->delete();
+                    }
+                }
+
+
+            }
+
+
+            if (isset($this->biblio['autor'])) {
+                /* dd('here new!!!'); */
+
+                /* dd($this->criteries); */
+                /* dd($this->id_activityLast); */
+                /* dd($this->criteries[$j]); */
+
+                $this->ccx = count($this->biblio['autor']);
+
+                /* dd($this->ccx); */
+
+                for ($j=$this->cc; $j < $this->cc + $this->ccx; $j++) {
+                    $critery = Reference::create([
+                        'activity_id'                  => $this->id_activityLast ,
+                        'title'                        => $this->biblio[$j] ,
+                        'autor'                        => $this->biblio['autor'][$j] ,
+                        'year'                         => $this->biblio['anno'][$j] ,
+                    ]);
+                }
+            }
 
 
             /* $this->reset();
