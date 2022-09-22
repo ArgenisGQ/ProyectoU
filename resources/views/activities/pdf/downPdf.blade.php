@@ -640,9 +640,20 @@
                             </div>
 
                             <div>
-                                <div>
-                                    <div class="" >{!!$activity->extract01!!}</div>
-                                </div>
+                                    <TABLE class="table table-sm colapsado" border="">
+                                        <tbody class="text-center">
+                                            <TR>
+                                                <TH class="ancho-3de4">Criterio</TH>
+                                                <TH class="ancho-1de4">Puntuacion</TH>
+                                            </TR>
+                                            @foreach ($criteries as $critery)
+                                                <TR>
+                                                    <TD class="ancho-3de4">{{$critery->critery}}</TD>
+                                                    <TD class="ancho-1de4">{{$critery->evaluation}}</TD>
+                                                </TR>
+                                            @endforeach
+                                        </tbody>
+                                    </TABLE>
                             </div>
                     </div>
 
@@ -669,7 +680,7 @@
 
                         <div>
                             <div>
-                                <div class="" >{!!$activity->extract01!!}</div>
+                                <div class="" >{!!$activity->extract02!!}</div>
                             </div>
                         </div>
                     </div>
@@ -683,7 +694,7 @@
 
                         <div>
                             <div>
-                                <div class="" >{!!$activity->extract01!!}</div>
+                                <div class="" >{!!$activity->extract03!!}</div>
                             </div>
                         </div>
                     </div>
@@ -697,7 +708,7 @@
 
                         <div>
                             <div>
-                                <div class="" >{!!$activity->extract01!!}</div>
+                                <div class="" >{!!$activity->extract04!!}</div>
                             </div>
                         </div>
                     </div>
@@ -711,7 +722,22 @@
 
                         <div>
                             <div>
-                                <div class="" >{!!$activity->extract01!!}</div>
+                                <TABLE class="table table-sm colapsado" border="">
+                                    <tbody class="text-center">
+                                        <TR>
+                                            <TH class="ancho-3de4">Titulo</TH>
+                                            <TH class="ancho-2de4">Autor</TH>
+                                            <TH class="ancho-1de4">Año</TH>
+                                        </TR>
+                                        @foreach ($references as $reference)
+                                            <TR>
+                                                <TD class="ancho-3de4">{{$reference->title}}</TD>
+                                                <TD class="ancho-2de4">{{$reference->autor}}</TD>
+                                                <TD class="ancho-1de4">{{$reference->year}}</TD>
+                                            </TR>
+                                        @endforeach
+                                    </tbody>
+                                </TABLE>
                             </div>
                         </div>
                     </div>
@@ -725,7 +751,7 @@
 
                         <div>
                             <div>
-                                <div class="" >{!!$activity->extract01!!}</div>
+                                <div class="" >{!!$activity->instruction!!}</div>
                             </div>
                         </div>
                     </div>

@@ -1085,14 +1085,33 @@ class ActivitiesEdit extends Component
 
             if (isset($activityCriteries)) {
                 $aaa = count($activityCriteries);
+                if ($this->currentCritery < $aaa) {
+                    /* dd('here!'); */
+                    $aaa = $aaa - $this->currentCritery;
+                }
+                /* dd($aaa); */
                 for ($j=0; $j < $aaa; $j++) {
                     $this->totalPointsA = $this->totalPointsA + $activityCriteries[$j]['evaluation'];
                 }
             }
 
+            /* dd($criteries['nota']); */
+            /* dd($this->currentCritery); */
             if (isset($criteries)) {
-                $ccc = count($criteries);
-                for ($k=0; $k < $ccc; $k++) {
+                $ccc = count($criteries['nota']);
+                /* dd($aaa); */
+                /* dd($ccc); */
+                /* if ($this->currentCritery == $aaa + $ccc) {
+                    for ($k=$aaa; $k < $ccc + $aaa ; $k++) {
+                        $this->totalPointsC = $this->totalPointsC + $criteries['nota'][$k];
+                    }
+                }
+                if ($this->currentCritery < $aaa + $ccc) {
+                    for ($k=$aaa; $k < $this->currentCritery ; $k++) {
+                        $this->totalPointsC = $this->totalPointsC + $criteries['nota'][$k];
+                    }
+                } */
+                for ($k=$aaa; $k < $this->currentCritery ; $k++) {
                     $this->totalPointsC = $this->totalPointsC + $criteries['nota'][$k];
                 }
             }

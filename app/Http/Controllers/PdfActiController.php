@@ -10,6 +10,8 @@ use App\Models\Course;
 use App\Models\Evaluation;
 use App\Models\Activity_course;
 use App\Models\User_course;
+use App\Models\Critery;
+use App\Models\Reference;
 
 class PdfActiController extends Controller
 {
@@ -40,13 +42,13 @@ class PdfActiController extends Controller
 
         $coursesThisActivity = Activity_course::where('id_activity', $activity->id)
                             ->get();
-                            
-        
-        $User_courses = User_course::all();
-        
-        
 
-        
+
+        $User_courses = User_course::all();
+
+
+
+
         /* return $User_courses; */
         /* return $coursesThisActivity; */
 
@@ -105,8 +107,8 @@ class PdfActiController extends Controller
 
         $coursesThisActivity = Activity_course::where('id_activity', $activity->id)
                             ->get();
-                                               
-                           
+
+
         $User_courses = User_course::all();
 
 
@@ -170,14 +172,28 @@ class PdfActiController extends Controller
         /* $file_name = "act-$code-$section-$date.pdf"; */
         $file_name = "ACT $code $section $date.pdf";
 
-        /* return $file_name;
- */
+        /* return $file_name;*/
+
+        /* ---- Criterios de evaluacion ---- */
+
+        $criteries = Critery::where(
+                            'activity_id', $activity->id
+                            )->get();
+        /* $criteries = Critery::all(); */
+        /* dd($criteries); */
+
+        /* ---- Referencias bibliograficas ---- */
+        $references = Reference::where(
+                            'activity_id', $activity->id
+                            )->get();
+        /* dd($references); */
 
         /* -------- Para mostrar el archivo en otra ventana de PDF  -------- */
 
         return \PDF::loadView('activities.pdf.downPdf', compact('activity', 'similares',
                     'facultad','css_data', 'logo', 'evaluacion',
-                    'today', 'lapse_in', 'lapse_out', 'coursesThisActivity', 'User_courses'))
+                    'today', 'lapse_in', 'lapse_out', 'coursesThisActivity', 'User_courses',
+                    'criteries', 'references'))
                     ->stream($file_name, ["Attachment" => false]);
 
         /* return $css_data; */
