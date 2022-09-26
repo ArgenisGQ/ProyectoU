@@ -529,7 +529,22 @@
                                 @this.set('body', editor.getData());
                             })
                         )}; */
+                        
+                function MinHeightPlugin(editor) {
+                            this.editor = editor;
+                            }
 
+                            MinHeightPlugin.prototype.init = function() {
+                            this.editor.ui.view.editable.extendTemplate({
+                                attributes: {
+                                style: {
+                                    minHeight: '300px'
+                                }
+                                }
+                            });
+                            };
+
+                ClassicEditor.builtinPlugins.push(MinHeightPlugin);
 
                 ClassicEditor
                     .create( document.querySelector( '#bodyy' ) )

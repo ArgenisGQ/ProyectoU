@@ -78,7 +78,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Nombre de Actividad</label>
-                                <input type="text" class="form-control" placeholder="Ingrese el nombre de la actividad" wire:model.defer="name">
+                                <input type="text" class="form-control " placeholder="Ingrese el nombre de la actividad" wire:model.defer="name">
                                 <span class="text-danger">@error('name'){{ $message }}@enderror</span>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                 <div class="card-body">
                     <div class = "form-group my-4"  wire:ignore>
                         <label for="body" class="p-r-mute">   </label>
-                        <textarea id="body" wire:model="body" class="form-control w-full" placeholder="Indique de manera especifica el proposito de la actividad" rows="6" required></textarea>
+                        <textarea id="body" wire:model="body" class="form-control w-full text-editor editor-container" placeholder="Indique de manera especifica el proposito de la actividad" rows="6" required></textarea>
                     </div>
                     {{-- <div class="frameworks d-flex flex-column align-items-left mt-2">
                         <label for="laravel">
@@ -356,11 +356,47 @@
                             })
                         )}; */
 
+                function MinHeightPlugin(editor) {
+                            this.editor = editor;
+                            }
+
+                            MinHeightPlugin.prototype.init = function() {
+                            this.editor.ui.view.editable.extendTemplate({
+                                attributes: {
+                                style: {
+                                    minHeight: '300px'
+                                }
+                                }
+                            });
+                            };
+
+                ClassicEditor.builtinPlugins.push(MinHeightPlugin);
+
 
                 ClassicEditor
-                    .create( document.querySelector( '#body' ) )
+
+                    .create( document.querySelector( '#body' ), {
+                            removeButtons: 'PasteFromWord', //dont working
+                            toolbar: {
+                                    items: [
+                                        'heading', '|',
+                                        'fontfamily', 'fontsize', '|',
+                                        'alignment', '|',
+                                        'fontColor', 'fontBackgroundColor', '|',
+                                        'bold', 'italic', 'strikethrough', 'underline', 'subscript', 'superscript', '|',
+                                        'link', '|',
+                                        'outdent', 'indent', '|',
+                                        'bulletedList', 'numberedList', 'todoList', '|',
+                                        'code', 'codeBlock', '|',
+                                        'insertTable', '|',
+                                        /* 'uploadImage', 'blockQuote', '|', */
+                                        'undo', 'redo'
+                                    ],
+                                    shouldNotGroupWhenFull: true}
+                        } )
 
                     .then(editor => {
+                        /* editor.ui.view.editable.element.style.height = '500px', */    //work but fast
                         editor.model.document.on('change:data', () => {
                             editor.model.document.on('change:data', () => {
                                 @this.set('body', editor.getData());
@@ -371,7 +407,7 @@
                     })
                     .catch( error => {
                         console.error( error )
-                } );
+                    } );
 
                 ClassicEditor
                     .create( document.querySelector( '#extract' ) )
