@@ -529,7 +529,7 @@
                                 @this.set('body', editor.getData());
                             })
                         )}; */
-                        
+
                 function MinHeightPlugin(editor) {
                             this.editor = editor;
                             }
@@ -547,7 +547,25 @@
                 ClassicEditor.builtinPlugins.push(MinHeightPlugin);
 
                 ClassicEditor
-                    .create( document.querySelector( '#bodyy' ) )
+                    .create( document.querySelector( '#bodyy' ), {
+                            removeButtons: 'PasteFromWord', //dont working
+                            toolbar: {
+                                    items: [
+                                        'heading', '|',
+                                        'fontfamily', 'fontsize', '|',
+                                        'alignment', '|',
+                                        'fontColor', 'fontBackgroundColor', '|',
+                                        'bold', 'italic', 'strikethrough', 'underline', 'subscript', 'superscript', '|',
+                                        'link', '|',
+                                        'outdent', 'indent', '|',
+                                        'bulletedList', 'numberedList', 'todoList', '|',
+                                        'code', 'codeBlock', '|',
+                                        'insertTable', '|',
+                                        /* 'uploadImage', 'blockQuote', '|', */
+                                        'undo', 'redo'
+                                    ],
+                                    shouldNotGroupWhenFull: true}
+                        }  )
 
                     .then(editor => {
                         editor.model.document.on('change:data', () => {
@@ -563,7 +581,25 @@
                 } );
 
                 ClassicEditor
-                    .create( document.querySelector( '#extract' ) )
+                    .create( document.querySelector( '#extract' ), {
+                            removeButtons: 'PasteFromWord', //dont working
+                            toolbar: {
+                                    items: [
+                                        'heading', '|',
+                                        'fontfamily', 'fontsize', '|',
+                                        'alignment', '|',
+                                        'fontColor', 'fontBackgroundColor', '|',
+                                        'bold', 'italic', 'strikethrough', 'underline', 'subscript', 'superscript', '|',
+                                        'link', '|',
+                                        'outdent', 'indent', '|',
+                                        'bulletedList', 'numberedList', 'todoList', '|',
+                                        'code', 'codeBlock', '|',
+                                        'insertTable', '|',
+                                        /* 'uploadImage', 'blockQuote', '|', */
+                                        'undo', 'redo'
+                                    ],
+                                    shouldNotGroupWhenFull: true}
+                        }  )
 
                     .then(editor => {
                         editor.model.document.on('change:data', () => {
@@ -579,7 +615,25 @@
                 } );
 
                 ClassicEditor
-                    .create( document.querySelector( '#extract01' ) )
+                    .create( document.querySelector( '#extract01' ), {
+                            removeButtons: 'PasteFromWord', //dont working
+                            toolbar: {
+                                    items: [
+                                        'heading', '|',
+                                        'fontfamily', 'fontsize', '|',
+                                        'alignment', '|',
+                                        'fontColor', 'fontBackgroundColor', '|',
+                                        'bold', 'italic', 'strikethrough', 'underline', 'subscript', 'superscript', '|',
+                                        'link', '|',
+                                        'outdent', 'indent', '|',
+                                        'bulletedList', 'numberedList', 'todoList', '|',
+                                        'code', 'codeBlock', '|',
+                                        'insertTable', '|',
+                                        /* 'uploadImage', 'blockQuote', '|', */
+                                        'undo', 'redo'
+                                    ],
+                                    shouldNotGroupWhenFull: true}
+                        }  )
 
                     .then(editor => {
                         editor.model.document.on('change:data', () => {
@@ -595,7 +649,25 @@
                 } );
 
                 ClassicEditor
-                    .create( document.querySelector( '#extract02' ) )
+                    .create( document.querySelector( '#extract02' ), {
+                            removeButtons: 'PasteFromWord', //dont working
+                            toolbar: {
+                                    items: [
+                                        'heading', '|',
+                                        'fontfamily', 'fontsize', '|',
+                                        'alignment', '|',
+                                        'fontColor', 'fontBackgroundColor', '|',
+                                        'bold', 'italic', 'strikethrough', 'underline', 'subscript', 'superscript', '|',
+                                        'link', '|',
+                                        'outdent', 'indent', '|',
+                                        'bulletedList', 'numberedList', 'todoList', '|',
+                                        'code', 'codeBlock', '|',
+                                        'insertTable', '|',
+                                        /* 'uploadImage', 'blockQuote', '|', */
+                                        'undo', 'redo'
+                                    ],
+                                    shouldNotGroupWhenFull: true}
+                        }  )
 
                     .then(editor => {
                         editor.model.document.on('change:data', () => {
@@ -611,7 +683,25 @@
                 } );
 
                 ClassicEditor
-                    .create( document.querySelector( '#extract03' ) )
+                    .create( document.querySelector( '#extract03' ), {
+                            removeButtons: 'PasteFromWord', //dont working
+                            toolbar: {
+                                    items: [
+                                        'heading', '|',
+                                        'fontfamily', 'fontsize', '|',
+                                        'alignment', '|',
+                                        'fontColor', 'fontBackgroundColor', '|',
+                                        'bold', 'italic', 'strikethrough', 'underline', 'subscript', 'superscript', '|',
+                                        'link', '|',
+                                        'outdent', 'indent', '|',
+                                        'bulletedList', 'numberedList', 'todoList', '|',
+                                        'code', 'codeBlock', '|',
+                                        'insertTable', '|',
+                                        /* 'uploadImage', 'blockQuote', '|', */
+                                        'undo', 'redo'
+                                    ],
+                                    shouldNotGroupWhenFull: true}
+                        }  )
 
                     .then(editor => {
                         editor.model.document.on('change:data', () => {
@@ -627,7 +717,25 @@
                 } );
 
                 ClassicEditor
-                    .create( document.querySelector( '#extract04' ) )
+                    .create( document.querySelector( '#extract04' ), {
+                            removeButtons: 'PasteFromWord', //dont working
+                            toolbar: {
+                                    items: [
+                                        'heading', '|',
+                                        'fontfamily', 'fontsize', '|',
+                                        'alignment', '|',
+                                        'fontColor', 'fontBackgroundColor', '|',
+                                        'bold', 'italic', 'strikethrough', 'underline', 'subscript', 'superscript', '|',
+                                        'link', '|',
+                                        'outdent', 'indent', '|',
+                                        'bulletedList', 'numberedList', 'todoList', '|',
+                                        'code', 'codeBlock', '|',
+                                        'insertTable', '|',
+                                        /* 'uploadImage', 'blockQuote', '|', */
+                                        'undo', 'redo'
+                                    ],
+                                    shouldNotGroupWhenFull: true}
+                        }  )
 
                     .then(editor => {
                         editor.model.document.on('change:data', () => {
@@ -643,7 +751,25 @@
                 } );
 
                 ClassicEditor
-                    .create( document.querySelector( '#instruction' ) )
+                    .create( document.querySelector( '#instruction' ), {
+                            removeButtons: 'PasteFromWord', //dont working
+                            toolbar: {
+                                    items: [
+                                        'heading', '|',
+                                        'fontfamily', 'fontsize', '|',
+                                        'alignment', '|',
+                                        'fontColor', 'fontBackgroundColor', '|',
+                                        'bold', 'italic', 'strikethrough', 'underline', 'subscript', 'superscript', '|',
+                                        'link', '|',
+                                        'outdent', 'indent', '|',
+                                        'bulletedList', 'numberedList', 'todoList', '|',
+                                        'code', 'codeBlock', '|',
+                                        'insertTable', '|',
+                                        /* 'uploadImage', 'blockQuote', '|', */
+                                        'undo', 'redo'
+                                    ],
+                                    shouldNotGroupWhenFull: true}
+                        }  )
 
                     .then(editor => {
                         editor.model.document.on('change:data', () => {
