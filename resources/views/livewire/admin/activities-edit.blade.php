@@ -79,8 +79,8 @@
 
                             <p>{{$cour['id']}}</p>
 
-                        @endforeach
- --}}
+                        @endforeach--}}
+
                        {{--  @foreach ($activity->courses as $course) --}}
 
                         {{-- <p>{{$course->course->code.' '.$course->course->section}}</p> --}}
@@ -92,8 +92,8 @@
 
                             {{-- <input type="checkbox" wire:model="PermissionCheckbox.{{ $key }}" {{ in_array($pms->id , $PermissionCheckbox)? "checked":"" }} /> --}}
 
-                           {{--  </label>
- --}}
+                           {{--  </label> --}}
+
 
                        {{--  @endforeach --}}
 
@@ -114,7 +114,7 @@
 
 
         <div class="step-two">
-            <div class="card">
+            
 
 
             <div class="card">

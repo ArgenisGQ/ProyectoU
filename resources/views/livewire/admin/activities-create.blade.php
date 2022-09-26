@@ -64,7 +64,7 @@
 
 
         <div class="step-two">
-            <div class="card">
+
 
                 {{-- @php
                     dd($this->coursess);
@@ -73,7 +73,7 @@
 
             <div class="card">
                 <div class="card-header bg-secondary text-white">Paso 2/4 - Datos</div>
-                <div class="card-body">
+                <div class="card-body ">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -101,12 +101,12 @@
             </div>
 
 
-            <div class="card">
+            <div class="card {{-- max-w-sm rounded overflow-hidden shadow-lg --}}">
                 <div class="card-header bg-secondary text-white">Proposito de la Actividad</div>
                 <div class="card-body">
                     <div class = "form-group my-4"  wire:ignore>
                         <label for="body" class="p-r-mute">   </label>
-                        <textarea id="body" wire:model="body" class="form-control w-full text-editor editor-container" placeholder="Indique de manera especifica el proposito de la actividad" rows="6" required></textarea>
+                        <textarea id="body" wire:model="body" class="form-control w-full" placeholder="Indique de manera especifica el proposito de la actividad" rows="6" required></textarea>
                     </div>
                     {{-- <div class="frameworks d-flex flex-column align-items-left mt-2">
                         <label for="laravel">
