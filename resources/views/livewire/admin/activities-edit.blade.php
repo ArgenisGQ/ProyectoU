@@ -280,6 +280,8 @@
                                 @endif
                             @endfor
                         </tbody>
+                        <span class="text-danger">@error('activityCriteries'){{ $message }}@enderror</span>
+                        <span class="text-danger">@error('criteries'){{ $message }}@enderror</span>
                     </table>
                 </div>
             </div>
@@ -334,78 +336,72 @@
 
             <div class="card">
                 <div class="card-header bg-secondary text-white">Referencias bibliograficas</div>
-                {{-- <div class="card-body">
-                    <div class = "form-group my-4"  wire:ignore>
-                        <label for="" class="p-r-mute">   </label>
-                        <textarea id="" wire:model="" class="form-control" placeholder="Indique de manera especifica las referencias bibliograficas de la actividad" rows="6" required></textarea>
+                <div class="card-body">
+                    <div class = "form-group my-4" >
+                        <button type="button" class="btn btn-md btn-secondary" wire:click="increaseBiblio()">+</button>
+                        <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseBiblio()">-</button>
                     </div>
-                    <span class="text-danger">@error(''){{ $message }}@enderror</span>
-                </div> --}}
-                <div class = "form-group my-4" >
-                    <button type="button" class="btn btn-md btn-secondary" wire:click="increaseBiblio()">+</button>
-                    <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseBiblio()">-</button>
+                    {{-- @php
+                        dd($references);
+                    @endphp --}}
+                    <table class="table-auto w-full">
+                        <thead>
+                            <tr>
+                                <th>
+                                    {{-- <label for="" class="col-md-12">Titulo</label> --}}
+                                    <label for="" class="col-md-5">Titulo</label>
+                                </th>
+                                <th>
+                                    {{-- <label for="" class="col-md-3">Autor</label> --}}
+                                    <label for="" class="col-md-4">Autor</label>
+                                </th>
+                                <th>
+                                    {{-- <label for="" class="col-md-3">Año</label> --}}
+                                    <label for="" class="col-md-4">Año</label>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for ($jj = 0 ; $jj < $currentBiblio ; $jj++)
+                                @if (isset($references[$jj]['title']))
+                                    <tr>
+                                        <td class="col-md-5" wire:ignore>
+                                            <input type="text" class="form-control" placeholder="Titulo" wire:model="references.{{$jj}}.title">
+                                            {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                        </td>
+                                        <td class="col-md-3" wire:ignore>
+                                            <input type="text" class="form-control" placeholder="Autor" wire:model="references.{{$jj}}.autor">
+                                            {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                        </td>
+                                        <td class="col-md-2" wire:ignore>
+                                            <input type="number" step="1" min="0" max="2999" required="required"
+                                                class="form-control" placeholder="Año de publicacion" wire:model="references.{{$jj}}.year">
+                                            {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                        </td>
+                                    </tr>
+                                @else
+                                    <tr>
+                                        <td class="col-md-5" wire:ignore>
+                                            <input type="text" class="form-control" placeholder="Titulo" wire:model="biblio.{{$jj}}">
+                                            {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                        </td>
+                                        <td class="col-md-3" wire:ignore>
+                                            <input type="text" class="form-control" placeholder="Autor" wire:model="biblio.autor.{{$jj}}">
+                                            {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                        </td>
+                                        <td class="col-md-2" wire:ignore>
+                                            <input type="number" step="1" min="0" max="2999" required="required"
+                                                class="form-control" placeholder="Año de publicacion" wire:model="biblio.anno.{{$jj}}">
+                                            {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                        </td>
+                                    </tr>
+                                @endif
+                            @endfor
+                        </tbody>
+                        <span class="text-danger">@error('references'){{ $message }}@enderror</span>
+                        <span class="text-danger">@error('biblio'){{ $message }}@enderror</span>
+                    </table>
                 </div>
-                {{-- @php
-                    dd($references);
-                @endphp --}}
-                <table class="table-auto w-full">
-                    <thead>
-                        <tr>
-                            <th>
-                                <label for="" class="col-md-12">Titulo</label>
-                            </th>
-                            <th>
-                                <label for="" class="col-md-3">Autor</label>
-                            </th>
-                            <th>
-                                <label for="" class="col-md-3">Año</label>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @for ($jj = 0 ; $jj < $currentBiblio ; $jj++)
-                            @if (isset($references[$jj]['title']))
-                                <tr>
-                                    <td class="col-md-5" wire:ignore>
-                                        {{-- <label for="">Nombre del Criterio</label> --}}
-                                        <input type="text" class="form-control" placeholder="Titulo" wire:model="references.{{$jj}}.title">
-                                        {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
-                                    </td>
-                                    <td class="col-md-4" wire:ignore>
-                                        {{-- <label for="">Puntos</label> --}}
-                                        <input type="text" class="form-control" placeholder="Autor" wire:model="references.{{$jj}}.autor">
-                                        {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
-                                    </td>
-                                    <td class="col-md-3" wire:ignore>
-                                        {{-- <label for="">Puntos</label> --}}
-                                        <input type="number" step="1" min="0" max="2999" required="required"
-                                            class="form-control" placeholder="Año de publicacion" wire:model="references.{{$jj}}.year">
-                                        {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
-                                    </td>
-                                </tr>
-                            @else
-                                <tr>
-                                    <td class="col-md-6" wire:ignore>
-                                        {{-- <label for="">Nombre del Criterio</label> --}}
-                                        <input type="text" class="form-control" placeholder="Titulo" wire:model="biblio.{{$jj}}">
-                                        {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
-                                    </td>
-                                    <td class="col-md-6" wire:ignore>
-                                        {{-- <label for="">Puntos</label> --}}
-                                        <input type="text" class="form-control" placeholder="Autor" wire:model="biblio.autor.{{$jj}}">
-                                        {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
-                                    </td>
-                                    <td class="col-md-2" wire:ignore>
-                                        {{-- <label for="">Puntos</label> --}}
-                                        <input type="number" step="1" min="0" max="2999" required="required"
-                                            class="form-control" placeholder="Año de publicacion" wire:model="biblio.anno.{{$jj}}">
-                                        {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
-                                    </td>
-                                </tr>
-                            @endif
-                        @endfor
-                    </tbody>
-                </table>
             </div>
 
             <div class="card">

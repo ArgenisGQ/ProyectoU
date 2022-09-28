@@ -248,13 +248,10 @@
                         </div>
 
                         <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
-
                         <div class = "form-group my-4" >
                             <button type="button" class="btn btn-md btn-secondary" wire:click="increaseBiblio()">+</button>
                             <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseBiblio()">-</button>
                         </div>
-
-
                         <table class="table-auto w-full">
                             <thead>
                                 <tr>
@@ -268,11 +265,9 @@
                                         <label for="" class="col-md-4">Año</label>
                                     </th>
                                 </tr>
-
                             </thead>
                             <tbody>
                                 @for ($jj = 0 ; $jj < $currentBiblio ; $jj++)
-
                                     <tr>
                                         <td class="col-md-5" wire:ignore>
                                             {{-- <label for="">Nombre del Criterio</label> --}}
@@ -291,7 +286,6 @@
                                             {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
                                         </td>
                                     </tr>
-
                                 @endfor
                             </tbody>
                             <span class="text-danger">@error('biblio'){{ $message }}@enderror</span>
@@ -300,7 +294,7 @@
             </div>
 
             <div class="card">
-                <div class="card-header bg-secondary text-white">PASO 5: Instrucciones de la Actividad</div>
+                <div class="card-header bg-secondary text-white">Instrucciones de la Actividad</div>
                     <div class="card-body">
                         <div class = "form-group my-4"  wire:ignore>
                             <label for="instruction" class="p-r-mute">   </label>

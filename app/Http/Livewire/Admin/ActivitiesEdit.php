@@ -90,11 +90,17 @@ class ActivitiesEdit extends Component
         'activity.status' => 'required',
         /* 'activity.courses' => 'required', */
         'cours' => 'required|array',
-        'activityCriteries.*.critery' => 'required',
+        'activityCriteries' => 'required',
+        'references' => 'required',
+
+        /* 'criteries' => 'required',
+        'biblio' => 'required', */
+
+        /* 'activityCriteries.*.critery' => 'required',
         'activityCriteries.*.evaluation' => 'required',
         'references.*.title' => 'required',
         'references.*.autor' => 'required',
-        'references.*.year' => 'required',
+        'references.*.year' => 'required', */
     ];
 
 
