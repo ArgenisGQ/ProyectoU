@@ -229,11 +229,18 @@ class ActivitiesCreate extends Component
 
                 'body' => 'required',
                 'extract' => 'required',
-                /* 'extract01' => 'required',
+                'extract01' => 'required',
                 'extract02' => 'required',
                 'extract03' => 'required',
-                'extract04' => 'required', */
-                /* 'instruction' => 'required', */
+                'extract04' => 'required',
+                'instruction' => 'required',
+
+                /* 'criteries' => 'required', */
+                /* 'criteries.nota.*' => 'required', */
+                /* 'biblio' => 'required', */
+                /* 'biblio.autor.*' => 'required', */
+                /* 'biblio.anno.*' => 'required', */
+
 
                 /* 'extract01' => 'required',
                 'extract02' => 'required' */

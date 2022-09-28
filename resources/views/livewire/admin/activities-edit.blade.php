@@ -29,7 +29,6 @@
                                     $cursox = App\Models\User_course::where('name',$userActiveName)
                                                                     ->where('code',$curso['code'])
                                                                     ->get();
-
                             @endphp
                             <h4> {{ $curso['code'].' '.$curso['course'] }} </h4>
                             <div class="content-start">

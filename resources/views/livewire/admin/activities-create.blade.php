@@ -9,20 +9,18 @@
         @if ($currentStep == 1)
 
         {{-- <div class="step-one"> --}}
-        <div class="">
+        <div class="step-one">
             <div class="card">
                 <div class="card-header bg-secondary text-white">Paso 1/4 - Seleccionar Materias</div>
                     <div class="card-body">
                                     @php
                                         $coursesFull = App\Models\course::all();
-
                                         /* dd($coursesFull); */
                                     @endphp
                                     {{-- <p>UNIDADES:{{$coursesFull[1051]->unitTotal}}</p> --}}
                         <div class="w-screen flex-col align-items-left mt-2">
                             {{-- @foreach ( $coursesForUser as $curso ) --}}
                             @foreach ( $courses as $curso )
-
                                 @php
                                         /* $cursox = App\Models\User_course::where('ced',$userActiveCed)
                                                                         ->where('code',$curso['code'])
@@ -31,7 +29,6 @@
                                         $cursox = App\Models\User_course::where('name',$userActiveName)
                                                                         ->where('code',$curso['code'])
                                                                         ->get();
-
                                 @endphp
 
                                 <h4> {{ $curso['code'].' '.$curso['course'] }} </h4>
@@ -45,9 +42,7 @@
                                     @endforeach
                                 </div>
                             @endforeach
-
                         </div>
-
                         <span class="text-danger">@error('coursess'){{ $message }}@enderror</span>
                     </div>
             </div>
@@ -62,7 +57,7 @@
 
 
         {{-- <div class="step-two"> --}}
-        <div class="">
+        <div class="step-two">
 
                 {{-- @php
                     dd($this->coursess);
@@ -94,7 +89,6 @@
                         </div>
                     </div>
             </div>
-
 
             <div class="card {{-- max-w-sm rounded overflow-hidden shadow-lg --}}">
                 <div class="card-header bg-secondary text-white">Proposito de la Actividad</div>
@@ -133,7 +127,7 @@
             </div>
 
             <div class="card">
-                <div class="card-header bg-secondary text-white">PASO 3: Criterios de la Evaluacion</div>
+                <div class="card-header bg-secondary text-white">Criterios de la Evaluacion</div>
                 <div class="card-body" >
                     {{-- <div class = "form-group my-4"  wire:ignore>
                         <label for="" class="p-r-mute">   </label>
@@ -182,16 +176,17 @@
                                     <td class="col-md-12" wire:ignore>
                                         {{-- <label for="">Nombre del Criterio</label> --}}
                                         <input type="text" class="form-control" placeholder="Ingrese el nombre del criterio" wire:model="criteries.{{$ii}}">
-                                        {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                        <span class="text-danger">@error('criteries'){{ $message }}@enderror</span>
                                     </td>
                                     <td class="col-md-6" wire:ignore>
                                         {{-- <label for="">Puntos</label> --}}
                                         <input type="number" step="1" min="0" max="30" required="required"
                                                 class="form-control" placeholder="%" wire:model="criteries.nota.{{$ii}}">
-                                        {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                        <span class="text-danger">@error('criteries'){{ $message }}@enderror</span>
                                     </td>
                                 </tr>
                             @endfor
+
                         </tbody>
                     </table>
                     {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
@@ -208,7 +203,6 @@
 
                         <span class="text-danger">@error('extract01'){{ $message }}@enderror</span>
                     </div>
-
             </div>
 
             <div class="card">
@@ -223,7 +217,7 @@
             </div>
 
             <div class="card">
-                <div class="card-header bg-secondary text-white">PASO 4: Herramienta(s) Digitales de la Evaluacion</div>
+                <div class="card-header bg-secondary text-white">Herramienta(s) Digitales de la Evaluacion</div>
                     <div class="card-body">
                         <div class = "form-group my-4"  wire:ignore>
                             <label for="extract03" class="p-r-mute">   </label>
@@ -234,7 +228,7 @@
                     </div>
             </div>
 
-            {{-- <div class="card">
+            <div class="card">
                 <div class="card-header bg-secondary text-white">Recursos Digitales de la Evaluacion</div>
                     <div class="card-body">
                         <div class = "form-group my-4"  wire:ignore>
@@ -244,8 +238,7 @@
 
                         <span class="text-danger">@error('extract04'){{ $message }}@enderror</span>
                     </div>
-                </div>
-            </div> --}}
+            </div>
 
 
             <div class="card">
@@ -307,8 +300,6 @@
                     </div>
             </div>
 
-
-
             <div class="card">
                 <div class="card-header bg-secondary text-white">PASO 5: Instrucciones de la Actividad</div>
                     <div class="card-body">
@@ -319,11 +310,6 @@
                         <span class="text-danger">@error('instruction'){{ $message }}@enderror</span>
                     </div>
             </div>
-
-
-
-
-
 
             <script>
                 /* CKEDITOR01
@@ -613,48 +599,8 @@
 
         {{-- STEP 3 --}}
 
-        {{-- @if ($currentStep == 3)
-        <div class="">
-
-            <p>{{$currentStep}}</p>
-
-
-        </div>
-
-        @endif --}}
-
-
-        {{-- STEP 4 --}}
-
-        {{-- @if ($currentStep == 4)
-
-        <div class="step-four">
-
-            <p>{{$currentStep}}</p>
-
-        </div>
-
-        @endif --}}
-
-
-        {{-- STEP 5 --}}
-
-        {{-- @if ($currentStep == 5)
-
-        <div class="step-five">
-
-            <p>{{$currentStep}}</p>
-
-        </div>
-        @endif --}}
-
-
-
-        {{-- STEP 4 --}}
-
         @if ($currentStep == 3)
             <div class="step-three">
-                
                 <div class="card">
                         <div class="card-header bg-secondary text-white">Paso 3/4 - Infomacion Final</div>
                         <div class="card-body">
