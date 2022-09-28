@@ -134,8 +134,6 @@
                         <textarea id="" wire:model="" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
                     </div> --}}
 
-
-
                     <div class = "form-group my-4" >
                         <button type="button" class="btn btn-md btn-secondary" wire:click="increaseCritery()">+</button>
                         <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseCritery()">-</button>
@@ -176,18 +174,18 @@
                                     <td class="col-md-12" wire:ignore>
                                         {{-- <label for="">Nombre del Criterio</label> --}}
                                         <input type="text" class="form-control" placeholder="Ingrese el nombre del criterio" wire:model="criteries.{{$ii}}">
-                                        <span class="text-danger">@error('criteries'){{ $message }}@enderror</span>
+                                        {{-- <span class="text-danger">@error('criteries.{{$ii}}'){{ $message }}@enderror</span> --}}
                                     </td>
                                     <td class="col-md-6" wire:ignore>
                                         {{-- <label for="">Puntos</label> --}}
                                         <input type="number" step="1" min="0" max="30" required="required"
                                                 class="form-control" placeholder="%" wire:model="criteries.nota.{{$ii}}">
-                                        <span class="text-danger">@error('criteries'){{ $message }}@enderror</span>
+                                        {{-- <span class="text-danger">@error('criteries'){{ $message }}@enderror</span> --}}
                                     </td>
                                 </tr>
                             @endfor
-
                         </tbody>
+                        <span class="text-danger">@error('criteries'){{ $message }}@enderror</span>
                     </table>
                     {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
                 </div>
@@ -296,6 +294,7 @@
 
                                 @endfor
                             </tbody>
+                            <span class="text-danger">@error('biblio'){{ $message }}@enderror</span>
                         </table>
                     </div>
             </div>
