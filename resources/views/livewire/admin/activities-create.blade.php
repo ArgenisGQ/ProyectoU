@@ -8,50 +8,48 @@
 
         @if ($currentStep == 1)
 
-        <div class="step-one">
+        {{-- <div class="step-one"> --}}
+        <div class="">
             <div class="card">
                 <div class="card-header bg-secondary text-white">Paso 1/4 - Seleccionar Materias</div>
-                <div class="card-body">
+                    <div class="card-body">
+                                    @php
+                                        $coursesFull = App\Models\course::all();
+
+                                        /* dd($coursesFull); */
+                                    @endphp
+                                    {{-- <p>UNIDADES:{{$coursesFull[1051]->unitTotal}}</p> --}}
+                        <div class="w-screen flex-col align-items-left mt-2">
+                            {{-- @foreach ( $coursesForUser as $curso ) --}}
+                            @foreach ( $courses as $curso )
 
                                 @php
-                                    $coursesFull = App\Models\course::all();
+                                        /* $cursox = App\Models\User_course::where('ced',$userActiveCed)
+                                                                        ->where('code',$curso['code'])
+                                                                        ->get(); */
 
-                                    /* dd($coursesFull); */
+                                        $cursox = App\Models\User_course::where('name',$userActiveName)
+                                                                        ->where('code',$curso['code'])
+                                                                        ->get();
+
                                 @endphp
-                                {{-- <p>UNIDADES:{{$coursesFull[1051]->unitTotal}}</p> --}}
 
-                    <div class="w-screen flex-col align-items-left mt-2">
+                                <h4> {{ $curso['code'].' '.$curso['course'] }} </h4>
+                                <div class="content-start">
+                                    @foreach ($cursox as $cursoy )
+                                            <label for="{{ $cursoy['id'] }}">
+                                            {{ $cursoy['section'] }}
+                                            {{-- <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}" wire:click="<button wire:click="$emitUp('courses')"> --}}
+                                            <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="coursess">
+                                            </label>
+                                    @endforeach
+                                </div>
+                            @endforeach
 
-                        {{-- @foreach ( $coursesForUser as $curso ) --}}
-                        @foreach ( $courses as $curso )
+                        </div>
 
-                            @php
-                                    /* $cursox = App\Models\User_course::where('ced',$userActiveCed)
-                                                                    ->where('code',$curso['code'])
-                                                                    ->get(); */
-
-                                    $cursox = App\Models\User_course::where('name',$userActiveName)
-                                                                    ->where('code',$curso['code'])
-                                                                    ->get();
-
-                            @endphp
-
-                            <h4> {{ $curso['code'].' '.$curso['course'] }} </h4>
-                            <div class="content-start">
-                                @foreach ($cursox as $cursoy )
-                                        <label for="{{ $cursoy['id'] }}">
-                                        {{ $cursoy['section'] }}
-                                        {{-- <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}" wire:click="<button wire:click="$emitUp('courses')"> --}}
-                                        <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="coursess">
-                                        </label>
-                                @endforeach
-                            </div>
-                        @endforeach
-
+                        <span class="text-danger">@error('coursess'){{ $message }}@enderror</span>
                     </div>
-
-                    <span class="text-danger">@error('coursess'){{ $message }}@enderror</span>
-                </div>
             </div>
         </div>
 
@@ -63,84 +61,79 @@
         @if ($currentStep == 2)
 
 
-        <div class="step-two">
-
+        {{-- <div class="step-two"> --}}
+        <div class="">
 
                 {{-- @php
                     dd($this->coursess);
                 @endphp --}}
 
+            {{-- <p>{{$currentStep}}</> --}}
 
             <div class="card">
                 <div class="card-header bg-secondary text-white">Paso 2/4 - Datos</div>
-                <div class="card-body ">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="">Nombre de Actividad</label>
-                                <input type="text" class="form-control " placeholder="Ingrese el nombre de la actividad" wire:model.defer="name">
-                                <span class="text-danger">@error('name'){{ $message }}@enderror</span>
+                    <div class="card-body ">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Nombre de Actividad</label>
+                                    <input type="text" class="form-control " placeholder="Ingrese el nombre de la actividad" wire:model.defer="name">
+                                    <span class="text-danger">@error('name'){{ $message }}@enderror</span>
+                                </div>
                             </div>
                         </div>
-
-
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="">Factultad de la materia:</label>
-
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Factultad de la materia:</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group w-full">
+                                <label for="">Nombre del Profesor: {{ $userActiveName }}</label>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group w-full">
-                            <label for="">Nombre del Profesor: {{ $userActiveName }}</label>
-
-                        </div>
-                    </div>
-                </div>
             </div>
 
 
             <div class="card {{-- max-w-sm rounded overflow-hidden shadow-lg --}}">
                 <div class="card-header bg-secondary text-white">Proposito de la Actividad</div>
-                <div class="card-body">
-                    <div class = "form-group my-4"  wire:ignore>
-                        <label for="body" class="p-r-mute">   </label>
-                        <textarea id="body" wire:model="body" class="form-control w-full" placeholder="Indique de manera especifica el proposito de la actividad" rows="6" required></textarea>
-                    </div>
-                    {{-- <div class="frameworks d-flex flex-column align-items-left mt-2">
-                        <label for="laravel">
-                            <input type="checkbox" id="laravel" value="laravel" wire:model="frameworks"> Laravel
+                    <div class="card-body">
+                        <div class = "form-group my-4"  wire:ignore>
+                            <label for="body" class="p-r-mute">   </label>
+                            <textarea id="body"  wire:model ="body" class="form-control w-full" placeholder="Indique de manera especifica el proposito de la actividad" rows="6" required></textarea>
+                        </div>
+                        {{-- <div class="frameworks d-flex flex-column align-items-left mt-2">
+                            <label for="laravel">
+                                <input type="checkbox" id="laravel" value="laravel" wire:model="frameworks"> Laravel
+                            </label>
+                            <label for="codeigniter">
+                            <input type="checkbox" id="codeigniter" value="codeigniter" wire:model="frameworks"> Codeigniter
                         </label>
-                        <label for="codeigniter">
-                           <input type="checkbox" id="codeigniter" value="codeigniter" wire:model="frameworks"> Codeigniter
-                       </label>
-                       <label for="vuejs">
-                           <input type="checkbox" id="vuejs" value="vuejs" wire:model="frameworks"> Vue Js
-                       </label>
-                       <label for="cakePHP">
-                           <input type="checkbox" id="cakePHP" value="cakePHP" wire:model="frameworks"> CakePHP
-                       </label>
-                    </div> --}}
-                    <span class="text-danger">@error('body'){{ $message }}@enderror</span>
-                </div>
+                        <label for="vuejs">
+                            <input type="checkbox" id="vuejs" value="vuejs" wire:model="frameworks"> Vue Js
+                        </label>
+                        <label for="cakePHP">
+                            <input type="checkbox" id="cakePHP" value="cakePHP" wire:model="frameworks"> CakePHP
+                        </label>
+                        </div> --}}
+                        <span class="text-danger">@error('body'){{ $message }}@enderror</span>
+                    </div>
             </div>
 
             <div class="card">
                 <div class="card-header bg-secondary text-white">Competencia de la Actividad</div>
-                <div class="card-body">
-                    <div class = "form-group my-4"  wire:ignore>
-                        <label for="extract" class="p-r-mute">   </label>
-                        <textarea id="extract" wire:model="extract" class="form-control" placeholder="Indique de manera especifica la competencia de la actividad" rows="6" required></textarea>
+                    <div class="card-body">
+                        <div class = "form-group my-4"  wire:ignore>
+                            <label for="extract" class="p-r-mute">   </label>
+                            <textarea id="extract"  wire:model ="extract" class="form-control" placeholder="Indique de manera especifica la competencia de la actividad" rows="6" required></textarea>
+                        </div>
+                        <span class="text-danger">@error('extract'){{ $message }}@enderror</span>
                     </div>
-
-
-                    <span class="text-danger">@error('extract'){{ $message }}@enderror</span>
-                </div>
             </div>
 
             <div class="card">
-                <div class="card-header bg-secondary text-white">Criterios de la Evaluacion</div>
+                <div class="card-header bg-secondary text-white">PASO 3: Criterios de la Evaluacion</div>
                 <div class="card-body" >
                     {{-- <div class = "form-group my-4"  wire:ignore>
                         <label for="" class="p-r-mute">   </label>
@@ -182,11 +175,9 @@
                                     <label for="">Puntuacion %</label>
                                 </th>
                             </tr>
-
                         </thead>
                         <tbody>
                             @for ($ii = 0 ; $ii < $currentCritery ; $ii++)
-
                                 <tr>
                                     <td class="col-md-12" wire:ignore>
                                         {{-- <label for="">Nombre del Criterio</label> --}}
@@ -200,29 +191,24 @@
                                         {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
                                     </td>
                                 </tr>
-
                             @endfor
-
-
-
                         </tbody>
-
                     </table>
-
                     {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-header bg-secondary text-white">Extrategia(s) de la Evaluacion</div>
-                <div class="card-body">
-                    <div class = "form-group my-4"  wire:ignore>
-                        <label for="extract01" class="p-r-mute">   </label>
-                        <textarea id="extract01" wire:model="extract01" class="form-control" placeholder="Indique de manera especifica las estrategias de evaluacion de la actividad" rows="6" required></textarea>
+                    <div class="card-body">
+                        <div class = "form-group my-4"  wire:ignore>
+                            <label for="extract01" class="p-r-mute">   </label>
+                            <textarea id="extract01" wire:model ="extract01" class="form-control" placeholder="Indique de manera especifica las estrategias de evaluacion de la actividad" rows="6" required></textarea>
+                        </div>
+
+                        <span class="text-danger">@error('extract01'){{ $message }}@enderror</span>
                     </div>
 
-                    <span class="text-danger">@error('extract01'){{ $message }}@enderror</span>
-                </div>
             </div>
 
             <div class="card">
@@ -230,114 +216,114 @@
                 <div class="card-body">
                     <div class = "form-group my-4"  wire:ignore>
                         <label for="extract02" class="p-r-mute">   </label>
-                        <textarea id="extract02" wire:model="extract02" class="form-control" placeholder="Indique de manera especifica las tecnicas de evaluacion de la actividad" rows="6" required></textarea>
+                        <textarea id="extract02" wire:model ="extract02" class="form-control" placeholder="Indique de manera especifica las tecnicas de evaluacion de la actividad" rows="6" required></textarea>
                     </div>
-
                     <span class="text-danger">@error('extract02'){{ $message }}@enderror</span>
                 </div>
             </div>
 
             <div class="card">
-                <div class="card-header bg-secondary text-white">Herramienta(s) Digitales de la Evaluacion</div>
-                <div class="card-body">
-                    <div class = "form-group my-4"  wire:ignore>
-                        <label for="extract03" class="p-r-mute">   </label>
-                        <textarea id="extract03" wire:model="extract03" class="form-control" placeholder="Indique de manera especifica herramientas digitales de evaluacion de la actividad" rows="6" required></textarea>
-                    </div>
+                <div class="card-header bg-secondary text-white">PASO 4: Herramienta(s) Digitales de la Evaluacion</div>
+                    <div class="card-body">
+                        <div class = "form-group my-4"  wire:ignore>
+                            <label for="extract03" class="p-r-mute">   </label>
+                            <textarea id="extract03" wire:model ="extract03" class="form-control" placeholder="Indique de manera especifica herramientas digitales de evaluacion de la actividad" rows="6" required></textarea>
+                        </div>
 
-                    <span class="text-danger">@error('extract03'){{ $message }}@enderror</span>
-                </div>
+                        <span class="text-danger">@error('extract03'){{ $message }}@enderror</span>
+                    </div>
             </div>
 
-            <div class="card">
+            {{-- <div class="card">
                 <div class="card-header bg-secondary text-white">Recursos Digitales de la Evaluacion</div>
-                <div class="card-body">
-                    <div class = "form-group my-4"  wire:ignore>
-                        <label for="extract04" class="p-r-mute">   </label>
-                        <textarea id="extract04" wire:model="extract04" class="form-control" placeholder="Indique de manera especifica los recursos digitales de evaluacion de la actividad" rows="6" required></textarea>
-                    </div>
+                    <div class="card-body">
+                        <div class = "form-group my-4"  wire:ignore>
+                            <label for="extract04" class="p-r-mute">   </label>
+                            <textarea id="extract04" wire:model ="extract04" class="form-control" placeholder="Indique de manera especifica los recursos digitales de evaluacion de la actividad" rows="6" required></textarea>
+                        </div>
 
-                    <span class="text-danger">@error('extract04'){{ $message }}@enderror</span>
+                        <span class="text-danger">@error('extract04'){{ $message }}@enderror</span>
+                    </div>
                 </div>
-            </div>
+            </div> --}}
+
 
             <div class="card">
                 <div class="card-header bg-secondary text-white">Referencias bibliograficas</div>
-                <div class="card-body">
-                    {{-- <div class = "form-group my-4"  wire:ignore>
-                        <label for="" class="p-r-mute">   </label>
-                        <textarea id="" wire:model="" class="form-control" placeholder="Indique de manera especifica las referencias bibliograficas de la actividad" rows="6" required></textarea>
-                    </div>
+                    <div class="card-body">
+                        {{-- <div class = "form-group my-4"  wire:ignore>
+                            <label for="" class="p-r-mute">   </label>
+                            <textarea id="" wire:model="" class="form-control" placeholder="Indique de manera especifica las referencias bibliograficas de la actividad" rows="6" required></textarea>
+                        </div>
 
-                    <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                        <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
 
-                    <div class = "form-group my-4" >
-                        <button type="button" class="btn btn-md btn-secondary" wire:click="increaseBiblio()">+</button>
-                        <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseBiblio()">-</button>
-                    </div>
+                        <div class = "form-group my-4" >
+                            <button type="button" class="btn btn-md btn-secondary" wire:click="increaseBiblio()">+</button>
+                            <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseBiblio()">-</button>
+                        </div>
 
 
-                    <table class="table-auto w-full">
-                        <thead>
-                            <tr>
-                                <th>
-                                    <label for="" class="col-md-5">Titulo</label>
-                                </th>
-                                <th>
-                                    <label for="" class="col-md-4">Autor</label>
-                                </th>
-                                <th>
-                                    <label for="" class="col-md-4">Año</label>
-                                </th>
-                            </tr>
-
-                        </thead>
-                        <tbody>
-                            @for ($jj = 0 ; $jj < $currentBiblio ; $jj++)
-
+                        <table class="table-auto w-full">
+                            <thead>
                                 <tr>
-                                    <td class="col-md-5" wire:ignore>
-                                        {{-- <label for="">Nombre del Criterio</label> --}}
-                                        <input type="text" class="form-control" placeholder="Titulo" wire:model="biblio.{{$jj}}">
-                                        {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
-                                    </td>
-                                    <td class="col-md-3" wire:ignore>
-                                        {{-- <label for="">Puntos</label> --}}
-                                        <input type="text" class="form-control" placeholder="Autor" wire:model="biblio.autor.{{$jj}}">
-                                        {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
-                                    </td>
-                                    <td class="col-md-2" wire:ignore>
-                                        {{-- <label for="">Puntos</label> --}}
-                                        <input type="number" step="1" min="0" max="2999" required="required"
-                                            class="form-control" placeholder="Año de publicacion" wire:model="biblio.anno.{{$jj}}">
-                                        {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
-                                    </td>
+                                    <th>
+                                        <label for="" class="col-md-5">Titulo</label>
+                                    </th>
+                                    <th>
+                                        <label for="" class="col-md-4">Autor</label>
+                                    </th>
+                                    <th>
+                                        <label for="" class="col-md-4">Año</label>
+                                    </th>
                                 </tr>
 
-                            @endfor
+                            </thead>
+                            <tbody>
+                                @for ($jj = 0 ; $jj < $currentBiblio ; $jj++)
 
+                                    <tr>
+                                        <td class="col-md-5" wire:ignore>
+                                            {{-- <label for="">Nombre del Criterio</label> --}}
+                                            <input type="text" class="form-control" placeholder="Titulo" wire:model="biblio.{{$jj}}">
+                                            {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                        </td>
+                                        <td class="col-md-3" wire:ignore>
+                                            {{-- <label for="">Puntos</label> --}}
+                                            <input type="text" class="form-control" placeholder="Autor" wire:model="biblio.autor.{{$jj}}">
+                                            {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                        </td>
+                                        <td class="col-md-2" wire:ignore>
+                                            {{-- <label for="">Puntos</label> --}}
+                                            <input type="number" step="1" min="0" max="2999" required="required"
+                                                class="form-control" placeholder="Año de publicacion" wire:model="biblio.anno.{{$jj}}">
+                                            {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
+                                        </td>
+                                    </tr>
 
-
-                        </tbody>
-
-                    </table>
-
-
-
-                </div>
+                                @endfor
+                            </tbody>
+                        </table>
+                    </div>
             </div>
+
+
 
             <div class="card">
-                <div class="card-header bg-secondary text-white">Instrucciones de la Actividad</div>
-                <div class="card-body">
-                    <div class = "form-group my-4"  wire:ignore>
-                        <label for="instruction" class="p-r-mute">   </label>
-                        <textarea id="instruction" wire:model="instruction" class="form-control" placeholder="Indique de manera especifica las instrucciones de la actividad" rows="6" required></textarea>
+                <div class="card-header bg-secondary text-white">PASO 5: Instrucciones de la Actividad</div>
+                    <div class="card-body">
+                        <div class = "form-group my-4"  wire:ignore>
+                            <label for="instruction" class="p-r-mute">   </label>
+                            <textarea id="instruction" wire:model.defer ="instruction" class="form-control" placeholder="Indique de manera especifica las instrucciones de la actividad" rows="6" required></textarea>
+                        </div>
+                        <span class="text-danger">@error('instruction'){{ $message }}@enderror</span>
                     </div>
-
-                    <span class="text-danger">@error('instruction'){{ $message }}@enderror</span>
-                </div>
             </div>
+
+
+
+
+
 
             <script>
                 /* CKEDITOR01
@@ -374,7 +360,6 @@
 
 
                 ClassicEditor
-
                     .create( document.querySelector( '#body' ), {
                             removeButtons: 'PasteFromWord', //dont working
                             toolbar: {
@@ -441,7 +426,8 @@
                     })
                     .catch( error => {
                         console.error( error )
-                } );
+                    } );
+
 
                 ClassicEditor
                     .create( document.querySelector( '#extract01' ), {
@@ -475,7 +461,7 @@
                     })
                     .catch( error => {
                         console.error( error )
-                } );
+                    } );
 
                 ClassicEditor
                     .create( document.querySelector( '#extract02' ), {
@@ -509,9 +495,9 @@
                     })
                     .catch( error => {
                         console.error( error )
-                } );
+                    } );
 
-                ClassicEditor
+                    ClassicEditor
                     .create( document.querySelector( '#extract03' ), {
                             removeButtons: 'PasteFromWord', //dont working
                             toolbar: {
@@ -543,7 +529,7 @@
                     })
                     .catch( error => {
                         console.error( error )
-                } );
+                    } );
 
                 ClassicEditor
                     .create( document.querySelector( '#extract04' ), {
@@ -577,7 +563,8 @@
                     })
                     .catch( error => {
                         console.error( error )
-                } );
+                    } );
+
 
                 ClassicEditor
                     .create( document.querySelector( '#instruction' ), {
@@ -611,8 +598,7 @@
                     })
                     .catch( error => {
                         console.error( error )
-                } );
-
+                    } );
 
                 /* new Pikaday({ field: $extract.input, 'format': 'MM/DD/YYYY', firstDay: 1, minDate: new Date(), }); */
 
@@ -621,310 +607,326 @@
                 CKEDITOR.replace( 'extract01' ); */
 
             </script>
-
-
         </div>
-
-
         @endif
 
 
         {{-- STEP 3 --}}
 
+        {{-- @if ($currentStep == 3)
+        <div class="">
+
+            <p>{{$currentStep}}</p>
+
+
+        </div>
+
+        @endif --}}
+
+
+        {{-- STEP 4 --}}
+
+        {{-- @if ($currentStep == 4)
+
+        <div class="step-four">
+
+            <p>{{$currentStep}}</p>
+
+        </div>
+
+        @endif --}}
+
+
+        {{-- STEP 5 --}}
+
+        {{-- @if ($currentStep == 5)
+
+        <div class="step-five">
+
+            <p>{{$currentStep}}</p>
+
+        </div>
+        @endif --}}
+
+
+
+        {{-- STEP 4 --}}
+
         @if ($currentStep == 3)
-
             <div class="step-three">
+                
                 <div class="card">
-                    <div class="card-header bg-secondary text-white">Paso 3/4 - Infomacion Final</div>
-                    <div class="card-body">
-
-                        @php
-                            $coursesFull = App\Models\course::all();
-                            /* dd($coursesFull); */
-
-                           /*  dd($this->coursess); */
-
-
-                            /* dd($this->criteries); */
-                        @endphp
-                            {{-- @foreach ($this->coursess as $cur)
-
-                                <p>UNIDADES de {{$cur}}:{{$coursesFull[$cur]->unitTotal}}</p>
-
-                            @endforeach --}}
-
-
-                        <div class="row">
-
-                            <div class="col-md-6">
-                                <h4>Tipo de Evaluacion</h4>
-                                <div class="form-group">
-                                @if(count($evaluations) > 0)
-                                    <label for="evaluation"></label>
-                                        <select names="evaluation" wire:model="evaluation"
-                                        class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
-                                            <option value="" selected>Seleccione tipo de Evaluacion</option>
-                                            @foreach ($evaluations as $evaluation)
-                                                <option value="{{ $evaluation['id'] }}">{{ $evaluation['name'] }}</option>
-                                                {{-- <option value="{{ $evaluation->id }}">{{ $evaluation->name }}</option> --}}
-                                                {{-- <option value="Bangladesh">Bangladesh</option> --}}
-                                            @endforeach
-                                        </select>
-                                    @endif
-
-                                    {{-- <p>{{$this->evaluation}}</p> --}}
-
-                                    {{-- <span class="text-danger">@error('country'){{ $message }}@enderror</span> --}}
-                                </div>
-                            </div>
+                        <div class="card-header bg-secondary text-white">Paso 3/4 - Infomacion Final</div>
+                        <div class="card-body">
 
                             @php
-                                $desabilitado = "";
-                                if ($this->evaluation == 1 || $this->evaluation == 2) {
-                                    $desabilitado = "disabled";
-                                    $this->eval = 0;
-                                }
+                                $coursesFull = App\Models\course::all();
+                                /* dd($coursesFull); */
+
+                            /*  dd($this->coursess); */
+
+
+                                /* dd($this->criteries); */
                             @endphp
+                                {{-- @foreach ($this->coursess as $cur)
 
-                            <div class="col-md-6">
-                                <h4>Ponderacion</h4>
-                                <div class="form-group">
-                                    <label for="unit"></label>
+                                    <p>UNIDADES de {{$cur}}:{{$coursesFull[$cur]->unitTotal}}</p>
 
-                                    <input type="number" id="tentacles" name="tentacles" {{$desabilitado}} disabled
-                                        placeholder="0.00" step="0.01" min="0" max="100" wire:model="eval">
-                                        {{-- <select names="unit" wire:model="unit"
-                                        class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
-                                            <option value="" selected>Seleccione la Unidad</option>
-                                                <option value="1"> Unidad I</option>
-                                                <option value="2"> Unidad II</option>
-                                                <option value="3"> Unidad III</option>
-                                                <option value="4"> Unidad IV</option>
-                                        </select> --}}
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <h4>Unidad</h4>
-                                <div class="form-group">
+                                @endforeach --}}
 
 
-                                    @foreach ($this->coursess as $cur)
+                            <div class="row">
 
-                                        {{-- <p>UNIDADES de {{$cur}}:{{$coursesFull[$cur]->unitTotal}}</p> --}}
-
-                                        @if ($coursesFull[$cur]->unitTotal != 4)
-                                            <p>ADVERTENCIA: el curso {{$cur}} tiene {{$coursesFull[$cur]->unitTotal}} de unidades.</p>
+                                <div class="col-md-6">
+                                    <h4>Tipo de Evaluacion</h4>
+                                    <div class="form-group">
+                                        @if(count($evaluations) > 0)
+                                        <label for="evaluation"></label>
+                                            <select names="evaluation" wire:model="evaluation"
+                                            class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
+                                                <option value="" selected>Seleccione tipo de Evaluacion</option>
+                                                @foreach ($evaluations as $evaluation)
+                                                    <option value="{{ $evaluation['id'] }}">{{ $evaluation['name'] }}</option>
+                                                    {{-- <option value="{{ $evaluation->id }}">{{ $evaluation->name }}</option> --}}
+                                                    {{-- <option value="Bangladesh">Bangladesh</option> --}}
+                                                @endforeach
+                                            </select>
                                         @endif
 
+                                        {{-- <p>{{$this->evaluation}}</p> --}}
 
-                                    @endforeach
+                                        {{-- <span class="text-danger">@error('country'){{ $message }}@enderror</span> --}}
+                                    </div>
+                                </div>
 
-                                    @php
-                                        foreach ($this->coursess as $cur){
-                                            $unidadess[] = $coursesFull[$cur]->unitTotal;
-                                        }
-                                        /* dd($unidadess); */
-                                        $maximo = max($unidadess);
-                                        /* dd($maximo); */
-                                    @endphp
+                                @php
+                                    $desabilitado = "";
+                                    if ($this->evaluation == 1 || $this->evaluation == 2) {
+                                        $desabilitado = "disabled";
+                                        $this->eval = 0;
+                                    }
+                                @endphp
+
+                                <div class="col-md-6">
+                                    <h4>Ponderacion</h4>
+                                    <div class="form-group">
+                                        <label for="unit"></label>
+
+                                        <input type="number" id="tentacles" name="tentacles" {{$desabilitado}} disabled
+                                            placeholder="0.00" step="0.01" min="0" max="100" wire:model="eval">
+                                            {{-- <select names="unit" wire:model="unit"
+                                            class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
+                                                <option value="" selected>Seleccione la Unidad</option>
+                                                    <option value="1"> Unidad I</option>
+                                                    <option value="2"> Unidad II</option>
+                                                    <option value="3"> Unidad III</option>
+                                                    <option value="4"> Unidad IV</option>
+                                            </select> --}}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <h4>Unidad</h4>
+                                    <div class="form-group">
+                                        @foreach ($this->coursess as $cur)
+                                            {{-- <p>UNIDADES de {{$cur}}:{{$coursesFull[$cur]->unitTotal}}</p> --}}
+                                            @if ($coursesFull[$cur]->unitTotal != 4)
+                                                <p>ADVERTENCIA: el curso {{$cur}} tiene {{$coursesFull[$cur]->unitTotal}} de unidades.</p>
+                                            @endif
+                                        @endforeach
+
+                                        @php
+                                            foreach ($this->coursess as $cur){
+                                                $unidadess[] = $coursesFull[$cur]->unitTotal;
+                                            }
+                                            /* dd($unidadess); */
+                                            $maximo = max($unidadess);
+                                            /* dd($maximo); */
+                                        @endphp
 
 
-                                {{-- @if(count($evaluations) > 0) --}}
-                                    <label for="unit"></label>
-                                        <select names="unit" wire:model="unit"
-                                        class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
-                                            <option value="" selected>Seleccione la Unidad</option>
-                                            {{-- @foreach ($evaluations as $evaluation) --}}
-                                                {{-- <option value="1"> Unidad I</option>
-                                                <option value="2"> Unidad II</option>
-                                                <option value="3"> Unidad III</option>
-                                                <option value="4"> Unidad IV</option> --}}
-                                                {{-- <option value="{{ $evaluation->id }}">{{ $evaluation->name }}</option> --}}
-                                                {{-- <option value="Bangladesh">Bangladesh</option> --}}
-                                            {{-- @endforeach --}}
+                                        {{-- @if(count($evaluations) > 0) --}}
+                                        <label for="unit"></label>
+                                            <select names="unit" wire:model="unit"
+                                            class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
+                                                <option value="" selected>Seleccione la Unidad</option>
+                                                {{-- @foreach ($evaluations as $evaluation) --}}
+                                                    {{-- <option value="1"> Unidad I</option>
+                                                    <option value="2"> Unidad II</option>
+                                                    <option value="3"> Unidad III</option>
+                                                    <option value="4"> Unidad IV</option> --}}
+                                                    {{-- <option value="{{ $evaluation->id }}">{{ $evaluation->name }}</option> --}}
+                                                    {{-- <option value="Bangladesh">Bangladesh</option> --}}
+                                                {{-- @endforeach --}}
 
-                                            @for ($a = 1; $a <= $maximo; $a++)
-                                                <option value = {{$a}}> Unidad {{$a}}</option>
-                                            @endfor
-                                        </select>
-                                    {{-- @endif --}}
-                                    {{-- <span class="text-danger">@error('country'){{ $message }}@enderror</span> --}}
+                                                @for ($a = 1; $a <= $maximo; $a++)
+                                                    <option value = {{$a}}> Unidad {{$a}}</option>
+                                                @endfor
+                                            </select>
+                                        {{-- @endif --}}
+                                        {{-- <span class="text-danger">@error('country'){{ $message }}@enderror</span> --}}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <h4>Tipo de Participacion</h4>
+                                    <div class="form-group">
+                                        {{-- @if(count($evaluations) > 0) --}}
+                                        <label for="type"></label>
+                                            <select names="type" wire:model="type"
+                                            class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
+                                                <option value="" selected>Seleccione tipo de Participacion</option>
+                                            {{--  @foreach ($evaluations as $evaluation) --}}
+                                                    <option value="1">Individual</option>
+                                                    <option value="2">Grupal</option>
+                                                    <option value="3">Combinada</option>
+                                                    {{-- <option value="{{ $evaluation->id }}">{{ $evaluation->name }}</option> --}}
+                                                    {{-- <option value="Bangladesh">Bangladesh</option> --}}
+                                                {{-- @endforeach --}}
+                                            </select>
+                                        {{-- @endif --}}
+                                        {{-- <span class="text-danger">@error('country'){{ $message }}@enderror</span> --}}
+                                    </div>
                                 </div>
                             </div>
+                            <div>
+                                <h4>Periodo de la Actividad</h4>
+                                <div class="dates-wrapper group">
 
-                            <div class="col-md-6">
-                                <h4>Tipo de Participacion</h4>
-                                <div class="form-group">
-                                {{-- @if(count($evaluations) > 0) --}}
-                                    <label for="type"></label>
-                                        <select names="type" wire:model="type"
-                                        class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
-                                            <option value="" selected>Seleccione tipo de Participacion</option>
-                                        {{--  @foreach ($evaluations as $evaluation) --}}
-                                                <option value="1">Individual</option>
-                                                <option value="2">Grupal</option>
-                                                <option value="3">Combinada</option>
-                                                {{-- <option value="{{ $evaluation->id }}">{{ $evaluation->name }}</option> --}}
-                                                {{-- <option value="Bangladesh">Bangladesh</option> --}}
-                                            {{-- @endforeach --}}
-                                        </select>
-                                    {{-- @endif --}}
-                                    {{-- <span class="text-danger">@error('country'){{ $message }}@enderror</span> --}}
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <h4>Periodo de la Actividad</h4>
-                            <div class="dates-wrapper group">
-
-                                <div class="field clearfix date-range- rt date-wrapper">
-                                    <div class="label">
-                                    <label for="lapse_in">Inicio de actividad:</label>
+                                    <div class="field clearfix date-range- rt date-wrapper">
+                                        <div class="label">
+                                        <label for="lapse_in">Inicio de actividad:</label>
+                                        </div>
+                                        <div class="input">
+                                            <input type="text" name="lapse_in" id="datepickerInP" class="input-text"
+                                            placeholder="{{date('d-m-Y', strtotime($academic_start))}}"
+                                            wire:model="lapse_in">
+                                        </div>
+                                        {{-- <a href="#" class="calendar-btn calendar-start hide-text">View calendar</a>--}}
+                                        {{-- <p>{{date('d-m-Y', strtotime($academic_start))}}</p> --}}
                                     </div>
-                                    <div class="input">
-                                        <input type="text" name="lapse_in" id="datepickerInP" class="input-text"
-                                        placeholder="{{date('d-m-Y', strtotime($academic_start))}}"
-                                        wire:model="lapse_in">
+
+                                    <div class="field clearfix date-range-start date-wrapper">
+                                        <div class="label">
+                                        <label for="lapse_out">Final de actividad:</label>
+                                        </div>
+                                        <div class="input">
+                                            <input type="text" name="lapse_out" id="datepickerOutP" class="input-text"
+                                            placeholder="{{date('d-m-Y', strtotime($academic_finish))}}"
+                                            wire:model="lapse_out">
+                                        </div>
+                                        {{-- <a href="#" class="calendar-btn hide-text">View calendar</a> --}}
+                                        {{-- <p>{{date('d-m-Y', strtotime($academic_finish))}}</p> --}}
+
                                     </div>
-                                    {{-- <a href="#" class="calendar-btn calendar-start hide-text">View calendar</a>--}}
-                                    {{-- <p>{{date('d-m-Y', strtotime($academic_start))}}</p> --}}
-                                </div>
-
-                                <div class="field clearfix date-range-start date-wrapper">
-                                    <div class="label">
-                                    <label for="lapse_out">Final de actividad:</label>
-                                    </div>
-                                    <div class="input">
-                                        <input type="text" name="lapse_out" id="datepickerOutP" class="input-text"
-                                        placeholder="{{date('d-m-Y', strtotime($academic_finish))}}"
-                                        wire:model="lapse_out">
-                                    </div>
-                                    {{-- <a href="#" class="calendar-btn hide-text">View calendar</a> --}}
-                                    {{-- <p>{{date('d-m-Y', strtotime($academic_finish))}}</p> --}}
-
-                                </div>
 
 
-                                <script>
-                                    var startDate,endDate,
-                                    updateStartDate = function() {
-                                        startPicker.setStartRange(startDate);
-                                        endPicker.setStartRange(startDate);
-                                        endPicker.setMinDate(startDate);
-                                    },
-                                    updateEndDate = function() {
-                                        startPicker.setEndRange(endDate);
-                                        startPicker.setMaxDate(endDate);
-                                        endPicker.setEndRange(endDate);
-                                    },
-                                    startPicker = new Pikaday({
-                                        field: document.getElementById('datepickerInP'),
-                                        i18n: {
-                                            previousMonth : 'Anterior',
-                                            nextMonth     : 'Siguiente',
-                                            months        : ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
-                                            weekdays      : ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
-                                            weekdaysShort : ['Dom','Lun','Mar','Mie','Jue','Vie','Sáb']
+                                    <script>
+                                        var startDate,endDate,
+                                        updateStartDate = function() {
+                                            startPicker.setStartRange(startDate);
+                                            endPicker.setStartRange(startDate);
+                                            endPicker.setMinDate(startDate);
                                         },
-                                        format: 'DD-MM-YYYY',
-                                        minDate: new Date(),
-                                        maxDate: new Date(2022, 12, 31),
-                                        onSelect: function() {
-                                            startDate = this.getDate();
-
-                                            /* day = `${(startDate .getDate())}`.padStart(2,'0');
-                                            month = `${(startDate .getMonth()+1)}`.padStart(2,'0');
-                                            year = startDate .getFullYear();
-
-                                            allDay = `${day}-${month}-${year}`, */
-
-                                            updateStartDate();
-                                            /* @this.set('lapse_in', startDate); */
-                                            @this.set('lapse_in', this.toString());
-                                            /* @this.set('lapse_in', startDate.toLocaleString()); */
-                                            /* console.log(this.getMoment().format('Do MMMM YYYY')); */
-                                            /* @this.set('lapse_in', startDate); */
-                                            /* console.log(lapse_in); */
-                                        }
-                                    }),
-                                    endPicker = new Pikaday({
-                                        field: document.getElementById('datepickerOutP'),
-                                        i18n: {
-                                            previousMonth : 'Anterior',
-                                            nextMonth     : 'Siguiente',
-                                            months        : ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
-                                            weekdays      : ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
-                                            weekdaysShort : ['Dom','Lun','Mar','Mie','Jue','Vie','Sáb']
+                                        updateEndDate = function() {
+                                            startPicker.setEndRange(endDate);
+                                            startPicker.setMaxDate(endDate);
+                                            endPicker.setEndRange(endDate);
                                         },
-                                        format: 'DD-MM-YYYY',
-                                        minDate: new Date(),
-                                        maxDate: new Date(2022, 12, 31),
-                                        onSelect: function() {
-                                            endDate = this.getDate();
+                                        startPicker = new Pikaday({
+                                            field: document.getElementById('datepickerInP'),
+                                            i18n: {
+                                                previousMonth : 'Anterior',
+                                                nextMonth     : 'Siguiente',
+                                                months        : ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+                                                weekdays      : ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+                                                weekdaysShort : ['Dom','Lun','Mar','Mie','Jue','Vie','Sáb']
+                                            },
+                                            format: 'DD-MM-YYYY',
+                                            minDate: new Date(),
+                                            maxDate: new Date(2022, 12, 31),
+                                            onSelect: function() {
+                                                startDate = this.getDate();
 
-                                            updateEndDate();
-                                            /* @this.set('lapse_out', endDate); */
-                                            @this.set('lapse_out', this.toString());
+                                                /* day = `${(startDate .getDate())}`.padStart(2,'0');
+                                                month = `${(startDate .getMonth()+1)}`.padStart(2,'0');
+                                                year = startDate .getFullYear();
 
-                                        }
-                                    }),
-                                    _startDate = startPicker.getDate(),
-                                    _endDate = endPicker.getDate();
-                                </script>
+                                                allDay = `${day}-${month}-${year}`, */
 
-                                {{-- @php
-                                    dd($lapse_in);
-                                @endphp --}}
+                                                updateStartDate();
+                                                /* @this.set('lapse_in', startDate); */
+                                                @this.set('lapse_in', this.toString());
+                                                /* @this.set('lapse_in', startDate.toLocaleString()); */
+                                                /* console.log(this.getMoment().format('Do MMMM YYYY')); */
+                                                /* @this.set('lapse_in', startDate); */
+                                                /* console.log(lapse_in); */
+                                            }
+                                        }),
+                                        endPicker = new Pikaday({
+                                            field: document.getElementById('datepickerOutP'),
+                                            i18n: {
+                                                previousMonth : 'Anterior',
+                                                nextMonth     : 'Siguiente',
+                                                months        : ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+                                                weekdays      : ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+                                                weekdaysShort : ['Dom','Lun','Mar','Mie','Jue','Vie','Sáb']
+                                            },
+                                            format: 'DD-MM-YYYY',
+                                            minDate: new Date(),
+                                            maxDate: new Date(2022, 12, 31),
+                                            onSelect: function() {
+                                                endDate = this.getDate();
 
+                                                updateEndDate();
+                                                /* @this.set('lapse_out', endDate); */
+                                                @this.set('lapse_out', this.toString());
+
+                                            }
+                                        }),
+                                        _startDate = startPicker.getDate(),
+                                        _endDate = endPicker.getDate();
+                                    </script>
+                                    {{-- @php
+                                        dd($lapse_in);
+                                    @endphp --}}
+                                </div>
                             </div>
+                            <div>
+                                <input wire:model="status" name="status" type="radio" value="1" /> Borrador
+                                {{-- <input wire:model="status" name="status" type="radio" value="3" /> Revision --}}
+                                <input wire:model="status" name="status" type="radio" value="2" /> Publicado
+                            </div>
+                            {{-- @php
+                                dd($nota_curso);
+                            @endphp --}}
+                            {{-- @foreach ($nota_curso as $notaCurso)
+                                <p>nota: {{$notaCurso}}</p>
+                            @endforeach --}}
+                            {{-- <p>nota: {{$nota_curso->name}} {{$nota_curso->code}} {{$nota_curso->section}}</p> --}}
                         </div>
-
-
-                        <div>
-                            <input wire:model="status" name="status" type="radio" value="1" /> Borrador
-                            {{-- <input wire:model="status" name="status" type="radio" value="3" /> Revision --}}
-                            <input wire:model="status" name="status" type="radio" value="2" /> Publicado
-                        </div>
-                        {{-- @php
-                            dd($nota_curso);
-                        @endphp --}}
-                        {{-- @foreach ($nota_curso as $notaCurso)
-                            <p>nota: {{$notaCurso}}</p>
-                        @endforeach --}}
-                        {{-- <p>nota: {{$nota_curso->name}} {{$nota_curso->code}} {{$nota_curso->section}}</p> --}}
-
-                    </div>
                 </div>
             </div>
         @endif
 
 
-        {{-- STEP 4 --}}
+
+        {{-- STEP 7 --}}
 
         @if ($currentStep == 4)
-
-            <div class="step-four">
+            <div class="step-seven">
                 <div class="card">
                     <div class="card-header bg-secondary text-white">Paso 4/4 - Infomacion Final</div>
                     <div class="card-body">
-
                         @php
                             /* $coursesFull = App\Models\course::all(); */
 
                         @endphp
-
-
-
                         <div class="row">
-
                             <div class="col-md-6">
                                 <h4>-----------------------------------------------</h4>
                                 <div class="form-group">
-
                                     {{-- <p>{{$this->nota_mensaje}}</p> --}}
-
-
                                     @if ($this->nota_mensaje == 1)
                                         <P>SOBRE PASA EL TOTAL DE NOTAS POR UNIDAD LAS SIQUIENTES MATERIAS</P>
                                         @for ( $this->i = 0 ;$this->i < $this->cc ; $this->i++)
@@ -937,29 +939,20 @@
                                         @for ($this->i = 0;$this->i < $this->ccx ; $this->i++)
                                             <p>El curso: {{$nota_cursox[$this->i]->name}} {{$nota_cursox[$this->i]->code}} {{$nota_cursox[$this->i]->section}} le queda {{$this->datos_curso[$this->i]}} puntos en la unidad seleccionada</p>
                                             {{-- <p>abc {{$this->datos_curso}}</p> --}}
-
                                         @endfor
-
                                         {{-- <p>abc {{$this->ccx}}</p> --}}
                                         <p>LISTO PARA CREAR LA ACTIVIDAD</p>
                                     @endif
-
-
-
                                 </div>
                             </div>
-
-
-
-
-
-
+                        </div>
                     </div>
                 </div>
             </div>
         @endif
 
 
+        {{-- <div class="action-buttons d-flex justify-content-between bg-white pt-2 pb-2"> --}}
         <div class="action-buttons d-flex justify-content-between bg-white pt-2 pb-2">
 
            @if ($currentStep == 1)
@@ -990,7 +983,6 @@
            @if ($currentStep == 4  && $nota_mensaje == 0)
                 <button type="submit" class="btn btn-md btn-primary">Crear</button>
            @endif
-
 
         </div>
 

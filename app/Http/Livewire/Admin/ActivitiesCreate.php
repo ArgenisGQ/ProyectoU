@@ -55,8 +55,35 @@ class ActivitiesCreate extends Component
 
 
 
+    /* protected $rules = [
+        'name' => 'required',
+        'extract' => 'required',
+        'extract01' => 'required',
+        'extract02' => 'required',
+        'extract03' => 'required',
+        'extract04' => 'required',
+        'instruction' => 'required',
+        'body' => 'required',
+        'lapse_in' => 'required',
+        'lapse_out' => 'required',
+        'type' => 'required',
+        'unit' => 'required',
+        'activity_type' => 'required',
+        'evaluation' => 'required',
+        'status' => 'required',
+
+        'cours' => 'required|array',
+        'activityCriteries.*.critery' => 'required',
+        'activityCriteries.*.evaluation' => 'required',
+        'references.*.title' => 'required',
+        'references.*.autor' => 'required',
+        'references.*.year' => 'required',
+    ]; */
+
+
+
     public function mount(){
-        $this->currentStep = 1;
+        /* $this->currentStep = 1; */
         /* $this->currentCritery = 1; */
         /* $this->courses = $courses; */
         /* $coursesFull = Course::all(); */
@@ -76,7 +103,7 @@ class ActivitiesCreate extends Component
         /* $userActive = auth()->user()->ced;
         $coursesForUser =  User_course::where('ced', $userActive)
                             ->get();
-        $courses = $coursesForUser->unique('code') */;
+        $courses = $coursesForUser->unique('code') */
         /* ------------------------------------------------------------------ */
 
         return view('livewire.admin.activities-create');
@@ -145,9 +172,12 @@ class ActivitiesCreate extends Component
         }
     }
 
+
+
     public function courses()
     {
         /* $this->emitUp('courses');//nose */
+
     }
 
 
@@ -184,35 +214,88 @@ class ActivitiesCreate extends Component
         /* ---------------- */
 
         if($this->currentStep == 1){
-            $this->status = 1;
+            $this->status = 1;  //confirma que es PARA EDITAR la actividad, de no ser asi no procede.
             $this->validate([
 
                 'coursess' => 'required',
             ]);
+            /* dd($this->currentStep); */
         }
         elseif($this->currentStep == 2){
               $this->validate([
                 'name' => 'required',
+
                 /* 'slug' => 'required|unique:activities',  */
+
                 'body' => 'required',
                 'extract' => 'required',
-                'extract01' => 'required',
-                'extract02' => 'required'
+                /* 'extract01' => 'required',
+                'extract02' => 'required',
+                'extract03' => 'required',
+                'extract04' => 'required', */
+                /* 'instruction' => 'required', */
+
+                /* 'extract01' => 'required',
+                'extract02' => 'required' */
               ]);
               $this->preValidatePoint($this->criteries,$this->currentCritery);
+              /* dd($this->currentStep); */
+              /* dd('here!!'); */
         }
-        elseif($this->currentStep == 3){
+        elseif($this->currentStep == 1000){
               $this->validate([
                 /* 'activity_type' => 'required', */
-                'type' => 'required',
-                'status' => 'required',
-                'eval' => 'required',
+
+                /* 'extract01' => 'required',
+                'extract02' => 'required' */
+
                 /* 'lapse_in' => 'date|after_or_equal:academic_start',
                 'lapse_out' => 'date|before_or_equal:academic_finish' */
               ]);
               /* $this->nota_curso = null; */
+              /* $this->preValidatePoint($this->criteries,$this->currentCritery); */
               /* dd('here!!'); */
-              $this->evaluationUnit($this->eval,$this->unit,$this->courses,4);
+              /* $this->evaluationUnit($this->eval,$this->unit,$this->courses,4); */
+        }
+        elseif($this->currentStep == 1000){
+            $this->validate([
+              /* 'activity_type' => 'required', */
+
+              /* 'extract03' => 'required', */
+              /* 'extract04' => 'required' */
+
+              /* 'lapse_in' => 'date|after_or_equal:academic_start',
+              'lapse_out' => 'date|before_or_equal:academic_finish' */
+            ]);
+            /* $this->nota_curso = null; */
+            /* dd('here!!'); */
+            /* $this->evaluationUnit($this->eval,$this->unit,$this->courses,4); */
+        }
+        elseif($this->currentStep == 100){
+            $this->validate([
+              /* 'activity_type' => 'required', */
+
+              /* 'instruction' => 'required', */
+
+              /* 'lapse_in' => 'date|after_or_equal:academic_start',
+              'lapse_out' => 'date|before_or_equal:academic_finish' */
+            ]);
+            /* $this->nota_curso = null; */
+            /* dd('here!!'); */
+            /* $this->evaluationUnit($this->eval,$this->unit,$this->courses,4); */
+        }
+        elseif($this->currentStep == 3){
+            $this->validate([
+              /* 'activity_type' => 'required', */
+              'type' => 'required',
+              'status' => 'required',
+              'eval' => 'required',
+              /* 'lapse_in' => 'date|after_or_equal:academic_start',
+              'lapse_out' => 'date|before_or_equal:academic_finish' */
+            ]);
+            /* $this->nota_curso = null; */
+            /* dd('here!!'); */
+            $this->evaluationUnit($this->eval,$this->unit,$this->courses,4);
         }
         elseif($this->currentStep == 4){
             /* dd('validacion 4'); */

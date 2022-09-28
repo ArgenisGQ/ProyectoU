@@ -7,9 +7,6 @@
 
         @if ($currentStep == 1)
 
-
-
-
         <div class="step-one">
             <div class="card">
                 <div class="card-header bg-secondary text-white">Paso 1/4 - Seleccionar Materias</div>
@@ -24,7 +21,6 @@
 
                         {{-- @foreach ( $coursesForUser as $curso ) --}}
                         @foreach ( $courses as $curso )
-
                             @php
                                     /* $cursox = App\Models\User_course::where('ced',$userActiveCed)
                                                                     ->where('code',$curso['code'])
@@ -35,7 +31,6 @@
                                                                     ->get();
 
                             @endphp
-
                             <h4> {{ $curso['code'].' '.$curso['course'] }} </h4>
                             <div class="content-start">
                                 @foreach ($cursox as $cursoy )
@@ -44,7 +39,6 @@
                                         {{ $cursoy['id'].' '.$cursoy['section'] }}
                                         {{-- <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="activity.courses"  > --}}
                                         <input type="checkbox" id="{{ $cursoy['id']}}" value="{{ $cursoy['id'] }}"  wire:model="cour.{{ $cursoy['id'] }}"  >
-
                                         </label>
                                 @endforeach
                             </div>
@@ -91,14 +85,10 @@
                             {{-- <input type="checkbox" id="{{ $course->course->id}}" value="{{ $course->course->id }}"  wire:model="coursess"> --}}
 
                             {{-- <input type="checkbox" wire:model="PermissionCheckbox.{{ $key }}" {{ in_array($pms->id , $PermissionCheckbox)? "checked":"" }} /> --}}
-
                            {{--  </label> --}}
-
-
                        {{--  @endforeach --}}
 
                     </div>
-
                     <span class="text-danger">@error('cour'){{ $message }}@enderror</span>
                 </div>
             </div>
@@ -114,7 +104,7 @@
 
 
         <div class="step-two">
-            
+
 
 
             <div class="card">
@@ -226,17 +216,11 @@
                         <label for="" class="p-r-mute">   </label>
                         <textarea id="" wire:model="" class="form-control" placeholder="Indique de manera especifica los criterios de evaluacion de la actividad" rows="6" required></textarea>
                     </div>
-
                     <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
-
-
-
                     <div class = "form-group my-4" >
                         <button type="button" class="btn btn-md btn-secondary" wire:click="increaseCritery()">+</button>
                         <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseCritery()">-</button>
                     </div>
-
-
                     <table class="table-auto w-full">
                         <thead>
                             <tr>
@@ -247,7 +231,6 @@
                                     <label for="">Puntuacion %</label>
                                 </th>
                             </tr>
-
                         </thead>
                         <tbody>
                             @php
@@ -256,18 +239,14 @@
                                 /* $currentCritery = $currentCritery + $this->cx - 1; */
                                 /* dd($this->criteries); */
                             @endphp
-
                             @for ($ii = 0 ; $ii < $currentCritery ; $ii++)
-
                                 {{-- @php
                                     if (!isset($activityCriteries[$ii]['critery'])) {
                                         $activityCriteries[$ii]['critery'] = '--';
                                         $activityCriteries[$ii]['evaluation'] = 0;
                                     }
                                 @endphp --}}
-
                                 @if (isset($activityCriteries[$ii]['critery']))  {{-- Campos originales de la base de datos --}}
-
                                     <tr>
                                         <td class="col-md-12" wire:ignore>
                                             {{-- <label for="">Nombre del Criterio</label> --}}
@@ -283,9 +262,7 @@
                                             {{-- <p>{{$activityCriteries[$ii]['evaluation']}}</p> --}}
                                         </td>
                                     </tr>
-
                                 @else  {{-- Campos nuevos creados cuando se editan --}}
-
                                     <tr>
                                         <td class="col-md-12" wire:ignore>
                                             {{-- <label for="">Nombre del Criterio</label> --}}
@@ -301,20 +278,10 @@
                                             {{-- <p>{{$activityCriteries[$ii]['evaluation']}}</p> --}}
                                         </td>
                                     </tr>
-
                                 @endif
-
-
-
                             @endfor
-
-
-
                         </tbody>
-
                     </table>
-
-
                 </div>
             </div>
 
@@ -373,38 +340,31 @@
                         <label for="" class="p-r-mute">   </label>
                         <textarea id="" wire:model="" class="form-control" placeholder="Indique de manera especifica las referencias bibliograficas de la actividad" rows="6" required></textarea>
                     </div>
-
                     <span class="text-danger">@error(''){{ $message }}@enderror</span>
                 </div> --}}
-
                 <div class = "form-group my-4" >
                     <button type="button" class="btn btn-md btn-secondary" wire:click="increaseBiblio()">+</button>
                     <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseBiblio()">-</button>
                 </div>
-
-
                 {{-- @php
                     dd($references);
                 @endphp --}}
-
                 <table class="table-auto w-full">
                     <thead>
                         <tr>
                             <th>
-                                <label for="" class="col-md-5">Titulo</label>
+                                <label for="" class="col-md-12">Titulo</label>
                             </th>
                             <th>
-                                <label for="" class="col-md-4">Autor</label>
+                                <label for="" class="col-md-3">Autor</label>
                             </th>
                             <th>
-                                <label for="" class="col-md-4">Año</label>
+                                <label for="" class="col-md-3">Año</label>
                             </th>
                         </tr>
-
                     </thead>
                     <tbody>
                         @for ($jj = 0 ; $jj < $currentBiblio ; $jj++)
-
                             @if (isset($references[$jj]['title']))
                                 <tr>
                                     <td class="col-md-5" wire:ignore>
@@ -412,12 +372,12 @@
                                         <input type="text" class="form-control" placeholder="Titulo" wire:model="references.{{$jj}}.title">
                                         {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
                                     </td>
-                                    <td class="col-md-3" wire:ignore>
+                                    <td class="col-md-4" wire:ignore>
                                         {{-- <label for="">Puntos</label> --}}
                                         <input type="text" class="form-control" placeholder="Autor" wire:model="references.{{$jj}}.autor">
                                         {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
                                     </td>
-                                    <td class="col-md-2" wire:ignore>
+                                    <td class="col-md-3" wire:ignore>
                                         {{-- <label for="">Puntos</label> --}}
                                         <input type="number" step="1" min="0" max="2999" required="required"
                                             class="form-control" placeholder="Año de publicacion" wire:model="references.{{$jj}}.year">
@@ -426,12 +386,12 @@
                                 </tr>
                             @else
                                 <tr>
-                                    <td class="col-md-5" wire:ignore>
+                                    <td class="col-md-6" wire:ignore>
                                         {{-- <label for="">Nombre del Criterio</label> --}}
                                         <input type="text" class="form-control" placeholder="Titulo" wire:model="biblio.{{$jj}}">
                                         {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
                                     </td>
-                                    <td class="col-md-3" wire:ignore>
+                                    <td class="col-md-6" wire:ignore>
                                         {{-- <label for="">Puntos</label> --}}
                                         <input type="text" class="form-control" placeholder="Autor" wire:model="biblio.autor.{{$jj}}">
                                         {{-- <span class="text-danger">@error(''){{ $message }}@enderror</span> --}}
@@ -444,17 +404,9 @@
                                     </td>
                                 </tr>
                             @endif
-
                         @endfor
-
                     </tbody>
-
-
                 </table>
-
-
-
-
             </div>
 
             <div class="card">
@@ -798,6 +750,7 @@
 
 
         @endif
+
 
         {{-- STEP 3 --}}
 
@@ -1260,10 +1213,7 @@
                             <div class="col-md-6">
                                 <h4>-----------------------------------------------</h4>
                                 <div class="form-group">
-
                                     {{-- <p>{{$this->nota_mensaje}}</p> --}}
-
-
                                     @if ($this->nota_mensaje == 1)
                                         <P>SOBRE PASA EL TOTAL DE NOTAS POR UNIDAD LAS SIQUIENTES MATERIAS</P>
                                         @for ( $this->i = 0 ;$this->i < $this->cc ; $this->i++)
@@ -1282,22 +1232,12 @@
                                         {{-- <p>abc {{$this->ccx}}</p> --}}
                                         <p>LISTO PARA CREAR LA ACTIVIDAD</p>
                                     @endif
-
-
-
                                 </div>
                             </div>
-
-
-
-
                     </div>
                 </div>
             </div>
         @endif
-
-
-
 
 
         <div class="action-buttons d-flex justify-content-between bg-white pt-2 pb-2">
