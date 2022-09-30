@@ -34,5 +34,12 @@ class Activity_course extends Model
     {
      /* return $this->belongsToMany(User_course::class, 'id'); */
      return $this->belongsTo(User_course::class, 'id_course');
+     /* return $this->belongsTo(User_course::class, 'id'); */
+    }
+
+    public function courseId()
+    {
+     /* return $this->belongsToMany(User_course::class, 'id'); */
+     return $this->hasMany(Course::class, 'id');
     }
 }
