@@ -88,19 +88,15 @@ class ActivitiesEdit extends Component
         'activity.activity_type' => 'required',
         'activity.evaluation' => 'required',
         'activity.status' => 'required',
-        /* 'activity.courses' => 'required', */
+
         'cours' => 'required|array',
-        'activityCriteries' => 'required',
-        'references' => 'required',
-
-        /* 'criteries' => 'required',
-        'biblio' => 'required', */
-
-        /* 'activityCriteries.*.critery' => 'required',
+        'activityCriteries.*.critery' => 'required',
         'activityCriteries.*.evaluation' => 'required',
         'references.*.title' => 'required',
         'references.*.autor' => 'required',
-        'references.*.year' => 'required', */
+        'references.*.year' => 'required',
+
+
     ];
 
 
@@ -285,6 +281,18 @@ class ActivitiesEdit extends Component
                 'activity.body' => 'required',
                 'activity.extract' => 'required',
                 'activity.extract01' => 'required',
+                'activity.extract02' => 'required',
+                'activity.extract03' => 'required',
+                'activity.extract04' => 'required',
+                'activity.instruction' => 'required',
+
+                /* 'criteries' => 'required', */
+                /* 'biblio' => 'required', */
+
+                'activityCriteries' => 'required',
+                'references' => 'required',
+
+
               ]);
               $this->preValidatePoint($this->criteries,$this->activityCriteries,$this->currentCritery);
 
@@ -295,13 +303,15 @@ class ActivitiesEdit extends Component
                 /* 'activity.lapse_in' => 'date|after_or_equal:academic_start', */
                 /* 'activity.lapse_out' => 'date|before_or_equal:academic_finish', */
                 /* 'evaluation' => 'required', */
+                'activity.type' => 'required',
+                /* 'activity.status' => 'required', */
+                /* 'activity.eval' => 'required', */
+                'activity.evaluation' => 'required',
+                'activity.unit' => 'required',
               ]);
               $this->evaluationUnit($this->activity->evaluation,$this->activity->unit,$this->courses,4);
         }
     }
-
-
-
 
 
 

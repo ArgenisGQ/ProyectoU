@@ -281,7 +281,7 @@
                             @endfor
                         </tbody>
                         <span class="text-danger">@error('activityCriteries'){{ $message }}@enderror</span>
-                        <span class="text-danger">@error('criteries'){{ $message }}@enderror</span>
+                        {{-- <span class="text-danger">@error('criteries'){{ $message }}@enderror</span> --}}
                     </table>
                 </div>
             </div>
@@ -341,9 +341,10 @@
                         <button type="button" class="btn btn-md btn-secondary" wire:click="increaseBiblio()">+</button>
                         <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseBiblio()">-</button>
                     </div>
-                    {{-- @php
-                        dd($references);
-                    @endphp --}}
+                    @php
+                        /* dd($currentBiblio); */
+                        /* dd($references[0]['title']); */
+                    @endphp
                     <table class="table-auto w-full">
                         <thead>
                             <tr>
@@ -364,6 +365,10 @@
                         <tbody>
                             @for ($jj = 0 ; $jj < $currentBiblio ; $jj++)
                                 @if (isset($references[$jj]['title']))
+                                    {{-- @php
+                                        dd('here...');
+                                    @endphp --}}
+
                                     <tr>
                                         <td class="col-md-5" wire:ignore>
                                             <input type="text" class="form-control" placeholder="Titulo" wire:model="references.{{$jj}}.title">
@@ -399,7 +404,7 @@
                             @endfor
                         </tbody>
                         <span class="text-danger">@error('references'){{ $message }}@enderror</span>
-                        <span class="text-danger">@error('biblio'){{ $message }}@enderror</span>
+                        {{-- <span class="text-danger">@error('biblio'){{ $message }}@enderror</span> --}}
                     </table>
                 </div>
             </div>
@@ -785,6 +790,7 @@
                                                 <option value="{{ $evaluation->id }}">{{ $evaluation->name }}</option>
                                             @endforeach
                                         </select>
+                                        <span class="text-danger">@error('activity.activity_type'){{ $message }}@enderror</span>
                                 @endif
                                 {{-- <p>{{$activity->type}}</p> --}}
                                 {{-- <span class="text-danger">@error('evaluation'){{ $message }}@enderror</span> --}}
@@ -831,6 +837,7 @@
                                         <option value="4"> Unidad IV</option>
                                 </select> --}}
                             {{-- <p>{{$this->activity->evaluation}}</p> --}}
+                            <span class="text-danger">@error('activity.evaluation'){{ $message }}@enderror</span>
                         </div>
                     </div>
 
@@ -890,7 +897,7 @@
                                     @endfor
                                 </select>
                             {{-- @endif --}}
-                            {{-- <span class="text-danger">@error('country'){{ $message }}@enderror</span> --}}
+                            <span class="text-danger">@error('activity.unit'){{ $message }}@enderror</span>
                         </div>
                     </div>
 
@@ -911,7 +918,7 @@
                                     {{-- @endforeach --}}
                                 </select>
                             {{-- @endif --}}
-                            {{-- <span class="text-danger">@error('country'){{ $message }}@enderror</span> --}}
+                            <span class="text-danger">@error('activity.type'){{ $message }}@enderror</span>
                         </div>
                     </div>
 
