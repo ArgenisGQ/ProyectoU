@@ -297,6 +297,8 @@ class ActivitiesCreate extends Component
               'type' => 'required',
               'status' => 'required',
               'eval' => 'required',
+              'evaluation' => 'required',
+              'unit' => 'required',
               /* 'lapse_in' => 'date|after_or_equal:academic_start',
               'lapse_out' => 'date|before_or_equal:academic_finish' */
             ]);

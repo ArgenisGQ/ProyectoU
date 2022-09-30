@@ -634,7 +634,7 @@
 
                                         {{-- <p>{{$this->evaluation}}</p> --}}
 
-                                        {{-- <span class="text-danger">@error('country'){{ $message }}@enderror</span> --}}
+                                        <span class="text-danger">@error('evaluation'){{ $message }}@enderror</span>
                                     </div>
                                 </div>
 
@@ -661,6 +661,7 @@
                                                     <option value="3"> Unidad III</option>
                                                     <option value="4"> Unidad IV</option>
                                             </select> --}}
+                                        <span class="text-danger">@error('eval'){{ $message }}@enderror</span>
                                     </div>
                                 </div>
 
@@ -703,7 +704,7 @@
                                                 @endfor
                                             </select>
                                         {{-- @endif --}}
-                                        {{-- <span class="text-danger">@error('country'){{ $message }}@enderror</span> --}}
+                                        <span class="text-danger">@error('unit'){{ $message }}@enderror</span>
                                     </div>
                                 </div>
 
@@ -724,7 +725,7 @@
                                                 {{-- @endforeach --}}
                                             </select>
                                         {{-- @endif --}}
-                                        {{-- <span class="text-danger">@error('country'){{ $message }}@enderror</span> --}}
+                                        <span class="text-danger">@error('type'){{ $message }}@enderror</span>
                                     </div>
                                 </div>
                             </div>
@@ -790,7 +791,6 @@
                                                 /* day = `${(startDate .getDate())}`.padStart(2,'0');
                                                 month = `${(startDate .getMonth()+1)}`.padStart(2,'0');
                                                 year = startDate .getFullYear();
-
                                                 allDay = `${day}-${month}-${year}`, */
 
                                                 updateStartDate();
