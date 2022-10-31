@@ -241,7 +241,7 @@ class UserController extends Controller
 
         /* return $user->id; */
 
-        DB::table('model_has_roles')->where('model_id', $user->id)->delete();
+        /* DB::table('model_has_roles')->where('model_id', $user->id)->delete(); */
 
         /* return "HERE! 02"; */
 
