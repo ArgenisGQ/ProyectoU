@@ -225,20 +225,25 @@ class UserController extends Controller
 
         /* $user->update([$input]); */
 
+        /* return $request; */
+
         $user->update([
-            'userName' =>           $input['userName'],
-            'name' =>               $input['name'],
-            'email' =>              $input['email'],
-            'ced' =>                $input['ced'],
+            'userName'  =>           $input['userName'],
+            'name'      =>           $input['name'],
+            'email'     =>           $input['email'],
+            'ced'       =>           $input['ced'],
             ]);
         /* $user->save([$input]);
  */
 
+        /* return "HERE! 01"; */
 
 
-        /* return $user; */
+        /* return $user->id; */
 
-        DB::table('model_has_roles')->where('model_id', $user)->delete();
+        DB::table('model_has_roles')->where('model_id', $user->id)->delete();
+
+        /* return "HERE! 02"; */
 
         return redirect()->route('admin.users.edit', $user)->with('info', 'Se editaron los datos con exito'); //
     }
